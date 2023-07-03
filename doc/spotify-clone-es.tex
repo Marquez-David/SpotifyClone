@@ -1,0 +1,122 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[top=3cm, bottom=3cm, left = 2cm, right = 2cm]{geometry} 
+\geometry{a4paper} 
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+\usepackage{amsmath,amssymb}  
+\usepackage{bm}  
+\usepackage[pdftex,bookmarks,colorlinks,breaklinks]{hyperref}  
+\usepackage{listings}
+\hypersetup{linkcolor=black,citecolor=black}
+%\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black} % black links, for printed output
+\usepackage{memhfixc} 
+\usepackage{pdfsync}  
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\title{Building a Spotify Clone}
+\author{David Márquez Mínguez}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\pagebreak
+\section{Introducción}
+
+\subsection{Contexto}
+
+Este documento alberga todos los problemas que se me han planteado a la hora de construir un clon de Spotify utilizando react-native. Además de ello, se incluirá en el mismo
+los pasos realizados y las decisiones tomadas para cada uno de los desarrollos.
+
+\subsection{Motivación}
+
+La motivación principal para empezar el proyecto es aprender y mejorar mis habilidades como programador en el desarrollo de aplicaciones.
+
+\subsection{Objectivos y limitaciones}
+
+Puesto que aún no soy un experto en este campo, seguro que surgirán errores en el análisis y desarrollo de las soluciones propuestas. El objetivo de este documento no solo se 
+trata de aprender, sino de dejar evidenciado cada una de las decisiones tomadas y mejorar al respecto.
+
+
+\pagebreak
+\section{Configuración del entorno de desarrollo}
+
+Antes de comenzar el proyecto, el primer paso es la configuración del entorno. Para ello accedemos a la página oficial de react-native y seguimos los pasos 
+\cite{setup-development-environment}. En mi caso, puesto que ya he trabajado con alguna aplicación móvil pequeña, no será necesaria mucha modificación.
+
+Algo que si he tenido en cuenta y es importante comentar, es la eliminación del paquete \emph{@react-native-community/cli}. La documentación aconseja su eliminación, 
+ya que pueden surgir problemas inesperados, para ello ejecuto:
+
+\begin{lstlisting}
+    react-native-cli @react-native-community/cli
+\end{lstlisting}
+
+Antes e iniciar el proyecto, algo que es importante comentar es que React Native tiene una interfaz de línea de comandos incorporada, esto significa que se puede generar 
+un nuevo proyecto utilizando simplemente:
+
+\begin{lstlisting}
+    npx react-native@latest init src
+\end{lstlisting}
+
+Una vez iniciado el proyecto y con todos los paquetes necesarios instalados, precedemos a comprobar que la ejecución funciona correctamente. Para ello nos creamos un 
+dispositivo móvil virtual utilizando Android Studio. Una vez realizados todos los pasos ejecutamos los comandos:
+
+\begin{lstlisting}
+    npm start
+    npm run android
+\end{lstlisting}
+
+El primero inicia Metro, un paquete de JavaScript que se incluye con React Native. Este devuelve un solo archivo JavaScript que incluye todo el código con sus dependencias.
+El segundo instala e inicia la aplicación en este caso en Android.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+\section{System Design}
+
+My system worked as follows \ldots
+
+\pagebreak
+
+\section{Evaluation}
+
+We did some experiments \ldots
+
+\pagebreak
+
+\section{Conclusions and Future Work}
+
+From our experiments we can conclude that \ldots
+
+\begin{figure}[tphb]
+    \centering
+    \includegraphics[width=7in]{img/testimg.png}
+    \caption{testimg}
+    \label{img:testimg}
+\end{figure}
+
+\pagebreak
+
+\bibliographystyle{abbrv}
+\bibliography{references}  % need to put bibtex references in references.bib 
+\end{document}
