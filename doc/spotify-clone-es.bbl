@@ -1,5 +1,24 @@
 \begin{thebibliography}{1}
 
+\bibitem{react-navigation}
+R.~Native.
+\newblock React navigation docs.
+\newblock \url{https://reactnavigation.org/docs/getting-started/.} [Last access
+  07/July/2023].
+
+\bibitem{vector-icons-issue}
+oblador.
+\newblock React native vector icons.
+\newblock \url{https://github.com/oblador/react-native-vector-icons#android.}
+  [Last access 07/July/2023].
+
+\bibitem{dynamic-components}
+React.
+\newblock Jsx in depth.
+\newblock
+  \url{https://legacy.reactjs.org/docs/jsx-in-depth.html#choosing-the-type-at-runtime.}
+  [Last access 07/July/2023].
+
 \bibitem{setup-development-environment}
 M.~O. Source.
 \newblock Setting up the development environment.

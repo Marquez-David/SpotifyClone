@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex spotify-clone-es"] 0 "spotify-clone-es.aux" "spotify-clone-es.bbl" "spotify-clone-es" 1688395386 -1
-  "./references.bib" 1688165837 7051 2806218ef9219a5f9b721565e0204cd5 ""
+["bibtex spotify-clone-es"] 1688921015 "spotify-clone-es.aux" "spotify-clone-es.bbl" "spotify-clone-es" 1688921018 0
+  "./references.bib" 1688920991 8141 d0a76aba0c510cfb2fe9d0a94da9ad4d ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/abbrv.bst" 1291868336 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "spotify-clone-es.aux" 1688395385 1799 bbfeba7ce702f87c48bdf51e684c5de3 "pdflatex"
+  "spotify-clone-es.aux" 1688921017 2432 b955a024ca5707fbc683a4a96ee87425 "pdflatex"
   (generated)
   "spotify-clone-es.bbl"
   "spotify-clone-es.blg"
   (rewritten before read)
-["pdflatex"] 1688395383 "c:/Users/Darks/Documents/GitHub/Spotify-Clone/doc/spotify-clone-es.tex" "spotify-clone-es.pdf" "spotify-clone-es" 1688395386 0
-  "C:/Users/Darks/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1683485296 82705 9cc9f144eacd499bc23a611703921467 ""
+["pdflatex"] 1688921015 "c:/Users/Darks/Documents/GitHub/Spotify-Clone/doc/spotify-clone-es.tex" "spotify-clone-es.pdf" "spotify-clone-es" 1688921018 0
+  "C:/Users/Darks/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1688920228 82705 9cc9f144eacd499bc23a611703921467 ""
   "C:/Users/Darks/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1683483754 12668 f21a3f4d59357c531f696a055ef53234 ""
   "C:/Users/Darks/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1683483562 23178959 2bea0be9a83810565790ed9e51227c7f ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1095.tfm" 993062508 1460 8005ce585ff351dff78998923504da5e ""
@@ -46,10 +46,12 @@
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmtt10.tfm" 1136768653 768 1321e9409b4137d6fb428ac9dc956269 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
+  "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1247596666 32362 bc3f3eec7ab7d65fe700963d4017d32c ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb" 1247596666 35022 e40946b20bfdcd1099eafb2bcd9f25dd ""
+  "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1247596667 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1247596667 31099 342ef5a582aacbd3346f3cf4579679fa ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580393758 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -83,6 +85,8 @@
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/base/atbegshi-ltx.sty" 1669847796 3052 30236f0cc243a8651b82240dfd2e8b9d ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/base/atveryend-ltx.sty" 1669847796 2462 8ce5f9a9c63002f2c1af03c262cf29af ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/base/inputenc.sty" 1669847796 5048 84b05796b49b69e2d4257d537721c960 ""
+  "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/base/omlcmr.fd" 1669847796 2470 cfb0d4d2386b9f8f779b8306fb78b31e ""
+  "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/base/omscmr.fd" 1669847796 2469 24e8437abfd2393aed5f0ac9f00f801e ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo" 1669847796 8464 63bf71cc1214ffdd38288da73a7ca182 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty" 1669847796 2894 f2f8ee7d4fb94263f9f255fa22cab2d3 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1623003186 13886 d1306dcf79a944f6988e688c1785f9ce ""
@@ -117,13 +121,13 @@
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657800696 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/tools/bm.sty" 1667245866 13231 b52297489a0e9d929aae403417d92a02 ""
   "C:/Users/Darks/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388494052 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "c:/Users/Darks/Documents/GitHub/Spotify-Clone/doc/spotify-clone-es.tex" 1688395382 3619 21a657b4b4bdbe5ffbd8af0acb8e13ba ""
+  "c:/Users/Darks/Documents/GitHub/Spotify-Clone/doc/spotify-clone-es.tex" 1688921008 6914 7f582fa04a21417540ec694b30868143 ""
   "img/testimg.png" 1688079127 11251 6e304e443b353100418415499d63bef7 ""
-  "spotify-clone-es.aux" 1688395385 1799 bbfeba7ce702f87c48bdf51e684c5de3 "pdflatex"
-  "spotify-clone-es.bbl" 1688394631 271 42108c945c4ba5135bd5cf40962f6361 "bibtex spotify-clone-es"
-  "spotify-clone-es.out" 1688395385 1145 7316caa0ab163ac281d5fe3be27ecf32 "pdflatex"
-  "spotify-clone-es.tex" 1688395382 3619 21a657b4b4bdbe5ffbd8af0acb8e13ba ""
-  "spotify-clone-es.toc" 1688395385 625 8bf7f060b51331d0ce999ba03a480297 "pdflatex"
+  "spotify-clone-es.aux" 1688921017 2432 b955a024ca5707fbc683a4a96ee87425 "pdflatex"
+  "spotify-clone-es.bbl" 1688921015 832 458caa001d443d7d064f61c64f55b813 "bibtex spotify-clone-es"
+  "spotify-clone-es.out" 1688921017 1956 27b8cf0d0509432b71b775b787a48015 "pdflatex"
+  "spotify-clone-es.tex" 1688921008 6914 7f582fa04a21417540ec694b30868143 ""
+  "spotify-clone-es.toc" 1688921017 953 398f513ef3d3f49c2352efffa67ec581 "pdflatex"
   (generated)
   "spotify-clone-es.aux"
   "spotify-clone-es.log"
