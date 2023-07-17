@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../utils/colors.js';
+import colors from '../utils/Colors.js';
 
 const styles = StyleSheet.create({
   /**
@@ -13,14 +13,14 @@ const styles = StyleSheet.create({
    */
   focusedIconStyle: {
     fontSize: 24,
-    color: colors.navigationIcon
+    color: colors.spotifyWhite
   },
   /**
-   * Style for not focused icons in the bottom navigation bar
+   * Style for unfocused icons in the bottom navigation bar
    */
   unfocusedIconStyle: {
     fontSize: 21,
-    color: colors.navigationIcon
+    color: colors.spotifyWhite
   }
 });
 

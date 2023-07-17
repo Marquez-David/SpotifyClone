@@ -1,6 +1,6 @@
 import React from 'react';
 import {AppRegistry } from 'react-native';
-import BottomTabNavigation from './navigation/BottomTabNavigation.js';
+import App from './App.js';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => BottomTabNavigation);
+AppRegistry.registerComponent(appName, () => App);

@@ -49,5 +49,16 @@ myArray.map(elem => elem === elemToReplace ? substitutionElem : elem);
  *                                        STRINGS                                *
  *********************************************************************************/
 
-// Determinar si mi string de enteros esta compuesto por numero pares. Recordar que ('2' + 2 -> 22) pero que ('2' / 2 -> 1)!
+//Determina si mi string de enteros esta compuesto por numero pares. Recordar que ('2' + 2 -> 22) pero que ('2' / 2 -> 1)!
 myString.split('').every((index) => index % 2 === 0);
+
+/*********************************************************************************
+ *                                     REACT NATIVE                              *
+ *********************************************************************************/
+
+//Wraps the call to the authenticate() function. The arrow syntax ensures that authenticate() is not executed immediately 
+during rendering, it will be executed only when the component is pressed.
+onPress={() => navigation.navigate('Main')}
+
+//React useEffect Hook
+

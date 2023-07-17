@@ -1,16 +1,17 @@
 import React from 'react';
-import { Text, View, AppRegistry, useColorScheme } from 'react-native';
-import { NavigationContainer, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
 import YourLibraryScreen from '../screens/YourLibraryScreen';
-import styles from './styles';
+import PremiumScreen from '../screens/PremiumScreen';
+import styles from './Styles';
 
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import OcticonsIcon from 'react-native-vector-icons/Octicons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,8 @@ const iconComponents = {
   foundationIcon: FoundationIcon,
   octiconsIcon: OcticonsIcon,
   evilIcons: EvilIcons,
-  ionicons: Ionicons
+  ionicons: Ionicons,
+  fontisto: Fontisto,
 }
 
 /**
@@ -53,34 +55,40 @@ const isIconFocused = (isFocused, focusedIcon, unfocusedIcon, focusedComponent, 
 
 function BottomTabNavigation() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator initialRouteName='Home' screenOptions={{ tabBarActiveTintColor: 'white', tabBarStyle: styles.bottomContainer }}>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ focused }) => isIconFocused(focused, "home", "home", "foundationIcon", "octiconsIcon")
-          }}
-        />
-        <Tab.Screen
-          name="Search"
-          component={SearchScreen}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ focused }) => isIconFocused(focused, "search", "search", "octiconsIcon", "octiconsIcon")
-          }}
-        />
-        <Tab.Screen
-          name="Your library"
-          component={YourLibraryScreen}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ focused }) => isIconFocused(focused, "library", "library-outline", "ionicons", "ionicons")
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator initialRouteName='Home' screenOptions={{ tabBarActiveTintColor: 'white', tabBarStyle: styles.bottomContainer }}>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => isIconFocused(focused, "home", "home", "foundationIcon", "octiconsIcon")
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => isIconFocused(focused, "search", "search", "octiconsIcon", "octiconsIcon")
+        }}
+      />
+      <Tab.Screen
+        name="Your library"
+        component={YourLibraryScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => isIconFocused(focused, "library", "library-outline", "ionicons", "ionicons")
+        }}
+      />
+      <Tab.Screen
+        name="Premium"
+        component={PremiumScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => isIconFocused(focused, "spotify", "spotify", "fontisto", "fontisto")
+        }}
+      />
+    </Tab.Navigator>
   );
 }
 
