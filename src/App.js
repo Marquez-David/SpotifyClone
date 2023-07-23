@@ -11,6 +11,7 @@ async function checkTokenValidity(setHasAccess) {
     const expirationDate = await AsyncStorage.getItem("tokenExpirationDate");
     //hasAccess token has been set previously
     if (accessToken) {
+        console.log(accessToken);
         const currentTime = Date.now();
         if (currentTime < parseInt(expirationDate)) {
             setHasAccess(1);
@@ -39,7 +40,7 @@ const renderInitialComponent = (hasAccess) => {
 
 export default function App() {
     const [hasAccess, setHasAccess] = useState(-1); //-1 = init state, 0 = no access, 1 = access
-    useEffect(() => { checkTokenValidity(setHasAccess) }, [])
+    useEffect(() => { checkTokenValidity(setHasAccess) }, []);
     return (
         <>
             {renderInitialComponent(hasAccess)}

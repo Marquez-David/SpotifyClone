@@ -4,7 +4,7 @@ import { SafeAreaView, View, Text, Pressable } from 'react-native';
 import styles from './Styles';
 import colors from '../utils/Colors';
 import { LoginStrings } from '../utils/Strings';
-import spotifyAuthConfig from '../utils/Constants';
+import { spotifyAuthConfig}  from '../utils/Constants';
 
 import { useNavigation } from "@react-navigation/native";
 

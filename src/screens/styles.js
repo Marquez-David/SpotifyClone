@@ -51,7 +51,11 @@ const styles = StyleSheet.create({
     paddingVertical: 25,
     paddingLeft: 5,
   },
-
+  flatListContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   /********************************
    *           TEXT STYLES        *
    ********************************/
@@ -89,6 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 27,
     fontWeight: "bold",
     textAlign: 'left',
+    marginLeft: 7,
   },
 });
 

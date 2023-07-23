@@ -14,3 +14,9 @@ export const homeStrings = {
   goodEvening: "Good evening!",
 };
 
+export const carouselStrings = {
+  recentlyPlayed: "Recently played",
+  yourPlaylists: "Your playlists",
+  findOutMoreAbout: "Find out more about ",
+};
+

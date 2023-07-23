@@ -1,5 +1,4 @@
-
-export default spotifyAuthConfig = {
+export const spotifyAuthConfig = {
   clientId: '7daaab95ed8a4075b87484c630c8d509',
   clientSecret: '06b3901cbe974827af18f980fccc52f2',
   redirectUrl: 'com.src:/oauthredirect',
@@ -10,6 +9,9 @@ export default spotifyAuthConfig = {
     'user-library-read',
     'user-library-modify',
     'user-top-read',
+    'user-read-currently-playing',
+    'user-read-playback-state',
+    'user-read-recently-played',
   ],
   serviceConfiguration: {
     authorizationEndpoint: 'https://accounts.spotify.com/authorize',
