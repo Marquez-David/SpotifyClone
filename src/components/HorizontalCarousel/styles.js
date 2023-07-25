@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
      */
     carouseView: {
         flex: 1,
+        alignSelf: 'flex-start', //porque esto si funciona? alignItems a los childer, alignSelf a el mismo
         marginLeft: 10,
     },
     /**
@@ -17,7 +18,6 @@ const styles = StyleSheet.create({
         marginRight: 15,
         height: 190,
         width: 150,
-
     },
     /**
      * Image style

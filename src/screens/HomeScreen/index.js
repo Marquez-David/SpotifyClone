@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, FlatList } from 'react-native';
 
-import styles from './Styles';
-import colors from '../utils/Colors';
-import { homeStrings, carouselStrings } from '../utils/Strings';
+import styles from './styles';
+import colors from '../../utils/Colors';
+import { homeStrings, carouselStrings } from '../../utils/Strings';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { getRecentlyPlayedSongs, getUserPlaylists, getArtists, getArtistAlbums } from '../services/SpotifyRequests';
-import HorizontalCarousel from '../components/HorizontalCarousel';
+import { getRecentlyPlayedSongs, getUserPlaylists, getArtists, getArtistAlbums, getPodcasts } from '../../services/SpotifyRequests';
+import HorizontalCarousel from '../../components/HorizontalCarousel';
+
+/**
+ * Stores de carousel strings. Order is important for the Carousel render
+ */
+const horizontalCarouselStrings = [
+  carouselStrings.recentlyPlayed,
+  carouselStrings.yourPlaylists,
+  carouselStrings.findOutMoreAbout,
+  carouselStrings.yourPodcasts,
+];
 
 /**
  * Selects a greeting message based on the current time.
@@ -25,10 +35,21 @@ function timerMessage(setMessage) {
   setMessage(message);
 }
 
-function renderComponent(data, title) {
-  if (data) {
-    return <HorizontalCarousel items={data} title={title} />
+/**
+ * Iterates through data and creates HorizontalCarousel components with the corresponding data using titles stored, 
+ * then returns these components as a list.
+ * @param {*} data 
+ * @returns 
+ */
+function renderHorizontalCarousels(data) {
+  var components = [];
+  for (var i = 0; i < data.length; i++) {
+    if (data[i]) {
+      components.push(<HorizontalCarousel key={i} items={data[i]} title={horizontalCarouselStrings[i]} />)
+    }
   }
+
+  return components;
 }
 
 const HomeScreen = () => {
@@ -36,6 +57,7 @@ const HomeScreen = () => {
   const [playlists, setPlaylists] = useState(null);
   const [artists, setArtists] = useState(null);
   const [artistAlbums, setArtistAlbums] = useState(null);
+  const [podcasts, setPodcasts] = useState(null);
 
   useEffect(() => {
     const fetchSongsData = async () => {
@@ -79,6 +101,19 @@ const HomeScreen = () => {
     fetchArtistsData();
   }, []);
 
+  useEffect(() => {
+    const fetchPodcastsData = async () => {
+      try {
+        const podcasts = await getPodcasts();
+        setPodcasts(podcasts);
+      } catch (error) {
+        console.log('Error while calling API: ' + error);
+      }
+    };
+
+    fetchPodcastsData();
+  }, []);
+
   const [message, setMessage] = useState(null);
   useEffect(() => { timerMessage(setMessage) }, [message]);
 
@@ -108,9 +143,7 @@ const HomeScreen = () => {
         </Ionicons.Button>
       </View>
       <View style={styles.flatListContainer}>
-        {renderComponent(recentlySongs, carouselStrings.recentlyPlayed)}
-        {renderComponent(playlists, carouselStrings.yourPlaylists)}
-        {renderComponent(artistAlbums, carouselStrings.findOutMoreAbout)}
+        {renderHorizontalCarousels([recentlySongs, playlists, artistAlbums, podcasts])}
       </View>
     </ScrollView >
   );

@@ -5,7 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import SearchScreen from '../screens/SearchScreen';
 import YourLibraryScreen from '../screens/YourLibraryScreen';
 import PremiumScreen from '../screens/PremiumScreen';
-import styles from './Styles';
+import styles from './styles';
 
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import OcticonsIcon from 'react-native-vector-icons/Octicons';

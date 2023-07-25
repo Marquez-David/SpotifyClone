@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
-import styles from './Styles';
+import styles from '../HomeScreen/styles';
 
 const SearchScreen = () => {
   return (

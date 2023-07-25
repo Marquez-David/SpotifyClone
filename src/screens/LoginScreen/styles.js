@@ -1,13 +1,12 @@
 import { StyleSheet } from 'react-native';
-import colors from '../utils/Colors.js';
+
+import colors from '../../utils/Colors';
 
 const styles = StyleSheet.create({
   /**
    * App background style
    */
   background: {
-    //flex: 1 means that the component will take up all the available space within its container along the main direction. 
-    //Useful when you want a component to occupy all the vertical space available on a screen.
     flex: 1,
     backgroundColor: colors.appBackground
   },
@@ -43,29 +42,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   /**
-   * View style for home header menu
-   */
-  homeHeader: {
-    flex: 1,
-    flexDirection: 'row',
-    paddingVertical: 25,
-    paddingLeft: 5,
-  },
-  flatListContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  /********************************
-   *           TEXT STYLES        *
-   ********************************/
-  /**
-  * App text style
-  */
-  text: {
-    color: colors.spotifyWhite
-  },
-  /**
    * Text under logo custom style
    */
   logoText: {
@@ -83,17 +59,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     flex: 1,
-  },
-  /**
-   * Text style for home header
-   */
-  homeHeaderText: {
-    flex: 1,
-    color: colors.spotifyWhite,
-    fontSize: 27,
-    fontWeight: "bold",
-    textAlign: 'left',
-    marginLeft: 7,
   },
 });
 

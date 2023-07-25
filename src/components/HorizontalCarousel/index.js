@@ -11,7 +11,7 @@ import styles from './styles';
  */
 const parseTitle = (items, title) => {
   var newTitle = title;
-  if(title === carouselStrings.findOutMoreAbout) {
+  if (title === carouselStrings.findOutMoreAbout) {
     newTitle += items.data.items[0].artists[0].name;
   }
 
@@ -25,19 +25,38 @@ const parseTitle = (items, title) => {
  * @returns 
  */
 const parseSource = (item, carouselTitle) => {
-  var uri = '';
+  var url = '';
   if (carouselTitle === carouselStrings.recentlyPlayed) {
-    uri = item.track.album.images[0].url;
+    url = item.track.album.images[0].url;
   } else if (carouselTitle === carouselStrings.yourPlaylists) {
-    uri = item.images[0].url;
+    url = item.images[0].url;
   } else if (carouselTitle === carouselStrings.findOutMoreAbout) {
-    uri = item.images[0].url;
+    url = item.images[0].url;
+  } else if(carouselTitle === carouselStrings.yourPodcasts) {
+    url = item.show.images[0].url;
   }
-  return uri;
+
+  return url;
 }
 
-const parseDescription = (item) => {
+/**
+ * Parse the item parameter and returns the corresponding description for each case
+ * @param {*} item 
+ * @param {*} carouselTitle 
+ * @returns 
+ */
+const parseDescription = (item, carouselTitle) => {
   var description = '';
+  if (carouselTitle === carouselStrings.recentlyPlayed) {
+    description = item.track.name;
+  } else if (carouselTitle === carouselStrings.yourPlaylists) {
+    description = item.name + carouselStrings.listComplementString;
+  } else if (carouselTitle === carouselStrings.findOutMoreAbout) {
+    description = item.name + '\n' + item.artists[0].name + carouselStrings.albumComplementString;
+  } else if(carouselTitle === carouselStrings.yourPodcasts) {
+    description = item.show.name + '\n' + carouselStrings.podcastComplementsString + item.show.publisher;
+  }
+
   return description;
 }
 
@@ -52,7 +71,7 @@ const HorizontalCarousel = ({ items, title }) => {
         renderItem={({ item }) => (
           <View style={styles.imageView}>
             <Image style={styles.carouselImage} source={{ uri: parseSource(item, title) }} />
-            {<Text style={styles.descriptionText}>{parseDescription(item)}</Text>}
+            {<Text style={styles.descriptionText}>{parseDescription(item, title)}</Text>}
           </View>
         )}
       />

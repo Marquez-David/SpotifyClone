@@ -18,5 +18,18 @@ export const carouselStrings = {
   recentlyPlayed: "Recently played",
   yourPlaylists: "Your playlists",
   findOutMoreAbout: "Find out more about ",
+  yourPodcasts: "Your podcasts",
+
+  listComplementString: " • List",
+  albumComplementString: " • Album",
+  podcastComplementsString: "Podcast • ",
+};
+
+export const libraryStrings = {
+  music: "Music",
+  podcasts: "Podcasts",
+  playlists: "Playlists",
+  artists: "Artists",
+  albums: "Albums",
 };
 
