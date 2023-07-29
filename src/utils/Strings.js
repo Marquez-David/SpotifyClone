@@ -31,5 +31,13 @@ export const libraryStrings = {
   playlists: "Playlists",
   artists: "Artists",
   albums: "Albums",
+  createPlaylist: "Create playlist",
+};
+
+export const verticalSliderStrings = {
+  by: "by ",
+  searchForPlayLists: "Search for playlists",
+  searchForArtists: "Search for artists",
+  searchForAlbums: "Search for albums",
 };
 

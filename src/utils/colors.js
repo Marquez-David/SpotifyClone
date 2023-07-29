@@ -6,6 +6,8 @@ const colors = {
     spotifyWhite: '#FFFFFF',
     spotifyBlack: '#191414',
     spotifyGreen: '#1DB954',
+    spotifyGray: 	'#b3b3b3',
+    spotifyDarkGray: '#535353',
   };
   
   export default colors;
