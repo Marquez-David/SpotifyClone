@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, Text, Pressable } from 'react-native';
 import styles from './styles';
-import { libraryStrings } from '../../utils/Strings';
+import { libraryStrings, verticalSliderStrings, emptyDataStrings } from '../../utils/Strings';
 import { getUserPlaylists, getSavedAlbums, getFollowingArtists } from '../../services/SpotifyRequests';
+
 import VerticalSlider from '../../components/VerticalSlider';
+import EmptyDataCard from '../../components/EmptyDataCard';
 
 /**
  * Render the VerticalSlider component with the corresponding data
@@ -13,11 +15,29 @@ import VerticalSlider from '../../components/VerticalSlider';
 function renderVerticalSlider(data, pressed) {
   var component;
   if (pressed === libraryStrings.playlists && data[0]) {
-    component = <VerticalSlider items={data[0]} category={pressed} />
+    component = data[0].data.items.length > 0 ?
+      <VerticalSlider items={data[0].data.items} category={pressed} searchLabel={verticalSliderStrings.searchForPlayLists} /> :
+      <EmptyDataCard
+        title={emptyDataStrings.playlistsTitle}
+        description={emptyDataStrings.playlistsDescription}
+        buttonText={emptyDataStrings.browseMusic}
+      />
   } else if (pressed === libraryStrings.artists && data[1]) {
-    component = <VerticalSlider items={data[1]} category={pressed} />
+    component = data[1].data.artists.items.length > 0 ?
+      <VerticalSlider items={data[1].data.artists.items} category={pressed} searchLabel={verticalSliderStrings.searchForArtists} /> :
+      <EmptyDataCard
+        title={emptyDataStrings.artistsTitle}
+        description={emptyDataStrings.artistsDescription}
+        buttonText={emptyDataStrings.browseMusic}
+      />
   } else if (pressed === libraryStrings.albums && data[2]) {
-    component = <VerticalSlider items={data[2]} category={pressed} />
+    component = data[2].data.items.length > 0 ?
+      <VerticalSlider items={data[2].data.items} category={pressed} searchLabel={verticalSliderStrings.searchForAlbums} /> :
+      <EmptyDataCard
+        title={emptyDataStrings.albumsTitle}
+        description={emptyDataStrings.albumsDescription}
+        buttonText={emptyDataStrings.browseMusic}
+      />
   }
   return component;
 }

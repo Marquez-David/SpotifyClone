@@ -41,3 +41,24 @@ export const verticalSliderStrings = {
   searchForAlbums: "Search for albums",
 };
 
+export const emptyDataStrings = {
+  playlistsTitle: "No playlists have been created.",
+  playlistsDescription: "Create a new one and add your favorite songs.",
+
+  artistsTitle: "We haven't found any artists you follow.",
+  artistsDescription: "We suggest you to explore our library to discover new musical talents.",
+
+  albumsTitle: "No saved albums found.",
+  albumsDescription: "Take the opportunity to explore different genres and find your next favorite album!",
+
+
+  episodesTitle: "Looking for something to listen?",
+  downloadsTitle: "No downloads yet.",
+  programsTitle: "You don't follow any podcast yet.",
+  episodesDescription: "",
+  downloadsDescription: "Click on ⬇ on an episode to listen to it without internet connection.",
+  programsDescription: "If you follow a podcast, you will receive new episodes automatically.",
+
+  browsePodcasts: "BROWSE PODCASTS",
+  browseMusic: "BROWSE MUSIC",
+};
