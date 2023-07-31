@@ -50,29 +50,6 @@ function renderPressedBar() {
   return <View style={styles.isPressedBar}></View>;
 }
 
-/**
- * Set the pressable state when user press the category
- * @param {*} pressable 
- * @param {*} setPressed 
- */
-const onPressPressable = async (pressed, setPressed, setData) => {
-  var data;
-  setPressed(pressed);
-
-  try {
-    if (pressed === libraryStrings.playlists) {
-      data = await getUserPlaylists();
-    } else if (pressed === libraryStrings.artists) {
-      data = await getFollowingArtists();
-    } else if (pressed === libraryStrings.albums) {
-      data = await getSavedAlbums();
-    }
-    setData(data);
-  } catch (error) {
-    console.log('Error while calling API: ' + error);
-  }
-}
-
 const YourLibraryScreen = () => {
   const [pressed, setPressed] = useState(libraryStrings.playlists);
 
@@ -93,6 +70,26 @@ const YourLibraryScreen = () => {
     fetchPlaylistsData();
   }, []);
 
+  const onPressPressable = async (pressed) => {
+    var data;
+    setPressed(pressed);
+  
+    try {
+      if (pressed === libraryStrings.playlists) {
+        data = await getUserPlaylists();
+        setPlaylists(data);
+      } else if (pressed === libraryStrings.artists) {
+        data = await getFollowingArtists();
+        setArtists(data);
+      } else if (pressed === libraryStrings.albums) {
+        data = await getSavedAlbums();
+        setAlbums(data);
+      }
+    } catch (error) {
+      console.log('Error while calling API: ' + error);
+    }
+  }
+
   return (
     <View style={styles.background}>
       <View style={styles.headers}>
@@ -106,19 +103,19 @@ const YourLibraryScreen = () => {
       <View style={styles.headers}>
         <Pressable
           style={styles.categoriesPressables}
-          onPress={() => onPressPressable(libraryStrings.playlists, setPressed, setPlaylists)}>
+          onPress={() => onPressPressable(libraryStrings.playlists)}>
           <Text style={styles.categoriesHeaderText}>{libraryStrings.playlists}</Text>
           {pressed === libraryStrings.playlists && renderPressedBar()}
         </Pressable>
         <Pressable
           style={styles.categoriesPressables}
-          onPress={() => onPressPressable(libraryStrings.artists, setPressed, setArtists)}>
+          onPress={() => onPressPressable(libraryStrings.artists)}>
           <Text style={styles.categoriesHeaderText}>{libraryStrings.artists}</Text>
           {pressed === libraryStrings.artists && renderPressedBar()}
         </Pressable>
         <Pressable
           style={styles.categoriesPressables}
-          onPress={() => onPressPressable(libraryStrings.albums, setPressed, setAlbums)}>
+          onPress={() => onPressPressable(libraryStrings.albums)}>
           <Text style={styles.categoriesHeaderText}>{libraryStrings.albums}</Text>
           {pressed === libraryStrings.albums && renderPressedBar()}
         </Pressable>

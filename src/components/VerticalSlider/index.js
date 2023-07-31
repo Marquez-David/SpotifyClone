@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, Pressable, Image, ScrollView, TextInput } from 'react-native';
 import styles from './styles';
 
@@ -6,6 +6,19 @@ import { libraryStrings, verticalSliderStrings } from '../../utils/Strings';
 import colors from '../../utils/Colors';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Entypo from 'react-native-vector-icons/Entypo';
+
+/**
+ * Filters items based on the provided category and searchText, then maps each filtered item to 
+ * its corresponding renderItem component.
+ * @param {*} items 
+ * @param {*} category 
+ * @param {*} searchText 
+ * @returns 
+ */
+function filterItems(items, category, searchText) {
+	return items.filter((item) => parseData(item, category).name.toLowerCase().includes(searchText.toLowerCase())).map((item) => renderItem(item, category))
+}
 
 /**
  * Returns an object data with the uri, name, description, and id properties, depending on the category provided.
@@ -30,21 +43,7 @@ const parseData = (item, category) => {
 };
 
 /**
- * Returns a simple search bar.
- * @param {*} labelText 
- * @returns 
- */
-const renderSearchBar = (labelText) => (
-	<View style={styles.searchBarView}>
-		<TextInput
-			placeholder={labelText}
-			placeholderTextColor={colors.spotifyWhite}
-			style={styles.searchBar}></TextInput>
-	</View>
-);
-
-/**
- * Renders a component with item details inside and uses the parseData function to extract data from the it.
+ * Renders a component with item details inside and uses the parseData function to extract data from it.
  * @param {*} item 
  * @param {*} category 
  * @returns 
@@ -68,6 +67,24 @@ const renderItem = (item, category) => {
 };
 
 const VerticalSlider = ({ items, category, searchLabel }) => {
+	const [searchText, setSearchText] = useState('');
+
+	const renderSearchBar = (labelText) => (
+		<View style={styles.searchBarView}>
+			<Entypo name='magnifying-glass' size={16} color={colors.spotifyWhite} style={{ marginLeft: 10 }} />
+			<TextInput
+				placeholder={labelText}
+				value={searchText}
+				onChangeText={setSearchText}
+				placeholderTextColor={colors.spotifyWhite}
+				style={styles.searchBarText}></TextInput>
+		</View>
+	)
+
+	useEffect(() => {
+		setSearchText('');
+	}, [category]);
+
 	return (
 		<ScrollView style={styles.verticalSliderView}>
 			{renderSearchBar(searchLabel)}
@@ -81,7 +98,7 @@ const VerticalSlider = ({ items, category, searchLabel }) => {
 					</View>
 				</View>
 			}
-			{items.map((item) => renderItem(item, category))}
+			{filterItems(items, category, searchText)}
 		</ScrollView>
 	);
 };

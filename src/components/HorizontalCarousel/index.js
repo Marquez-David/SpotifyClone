@@ -32,7 +32,7 @@ const parseSource = (item, carouselTitle) => {
     url = item.images[0].url;
   } else if (carouselTitle === carouselStrings.findOutMoreAbout) {
     url = item.images[0].url;
-  } else if(carouselTitle === carouselStrings.yourPodcasts) {
+  } else if (carouselTitle === carouselStrings.yourPodcasts) {
     url = item.show.images[0].url;
   }
 
@@ -53,30 +53,28 @@ const parseDescription = (item, carouselTitle) => {
     description = item.name + carouselStrings.listComplementString;
   } else if (carouselTitle === carouselStrings.findOutMoreAbout) {
     description = item.name + '\n' + item.artists[0].name + carouselStrings.albumComplementString;
-  } else if(carouselTitle === carouselStrings.yourPodcasts) {
+  } else if (carouselTitle === carouselStrings.yourPodcasts) {
     description = item.show.name + '\n' + carouselStrings.podcastComplementsString + item.show.publisher;
   }
 
   return description;
 }
 
-const HorizontalCarousel = ({ items, title }) => {
-  return (
-    <View style={styles.carouseView}>
-      <Text style={styles.titleText}>{parseTitle(items, title)}</Text>
-      <FlatList
-        data={items.data.items}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <View style={styles.imageView}>
-            <Image style={styles.carouselImage} source={{ uri: parseSource(item, title) }} />
-            {<Text style={styles.descriptionText}>{parseDescription(item, title)}</Text>}
-          </View>
-        )}
-      />
-    </View>
-  )
-};
+const HorizontalCarousel = ({ items, title }) => (
+  <View style={styles.carouseView}>
+    <Text style={styles.titleText}>{parseTitle(items, title)}</Text>
+    <FlatList
+      data={items.data.items}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      renderItem={({ item }) => (
+        <View style={styles.imageView}>
+          <Image style={styles.carouselImage} source={{ uri: parseSource(item, title) }} />
+          {<Text style={styles.descriptionText}>{parseDescription(item, title)}</Text>}
+        </View>
+      )}
+    />
+  </View>
+);
 
 export default HorizontalCarousel;

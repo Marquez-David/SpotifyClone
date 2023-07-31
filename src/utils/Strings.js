@@ -51,14 +51,15 @@ export const emptyDataStrings = {
   albumsTitle: "No saved albums found.",
   albumsDescription: "Take the opportunity to explore different genres and find your next favorite album!",
 
-
   episodesTitle: "Looking for something to listen?",
-  downloadsTitle: "No downloads yet.",
-  programsTitle: "You don't follow any podcast yet.",
   episodesDescription: "",
+
+  downloadsTitle: "No downloads yet.",
   downloadsDescription: "Click on ⬇ on an episode to listen to it without internet connection.",
+
+  programsTitle: "You don't follow any podcast yet.",
   programsDescription: "If you follow a podcast, you will receive new episodes automatically.",
 
-  browsePodcasts: "BROWSE PODCASTS",
-  browseMusic: "BROWSE MUSIC",
+  browsePodcasts: "EXPLORE PODCASTS",
+  browseMusic: "EXPLORE MUSIC",
 };
