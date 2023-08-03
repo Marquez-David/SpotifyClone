@@ -28,9 +28,14 @@ export const carouselStrings = {
 export const libraryStrings = {
   music: "Music",
   podcasts: "Podcasts",
+
   playlists: "Playlists",
   artists: "Artists",
   albums: "Albums",
+  episodes: "Episodes",
+  downloads: "Downloads",
+  programs: "Programs",
+
   createPlaylist: "Create playlist",
 };
 

@@ -11,53 +11,12 @@ import { getRecentlyPlayedSongs, getUserPlaylists, getArtists, getArtistAlbums, 
 import HorizontalCarousel from '../../components/HorizontalCarousel';
 
 /**
- * Stores de carousel strings. Order is important for the Carousel render
- */
-const horizontalCarouselStrings = [
-  carouselStrings.recentlyPlayed,
-  carouselStrings.yourPlaylists,
-  carouselStrings.findOutMoreAbout,
-  carouselStrings.yourPodcasts,
-];
-
-/**
- * Selects a greeting message based on the current time.
- * @returns message
- */
-function timerMessage(setMessage) {
-  const currentTime = new Date().getHours();
-  var message = homeStrings.goodEvening;
-  if (currentTime > 6 && currentTime < 12) {
-    message = homeStrings.goodMorning;
-  } else if (currentTime >= 12 && currentTime < 19) {
-    message = homeStrings.goodAfternoon;
-  }
-  setMessage(message);
-}
-
-/**
- * Iterates through data and creates HorizontalCarousel components with the corresponding data using titles stored, 
- * then returns these components as a list.
- * @param {*} data 
+ * This custom hook fetches and manages data for recently played songs through an asynchronous API call. 
+ * It returns the recently played songs data as part of the state.
  * @returns 
  */
-function renderHorizontalCarousels(data) {
-  var components = [];
-  for (var i = 0; i < data.length; i++) {
-    if (data[i]) {
-      components.push(<HorizontalCarousel key={i} items={data[i]} title={horizontalCarouselStrings[i]} />)
-    }
-  }
-
-  return components;
-}
-
-const HomeScreen = () => {
+const useRecentlySongs = () => {
   const [recentlySongs, setRecentlySongs] = useState(null);
-  const [playlists, setPlaylists] = useState(null);
-  const [artists, setArtists] = useState(null);
-  const [artistAlbums, setArtistAlbums] = useState(null);
-  const [podcasts, setPodcasts] = useState(null);
 
   useEffect(() => {
     const fetchSongsData = async () => {
@@ -72,6 +31,17 @@ const HomeScreen = () => {
     fetchSongsData();
   }, []);
 
+  return { recentlySongs };
+};
+
+/**
+ * This custom hook fetches and manages data for user playlists through an asynchronous API call. 
+ * It returns the playlists data as part of the state.
+ * @returns 
+ */
+const usePlaylists = () => {
+  const [playlists, setPlaylists] = useState(null);
+
   useEffect(() => {
     const fetchPlaylistsData = async () => {
       try {
@@ -84,6 +54,18 @@ const HomeScreen = () => {
 
     fetchPlaylistsData();
   }, []);
+
+  return { playlists };
+};
+
+/**
+ * This custom hook fetches and manages data for artists and their albums through asynchronous API calls. 
+ * It returns the fetched "artists" list as part of the state.
+ * @returns 
+ */
+const useArtistsAlbums = () => {
+  const [artists, setArtists] = useState(null);
+  const [artistAlbums, setArtistAlbums] = useState(null);
 
   useEffect(() => {
     const fetchArtistsData = async () => {
@@ -101,6 +83,17 @@ const HomeScreen = () => {
     fetchArtistsData();
   }, []);
 
+  return { artistAlbums };
+};
+
+/**
+ * This custom hook fetches and manages podcasts data through an asynchronous API call.
+ * It returns the fetched podcasts data as part of the state.
+ * @returns 
+ */
+const usePodcasts = () => {
+  const [podcasts, setPodcasts] = useState(null);
+
   useEffect(() => {
     const fetchPodcastsData = async () => {
       try {
@@ -114,8 +107,59 @@ const HomeScreen = () => {
     fetchPodcastsData();
   }, []);
 
+  return { podcasts };
+};
+
+/**
+ * This custom hook determines the appropriate greeting message based on the current time and returns it as part of the state. 
+ * The message is updated whenever message changes.
+ * @returns 
+ */
+const useMessage = () => {
   const [message, setMessage] = useState(null);
-  useEffect(() => { timerMessage(setMessage) }, [message]);
+
+  useEffect(() => {
+    const timerMessage = () => {
+      const currentTime = new Date().getHours();
+      var message = homeStrings.goodEvening;
+      if (currentTime > 6 && currentTime < 12) {
+        message = homeStrings.goodMorning;
+      } else if (currentTime >= 12 && currentTime < 19) {
+        message = homeStrings.goodAfternoon;
+      }
+      setMessage(message);
+    };
+
+    timerMessage();
+  }, [message]);
+
+  return { message };
+};
+
+/**
+ * Iterates through data and creates HorizontalCarousel components with the corresponding data using titles stored, 
+ * then returns these components as a list.
+ * @param {*} data 
+ * @returns 
+ */
+const renderHorizontalCarousels = (data) => {
+  var components = [];
+  const horizontalCarouselStrings = [carouselStrings.recentlyPlayed, carouselStrings.yourPlaylists, carouselStrings.findOutMoreAbout, carouselStrings.yourPodcasts];
+  for (var i = 0; i < data.length; i++) {
+    if (data[i]) {
+      components.push(<HorizontalCarousel key={i} items={data[i]} title={horizontalCarouselStrings[i]} />)
+    }
+  }
+
+  return components;
+};
+
+const HomeScreen = () => {
+  const { recentlySongs } = useRecentlySongs();
+  const { playlists } = usePlaylists();
+  const { artistAlbums } = useArtistsAlbums();
+  const { podcasts } = usePodcasts();
+  const { message } = useMessage();
 
   return (
     <ScrollView style={styles.background}>

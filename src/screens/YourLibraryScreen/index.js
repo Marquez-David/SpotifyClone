@@ -6,6 +6,97 @@ import { getUserPlaylists, getSavedAlbums, getFollowingArtists } from '../../ser
 
 import VerticalSlider from '../../components/VerticalSlider';
 import EmptyDataCard from '../../components/EmptyDataCard';
+import SubcategorySelector from '../../components/SubcategorySelector';
+
+/**
+ * This custom hook fetches and manages the user's playlists data through an asynchronous API call. 
+ * It returns the playlists data and the corresponding function to update the state with the fetched playlists.
+ * @returns 
+ */
+const usePlaylists = () => {
+  const [playlists, setPlaylists] = useState(null);
+
+  useEffect(() => {
+    const fetchPlaylistsData = async () => {
+      try {
+        const response = await getUserPlaylists();
+        setPlaylists(response);
+      } catch (error) {
+        console.log('Error while calling API: ' + error);
+      }
+    };
+
+    fetchPlaylistsData();
+  }, []);
+
+  return { playlists };
+};
+
+/**
+ * This custom hook fetches and manages the user's following artists data through an asynchronous API call. 
+ * It returns the following artists data and the corresponding function to update the state with the fetched artists.
+ * @returns 
+ */
+const useArtists = () => {
+  const [artists, setArtists] = useState(null);
+
+  useEffect(() => {
+    const fetchArtistsData = async () => {
+      try {
+        const response = await getFollowingArtists();
+        setArtists(response);
+      } catch (error) {
+        console.log('Error while calling API: ' + error);
+      }
+    };
+
+    fetchArtistsData();
+  }, []);
+
+  return { artists };
+};
+
+/**
+ * This custom hook fetches and manages the user's saved albums data through an asynchronous API call. 
+ * It returns the saved albums data and the corresponding function to update the state with the fetched albums.
+ * @returns 
+ */
+const useAlbums = () => {
+  const [albums, setAlbums] = useState(null);
+
+  useEffect(() => {
+    const fetchAlbumsData = async () => {
+      try {
+        const response = await getSavedAlbums();
+        setAlbums(response);
+      } catch (error) {
+        console.log('Error while calling API: ' + error);
+      }
+    };
+
+    fetchAlbumsData();
+  }, []);
+
+  return { albums };
+};
+
+const useSubcategory = (headerPressed) => {
+  const [subcategory, setSubcategory] = useState(libraryStrings.playlists);
+
+  useEffect(() => {
+    const handleSubcategories = () => {
+      if (headerPressed === libraryStrings.music) {
+        setSubcategory(libraryStrings.playlists);
+      } else {
+        setSubcategory(libraryStrings.episodes);
+      }
+    };
+
+    handleSubcategories();
+  }, [headerPressed]);
+
+  return { subcategory, setSubcategory };
+}
 
 /**
  * Render the VerticalSlider component with the corresponding data
@@ -42,85 +133,34 @@ function renderVerticalSlider(data, pressed) {
   return component;
 }
 
-/**
- * Renders a green bar under the categories header, but only if a category is selected.
- * @returns 
- */
-function renderPressedBar() {
-  return <View style={styles.isPressedBar}></View>;
-}
 
 const YourLibraryScreen = () => {
-  const [pressed, setPressed] = useState(libraryStrings.playlists);
+  const { playlists } = usePlaylists();
+  const { artists } = useArtists();
+  const { albums } = useAlbums();
 
-  const [playlists, setPlaylists] = useState(null);
-  const [artists, setArtists] = useState(null);
-  const [albums, setAlbums] = useState(null);
-
-  useEffect(() => {
-    const fetchPlaylistsData = async () => {
-      try {
-        const response = await getUserPlaylists();
-        setPlaylists(response);
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchPlaylistsData();
-  }, []);
-
-  const onPressPressable = async (pressed) => {
-    var data;
-    setPressed(pressed);
-  
-    try {
-      if (pressed === libraryStrings.playlists) {
-        data = await getUserPlaylists();
-        setPlaylists(data);
-      } else if (pressed === libraryStrings.artists) {
-        data = await getFollowingArtists();
-        setArtists(data);
-      } else if (pressed === libraryStrings.albums) {
-        data = await getSavedAlbums();
-        setAlbums(data);
-      }
-    } catch (error) {
-      console.log('Error while calling API: ' + error);
-    }
-  }
+  const [category, setCategory] = useState(libraryStrings.music);
+  const { subcategory, setSubcategory } = useSubcategory(category);
 
   return (
     <View style={styles.background}>
       <View style={styles.headers}>
-        <Pressable onPress={() => console.log('Musica')}>
-          <Text style={styles.screenHeaderText}>{libraryStrings.music}</Text>
+        <Pressable onPress={() => setCategory(libraryStrings.music)}>
+          <Text
+            style={category === libraryStrings.music ? styles.categoryWhiteText : styles.categoryGrayText}>
+            {libraryStrings.music}
+          </Text>
         </Pressable>
-        <Pressable onPress={() => console.log('Podcasts')}>
-          <Text style={styles.screenHeaderText}>{libraryStrings.podcasts}</Text>
+        <Pressable onPress={() => setCategory(libraryStrings.podcasts)}>
+          <Text
+            style={category === libraryStrings.podcasts ? styles.categoryWhiteText : styles.categoryGrayText}>
+            {libraryStrings.podcasts}
+          </Text>
         </Pressable>
       </View>
       <View style={styles.headers}>
-        <Pressable
-          style={styles.categoriesPressables}
-          onPress={() => onPressPressable(libraryStrings.playlists)}>
-          <Text style={styles.categoriesHeaderText}>{libraryStrings.playlists}</Text>
-          {pressed === libraryStrings.playlists && renderPressedBar()}
-        </Pressable>
-        <Pressable
-          style={styles.categoriesPressables}
-          onPress={() => onPressPressable(libraryStrings.artists)}>
-          <Text style={styles.categoriesHeaderText}>{libraryStrings.artists}</Text>
-          {pressed === libraryStrings.artists && renderPressedBar()}
-        </Pressable>
-        <Pressable
-          style={styles.categoriesPressables}
-          onPress={() => onPressPressable(libraryStrings.albums)}>
-          <Text style={styles.categoriesHeaderText}>{libraryStrings.albums}</Text>
-          {pressed === libraryStrings.albums && renderPressedBar()}
-        </Pressable>
+        <SubcategorySelector category={category} subcategory={subcategory} setSubcategory={setSubcategory} />
       </View>
-      {renderVerticalSlider([playlists, artists, albums], pressed)}
     </View>
   );
 };

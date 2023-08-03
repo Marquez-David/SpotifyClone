@@ -27,6 +27,35 @@ sum(...numeros); // sum -> 6
 Math.min(...numeros); // min -> 1
 
 /*********************************************************************************
+ *                        FUNCION FLECHA VS STANDARD                             *
+ *********************************************************************************/
+Función estándar: En una función estándar, el valor de "this" se determina en función de cómo se llama a la función. El valor de "this" puede cambiar dinámicamente, dependiendo del contexto de invocación de la función.
+Función de flecha: Una función de flecha no tiene su propio contexto "this". En su lugar, hereda el valor de "this" del ámbito léxico que la rodea. En otras palabras, el valor de "this" dentro de una función de flecha viene determinado por el ámbito circundante en el que se define la función de flecha.
+// Standard function
+function greetStandard() {
+  console.log('Hello, ' + this.name);
+}
+
+// Arrow function
+const greetArrow = () => {
+  console.log('Hello, ' + this.name);
+};
+
+const name1 = 'John';
+
+const person1 = {
+  name: 'Alice',
+  greetStandard: greetStandard,
+  greetArrow: greetArrow,
+};
+
+greetStandard();   // Output: Hello, John (this refers to the global object, name1 is in the global scope)
+greetArrow();      // Output: Hello, John (this also refers to the global object, name1 is in the global scope)
+person1.greetStandard(); // Output: Hello, Alice (this refers to the person1 object, as it's called through the object)
+person1.greetArrow();    // Output: Hello, John (this refers to the global object, as arrow functions inherit the lexical scope)
+
+
+/*********************************************************************************
  *                                        ARRAYS                                 *
  *********************************************************************************/
 

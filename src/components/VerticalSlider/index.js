@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, Pressable, Image, ScrollView, TextInput } from 'react-native';
 import styles from './styles';
 
+import SearchBar from '../SearchBar';
+
 import { libraryStrings, verticalSliderStrings } from '../../utils/Strings';
 import colors from '../../utils/Colors';
 
@@ -9,16 +11,20 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 /**
- * Filters items based on the provided category and searchText, then maps each filtered item to 
- * its corresponding renderItem component.
- * @param {*} items 
+ * This custom hook manages the state of searchText and its corresponding setSearchText.
+ * It resets the searchText whenever the "category" parameter changes.
  * @param {*} category 
- * @param {*} searchText 
  * @returns 
  */
-function filterItems(items, category, searchText) {
-	return items.filter((item) => parseData(item, category).name.toLowerCase().includes(searchText.toLowerCase())).map((item) => renderItem(item, category))
-}
+const useSearchText = (category) => {
+	const [searchText, setSearchText] = useState('');
+
+	useEffect(() => {
+		setSearchText('');
+	}, [category]);
+
+	return { searchText, setSearchText };
+};
 
 /**
  * Returns an object data with the uri, name, description, and id properties, depending on the category provided.
@@ -43,12 +49,22 @@ const parseData = (item, category) => {
 };
 
 /**
- * Renders a component with item details inside and uses the parseData function to extract data from it.
- * @param {*} item 
+ * Filters the provided "items" array to search only the items whose name contains the provided "searchText."
+ * @param {*} items 
  * @param {*} category 
+ * @param {*} searchText 
  * @returns 
  */
-const renderItem = (item, category) => {
+const getFilteredItems = (items, category, searchText) => {
+	return items.filter((item) => parseData(item, category).name.toLowerCase().includes(searchText.toLowerCase()));
+};
+
+/**
+ * This component renders an image and its related text data based on the provided "item" object and "category." 
+ * @param {*} param0 
+ * @returns 
+ */
+const Item = ({ item, category }) => {
 	const data = parseData(item, category);
 	return (
 		<View key={data.id} style={styles.imageView}>
@@ -67,27 +83,10 @@ const renderItem = (item, category) => {
 };
 
 const VerticalSlider = ({ items, category, searchLabel }) => {
-	const [searchText, setSearchText] = useState('');
-
-	const renderSearchBar = (labelText) => (
-		<View style={styles.searchBarView}>
-			<Entypo name='magnifying-glass' size={16} color={colors.spotifyWhite} style={{ marginLeft: 10 }} />
-			<TextInput
-				placeholder={labelText}
-				value={searchText}
-				onChangeText={setSearchText}
-				placeholderTextColor={colors.spotifyWhite}
-				style={styles.searchBarText}></TextInput>
-		</View>
-	)
-
-	useEffect(() => {
-		setSearchText('');
-	}, [category]);
-
+	const { searchText, setSearchText } = useSearchText(category);
 	return (
 		<ScrollView style={styles.verticalSliderView}>
-			{renderSearchBar(searchLabel)}
+			<SearchBar labelText={searchLabel} valueText={searchText} changeText={setSearchText} />
 			{category === libraryStrings.playlists &&
 				<View style={styles.imageView}>
 					<View style={styles.iconView}>
@@ -98,7 +97,9 @@ const VerticalSlider = ({ items, category, searchLabel }) => {
 					</View>
 				</View>
 			}
-			{filterItems(items, category, searchText)}
+			{getFilteredItems(items, category, searchText).map((item, index) =>
+				<Item key={index} item={item} category={category} />
+			)}
 		</ScrollView>
 	);
 };
