@@ -8,13 +8,11 @@ const styles = StyleSheet.create({
    * - flex: 1 (flexible size to fit available space)
    * - alignContent: 'center' (align content to the center of the container)
    * - justifyContent: 'center' (justify content to the center of the container)
-   * - marginHorizontal: 17 (horizontal margin spacing)
   */
   emptyDataCardView: {
     flex: 1,
     alignContent: 'center',
     justifyContent: 'center',
-    marginHorizontal: 17,
   },
   /**
    * View for the title and description.

@@ -13,6 +13,7 @@ export const spotifyAuthConfig = {
     'user-read-playback-state',
     'user-read-recently-played',
     'user-follow-read',
+    'user-read-playback-position',
   ],
   serviceConfiguration: {
     authorizationEndpoint: 'https://accounts.spotify.com/authorize',

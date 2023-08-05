@@ -1,12 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text, Pressable } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import styles from './styles';
 import { libraryStrings, verticalSliderStrings, emptyDataStrings } from '../../utils/Strings';
-import { getUserPlaylists, getSavedAlbums, getFollowingArtists } from '../../services/SpotifyRequests';
+
+import { getUserPlaylists, getSavedAlbums, getFollowingArtists, getSavedPodcasts } from '../../services/SpotifyRequests';
 
 import VerticalSlider from '../../components/VerticalSlider';
 import EmptyDataCard from '../../components/EmptyDataCard';
 import SubcategorySelector from '../../components/SubcategorySelector';
+
+/**
+ * This custom hook manages the subcategory state based on the category value. 
+ * @param {*} headerPressed 
+ * @returns 
+ */
+const useSubcategory = (category) => {
+  const [subcategory, setSubcategory] = useState(libraryStrings.playlists);
+
+  useEffect(() => {
+    const handleSubcategories = () => {
+      if (category === libraryStrings.music) {
+        setSubcategory(libraryStrings.playlists);
+      } else {
+        setSubcategory(libraryStrings.episodes);
+      }
+    };
+
+    handleSubcategories();
+  }, [category]);
+
+  return { subcategory, setSubcategory };
+};
 
 /**
  * This custom hook fetches and manages the user's playlists data through an asynchronous API call. 
@@ -19,8 +43,8 @@ const usePlaylists = () => {
   useEffect(() => {
     const fetchPlaylistsData = async () => {
       try {
-        const response = await getUserPlaylists();
-        setPlaylists(response);
+        let data = await getUserPlaylists();
+        setPlaylists(data);
       } catch (error) {
         console.log('Error while calling API: ' + error);
       }
@@ -29,12 +53,12 @@ const usePlaylists = () => {
     fetchPlaylistsData();
   }, []);
 
-  return { playlists };
+  return { playlists, setPlaylists };
 };
 
 /**
- * This custom hook fetches and manages the user's following artists data through an asynchronous API call. 
- * It returns the following artists data and the corresponding function to update the state with the fetched artists.
+ * This custom hook fetches and manages the user's favorite artists data through an asynchronous API call. 
+ * It returns the favorite artists data and the corresponding function to update the state with the fetched artists.
  * @returns 
  */
 const useArtists = () => {
@@ -43,8 +67,8 @@ const useArtists = () => {
   useEffect(() => {
     const fetchArtistsData = async () => {
       try {
-        const response = await getFollowingArtists();
-        setArtists(response);
+        let data = await getFollowingArtists();
+        setArtists(data);
       } catch (error) {
         console.log('Error while calling API: ' + error);
       }
@@ -53,7 +77,7 @@ const useArtists = () => {
     fetchArtistsData();
   }, []);
 
-  return { artists };
+  return { artists, setArtists };
 };
 
 /**
@@ -67,8 +91,8 @@ const useAlbums = () => {
   useEffect(() => {
     const fetchAlbumsData = async () => {
       try {
-        const response = await getSavedAlbums();
-        setAlbums(response);
+        let data = await getSavedAlbums();
+        setAlbums(data);
       } catch (error) {
         console.log('Error while calling API: ' + error);
       }
@@ -77,70 +101,64 @@ const useAlbums = () => {
     fetchAlbumsData();
   }, []);
 
-  return { albums };
+  return { albums, setAlbums };
 };
 
-const useSubcategory = (headerPressed) => {
-  const [subcategory, setSubcategory] = useState(libraryStrings.playlists);
+/**
+ * This custom hook fetches and manages the user's saved podcasts data through an asynchronous API call. 
+ * It returns the saved podcasts data and the corresponding function to update the state with the fetched podcasts.
+ * @returns 
+ */
+const usePodcasts = () => {
+  const [podcasts, setPodcasts] = useState(null);
 
   useEffect(() => {
-    const handleSubcategories = () => {
-      if (headerPressed === libraryStrings.music) {
-        setSubcategory(libraryStrings.playlists);
-      } else {
-        setSubcategory(libraryStrings.episodes);
+    const fetchPodcastData = async () => {
+      try {
+        let data = await getSavedPodcasts();
+        setPodcasts(data);
+      } catch (error) {
+        console.log('Error while calling API: ' + error);
       }
     };
 
-    handleSubcategories();
-  }, [headerPressed]);
+    fetchPodcastData();
+  }, []);
 
-  return { subcategory, setSubcategory };
-}
+  return { podcasts, setPodcasts };
+};
 
 /**
- * Render the VerticalSlider component with the corresponding data
- * @param {*} playlists 
+ * Fetches data based on the provided subcategory from different hooks.
+ * @param {*} subcategory 
  * @returns 
  */
-function renderVerticalSlider(data, pressed) {
-  var component;
-  if (pressed === libraryStrings.playlists && data[0]) {
-    component = data[0].data.items.length > 0 ?
-      <VerticalSlider items={data[0].data.items} category={pressed} searchLabel={verticalSliderStrings.searchForPlayLists} /> :
-      <EmptyDataCard
-        title={emptyDataStrings.playlistsTitle}
-        description={emptyDataStrings.playlistsDescription}
-        buttonText={emptyDataStrings.browseMusic}
-      />
-  } else if (pressed === libraryStrings.artists && data[1]) {
-    component = data[1].data.artists.items.length > 0 ?
-      <VerticalSlider items={data[1].data.artists.items} category={pressed} searchLabel={verticalSliderStrings.searchForArtists} /> :
-      <EmptyDataCard
-        title={emptyDataStrings.artistsTitle}
-        description={emptyDataStrings.artistsDescription}
-        buttonText={emptyDataStrings.browseMusic}
-      />
-  } else if (pressed === libraryStrings.albums && data[2]) {
-    component = data[2].data.items.length > 0 ?
-      <VerticalSlider items={data[2].data.items} category={pressed} searchLabel={verticalSliderStrings.searchForAlbums} /> :
-      <EmptyDataCard
-        title={emptyDataStrings.albumsTitle}
-        description={emptyDataStrings.albumsDescription}
-        buttonText={emptyDataStrings.browseMusic}
-      />
-  }
-  return component;
-}
-
-
-const YourLibraryScreen = () => {
+const parseDataForSubcategory = (subcategory) => {
   const { playlists } = usePlaylists();
   const { artists } = useArtists();
   const { albums } = useAlbums();
+  const { podcasts } = usePodcasts();
 
+  let data;
+  if (playlists && subcategory === libraryStrings.playlists) {
+    data = playlists.data.items;
+  } else if (artists && subcategory === libraryStrings.artists) {
+    data = artists.data.artists.items;
+  } else if (albums && subcategory === libraryStrings.albums) {
+    data = albums.data.items;
+  } else if (podcasts && subcategory === libraryStrings.programs) {
+    data = podcasts.data.items;
+  }
+
+  return data;
+};
+
+const YourLibraryScreen = () => {
   const [category, setCategory] = useState(libraryStrings.music);
   const { subcategory, setSubcategory } = useSubcategory(category);
+
+  const data = parseDataForSubcategory(subcategory);
+  const isEmptyData = !data || data.length < 1;
 
   return (
     <View style={styles.background}>
@@ -159,10 +177,24 @@ const YourLibraryScreen = () => {
         </Pressable>
       </View>
       <View style={styles.headers}>
-        <SubcategorySelector category={category} subcategory={subcategory} setSubcategory={setSubcategory} />
+        <SubcategorySelector
+          category={category}
+          subcategory={subcategory}
+          setSubcategory={setSubcategory}
+        />
       </View>
+      {!isEmptyData ? (
+        <VerticalSlider
+          category={category}
+          subcategory={subcategory}
+          data={data}
+        />
+      ) : (
+        <EmptyDataCard subcategory={subcategory} />
+      )}
     </View>
   );
 };
+
 
 export default YourLibraryScreen;

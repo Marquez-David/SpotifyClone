@@ -23,7 +23,7 @@ const renderSubcategorySelector = (category, subcategory, setSubcategory) => {
     const musicTexts = [libraryStrings.playlists, libraryStrings.artists, libraryStrings.albums];
     for (let i = 0; i < musicTexts.length; i++) {
       components.push(
-        <Pressable style={styles.subcategoryPressables} onPress={() => setSubcategory(musicTexts[i])}>
+        <Pressable key={i} style={styles.subcategoryPressables} onPress={() => setSubcategory(musicTexts[i])}>
           <Text style={subcategory === musicTexts[i] ? styles.subcategoryHeaderWhiteText : styles.subcategoryHeaderGrayText}>{musicTexts[i]}</Text>
           {subcategory === musicTexts[i] && renderPressedBar()}
         </Pressable>
@@ -33,7 +33,7 @@ const renderSubcategorySelector = (category, subcategory, setSubcategory) => {
     const podcastsTexts = [libraryStrings.episodes, libraryStrings.downloads, libraryStrings.programs];
     for (let i = 0; i < podcastsTexts.length; i++) {
       components.push(
-        <Pressable style={styles.subcategoryPressables} onPress={() => setSubcategory(podcastsTexts[i])}>
+        <Pressable key={i} style={styles.subcategoryPressables} onPress={() => setSubcategory(podcastsTexts[i])}>
           <Text style={subcategory === podcastsTexts[i] ? styles.subcategoryHeaderWhiteText : styles.subcategoryHeaderGrayText}>{podcastsTexts[i]}</Text>
           {subcategory === podcastsTexts[i] && renderPressedBar()}
         </Pressable>

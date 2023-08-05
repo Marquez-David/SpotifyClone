@@ -41,6 +41,7 @@ export const libraryStrings = {
 
 export const verticalSliderStrings = {
   by: "by ",
+
   searchForPlayLists: "Search for playlists",
   searchForArtists: "Search for artists",
   searchForAlbums: "Search for albums",
@@ -57,7 +58,7 @@ export const emptyDataStrings = {
   albumsDescription: "Take the opportunity to explore different genres and find your next favorite album!",
 
   episodesTitle: "Looking for something to listen?",
-  episodesDescription: "",
+  episodesDescription: "Explore a variety of podcast episodes on different topics.",
 
   downloadsTitle: "No downloads yet.",
   downloadsDescription: "Click on ⬇ on an episode to listen to it without internet connection.",
