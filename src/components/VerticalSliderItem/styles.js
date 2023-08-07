@@ -3,45 +3,20 @@ import colors from '../../utils/Colors';
 
 const styles = StyleSheet.create({
 	/**
-	 * View style for verticalSlider component.
-	 * Represents a vertical slider view with the following properties:
-	 * - flex: 1 (flexible size to fit available space)
-	 * - marginLeft: 20 (left margin spacing)
-	*/
-	verticalSliderView: {
-		flex: 1,
-		marginLeft: 20,
-		marginRight: 20,
-	},
-	/**
 	 * Styles for the 'imageView' component.
 	 * Represents an image view with the following properties:
 	 * - flex: 1 (flexible size to fit available space)
 	 * - height: 66 (height in points)
-	 * - width: '100%' (width spanning the entire available space)
+	 * - width: '85%' (width spanning the entire available space)
 	 * - marginTop: 17 (vertical margin spacing)
 	 * - flexDirection: 'row' (horizontal layout direction)
 	*/
 	imageView: {
 		flex: 1,
 		height: 66,
-		width: '100%',
+		width: '85%',
 		marginTop: 17,
 		flexDirection: 'row',
-	},
-	/**
-	 * View style for the 'iconView' component.
-	 * Represents an icon view with the following properties:
-	 * - height: 66 (height in points)
-	 * - width: 66 (width in points)
-	 * - alignItems: 'center' (center items horizontally)
-	 * - justifyContent: 'center' (center items vertically)
-	*/
-	iconView: {
-		height: 66,
-		width: 66,
-		alignItems: 'center',
-		justifyContent: 'center',
 	},
 	/**
 	 * View style for the 'textView' component.
@@ -54,6 +29,28 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 	},
 	/**
+	 * View style for the 'carouselArtistsImage' component.
+	 * Represents an image view for carousel artists with the following properties:
+	 * - borderRadius: 50 (border radius in points to create a circular image)
+	 * - height: 66 (height in points)
+	 * - width: 66 (width in points)
+	*/
+	carouselArtistsImage: {
+		borderRadius: 50,
+		height: 66,
+		width: 66,
+	},
+	/**
+	 * View style for the 'carouselImage' component.
+	 * Represents an image view for carousel with the following properties:
+	 * - height: 66 (height in points)
+	 * - width: 66 (width in points)
+	*/
+	carouselImage: {
+		height: 66,
+		width: 66,
+	},
+	/**
 	 * Text style for the 'playlistNameText' component.
 	 * Represents the text style for the playlist name with the following properties:
 	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
@@ -64,6 +61,16 @@ const styles = StyleSheet.create({
 		color: colors.spotifyWhite,
 		marginLeft: 7,
 		fontWeight: 'bold',
+	},
+	/**
+	 * Text style for the 'ownerText' component.
+	 * Represents the text style for the owner with the following properties:
+	 * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
+	 * - marginLeft: 7 (left margin spacing)
+	*/
+	ownerText: {
+		color: colors.spotifyGray,
+		marginLeft: 7,
 	},
 });
 

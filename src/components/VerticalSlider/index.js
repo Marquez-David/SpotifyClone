@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Pressable, Image, ScrollView, TextInput } from 'react-native';
 import styles from './styles';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { libraryStrings, verticalSliderStrings } from '../../utils/Strings';
 import colors from '../../utils/Colors';
+import { convertDate, convertMilliseconds } from '../../utils/Functions';
 
 import SearchBar from '../SearchBar';
+import VerticalSliderItem from '../VerticalSliderItem';
 
 /**
  * This custom hook manages the state of searchText and its corresponding setSearchText.
@@ -22,6 +24,21 @@ const useSearchText = (subcategory) => {
 	}, [subcategory]);
 
 	return { searchText, setSearchText };
+};
+
+/**
+ * Uses an object mapping to determine the appropriate search text based on the subcategory. 
+ * @param {*} subcategory 
+ * @returns 
+ */
+const parseSearchText = (subcategory) => {
+	const subcategoryToSearchText = {
+		[libraryStrings.playlists]: verticalSliderStrings.searchForPlayLists,
+		[libraryStrings.artists]: verticalSliderStrings.searchForArtists,
+		[libraryStrings.albums]: verticalSliderStrings.searchForAlbums,
+	};
+
+	return subcategoryToSearchText[subcategory];
 };
 
 /**
@@ -42,7 +59,12 @@ const parseData = (item, subcategory) => {
 		data.name = item.album.name;
 		data.description = verticalSliderStrings.by + item.album.artists[0].name;
 		data.id = item.album.id;
-	} else if(subcategory === libraryStrings.programs) {
+	} else if (subcategory === libraryStrings.episodes) {
+		data.uri = item.episode.images[0].url;
+		data.name = item.episode.name;
+		data.description = convertDate(item.episode.release_date) + ' • ' + convertMilliseconds(item.episode.duration_ms);
+		data.id = item.episode.id;
+	} else if (subcategory === libraryStrings.programs) {
 		data.uri = item.show.images[0].url;
 		data.name = item.show.name;
 		data.description = "";
@@ -50,21 +72,6 @@ const parseData = (item, subcategory) => {
 	}
 
 	return data;
-};
-
-/**
- * Uses an object mapping to determine the appropriate search text based on the subcategory. 
- * @param {*} subcategory 
- * @returns 
- */
-const parseSearchText = (subcategory) => {
-	const subcategoryToSearchText = {
-		[libraryStrings.playlists]: verticalSliderStrings.searchForPlayLists,
-		[libraryStrings.artists]: verticalSliderStrings.searchForArtists,
-		[libraryStrings.albums]: verticalSliderStrings.searchForAlbums,
-	};
-
-	return subcategoryToSearchText[subcategory];
 };
 
 /**
@@ -78,33 +85,11 @@ const getFilteredItems = (items, subcategory, searchText) => {
 	return items.filter((item) => parseData(item, subcategory).name.toLowerCase().includes(searchText.toLowerCase()));
 };
 
-/**
- * This component renders an image and its related text data based on the provided "item" object and "subcategory." 
- * @param {*} param0 
- * @returns 
- */
-const Item = ({ item, subcategory }) => {
-	const data = parseData(item, subcategory);
-	return (
-		<View key={data.id} style={styles.imageView}>
-			<Image
-				style={subcategory !== libraryStrings.artists ? styles.carouselImage : styles.carouselArtistsImage}
-				source={{ uri: data.uri }}
-			/>
-			<View style={styles.textView}>
-				<Text style={styles.playlistNameText}>{data.name}</Text>
-				{(subcategory != libraryStrings.artists && subcategory != libraryStrings.programs) &&
-					<Text style={styles.ownerText}>{data.description}</Text>
-				}
-			</View>
-		</View>
-	);
-};
-
 const VerticalSlider = ({ category, subcategory, data }) => {
 	const { searchText, setSearchText } = useSearchText(subcategory);
 	const isPlaylistsSubcategory = subcategory === libraryStrings.playlists;
-	
+	const items = data && getFilteredItems(data, subcategory, searchText);
+
 	return (
 		<ScrollView style={styles.verticalSliderView}>
 			{(category === libraryStrings.music) && (
@@ -128,9 +113,12 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 				</View>
 			)}
 
-			{data && getFilteredItems(data, subcategory, searchText).map((item, index) => (
-				<Item key={index} item={item} subcategory={subcategory} />
-			))}
+			{items.map((item, index) => {
+				const processedData = parseData(item, subcategory);
+				return (
+					<VerticalSliderItem key={index} data={processedData} subcategory={subcategory} />
+				);
+			})}
 		</ScrollView>
 	);
 };

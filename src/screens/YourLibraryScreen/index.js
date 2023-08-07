@@ -3,7 +3,7 @@ import { View, Text, Pressable } from 'react-native';
 import styles from './styles';
 import { libraryStrings, verticalSliderStrings, emptyDataStrings } from '../../utils/Strings';
 
-import { getUserPlaylists, getSavedAlbums, getFollowingArtists, getSavedPodcasts } from '../../services/SpotifyRequests';
+import { getUserPlaylists, getSavedAlbums, getFollowingArtists, getSavedPodcasts, getSavedEpisodes } from '../../services/SpotifyRequests';
 
 import VerticalSlider from '../../components/VerticalSlider';
 import EmptyDataCard from '../../components/EmptyDataCard';
@@ -129,6 +129,30 @@ const usePodcasts = () => {
 };
 
 /**
+ * This custom hook fetches and manages the user's saved episodes data through an asynchronous API call. 
+ * It returns the saved episodes data and the corresponding function to update the state with the fetched episodes.
+ * @returns 
+ */
+const useEpisodes = () => {
+  const [episodes, setEpisodes] = useState(null);
+
+  useEffect(() => {
+    const fetchEpisodesData = async () => {
+      try {
+        let data = await getSavedEpisodes();
+        setEpisodes(data);
+      } catch (error) {
+        console.log('Error while calling API: ' + error);
+      }
+    };
+
+    fetchEpisodesData();
+  }, []);
+
+  return { episodes, setEpisodes };
+};
+
+/**
  * Fetches data based on the provided subcategory from different hooks.
  * @param {*} subcategory 
  * @returns 
@@ -138,6 +162,7 @@ const parseDataForSubcategory = (subcategory) => {
   const { artists } = useArtists();
   const { albums } = useAlbums();
   const { podcasts } = usePodcasts();
+  const { episodes } = useEpisodes();
 
   let data;
   if (playlists && subcategory === libraryStrings.playlists) {
@@ -146,6 +171,8 @@ const parseDataForSubcategory = (subcategory) => {
     data = artists.data.artists.items;
   } else if (albums && subcategory === libraryStrings.albums) {
     data = albums.data.items;
+  } else if(episodes && subcategory === libraryStrings.episodes) {
+    data = episodes.data.items;
   } else if (podcasts && subcategory === libraryStrings.programs) {
     data = podcasts.data.items;
   }
