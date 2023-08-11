@@ -165,16 +165,16 @@ const parseDataForSubcategory = (subcategory) => {
   const { episodes } = useEpisodes();
 
   let data;
-  if (playlists && subcategory === libraryStrings.playlists) {
-    data = playlists.data.items;
-  } else if (artists && subcategory === libraryStrings.artists) {
-    data = artists.data.artists.items;
-  } else if (albums && subcategory === libraryStrings.albums) {
-    data = albums.data.items;
-  } else if(episodes && subcategory === libraryStrings.episodes) {
-    data = episodes.data.items;
-  } else if (podcasts && subcategory === libraryStrings.programs) {
-    data = podcasts.data.items;
+  if (subcategory === libraryStrings.playlists) {
+    data = playlists?.data.items;
+  } else if (subcategory === libraryStrings.artists) {
+    data = artists?.data.artists.items;
+  } else if (subcategory === libraryStrings.albums) {
+    data = albums?.data.items;
+  } else if (subcategory === libraryStrings.episodes) {
+    data = episodes?.data.items;
+  } else if (subcategory === libraryStrings.programs) {
+    data = podcasts?.data.items;
   }
 
   return data;
@@ -184,8 +184,8 @@ const YourLibraryScreen = () => {
   const [category, setCategory] = useState(libraryStrings.music);
   const { subcategory, setSubcategory } = useSubcategory(category);
 
-  const data = parseDataForSubcategory(subcategory);
-  const isEmptyData = !data || data.length < 1;
+  data = parseDataForSubcategory(subcategory);
+  const isEmptyData = data && data.length < 1;
 
   return (
     <View style={styles.background}>
@@ -210,15 +210,16 @@ const YourLibraryScreen = () => {
           setSubcategory={setSubcategory}
         />
       </View>
-      {!isEmptyData ? (
-        <VerticalSlider
-          category={category}
-          subcategory={subcategory}
-          data={data}
-        />
-      ) : (
-        <EmptyDataCard subcategory={subcategory} />
-      )}
+      {data == undefined ?
+        null : !isEmptyData ? (
+          <VerticalSlider
+            category={category}
+            subcategory={subcategory}
+            data={data}
+          />
+        ) : (
+          <EmptyDataCard subcategory={subcategory} />
+        )}
     </View>
   );
 };

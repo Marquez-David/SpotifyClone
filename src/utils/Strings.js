@@ -69,3 +69,9 @@ export const emptyDataStrings = {
   browsePodcasts: "EXPLORE PODCASTS",
   browseMusic: "EXPLORE MUSIC",
 };
+
+export const searchStrings = {
+  search: "Search",
+  exploreAll: "Explore all",
+  artistsSongsOrPodcasts: "Artists, songs or podcasts..."
+};

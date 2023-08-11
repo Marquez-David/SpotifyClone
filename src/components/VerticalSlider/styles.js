@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
 	verticalSliderView: {
 		flex: 1,
 		marginLeft: 20,
-		marginRight: 20,
 	},
 	/**
 	 * Styles for the 'imageView' component.
