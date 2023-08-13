@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { SafeAreaView, View, Text, Pressable } from 'react-native';
 
 import styles from './styles';
-import colors from '../../utils/Colors';
-import { LoginStrings } from '../../utils/Strings';
-import { spotifyAuthConfig } from '../../utils/Constants';
+import colors from '../../utils/colors';
+import { LoginStrings } from '../../utils/strings';
+import { spotifyAuthConfig } from '../../utils/constants';
 
 import { useNavigation } from "@react-navigation/native";
 

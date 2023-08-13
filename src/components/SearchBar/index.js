@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput } from 'react-native';
 import styles from './styles';
 
-import colors from '../../utils/Colors';
+import colors from '../../utils/colors';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 

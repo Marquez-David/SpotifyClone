@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, FlatList } from 'react-native';
 
 import styles from './styles';
-import colors from '../../utils/Colors';
-import { homeStrings, carouselStrings } from '../../utils/Strings';
+import colors from '../../utils/colors';
+import { homeStrings, carouselStrings } from '../../utils/strings';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 

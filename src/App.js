@@ -36,7 +36,7 @@ const renderInitialComponent = (hasAccess) => {
     } else if (hasAccess === 1) {
         return <NavigationHome />;
     }
-}
+};
 
 export default function App() {
     const [hasAccess, setHasAccess] = useState(-1); //-1 = init state, 0 = no access, 1 = access

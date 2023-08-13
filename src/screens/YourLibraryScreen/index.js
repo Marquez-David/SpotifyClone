@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import styles from './styles';
-import { libraryStrings, verticalSliderStrings, emptyDataStrings } from '../../utils/Strings';
+import { libraryStrings, verticalSliderStrings, emptyDataStrings } from '../../utils/strings';
 
 import { getUserPlaylists, getSavedAlbums, getFollowingArtists, getSavedPodcasts, getSavedEpisodes } from '../../services/SpotifyRequests';
 

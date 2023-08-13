@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
-import { libraryStrings } from '../../utils/Strings';
+import { libraryStrings } from '../../utils/strings';
 import styles from './styles';
 
 /**

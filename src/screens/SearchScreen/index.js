@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
 import styles from '../SearchScreen/styles';
-import { searchStrings } from '../../utils/Strings';
+import { searchStrings } from '../../utils/strings';
 import SearchBar from '../../components/SearchBar';
 import { getBrowseCategories } from '../../services/SpotifyRequests'
 

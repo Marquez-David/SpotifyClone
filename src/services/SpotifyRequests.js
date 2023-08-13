@@ -217,3 +217,23 @@ export async function getBrowseCategories() {
 		console.log("Error while fetching API: " + error.message);
 	}
 }
+
+export async function getAlbum(album) {
+	const accessToken = await AsyncStorage.getItem('spotifyToken');
+	try {
+		const response = await axios(
+			{
+				method: "GET",
+				url: `https://api.spotify.com/v1/albums/` + album,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response;
+	} catch (error) {
+		console.log("Error while fetching API: " + error.message);
+	}
+}
+
+

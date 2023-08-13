@@ -75,3 +75,7 @@ export const searchStrings = {
   exploreAll: "Explore all",
   artistsSongsOrPodcasts: "Artists, songs or podcasts..."
 };
+
+export const albumStrings = {
+  randomMode: "RANDOM",
+};

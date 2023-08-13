@@ -1,52 +1,11 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import styles from './styles';
-import { emptyDataStrings, libraryStrings } from '../../utils/Strings';
 
-/**
- * Maps subcategories to corresponding texts for titles, descriptions, and button texts.
- * @param {*} subcategory 
- * @returns 
- */
-const parseTexts = (subcategory) => {
-  const textMappings = {
-    [libraryStrings.playlists]: {
-      title: emptyDataStrings.playlistsTitle,
-      description: emptyDataStrings.playlistsDescription,
-      buttonText: emptyDataStrings.browseMusic
-    },
-    [libraryStrings.artists]: {
-      title: emptyDataStrings.artistsTitle,
-      description: emptyDataStrings.artistsDescription,
-      buttonText: emptyDataStrings.browseMusic
-    },
-    [libraryStrings.albums]: {
-      title: emptyDataStrings.albumsTitle,
-      description: emptyDataStrings.albumsDescription,
-      buttonText: emptyDataStrings.browseMusic
-    },
-    [libraryStrings.episodes]: {
-      title: emptyDataStrings.episodesTitle,
-      description: emptyDataStrings.episodesDescription,
-      buttonText: emptyDataStrings.browsePodcasts
-    },
-    [libraryStrings.downloads]: {
-      title: emptyDataStrings.downloadsTitle,
-      description: emptyDataStrings.downloadsDescription,
-      buttonText: emptyDataStrings.browsePodcasts
-    },
-    [libraryStrings.programs]: {
-      title: emptyDataStrings.programsTitle,
-      description: emptyDataStrings.programsDescription,
-      buttonText: emptyDataStrings.browsePodcasts
-    }
-  };
-
-  return textMappings[subcategory] || {};
-};
+import { parseEmptyData } from '../../utils/helpers';
 
 const EmptyDataCard = ({ subcategory }) => {
-  const { title, description, buttonText } = parseTexts(subcategory);
+  const { title, description, buttonText } = parseEmptyData(subcategory);
 
   return (
     <View style={styles.emptyDataCardView}>

@@ -13,8 +13,6 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
-const Tab = createBottomTabNavigator();
-
 /**
  * Constant that maps different icon component types to their respective imports, enabling dynamic 
  * component selection based on the provided component prop.
@@ -53,6 +51,7 @@ const isIconFocused = (isFocused, focusedIcon, unfocusedIcon, focusedComponent, 
     : <MyIconComponent name={unfocusedIcon} component={unfocusedComponent} style={styles.unfocusedIconStyle} />
 }
 
+const Tab = createBottomTabNavigator();
 function BottomTabNavigation() {
   return (
     <Tab.Navigator initialRouteName='Home' screenOptions={{ tabBarActiveTintColor: 'white', tabBarStyle: styles.bottomContainer }}>

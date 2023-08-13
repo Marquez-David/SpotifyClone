@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import colors from '../../utils/Colors';
+import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
   /**
@@ -76,14 +76,14 @@ const styles = StyleSheet.create({
    * Represents the text style for all pressables with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 20 (font size in points)
-   * - fontWeight: 'bold' (bold font weight)
+   * - fontFamily: 'GothamMedium' (custom family font)
    * - textAlign: 'center' (text alignment to the center)
    * - flex: 1 (flexible size to fit available space)
   */
   pressableText: {
     color: colors.spotifyWhite,
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: 'GothamMedium',
     textAlign: 'center',
     flex: 1,
   },
