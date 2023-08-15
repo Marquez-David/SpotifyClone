@@ -9,12 +9,22 @@ import styles from './styles';
 
 const Header = ({ }) => (
   <View style={styles.background}>
-    <Pressable style={styles.iconView} onPress={() => console.log('heart')}>
-      <AntDesign name='hearto' size={21} color={colors.spotifyWhite}></AntDesign>
-    </Pressable>
-    <Pressable style={styles.iconView} onPress={() => console.log('dots')}>
-      <Entypo name='dots-three-vertical' size={21} color={colors.spotifyWhite}></Entypo>
-    </Pressable>
+    <View style={styles.iconView}>
+      <AntDesign.Button
+        name='hearto'
+        size={21}
+        color={colors.spotifyWhite}
+        backgroundColor={colors.appBackground}
+        onPress={() => console.log('heart')}>
+      </AntDesign.Button>
+      <Entypo.Button
+        name='dots-three-vertical'
+        size={21}
+        color={colors.spotifyWhite}
+        backgroundColor={colors.appBackground}
+        onPress={() => console.log('dots')}>
+      </Entypo.Button>
+    </View>
   </View >
 );
 

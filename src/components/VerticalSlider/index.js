@@ -50,7 +50,7 @@ const parseSearchText = (subcategory) => {
  * @returns 
  */
 const getFilteredItems = (items, subcategory, searchText) => {
-	return items.filter((item) => parseLibraryData(item, subcategory).name.toLowerCase().includes(searchText.toLowerCase()));
+	return items.filter((item) => parseLibraryData(item, subcategory).data.name.toLowerCase().includes(searchText.toLowerCase()));
 };
 
 const VerticalSlider = ({ category, subcategory, data }) => {
@@ -84,7 +84,7 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 
 			{items.map((item, index) => {
 				return (
-					<VerticalSliderItem key={index} data={item} subcategory={subcategory} />
+					<VerticalSliderItem key={index} item={item} subcategory={subcategory} />
 				);
 			})}
 		</ScrollView>

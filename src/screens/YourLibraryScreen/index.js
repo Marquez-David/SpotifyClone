@@ -166,15 +166,15 @@ const parseDataForSubcategory = (subcategory) => {
 
   let data;
   if (subcategory === libraryStrings.playlists) {
-    data = playlists?.data.items;
+    data = playlists;
   } else if (subcategory === libraryStrings.artists) {
-    data = artists?.data.artists.items;
+    data = artists;
   } else if (subcategory === libraryStrings.albums) {
-    data = albums?.data.items;
+    data = albums;
   } else if (subcategory === libraryStrings.episodes) {
-    data = episodes?.data.items;
+    data = episodes;
   } else if (subcategory === libraryStrings.programs) {
-    data = podcasts?.data.items;
+    data = podcasts;
   }
 
   return data;
@@ -184,7 +184,7 @@ const YourLibraryScreen = () => {
   const [category, setCategory] = useState(libraryStrings.music);
   const { subcategory, setSubcategory } = useSubcategory(category);
 
-  data = parseDataForSubcategory(subcategory);
+  const data = parseDataForSubcategory(subcategory);
   const isEmptyData = data && data.length < 1;
 
   return (

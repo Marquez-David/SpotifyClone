@@ -49,7 +49,7 @@ const SearchScreen = () => {
         <Text style={styles.exploreText}>{searchStrings.exploreAll}</Text>
       </View>
       <View style={styles.cardContainer}>
-        {categories && categories.data.categories.items.map((item, index) => (
+        {categories?.map((item, index) => (
           <View key={index} style={styles.cardView}>
             <Image source={{ uri: item.icons[0].url }} style={styles.cardImage} />
             <Text style={styles.categoriesTitleText}>{item.name}</Text>

@@ -7,32 +7,8 @@ import { homeStrings, carouselStrings } from '../../utils/strings';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { getRecentlyPlayedSongs, getUserPlaylists, getArtists, getArtistAlbums, getPodcasts } from '../../services/SpotifyRequests';
+import { getUserPlaylists, getArtists, getArtistAlbums, getPodcasts } from '../../services/SpotifyRequests';
 import HorizontalCarousel from '../../components/HorizontalCarousel';
-
-/**
- * This custom hook fetches and manages data for recently played songs through an asynchronous API call. 
- * It returns the recently played songs data as part of the state.
- * @returns 
- */
-const useRecentlySongs = () => {
-  const [recentlySongs, setRecentlySongs] = useState(null);
-
-  useEffect(() => {
-    const fetchSongsData = async () => {
-      try {
-        const recentlyPlayedSongs = await getRecentlyPlayedSongs();
-        setRecentlySongs(recentlyPlayedSongs);
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchSongsData();
-  }, []);
-
-  return { recentlySongs };
-};
 
 /**
  * This custom hook fetches and manages data for user playlists through an asynchronous API call. 
@@ -73,7 +49,7 @@ const useArtistsAlbums = () => {
         const artists = await getArtists();
         setArtists(artists);
 
-        const artistAlbums = await getArtistAlbums(artists.data.items[0].id);
+        const artistAlbums = await getArtistAlbums(artists);
         setArtistAlbums(artistAlbums);
       } catch (error) {
         console.log('Error while calling API: ' + error);
@@ -136,30 +112,14 @@ const useMessage = () => {
   return { message };
 };
 
-/**
- * Iterates through data and creates HorizontalCarousel components with the corresponding data using titles stored, 
- * then returns these components as a list.
- * @param {*} data 
- * @returns 
- */
-const renderHorizontalCarousels = (data) => {
-  var components = [];
-  const horizontalCarouselStrings = [carouselStrings.recentlyPlayed, carouselStrings.yourPlaylists, carouselStrings.findOutMoreAbout, carouselStrings.yourPodcasts];
-  for (var i = 0; i < data.length; i++) {
-    if (data[i]) {
-      components.push(<HorizontalCarousel key={i} items={data[i]} title={horizontalCarouselStrings[i]} />)
-    }
-  }
-
-  return components;
-};
-
 const HomeScreen = () => {
-  const { recentlySongs } = useRecentlySongs();
   const { playlists } = usePlaylists();
   const { artistAlbums } = useArtistsAlbums();
   const { podcasts } = usePodcasts();
   const { message } = useMessage();
+
+  const horizontalCarouselStrings = [carouselStrings.yourPlaylists, carouselStrings.findOutMoreAbout, carouselStrings.yourPodcasts];
+  const data = [playlists, artistAlbums, podcasts];
 
   return (
     <ScrollView style={styles.background}>
@@ -187,7 +147,11 @@ const HomeScreen = () => {
         </Ionicons.Button>
       </View>
       <View style={styles.flatListContainer}>
-        {renderHorizontalCarousels([recentlySongs, playlists, artistAlbums, podcasts])}
+        {data.map((items, index) => {
+          return (
+            <HorizontalCarousel key={index} items={items} title={horizontalCarouselStrings[index]} />
+          );
+        })}
       </View>
     </ScrollView >
   );

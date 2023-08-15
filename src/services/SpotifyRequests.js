@@ -2,30 +2,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
 /**
- * Fetch the user's recently played songs using axios.
- * @returns 
- */
-export async function getRecentlyPlayedSongs() {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/me/player/recently-played?limit=7`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response;
-	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
-	}
-}
-
-/**
- * Fetch user playlists
- * @returns 
+ * Retrieves a list of playlists created by the authenticated user.
+ * @returns {Array} An array of user's playlists.
  */
 export async function getUserPlaylists() {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
@@ -39,15 +17,15 @@ export async function getUserPlaylists() {
 				},
 			}
 		);
-		return response;
+		return response.data.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching user playlists: " + error.message);
 	}
 }
 
 /**
- * Fetch most listened artist by the user
- * @returns 
+ * Retrieves the top artist ID for the authenticated user.
+ * @returns {string} The ID of the user's top artist.
  */
 export async function getArtists() {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
@@ -61,16 +39,16 @@ export async function getArtists() {
 				},
 			}
 		);
-		return response;
+		return response.data.items[0].id;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching user top artist id: " + error.message);
 	}
 }
 
 /**
- * Fetch artist albums
- * @param {*} artistId 
- * @returns 
+ * Retrieves a list of albums by a specific artist.
+ * @param {string} artistId - The ID of the artist whose albums are being fetched.
+ * @returns {Array} An array of albums by the specified artist.
  */
 export async function getArtistAlbums(artistId) {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
@@ -84,15 +62,15 @@ export async function getArtistAlbums(artistId) {
 				},
 			}
 		);
-		return response;
+		return response.data.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching artists albums: " + error.message);
 	}
 }
 
 /**
- * Fetch podcasts that user follows
- * @returns 
+ * Retrieves a list of podcasts followed by the authenticated user.
+ * @returns {Array} An array of user's followed podcast items.
  */
 export async function getPodcasts() {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
@@ -106,15 +84,15 @@ export async function getPodcasts() {
 				},
 			}
 		);
-		return response;
+		return response.data.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching user podcasts: " + error.message);
 	}
 }
 
 /**
- * Fetch albums that user saved
- * @returns 
+ * Retrieves a list of saved albums for the authenticated user.
+ * @returns {Array} An array of saved album items.
  */
 export async function getSavedAlbums() {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
@@ -128,15 +106,15 @@ export async function getSavedAlbums() {
 				},
 			}
 		);
-		return response;
+		return response.data.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching user albums: " + error.message);
 	}
 }
 
 /**
- * Fetch artists that user follows
- * @returns 
+ * Retrieves a list of artists followed by the authenticated user.
+ * @returns {Array} An array of followed artist items.
  */
 export async function getFollowingArtists() {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
@@ -150,15 +128,15 @@ export async function getFollowingArtists() {
 				},
 			}
 		);
-		return response;
+		return response.data.artists.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching user artists: " + error.message);
 	}
 }
 
 /**
- * Fetch usr saved podcasts
- * @returns 
+ * Retrieves a list of saved podcasts for the authenticated user.
+ * @returns {Array} An array of saved podcast items.
  */
 export async function getSavedPodcasts() {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
@@ -172,15 +150,15 @@ export async function getSavedPodcasts() {
 				},
 			}
 		);
-		return response;
+		return response.data.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching user podcasts: " + error.message);
 	}
 }
 
 /**
- * Fetch usr saved podcasts
- * @returns 
+ * Retrieves a list of saved podcast episodes for the authenticated user.
+ * @returns {Array} An array of saved episode items.
  */
 export async function getSavedEpisodes() {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
@@ -194,14 +172,18 @@ export async function getSavedEpisodes() {
 				},
 			}
 		);
-		return response;
+		return response.data.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching user episodes: " + error.message);
 	}
 }
 
+/**
+ * Retrieves a list of browse categories using the provided access token.
+ * @returns {Array} An array of browse category items.
+ */
 export async function getBrowseCategories() {
-	const accessToken = await AsyncStorage.getItem('spotifyToken');
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
 		const response = await axios(
 			{
@@ -212,27 +194,57 @@ export async function getBrowseCategories() {
 				},
 			}
 		);
-		return response;
+		return response.data.categories.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching categories: " + error.message);
 	}
 }
 
-export async function getAlbum(album) {
-	const accessToken = await AsyncStorage.getItem('spotifyToken');
+/**
+ * Retrieves album details and its tracks using the provided album ID and access token.
+ * @param {string} id - The ID of the album to fetch.
+ * @returns {Array} An array of album track items.
+ */
+export async function getAlbum(id) {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/albums/` + album,
+				url: `https://api.spotify.com/v1/albums/` + id,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
 			}
 		);
-		return response;
+
+		return response.data.tracks.items;
 	} catch (error) {
-		console.log("Error while fetching API: " + error.message);
+		console.log("Error while fetching a single album: " + error.message);
+	}
+}
+
+/**
+ * Retrieves playlist details and its tracks using the provided playlist ID and access token.
+ * @param {string} id - The ID of the playlist to fetch.
+ * @returns {Array} An array of playlist track items.
+ */
+export async function getPlaylist(id) {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "GET",
+				url: `
+				https://api.spotify.com/v1/playlists/` + id,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response.data.tracks.items;
+	} catch (error) {
+		console.log("Error while fetching a single playlist: " + error.message);
 	}
 }
 

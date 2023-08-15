@@ -12,18 +12,18 @@ import { libraryStrings } from '../../utils/strings';
  * @param {*} param0 
  * @returns 
  */
-const VerticalSliderItem = ({ data, subcategory }) => {
+const VerticalSliderItem = ({ item, subcategory }) => {
   const navigation = useNavigation();
-  const { description, url, name, id } = parseLibraryData(data, subcategory);
+  const { data, description} = parseLibraryData(item, subcategory);
   
   return (
-    <Pressable key={id} style={styles.imageView} onPress={() => navigation.navigate("Tracklist", { title: data.name, data: data.album })}>
+    <Pressable key={data.id} style={styles.imageView} onPress={() => navigation.navigate("Tracklist", { title: data.name, data: data })}>
       <Image
         style={subcategory !== libraryStrings.artists ? styles.carouselImage : styles.carouselArtistsImage}
-        source={{ uri: url }}
+        source={{ uri: data.images[0].url }}
       />
       <View style={styles.textView}>
-        <Text style={styles.playlistNameText}>{name}</Text>
+        <Text style={styles.playlistNameText}>{data.name}</Text>
         {(subcategory != libraryStrings.artists && subcategory != libraryStrings.programs) &&
           <Text style={styles.ownerText}>{description}</Text>
         }

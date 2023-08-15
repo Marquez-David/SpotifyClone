@@ -52,7 +52,9 @@ export function getYear(inputDate) {
  */
 export function extractArtistNames(artists) {
   const artistNames = artists.map(artist => artist.name);
-  return artistNames.join(', ');
+  const joinedNames = artistNames.join(', ');
+
+  return joinedNames.length > 40 ? joinedNames.substring(0, 40) + '...' : joinedNames;
 }
 
 /**
@@ -66,20 +68,20 @@ export function parseCarouselData(data, carouselTitle) {
 
   const carouselMappings = {
     [carouselStrings.recentlyPlayed]: () => {
+      response.data = data.track.album;
       response.description = data.track.name;
-      response.url = data.track.album.images[0].url;
     },
     [carouselStrings.yourPlaylists]: () => {
+      response.data = data;
       response.description = data.name + carouselStrings.listComplementString;
-      response.url = data.images[0].url;
     },
     [carouselStrings.findOutMoreAbout]: () => {
+      response.data = data;
       response.description = data.name + '\n' + data.artists[0].name + carouselStrings.albumComplementString;
-      response.url = data.images[0].url;
     },
     [carouselStrings.yourPodcasts]: () => {
+      response.data = data.show;
       response.description = data.show.name + '\n' + carouselStrings.podcastComplementsString + data.show.publisher;
-      response.url = data.show.images[0].url;
     },
   };
 
@@ -90,7 +92,7 @@ export function parseCarouselData(data, carouselTitle) {
 }
 
 /**
- * Returns an object data with the uri, name, description, and id properties, depending on the subcategory provided.
+ * Returns an object data with the data, description properties, depending on the subcategory provided.
  * @param {*} item 
  * @param {*} subcategory 
  * @returns 
@@ -100,34 +102,24 @@ export function parseLibraryData(data, subcategory) {
 
   const libraryMappings = {
     [libraryStrings.playlists]: () => {
+      response.data = data;
       response.description = verticalSliderStrings.by + data.owner.display_name;
-      response.url = data.images[0].url;
-      response.name = data.name;
-      response.id = data.id;
     },
     [libraryStrings.artists]: () => {
+      response.data = data;
       response.description = "";
-      response.url = data.images[0].url;
-      response.name = data.name;
-      response.id = data.id
     },
     [libraryStrings.albums]: () => {
+      response.data = data.album;
       response.description = verticalSliderStrings.by + data.album.artists[0].name;
-      response.url = data.album.images[0].url;
-      response.name = data.album.name;
-      response.id = data.album.id;
     },
     [libraryStrings.episodes]: () => {
+      response.data = data.episode;
       response.description = convertDate(data.episode.release_date) + ' • ' + convertMilliseconds(data.episode.duration_ms);
-      response.url = data.episode.images[0].url;
-      response.name = data.episode.name;
-      response.id = data.episode.id;
     },
     [libraryStrings.programs]: () => {
+      response.data = data.show;
       response.description = "";
-      response.url = data.show.images[0].url;
-      response.name = data.show.name;
-      response.id = data.show.id;
     },
   };
 
