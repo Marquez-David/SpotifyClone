@@ -12,8 +12,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-/* Importing a package using curly braces {} allows you to specifically import functions from the source 
-file, while importing without curly braces imports the default export from the source file. */
 import { authorize } from 'react-native-app-auth';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
