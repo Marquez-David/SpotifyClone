@@ -14,8 +14,8 @@ import { libraryStrings } from '../../utils/strings';
  */
 const VerticalSliderItem = ({ item, subcategory }) => {
   const navigation = useNavigation();
-  const { data, description} = parseLibraryData(item, subcategory);
-  
+  const { data, description } = parseLibraryData(item, subcategory);
+
   return (
     <Pressable key={data.id} style={styles.imageView} onPress={() => navigation.navigate("Tracklist", { title: data.name, data: data })}>
       <Image

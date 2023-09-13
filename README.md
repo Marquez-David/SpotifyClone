@@ -16,7 +16,16 @@ the [images](doc/img)
 
 ## Structure
 
-This project is organized into two main directories: `doc` for documentation and `src` for source code. Before the installation, make sure that you are inside the source directory.
+This project is organized in a single main directory, `src` which contains the source code. Inside the directory we can find the different functionalities developed for the correct functioning of the project. The project structure can be resumed in:
+
+1. `Components` #Contains all the source code and style files for the custom components.
+2. `Navigation` #This Navigation directory is responsible for handling the navigation logic of the application. It defines the routes, screens, and navigation stacks.
+3. `Screens` #This directory consists of all the individual screens or views of the application. Each screen represents a specific user interface (UI) that the user can interact with. 
+4. `Services` #Contains code responsible for connecting with Spotify APIs.
+5. `Utils` #Contains helper functions that are used across different parts of the application.
+6. `Assets` #The Assets directory is used to store static files, such as images, fonts, or other resources required by the project.
+
+Before installation, make sure it is inside the source main directory.
 
 ## Installation
 
