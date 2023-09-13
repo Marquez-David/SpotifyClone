@@ -248,4 +248,28 @@ export async function getPlaylist(id) {
 	}
 }
 
+/**
+ * Retrieves information about whether a list of albums is saved in the user's Spotify library.
+ * @param {string[]} ids - An array of album IDs to check.
+ * @returns {Promise<boolean[]>} - An array of boolean values indicating if each album is saved.
+ */
+export async function areAlbumsSaved(ids) {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "GET",
+				url: `
+				https://api.spotify.com/v1/me/albums/contains?ids=` + ids,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response.data;
+	} catch (error) {
+		console.log("Error while fetching a single playlist: " + error.message);
+	}
+}
+
 

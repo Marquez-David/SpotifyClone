@@ -30,21 +30,23 @@ const styles = StyleSheet.create({
    * Style for the title container.
    * Represents the style for the container of the song title with the following properties:
    * - flexDirection: 'column' (vertical layout direction)
+   * - justifyContent: 'center' (justify content to the center of the container)
   */
   titleView: {
     flexDirection: 'column',
+    justifyContent: 'center',
   },
   /**
    * Style for title text.
    * Represents the text style for the title of a song with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - marginLeft: 10 (left margin spacing)
-   * - fontSize: 16 (font size in points)
+   * - fontSize: 14 (font size in points)
   */
   titleText: {
     color: colors.spotifyWhite,
     marginLeft: 10,
-    fontSize: 16,
+    fontSize: 14,
   },
   /**
    * Style for the description container.
@@ -56,16 +58,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginLeft: 10,
   },
-  
+
   /**
    * Style for description text.
    * Represents the text style for the song description with the following properties:
    * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
-   * - fontSize: 12 (font size in points)
+   * - fontSize: 12.5 (font size in points)
   */
   descriptionText: {
     color: colors.spotifyGray,
-    fontSize: 12,
+    fontSize: 12.5,
   },
   /**
    * Style for the dots pressable.
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     position: 'absolute',
     right: 1,
-  }, 
+  },
 });
 
 

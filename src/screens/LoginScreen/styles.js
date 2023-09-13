@@ -62,13 +62,13 @@ const styles = StyleSheet.create({
    * Represents the text style for the text under the logo with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 30 (font size in points)
-   * - fontWeight: 'bold' (bold font weight)
+   * - fontFamily: 'GothamBold' (custom family font)
    * - textAlign: 'center' (text alignment to the center)
   */
   logoText: {
     color: colors.spotifyWhite,
     fontSize: 30,
-    fontWeight: 'bold',
+    fontFamily: 'GothamBold',
     textAlign: 'center',
   },
   /**
@@ -76,14 +76,14 @@ const styles = StyleSheet.create({
    * Represents the text style for all pressables with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 20 (font size in points)
-   * - fontFamily: 'GothamMedium' (custom family font)
+   * - fontFamily: 'GothamBold' (custom family font)
    * - textAlign: 'center' (text alignment to the center)
    * - flex: 1 (flexible size to fit available space)
   */
   pressableText: {
     color: colors.spotifyWhite,
     fontSize: 20,
-    fontFamily: 'GothamMedium',
+    fontFamily: 'GothamBold',
     textAlign: 'center',
     flex: 1,
   },

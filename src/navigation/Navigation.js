@@ -25,7 +25,7 @@ export function NavigationLogin() {
             headerStyle: { backgroundColor: colors.appBackground },
             headerTintColor: colors.spotifyWhite,
             headerTitleAlign: 'center',
-            headerRight: () => (<Header />)
+            headerRight: () => (<Header params={route.params} />)
           })}
         />
       </Stack.Navigator>
@@ -50,7 +50,7 @@ export function NavigationHome() {
             headerStyle: { backgroundColor: colors.appBackground },
             headerTintColor: colors.spotifyWhite,
             headerTitleAlign: 'center',
-            headerRight: () => (<Header />)
+            headerRight: () => (<Header params={route.params} />)
           })}
         />
       </Stack.Navigator>

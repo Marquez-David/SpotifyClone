@@ -59,9 +59,13 @@ const styles = StyleSheet.create({
 	 * Text style for image descriptions.
 	 * Represents the text style for image descriptions with the following properties:
 	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
+	 * - fontFamily: 'GothamMedium' (custom family font)
+	 * - fontSize: 13 (font size in points)
 	*/
 	descriptionText: {
 		color: colors.spotifyWhite,
+		fontFamily: 'GothamMedium',
+		fontSize: 13,
 	},
 });
 

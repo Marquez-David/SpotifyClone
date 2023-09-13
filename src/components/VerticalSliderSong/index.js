@@ -24,9 +24,9 @@ const VerticalSliderSong = ({ item, type }) => {
       <View style={styles.dotsPressable}>
         <Entypo.Button
           name='dots-three-vertical'
-          size={21}
+          size={15}
           backgroundColor={colors.appBackground}
-          color={colors.spotifyWhite}
+          color={colors.spotifyGray}
           onPress={() => console.log('dots')}>
         </Entypo.Button>
       </View>
