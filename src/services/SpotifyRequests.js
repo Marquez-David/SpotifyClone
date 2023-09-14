@@ -268,7 +268,55 @@ export async function areAlbumsSaved(ids) {
 		);
 		return response.data;
 	} catch (error) {
-		console.log("Error while fetching a single playlist: " + error.message);
+		console.log("Error while fetching albums: " + error.message);
+	}
+}
+
+/**
+ * This function makes an asynchronous request to the Spotify API to add the specified album to the user's library.
+ * @param {string} id - The ID of the album to be saved.
+ * @returns {Promise} A Promise that resolves with the API response when the album is successfully saved.
+ */
+export async function saveAlbum(id) {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "PUT",
+				url: `
+				https://api.spotify.com/v1/me/albums?ids=` + id,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response
+	} catch (error) {
+		console.log("Error while saving albums: " + error.message);
+	}
+}
+
+/**
+ * This function makes an asynchronous request to the Spotify API to remove the specified album to the user's library.
+ * @param {string} id - The ID of the album to be removed.
+ * @returns {Promise} A Promise that resolves with the API response when the album is successfully removed.
+ */
+export async function unsaveAlbum(id) {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "DELETE",
+				url: `
+				https://api.spotify.com/v1/me/albums?ids=` + id,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response
+	} catch (error) {
+		console.log("Error while unsaving albums: " + error.message);
 	}
 }
 
