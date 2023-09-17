@@ -1,3 +1,9 @@
+export const contentType = {
+  playlist: 'playlist',
+  album: 'album',
+  podcast: 'show'
+};
+
 export const LoginStrings = {
   loginString1: "Millions of Songs. \n",
   loginString2: "Free on Spotify.",
@@ -78,4 +84,11 @@ export const searchStrings = {
 
 export const albumStrings = {
   randomMode: "RANDOM",
+};
+
+export const podcastStrings = {
+  follow: "FOLLOW",
+  following: "FOLLOWING",
+  etc: '...',
+  allEpisodes: "All episodes",
 };

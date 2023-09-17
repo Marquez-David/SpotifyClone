@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import styles from './styles';
 
-import { parseLibraryData } from '../../utils/helpers';
+import { parseLibraryData, handleNavigation } from '../../utils/helpers';
 
 import { libraryStrings } from '../../utils/strings';
 
@@ -17,7 +17,7 @@ const VerticalSliderItem = ({ item, subcategory }) => {
   const { data, description } = parseLibraryData(item, subcategory);
 
   return (
-    <Pressable key={data.id} style={styles.imageView} onPress={() => navigation.navigate("Tracklist", { title: data.name, data: data })}>
+    <Pressable key={data.id} style={styles.imageView} onPress={() => handleNavigation(data, navigation)}>
       <Image
         style={subcategory !== libraryStrings.artists ? styles.carouselImage : styles.carouselArtistsImage}
         source={{ uri: data.images[0].url }}

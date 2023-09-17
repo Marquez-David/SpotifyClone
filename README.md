@@ -11,8 +11,8 @@
 
 ## Description
 This project is a clone of the popular music streaming application, Spotify. It has been developed using React Native, and the [Spotify API](https://developer.spotify.com/documentation/web-api) for music data. 
-Please note that this project is still under development and may undergo changes in the future. To see the changes made so far, you can watch a short video [here](doc/img/SpotifyClone.gif), plus the rest of 
-the [images](doc/img)
+Please note that this project is still under development and may undergo changes in the future. To see the changes made so far, you can watch a short video [here](src/assets/scheenshots/SpotifyClone.mp4), plus the rest of 
+the [images](src/assets/scheenshots)
 
 ## Structure
 
@@ -25,7 +25,7 @@ This project is organized in a single main directory, `src`, which contains the 
 5. `Utils` #Contains helper functions that are used across different parts of the application.
 6. `Assets` #The Assets directory is used to store static files, such as images, fonts, or other resources required by the project.
 
-Before installation, make sure it is inside the source main directory.
+Before installation, make sure you are inside the source main directory.
 
 ## Installation
 

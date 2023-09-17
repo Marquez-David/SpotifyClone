@@ -7,52 +7,52 @@ import { albumStrings } from '../../utils/strings';
 
 import VerticalSliderSong from '../../components/VerticalSliderSong';
 import { getYear } from '../../utils/helpers';
-import { getAlbum, getPlaylist } from '../../services/SpotifyRequests';
+import { getAlbum } from '../../services/SpotifyRequests';
 
 /**
  * This custom hook fetches and manages data data through an asynchronous API call. 
- * It returns the album/playlist data and the corresponding function to update the state with the fetched album/playlist.
+ * It returns the album data and the corresponding function to update the state with the fetched album.
  * @returns 
  */
-const useData = (dataType, dataId) => {
-  const [data, setData] = useState(null);
+const useAlbum = (albumId) => {
+  const [album, setAlbum] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAlbumData = async () => {
       try {
-        const response = dataType === 'album' ? await getAlbum(dataId) : await getPlaylist(dataId);
-        setData(response);
+        const response = await getAlbum(albumId);
+        setAlbum(response);
       } catch (error) {
-        console.log('Error while calling API: ' + error);
+        console.log('Error while calling function getAlbum(): ' + error);
       }
     };
 
-    fetchData();
+    fetchAlbumData();
   }, []);
 
-  return { data, setData };
+  return { album, setAlbum };
 };
 
-const TracklistScreen = () => {
+const AlbumScreen = () => {
   const param = useRoute().params.data;
-  const { data } = useData(param.type, param.id);
+  const { album } = useAlbum(param.id);
 
   return (
     <ScrollView style={styles.background}>
       <View style={styles.headerView}>
         <Image style={styles.image} source={{ uri: param.images[0].url }} />
         <Text style={styles.titleText}>{param.name}</Text>
-        {param.type === 'album' && <Text style={styles.descriptionText}>
+        <Text style={styles.descriptionText}>
           {param.artists[0].name + ' • ' + getYear(param.release_date)}
-        </Text>}
+        </Text>
       </View>
       <Pressable onPress={() => console.log('random')} style={styles.randomPressable}>
         <Text style={styles.pressableText}>{albumStrings.randomMode}</Text>
       </Pressable>
       <View style={styles.songsView}>
-        {data?.map((item, index) => {
+        {album?.map((item, index) => {
           return (
-            <VerticalSliderSong key={index} item={item} type={param.type}/>
+            <VerticalSliderSong key={index} item={item} type={param.type} />
           )
         })}
       </View>
@@ -60,4 +60,4 @@ const TracklistScreen = () => {
   );
 };
 
-export default TracklistScreen;
+export default AlbumScreen;

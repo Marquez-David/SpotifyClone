@@ -16,8 +16,13 @@ import { authorize } from 'react-native-app-auth';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-async function onLogin(navigation) {
+/**
+ * Handles user login for the application.
+ * This function initiates the login process by authorizing the user using a specified authentication configuration.
+ * @param {object} navigation - The navigation object used to navigate the user to the main screen.
+ * @returns {void}
+ */
+const onLogin = async (navigation) => {
 	try {
 		const result = await authorize(spotifyAuthConfig);
 		if (result.accessToken) {
@@ -27,7 +32,6 @@ async function onLogin(navigation) {
 			await AsyncStorage.setItem('tokenExpirationDate', expirationDate.toString());
 			navigation.navigate('Main');
 		}
-		//return result;
 	} catch (error) {
 		console.log(JSON.stringify(error));
 	}

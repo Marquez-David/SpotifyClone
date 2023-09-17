@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { carouselStrings } from '../../utils/strings';
 import styles from './styles';
 
-import { parseCarouselData } from '../../utils/helpers';
+import { parseCarouselData, handleNavigation } from '../../utils/helpers';
 
 /**
  * Parse the items parameter and returns the corresponding title for each case
@@ -31,9 +31,10 @@ const HorizontalCarousel = ({ items, title }) => {
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <Pressable style={styles.imageView} onPress={() => navigation.navigate("Tracklist", { title: item.name, data: item })}>
+          <Pressable style={styles.imageView}
+            onPress={() => handleNavigation(parseCarouselData(item, title).data, navigation)}>
             <Image style={styles.carouselImage} source={{ uri: parseCarouselData(item, title).data.images[0].url }} />
-            {<Text style={styles.descriptionText}>{parseCarouselData(item, title).description}</Text>}
+            <Text style={styles.descriptionText}>{parseCarouselData(item, title).description}</Text>
           </Pressable>
         )}
       />

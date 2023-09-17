@@ -7,7 +7,7 @@ import { homeStrings, carouselStrings } from '../../utils/strings';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { getUserPlaylists, getArtists, getArtistAlbums, getPodcasts } from '../../services/SpotifyRequests';
+import { getUserPlaylists, getArtists, getArtistAlbums, getSavedPodcasts } from '../../services/SpotifyRequests';
 import HorizontalCarousel from '../../components/HorizontalCarousel';
 
 /**
@@ -73,7 +73,7 @@ const usePodcasts = () => {
   useEffect(() => {
     const fetchPodcastsData = async () => {
       try {
-        const podcasts = await getPodcasts();
+        const podcasts = await getSavedPodcasts();
         setPodcasts(podcasts);
       } catch (error) {
         console.log('Error while calling API: ' + error);

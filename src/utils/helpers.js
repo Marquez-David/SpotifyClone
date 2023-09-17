@@ -1,4 +1,11 @@
-import { carouselStrings, libraryStrings, verticalSliderStrings, emptyDataStrings } from "./strings";
+import {
+  carouselStrings,
+  libraryStrings,
+  verticalSliderStrings,
+  emptyDataStrings,
+  contentType,
+  podcastStrings,
+} from "./strings";
 
 /**
  * Converts milliseconds into hours and minutes format.
@@ -6,7 +13,7 @@ import { carouselStrings, libraryStrings, verticalSliderStrings, emptyDataString
  * @returns 
  */
 export function convertMilliseconds(milliseconds) {
-  const totalMinutes = Math.floor(milliseconds / 60000); // 1 minuto = 60000 milisegundos
+  const totalMinutes = Math.floor(milliseconds / 60000);
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
 
@@ -34,6 +41,17 @@ export function convertDate(inputDate) {
 }
 
 /**
+ * Returns the abbreviated day of the week for a given date.
+ * @param {Date|string} date - The date for which the day of the week is to be determined.
+ * @returns {string} The abbreviated day of the week (e.g., "Sun." for Sunday).
+ */
+export function dayOfWeek(date) {
+  const days = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
+  date = new Date(date);
+  return days[date.getDay()];
+}
+
+/**
  * Retrieves the year from a given date string in "YYYY-MM-DD" format.
  * @param {string} dateString
  * @returns {number}
@@ -58,6 +76,35 @@ export function extractArtistNames(artists) {
 }
 
 /**
+ * Shortens the given text by either truncating it to a specified number of words
+ * @param {string} text - The input text to be processed.
+ * @param {number} words - The maximum number of words to include in the shortened text.
+ * @returns {string} The shortened or original text based on word count.
+ */
+export function shortenText(text, words) {
+  return countWords(text) > words ? sliceText(text, words) + podcastStrings.etc : text;
+}
+
+/**
+ * Counts the number of words in the given text.
+ * @param {string} text - The input text to be processed.
+ * @returns {number} The total number of words in the input text.
+ */
+export function countWords(text) {
+  return text.split(' ').length;
+}
+
+/**
+ * Slices the given text into a substring containing a specified number of words.
+ * @param {string} text - The input text to be processed.
+ * @param {number} words - The maximum number of words to include in the sliced text.
+ * @returns {string} A substring containing the specified number of words from the input text.
+ */
+export function sliceText(text, words) {
+  return text.split(' ').slice(0, words).join(' ');
+}
+
+/**
  * Parse the data parameter and returns the corresponding object for each case
  * @param {*} data 
  * @param {*} carouselTitle 
@@ -67,10 +114,6 @@ export function parseCarouselData(data, carouselTitle) {
   const response = {};
 
   const carouselMappings = {
-    [carouselStrings.recentlyPlayed]: () => {
-      response.data = data.track.album;
-      response.description = data.track.name;
-    },
     [carouselStrings.yourPlaylists]: () => {
       response.data = data;
       response.description = data.name + carouselStrings.listComplementString;
@@ -169,6 +212,24 @@ export function parseEmptyData(subcategory) {
   };
 
   return textMappings[subcategory] || {};
+}
+
+/**
+ * Navigate to the corresponding screen based on the content type of the item.
+ * @param {object} item - The item to navigate to.
+ * @param {object} navigation - Navigation object provided by React Navigation.
+ * @returns {void} - Navigation value.
+ */
+export function handleNavigation(item, navigation) {
+  let nav;
+  if (item.type === contentType.album) {
+    nav = navigation.navigate("Album", { title: item.name, data: item });
+  } else if (item.type === contentType.playlist) {
+    nav = navigation.navigate("Playlist", { title: item.name, data: item });
+  } else if (item.type === contentType.podcast) {
+    nav = navigation.navigate("Podcast", { title: item.name, data: item });
+  }
+  return nav;
 }
 
 

@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Spotify API calls",
-    "dateExported": "2023-09-13T18:46:33.657Z",
+    "dateExported": "2023-09-17T14:14:07.781Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -272,6 +272,101 @@
             "auth": {
                 "type": "bearer",
                 "bearer": "BQCMo5XRy_tlIC-SR2P6D0-DLBE-_PiHzZCGI1bzsdcwYk6AkMzmrMjgVt_Fc07V3qXVir3lTXezags6N6zhph3DQQzcJPbqxbepB-K2BSLNaQG-eWsGltpvoxi2DOGqfI466huvq7qWx8S9319DHox_pp_hhujnF_uORRNadWcWODGm686wOSJzlU1y90fohoUZebJ7ApKud9hfwbGAYdjB7G_ukifAz2P4y_lu9ybtgPovqusNz1iP_DQdtTSsAVMbL6U7kkikI9euK-13rsMnYcjb-oTP9UfirE5Z6N5SBCLfx09K8yKo"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e281c7db-bcff-4fdb-bb46-c77238278154",
+            "colId": "35af2278-acdc-4671-b46e-2fb271cc6d56",
+            "containerId": "",
+            "name": "PUT save album",
+            "url": "https://api.spotify.com/v1/me/albums?ids=6z47bVcgLuBJEztgKrPqiE",
+            "method": "PUT",
+            "sortNum": 160000,
+            "created": "2023-09-14T19:16:04.846Z",
+            "modified": "2023-09-14T19:22:55.136Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "ids",
+                    "value": "6z47bVcgLuBJEztgKrPqiE",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "BQA61PORKy0qxzHhhHJK7pjT1fPaVDDBKxTt7uz17v9himm8Rq7Mwa2ABCQnj3uhp3s8k3SitP2zrfW6_I4hmqI2ZK1RTRVMvs-eeRFQySQ10U-DnKvPnPO-A6IfgIZMa55OHw2Mpp6rUd8LE3t6OHijwIVObA3bMm8tcDjItQtlKic3vN1lGTiVnGRon0N4lKZgSEECI6iTvBvyOR9QHJWzYcy2LsOQtUM9g4nFwgPwjNGNQhKH4_F1_2ibd3XU85Cbz0UM6EoY_bWWYzlrALlCS0aCdWPy0KyKq0toqbEOUMImeLnZd8h5"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f182bc14-61c8-4f07-a41d-5906dfaa18a4",
+            "colId": "35af2278-acdc-4671-b46e-2fb271cc6d56",
+            "containerId": "",
+            "name": "DELETE saved album",
+            "url": "https://api.spotify.com/v1/me/albums?ids=6z47bVcgLuBJEztgKrPqiE",
+            "method": "DELETE",
+            "sortNum": 170000,
+            "created": "2023-09-14T19:25:23.456Z",
+            "modified": "2023-09-14T19:27:02.946Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "ids",
+                    "value": "6z47bVcgLuBJEztgKrPqiE",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "BQA61PORKy0qxzHhhHJK7pjT1fPaVDDBKxTt7uz17v9himm8Rq7Mwa2ABCQnj3uhp3s8k3SitP2zrfW6_I4hmqI2ZK1RTRVMvs-eeRFQySQ10U-DnKvPnPO-A6IfgIZMa55OHw2Mpp6rUd8LE3t6OHijwIVObA3bMm8tcDjItQtlKic3vN1lGTiVnGRon0N4lKZgSEECI6iTvBvyOR9QHJWzYcy2LsOQtUM9g4nFwgPwjNGNQhKH4_F1_2ibd3XU85Cbz0UM6EoY_bWWYzlrALlCS0aCdWPy0KyKq0toqbEOUMImeLnZd8h5"
+            },
+            "tests": []
+        },
+        {
+            "_id": "70d24cd5-4fe8-497c-b7dc-4a9d12e9baef",
+            "colId": "35af2278-acdc-4671-b46e-2fb271cc6d56",
+            "containerId": "",
+            "name": "GET podcast",
+            "url": "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2023-09-15T19:55:16.335Z",
+            "modified": "2023-09-15T19:57:21.653Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "BQAVbJqM6h0gW50BnTXmNMX5nky6Grix4MttsSJt7xxkhQdm_5G4wm422FmBTgOJiYb_fWqoZ0xDJOt-fPbAGvx-LodeRUWkUZfFPY7QAILnEkS0CucryTkZqa1xWuUctLI69CiIpTJQqtLMu8zNPNqfWlz4hszH4ODWQqx3Dfl-53jUz4qGIarXzUiLHhgQLGuH7jOs33v_Eyty2mAloyza2nKIhjNhPUD7xX08-3ca-TZjzoN7qmnKtpTrWk6_-S5Tf0fFOB5uUktmqjBck7g4cVFZCHcRyK_5luqCt93yDlIToED4INm0"
+            },
+            "tests": []
+        },
+        {
+            "_id": "16153669-1932-4265-a855-0f9a912238bc",
+            "colId": "35af2278-acdc-4671-b46e-2fb271cc6d56",
+            "containerId": "",
+            "name": "GET podcast episodes",
+            "url": "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ/episodes?offset=0&limit=50",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2023-09-17T14:11:55.834Z",
+            "modified": "2023-09-17T14:12:59.252Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "offset",
+                    "value": "0",
+                    "isPath": false
+                },
+                {
+                    "name": "limit",
+                    "value": "50",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "BQBsrULrcUvD9CnGMvuiKsAh_3EtkxMFp1jne2ZvXbJZgkNAoqnD5L4kHaWzV01SxvU_6_WyqFNDza1zZkkpTrdJphNOOnx0jVL1xDfU9vgHl4zAEVVN2aHF8Hfk_pBzHgdBM5fZTu8KHrpy6XSsqb3QDr8FQKWxbWHzCGF5RSexi_nqKjxSVmmZsC5aWrptPRJ3A2UOe841iE14WS5Kyo9KA9TtHiYS0hoFM-5cKFZhOgl2YrgnFtjh5lxd8f81jDMay12sojvz3Re5lPK-vw0XaCFdmqP4hCGskhenn_5boSlMWOXe03tA"
             },
             "tests": []
         }

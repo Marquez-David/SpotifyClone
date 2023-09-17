@@ -69,28 +69,6 @@ export async function getArtistAlbums(artistId) {
 }
 
 /**
- * Retrieves a list of podcasts followed by the authenticated user.
- * @returns {Array} An array of user's followed podcast items.
- */
-export async function getPodcasts() {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/me/shows?limit=7`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.items;
-	} catch (error) {
-		console.log("Error while fetching user podcasts: " + error.message);
-	}
-}
-
-/**
  * Retrieves a list of saved albums for the authenticated user.
  * @returns {Array} An array of saved album items.
  */
@@ -235,8 +213,7 @@ export async function getPlaylist(id) {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `
-				https://api.spotify.com/v1/playlists/` + id,
+				url: `https://api.spotify.com/v1/playlists/` + id,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -259,8 +236,7 @@ export async function areAlbumsSaved(ids) {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `
-				https://api.spotify.com/v1/me/albums/contains?ids=` + ids,
+				url: `https://api.spotify.com/v1/me/albums/contains?ids=` + ids,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -283,8 +259,7 @@ export async function saveAlbum(id) {
 		const response = await axios(
 			{
 				method: "PUT",
-				url: `
-				https://api.spotify.com/v1/me/albums?ids=` + id,
+				url: `https://api.spotify.com/v1/me/albums?ids=` + id,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -307,8 +282,7 @@ export async function unsaveAlbum(id) {
 		const response = await axios(
 			{
 				method: "DELETE",
-				url: `
-				https://api.spotify.com/v1/me/albums?ids=` + id,
+				url: `https://api.spotify.com/v1/me/albums?ids=` + id,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -317,6 +291,29 @@ export async function unsaveAlbum(id) {
 		return response
 	} catch (error) {
 		console.log("Error while unsaving albums: " + error.message);
+	}
+}
+
+/**
+ * Fetches podcast episodes for the given podcast ID using the Spotify API.
+ * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
+ * @returns {Promise} A Promise that resolves with the response from the API if successful.
+ */
+export async function getPodcastEpisodes(podcastId) {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "GET",
+				url: `https://api.spotify.com/v1/shows/` + podcastId + `/episodes?limit=50`,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response.data.items;
+	} catch (error) {
+		console.log("Error while fetching podcast: " + error.message);
 	}
 }
 
