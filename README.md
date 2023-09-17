@@ -11,8 +11,8 @@
 
 ## Description
 This project is a clone of the popular music streaming application, Spotify. It has been developed using React Native, and the [Spotify API](https://developer.spotify.com/documentation/web-api) for music data. 
-Please note that this project is still under development and may undergo changes in the future. To see the changes made so far, you can watch a short video [here](src/assets/scheenshots/SpotifyClone.mp4), plus the rest of 
-the [images](src/assets/scheenshots)
+Please note that this project is still under development and may undergo changes in the future. To see the changes made so far, you can watch a short video [here](src/assets/screenshots/SpotifyClone.mp4), plus the rest of 
+the [images](src/assets/screenshots/)
 
 ## Structure
 
