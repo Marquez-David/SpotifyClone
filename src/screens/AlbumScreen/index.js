@@ -5,7 +5,7 @@ import styles from './styles';
 
 import { albumStrings } from '../../utils/strings';
 
-import VerticalSliderSong from '../../components/VerticalSliderSong';
+import AlbumSongCard from '../../components/AlbumSongCard';
 import { getYear } from '../../utils/helpers';
 import { getAlbum } from '../../services/SpotifyRequests';
 
@@ -52,7 +52,7 @@ const AlbumScreen = () => {
       <View style={styles.songsView}>
         {album?.map((item, index) => {
           return (
-            <VerticalSliderSong key={index} item={item} type={param.type} />
+            <AlbumSongCard key={index} item={item} />
           )
         })}
       </View>

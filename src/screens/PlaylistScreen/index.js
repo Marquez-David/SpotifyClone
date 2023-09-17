@@ -5,7 +5,7 @@ import styles from './styles';
 
 import { albumStrings } from '../../utils/strings';
 
-import VerticalSliderSong from '../../components/VerticalSliderSong';
+import PlaylistSongCard from '../../components/PlaylistSongCard';
 import { getPlaylist } from '../../services/SpotifyRequests';
 
 /**
@@ -48,7 +48,7 @@ const PlaylistScreen = () => {
       <View style={styles.songsView}>
         {playlist?.map((item, index) => {
           return (
-            <VerticalSliderSong key={index} item={item} type={param.type} />
+            <PlaylistSongCard key={index} item={item.track} />
           )
         })}
       </View>
