@@ -7,7 +7,7 @@ import styles from './styles';
 
 import { shortenText, convertMilliseconds, dayOfWeek } from "../../utils/helpers";
 
-const EpisodeCard = ({ data, podcastTitle }) => {
+const EpisodeCard = ({ data, podcastTitle }) => (
   <View style={styles.background}>
     <View style={styles.headerView}>
       <Image style={styles.image} source={{ uri: data.images[0].url }} />
@@ -48,6 +48,6 @@ const EpisodeCard = ({ data, podcastTitle }) => {
       </View>
     </View>
   </View>
-};
+);
 
 export default EpisodeCard;
