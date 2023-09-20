@@ -7,12 +7,19 @@
 - [Description](#description)
 - [Structure](#structure)
 - [Installation & Prerequisites](#installation)
-- [Contributing](#contribution)
 
 ## Description
 This project is a clone of the popular music streaming application, Spotify. It has been developed using React Native, and the [Spotify API](https://developer.spotify.com/documentation/web-api) for music data. 
 Please note that this project is still under development and may undergo changes in the future. To see the changes made so far, you can watch a short video [here](src/assets/screenshots/SpotifyClone.mp4), plus the rest of 
-the [images](src/assets/screenshots/). In addition, you can download the [APK](SpotifyClone.apk) for testing purposes.
+the images below. In addition, you can download the [APK](SpotifyClone.apk) for testing purposes.
+
+<br>
+
+| HomeScreen | SearchScreen | LibraryPlaylist | LibraryAlbum |
+|:---------------:|:---------------:|:---------------:|:---------------:|
+| ![HomeScreen](src/assets/screenshots/HomeScreen.png) | ![SearchScreen](src/assets/screenshots/SearchScreen.png) | ![YourLibraryScreen](src/assets/screenshots/YourLibraryScreen.png) | ![YourLibraryScreen3](src/assets/screenshots/YourLibraryScreen3.png) 
+| LibraryPodcast | AlbumScreen | PlaylistScreen | PodcastScreen |  
+![YourLibraryScreen2](src/assets/screenshots/YourLibraryScreen2.png) | ![AlbumScreen](src/assets/screenshots/AlbumScreen.png) | ![PlaylistScreen](src/assets/screenshots/PlaylistScreen.png) | ![PodcastScreen](src/assets/screenshots/PodcastScreen.png)
 
 ## Structure
 
@@ -67,16 +74,6 @@ yarn android
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ shortly provided you have set up your emulator/simulator correctly.
 
 This is one way to run your app — you can also run it directly from within Android Studio.
-
-## Contribution
- 
-Thank you for considering contributing to this project! Please read the **[Contributor Covenant](https://www.contributor-covenant.org/)** before submitting any contributions.
-
-### **Types of Contributions**
-
-We welcome contributions in the form of bug reports, feature requests, code contributions, and documentation improvements.
-
-### **How to Contribute**
 
 1. Fork the repository and create a new branch.
 2. Make your changes and ensure that they are well-documented and tested.
