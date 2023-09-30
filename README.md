@@ -72,9 +72,3 @@ yarn android
 ```
 
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio.
-
-1. Fork the repository and create a new branch.
-2. Make your changes and ensure that they are well-documented and tested.
-3. Submit a pull request to the main repository and include a detailed description of your changes.
