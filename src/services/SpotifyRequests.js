@@ -258,7 +258,7 @@ export const saveAlbum = async (id) => {
 	try {
 		const response = await axios(
 			{
-				method: "PUT",
+				method: "PUT", //update
 				url: `https://api.spotify.com/v1/me/albums?ids=` + id,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
@@ -314,6 +314,25 @@ export const getPodcastEpisodes = async (podcastId) => {
 		return response.data.items;
 	} catch (error) {
 		console.log("Error while fetching podcast: " + error.message);
+	}
+};
+
+export const getSpecificArtist = async (artistId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+
+		const response = await axios(
+			{
+				method: "GET",
+				url: `https://api.spotify.com/v1/artists/` + artistId,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response.data;
+	} catch (error) {
+		console.log("Error while fetching specific artist: " + error.message);
 	}
 };
 

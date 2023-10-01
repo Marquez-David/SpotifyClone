@@ -99,7 +99,7 @@ const Header = ({ params }) => {
           onPress={() => console.log('dots')}>
         </Entypo.Button>
       </View>
-    </View >
+    </View>
   )
 };
 

@@ -1,7 +1,8 @@
 export const contentType = {
   playlist: 'playlist',
   album: 'album',
-  podcast: 'show'
+  podcast: 'show',
+  artist: 'artist',
 };
 
 export const LoginStrings = {
@@ -91,4 +92,9 @@ export const podcastStrings = {
   following: "FOLLOWING",
   etc: '...',
   allEpisodes: "All episodes",
+};
+
+export const artistStrings = {
+  followers: " FOLLOWERS",
+  randomMode: "RANDOM MODE",
 };

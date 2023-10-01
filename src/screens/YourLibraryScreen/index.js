@@ -185,7 +185,7 @@ const YourLibraryScreen = () => {
   const { subcategory, setSubcategory } = useSubcategory(category);
 
   const data = parseDataForSubcategory(subcategory);
-  const isEmptyData = data && data.length < 1;
+  const isEmptyData = data?.length < 1;
 
   return (
     <View style={styles.background}>
@@ -210,16 +210,15 @@ const YourLibraryScreen = () => {
           setSubcategory={setSubcategory}
         />
       </View>
-      {data == undefined ?
-        null : !isEmptyData ? (
-          <VerticalSlider
-            category={category}
-            subcategory={subcategory}
-            data={data}
-          />
-        ) : (
-          <EmptyDataCard subcategory={subcategory} />
-        )}
+      {data && !isEmptyData ? (
+        <VerticalSlider
+          category={category}
+          subcategory={subcategory}
+          data={data}
+        />
+      ) : (
+        <EmptyDataCard subcategory={subcategory} />
+      )}
     </View>
   );
 };

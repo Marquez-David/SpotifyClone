@@ -8,6 +8,7 @@ import BottomTabNavigation from './BottomTabNavigation';
 import AlbumScreen from '../screens/AlbumScreen';
 import PlaylistScreen from '../screens/PlaylistScreen';
 import PodcastScreen from '../screens/PodcastScreen';
+import ArtistScreen from '../screens/ArtistScreen';
 import Header from '../components/Header';
 
 const Stack = createNativeStackNavigator();
@@ -50,6 +51,7 @@ export function NavigationLogin() {
             headerRight: () => (<Header params={route.params.data} />)
           })}
         />
+        <Stack.Screen name="Artist" component={ArtistScreen} options={() => ({ headerShown: false })} />
       </Stack.Navigator>
     </NavigationContainer>
   )
@@ -97,6 +99,7 @@ export function NavigationHome() {
             headerRight: () => (<Header params={route.params.data} />)
           })}
         />
+        <Stack.Screen name="Artist" component={ArtistScreen} options={() => ({ headerShown: false })} />
       </Stack.Navigator>
     </NavigationContainer>
   )

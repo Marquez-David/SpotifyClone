@@ -5,6 +5,7 @@ import {
   emptyDataStrings,
   contentType,
   podcastStrings,
+  artistStrings,
 } from "./strings";
 
 /**
@@ -103,6 +104,21 @@ export function countWords(text) {
 export function sliceText(text, words) {
   return text.split(' ').slice(0, words).join(' ');
 }
+
+/**
+ * Rounds a number depending on its size.
+ * @param {number} number - The number to be rounded and formatted.
+ * @returns {string} - The formatted number with the abbreviation and the additional string.
+ */
+export function roundNumber(number) {
+  let result = number;
+  if (number >= 1000000) {
+    result = (number / 1000000).toFixed(1) + ' M';
+  } else if (number >= 1000) {
+    result = (number / 1000).toFixed(1) + ' K';
+  }
+  return result + artistStrings.followers;
+};
 
 /**
  * Parse the data parameter and returns the corresponding object for each case
@@ -228,6 +244,8 @@ export function handleNavigation(item, navigation) {
     nav = navigation.navigate("Playlist", { title: item.name, data: item });
   } else if (item.type === contentType.podcast) {
     nav = navigation.navigate("Podcast", { title: item.name, data: item });
+  } else if (item.type === contentType.artist) {
+    nav = navigation.navigate("Artist", { title: item.name, data: item });
   }
   return nav;
 }
