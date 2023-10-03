@@ -56,6 +56,36 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginLeft: 7,
   },
+  /**
+   * Text style for the carousel title.
+   * Represents the text style for the title with the following properties:
+   * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
+   * - fontSize: 25 (font size in points)
+   * - fontWeight: 'bold' (bold font weight)
+   * - textAlign: 'left' (text alignment to the left)
+   * - marginBottom: 10 (bottom margin spacing)
+   * - marginLeft: 10 (left margin spacing)
+  */
+  titleText: {
+    color: colors.spotifyWhite,
+    fontSize: 25,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    marginBottom: 10,
+    marginLeft: 10,
+  },
+  /**
+   * View style for a single carousel.
+   * Represents a carousel view with the following properties:
+   * - flex: 1 (flexible size to fit available space)
+   * - alignSelf: 'flex-start' (align items to the start of the flex container)
+   * - marginLeft: 10 (left margin spacing)
+  */
+  carouselView: {
+    flex: 1,
+    alignSelf: 'flex-start',
+    marginLeft: 10,
+  },
 });
 
 export default styles;

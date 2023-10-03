@@ -8,9 +8,8 @@ import { extractArtistNames } from '../../utils/helpers';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const PlaylistSongCard = ({ item }) => (
+const StandardSongCard = ({ item }) => (
   <View style={styles.songView}>
-    <Image style={styles.image} source={{ uri: item.album.images[0].url }} />
     <View style={styles.titleView}>
       <Text style={styles.titleText}>{item.name}</Text>
       <View style={styles.descriptionView}>
@@ -32,4 +31,4 @@ const PlaylistSongCard = ({ item }) => (
   </View>
 );
 
-export default PlaylistSongCard;
+export default StandardSongCard;

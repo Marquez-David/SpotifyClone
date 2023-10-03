@@ -26,6 +26,7 @@ export const carouselStrings = {
   yourPlaylists: "Your playlists",
   findOutMoreAbout: "Find out more about ",
   yourPodcasts: "Your podcasts",
+  relatedArtists: "Related artists",
 
   listComplementString: " • List",
   albumComplementString: " • Album",
@@ -97,5 +98,6 @@ export const podcastStrings = {
 export const artistStrings = {
   followers: " FOLLOWERS",
   randomMode: "RANDOM MODE",
-  popularSongs: "Popular Songs",
+  popularSongs: "Popular songs",
+  relatedArtists: "Related artists",
 };

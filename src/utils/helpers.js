@@ -142,6 +142,10 @@ export function parseCarouselData(data, carouselTitle) {
       response.data = data.show;
       response.description = data.show.name + '\n' + carouselStrings.podcastComplementsString + data.show.publisher;
     },
+    [carouselStrings.relatedArtists]: () => {
+      response.data = data;
+      response.description = data.name;
+    },
   };
 
   const mappingFunction = carouselMappings[carouselTitle];

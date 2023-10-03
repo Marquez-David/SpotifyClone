@@ -30,6 +30,16 @@ const styles = StyleSheet.create({
 		width: 150,
 	},
 	/**
+	 * Specific view style for each artists image in the carousel.
+	 * Represents an image view with the following properties:
+	 * - flex: 1 (flexible size to fit available space)
+	 * - marginLeft: 8 (left margin spacing)
+	*/
+	artistImageView: {
+		flex: 1,
+		marginLeft: 8,
+	},
+	/**
 	 * Image style for the carousel.
 	 * Represents an image with the following properties:
 	 * - height: 150 (height in points)
@@ -40,20 +50,16 @@ const styles = StyleSheet.create({
 		width: 150,
 	},
 	/**
-	 * Text style for the carousel title.
-	 * Represents the text style for the title with the following properties:
-	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
-	 * - fontSize: 25 (font size in points)
-	 * - fontWeight: 'bold' (bold font weight)
-	 * - textAlign: 'left' (text alignment to the left)
-	 * - marginBottom: 10 (bottom margin spacing)
+	 * Artists Image style for the carousel.
+	 * Represents an image with the following properties:
+	 * - height: 130 (height in points)
+	 * - width: 130 (width in points)
+	 * - borderRadius: 100 (border radius of 100 units)
 	*/
-	titleText: {
-		color: colors.spotifyWhite,
-		fontSize: 25,
-		fontWeight: 'bold',
-		textAlign: 'left',
-		marginBottom: 10,
+	carouselArtistImage: {
+		height: 130,
+		width: 130,
+		borderRadius: 100,
 	},
 	/**
 	 * Text style for image descriptions.
@@ -66,6 +72,22 @@ const styles = StyleSheet.create({
 		color: colors.spotifyWhite,
 		fontFamily: 'GothamMedium',
 		fontSize: 13,
+	},
+	/**
+	 * Text style for image descriptions.
+	 * Represents the text style for image descriptions with the following properties:
+	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
+	 * - fontFamily: 'GothamMedium' (custom family font)
+	 * - fontSize: 13 (font size in points)
+	 * - textAlign: 'center' (centered text alignment)
+	 * - marginVertical: 5 (vertical margin of 5 units)
+	*/
+	artistDescriptionText: {
+		color: colors.spotifyWhite,
+		fontFamily: 'GothamMedium',
+		fontSize: 13,
+		textAlign: 'center',
+		marginVertical: 5,
 	},
 });
 

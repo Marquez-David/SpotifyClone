@@ -9,12 +9,14 @@ const styles = StyleSheet.create({
    * - marginTop: 10 (top margin spacing)
    * - marginLeft: 15 (left margin spacing)
    * - flexDirection: 'row' (horizontal layout direction)
+   * - alignItems: 'center' (align items vertically centered)
   */
   songView: {
     height: 50,
     marginTop: 10,
     marginLeft: 15,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   /**
    * Style for the song image.
@@ -80,7 +82,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     position: 'absolute',
     right: 1,
-    marginTop: 5,
   },
 });
 

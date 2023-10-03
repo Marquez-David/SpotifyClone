@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   /**
-   * Popular Songs Text style.
+   * Popular Songs Title style.
    * Represents the style for the text within the popular songs view with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - textAlign: 'center' (centered text alignment)
@@ -115,12 +115,23 @@ const styles = StyleSheet.create({
    * - fontSize: 15 (font size of 15 units)
    * - marginTop: 10 (top margin of 10 units)
   */
-  popularSongsText: {
+  popularSongsTitle: {
     color: colors.spotifyWhite,
     textAlign: 'center',
     fontFamily: 'GothamBold',
     fontSize: 15,
     marginTop: 10,
+  },
+
+  relatedArtistView: {
+    flexDirection: 'column',
+  },
+  relatedArtistTitle: {
+    color: colors.spotifyWhite,
+    textAlign: 'center',
+    fontFamily: 'GothamBold',
+    fontSize: 15,
+    marginVertical: 10,
   },
 });
 

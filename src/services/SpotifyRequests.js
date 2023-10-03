@@ -325,7 +325,6 @@ export const getPodcastEpisodes = async (podcastId) => {
 export const getArtistTopTracks = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
-
 		const response = await axios(
 			{
 				method: "GET",
@@ -337,7 +336,30 @@ export const getArtistTopTracks = async (artistId) => {
 		);
 		return response.data.tracks;
 	} catch (error) {
-		console.log("Error while fetching specific artist: " + error.message);
+		console.log("Error while fetching artist top tracks: " + error.message);
+	}
+};
+
+/**
+ * Fetches related artists for a specific artist based on the provided artist ID.
+ * @param {string} artistId - The ID of the artist for which related artists are to be fetched.
+ * @returns {Object} An object containing information about related artists.
+ */
+export const getRelatedArtists = async (artistId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "GET",
+				url: `https://api.spotify.com/v1/artists/` + artistId + `/related-artists`,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response.data.artists;
+	} catch (error) {
+		console.log("Error while fetching related artists: " + error.message);
 	}
 };
 

@@ -112,6 +112,21 @@ const useMessage = () => {
   return { message };
 };
 
+/**
+ * Parse the items parameter and returns the corresponding title for each case
+ * @param {*} items 
+ * @param {*} title 
+ * @returns 
+ */
+const parseTitle = (items, title) => {
+  var newTitle = title;
+  if (title === carouselStrings.findOutMoreAbout) {
+    newTitle += items?.[1].artists[0].name;
+  }
+
+  return newTitle;
+};
+
 const HomeScreen = () => {
   const { playlists } = usePlaylists();
   const { artistAlbums } = useArtistsAlbums();
@@ -147,11 +162,12 @@ const HomeScreen = () => {
         </Ionicons.Button>
       </View>
       <View style={styles.flatListContainer}>
-        {data.map((items, index) => {
-          return (
-            <HorizontalCarousel key={index} items={items} title={horizontalCarouselStrings[index]} />
-          );
-        })}
+        {data?.map((items, index) => (
+          <View style={styles.carouselView} key={index}>
+            <Text style={styles.titleText}>{parseTitle(items, horizontalCarouselStrings[index])}</Text>
+            <HorizontalCarousel items={items} title={horizontalCarouselStrings[index]} />
+          </View>
+        ))}
       </View>
     </ScrollView >
   );
