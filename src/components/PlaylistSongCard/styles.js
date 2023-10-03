@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     position: 'absolute',
     right: 1,
+    marginTop: 5,
   },
 });
 

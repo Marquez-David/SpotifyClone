@@ -317,20 +317,25 @@ export const getPodcastEpisodes = async (podcastId) => {
 	}
 };
 
-export const getSpecificArtist = async (artistId) => {
+/**
+ * Fetches the top tracks of a specific artist based on the provided artist ID and country code.
+ * @param {string} artistId - The ID of the artist for which top tracks are to be fetched.
+ * @returns {Array} An array containing the top tracks of the specified artist.
+ */
+export const getArtistTopTracks = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
 
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/artists/` + artistId,
+				url: `https://api.spotify.com/v1/artists/` + artistId + `/top-tracks?country=ES`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
 			}
 		);
-		return response.data;
+		return response.data.tracks;
 	} catch (error) {
 		console.log("Error while fetching specific artist: " + error.message);
 	}

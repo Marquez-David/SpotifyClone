@@ -90,11 +90,12 @@ export const albumStrings = {
 export const podcastStrings = {
   follow: "FOLLOW",
   following: "FOLLOWING",
-  etc: '...',
+  etc: "...",
   allEpisodes: "All episodes",
 };
 
 export const artistStrings = {
   followers: " FOLLOWERS",
   randomMode: "RANDOM MODE",
+  popularSongs: "Popular Songs",
 };
