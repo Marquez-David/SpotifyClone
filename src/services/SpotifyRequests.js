@@ -363,4 +363,73 @@ export const getRelatedArtists = async (artistId) => {
 	}
 };
 
+/**
+ * Checks if the current user follows a specific artist based on the provided artist ID.
+ * @param {string} artistId - The ID of the artist to be checked for follow status.
+ * @returns {boolean} `true` if the user follows the artist, `false` otherwise.
+ */
+export const userFollowArtist = async (artistId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "GET",
+				url: `https://api.spotify.com/v1/me/following/contains?type=artist&ids=` + artistId,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response.data;
+	} catch (error) {
+		console.log("Error while checking if user follows artists: " + error.message);
+	}
+};
+
+/**
+ * Follows a specific artist on Spotify based on the provided artist ID.
+ * @param {string} artistId - The ID of the artist to be followed.
+ * @returns {boolean} `true` if the artist is successfully followed, `false` otherwise.
+ */
+export const followArtist = async (artistId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "PUT",
+				url: `https://api.spotify.com/v1/me/following?type=artist&ids=` + artistId,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response.data;
+	} catch (error) {
+		console.log("Error while following artist: " + error.message);
+	}
+};
+
+/**
+ * Unfollows a specific artist on Spotify based on the provided artist ID.
+ * @param {string} artistId - The ID of the artist to be unfollowed.
+ * @returns {boolean} `true` if the artist is successfully unfollowed, `false` otherwise.
+ */
+export const unfollowArtist = async (artistId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios(
+			{
+				method: "DELETE",
+				url: `https://api.spotify.com/v1/me/following?type=artist&ids=` + artistId,
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		return response.data;
+	} catch (error) {
+		console.log("Error while unfollowing artist: " + error.message);
+	}
+};
+
 

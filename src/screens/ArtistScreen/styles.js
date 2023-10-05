@@ -122,10 +122,23 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginTop: 10,
   },
-
+  /**
+   * Related Artist View style.
+   * Represents the style for a view containing related artists with the following properties:
+   * - flexDirection: 'column' (vertical layout with children)
+  */
   relatedArtistView: {
     flexDirection: 'column',
   },
+  /**
+   * Related Artist Title style.
+   * Represents the style for the title text within the related artist view with the following properties:
+   * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
+   * - textAlign: 'center' (centered text alignment)
+   * - fontFamily: 'GothamBold' (font family 'GothamBold')
+   * - fontSize: 15 (font size of 15 units)
+   * - marginVertical: 10 (vertical margin of 10 units)
+  */
   relatedArtistTitle: {
     color: colors.spotifyWhite,
     textAlign: 'center',

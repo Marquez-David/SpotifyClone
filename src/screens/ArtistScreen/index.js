@@ -70,7 +70,7 @@ const ArtistScreen = () => {
   return (
     <ScrollView style={styles.background}>
       <View style={styles.imageView}>
-        <ArtistHeader />
+        <ArtistHeader artist={param} />
         <Image style={styles.image} source={{ uri: param.images[0].url }} />
         <Text style={styles.title}>{param.name}</Text>
         <Text style={styles.followers}>{roundNumber(param.followers.total)}</Text>

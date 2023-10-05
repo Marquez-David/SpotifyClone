@@ -79,14 +79,14 @@ function BottomTabNavigation() {
           tabBarIcon: ({ focused }) => isIconFocused(focused, "library", "library-outline", "ionicons", "ionicons")
         }}
       />
-      <Tab.Screen
+      {/*<Tab.Screen
         name="Premium"
         component={PremiumScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => isIconFocused(focused, "spotify", "spotify", "fontisto", "fontisto")
         }}
-      />
+      />*/}
     </Tab.Navigator>
   );
 }
