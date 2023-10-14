@@ -80,9 +80,9 @@ const ArtistScreen = () => {
       </Pressable>
       <View style={styles.popularSongsView}>
         <Text style={styles.popularSongsTitle}>{artistStrings.popularSongs}</Text>
-        {topTracks?.slice(0, 5).map((track, index) => {
-          return <ImageSongCard item={track} key={index} />
-        })}
+        {topTracks?.slice(0, 5).map((item) => (
+          <ImageSongCard key={item.id} item={item} />
+        ))}
       </View>
       <View style={styles.relatedArtistView}>
         <Text style={styles.relatedArtistTitle}>{artistStrings.relatedArtists}</Text>

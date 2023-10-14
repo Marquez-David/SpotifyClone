@@ -46,11 +46,9 @@ const PlaylistScreen = () => {
         <Text style={styles.pressableText}>{albumStrings.randomMode}</Text>
       </Pressable>
       <View style={styles.songsView}>
-        {playlist?.map((item, index) => {
-          return (
-            <ImageSongCard key={index} item={item.track} />
-          )
-        })}
+        {playlist?.map((item, index) => (
+          <ImageSongCard key={index} item={item.track} />
+        ))}
       </View>
     </ScrollView>
   );

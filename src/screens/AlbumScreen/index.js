@@ -50,11 +50,9 @@ const AlbumScreen = () => {
         <Text style={styles.pressableText}>{albumStrings.randomMode}</Text>
       </Pressable>
       <View style={styles.songsView}>
-        {album?.map((item, index) => {
-          return (
-            <StandardSongCard key={index} item={item} />
-          )
-        })}
+        {album?.map((item) => (
+          <StandardSongCard key={item.id} item={item} />
+        ))}
       </View>
     </ScrollView>
   );

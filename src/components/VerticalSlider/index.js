@@ -82,9 +82,10 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 				</View>
 			)}
 
-			{items.map((item, index) => {
+			{items.map((item) => {
+				const { data, description } = parseLibraryData(item, subcategory);
 				return (
-					<VerticalSliderItem key={index} item={item} subcategory={subcategory} />
+					<VerticalSliderItem key={data.id} data={data} subcategory={subcategory} description={description} />
 				);
 			})}
 		</ScrollView>

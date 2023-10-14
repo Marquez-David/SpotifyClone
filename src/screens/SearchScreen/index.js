@@ -50,7 +50,7 @@ const SearchScreen = () => {
       </View>
       <View style={styles.cardContainer}>
         {categories?.map((item, index) => (
-          <View key={index} style={styles.cardView}>
+          <View key={item.id} style={styles.cardView}>
             <Image source={{ uri: item.icons[0].url }} style={styles.cardImage} />
             <Text style={styles.categoriesTitleText}>{item.name}</Text>
           </View>

@@ -71,11 +71,9 @@ const PodcastScreen = () => {
         <Text style={styles.episodesHeaderText}>{podcastStrings.allEpisodes}</Text>
       </View>
       <View style={styles.songsView}>
-        {podcastEpisodes?.map((item, index) => {
-          return (
-            <EpisodeCard key={index} data={item} podcastTitle={param.type} />
-          )
-        })}
+        {podcastEpisodes?.map((item) => (
+          <EpisodeCard key={item.id} data={item} podcastTitle={param.type} />
+        ))}
       </View>
     </ScrollView>
   );

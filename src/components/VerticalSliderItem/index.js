@@ -12,12 +12,11 @@ import { libraryStrings } from '../../utils/strings';
  * @param {*} param0 
  * @returns 
  */
-const VerticalSliderItem = ({ item, subcategory }) => {
+const VerticalSliderItem = ({ data, subcategory, description }) => {
   const navigation = useNavigation();
-  const { data, description } = parseLibraryData(item, subcategory);
 
   return (
-    <Pressable key={data.id} style={styles.imageView} onPress={() => handleNavigation(data, navigation)}>
+    <Pressable style={styles.imageView} onPress={() => handleNavigation(data, navigation)}>
       <Image
         style={subcategory !== libraryStrings.artists ? styles.carouselImage : styles.carouselArtistsImage}
         source={{ uri: data.images[0].url }}
