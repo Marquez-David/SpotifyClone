@@ -189,7 +189,7 @@ export const getAlbum = async (id) => {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/albums/` + id,
+				url: `https://api.spotify.com/v1/albums/${id}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -213,7 +213,7 @@ export const getPlaylist = async (id) => {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/playlists/` + id,
+				url: `https://api.spotify.com/v1/playlists/${id}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -236,7 +236,7 @@ export const areAlbumsSaved = async (ids) => {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/me/albums/contains?ids=` + ids,
+				url: `https://api.spotify.com/v1/me/albums/contains?ids=${ids}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -259,7 +259,7 @@ export const saveAlbum = async (id) => {
 		const response = await axios(
 			{
 				method: "PUT", //update
-				url: `https://api.spotify.com/v1/me/albums?ids=` + id,
+				url: `https://api.spotify.com/v1/me/albums?ids=${id}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -282,7 +282,7 @@ export const unsaveAlbum = async (id) => {
 		const response = await axios(
 			{
 				method: "DELETE",
-				url: `https://api.spotify.com/v1/me/albums?ids=` + id,
+				url: `https://api.spotify.com/v1/me/albums?ids=${id}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -299,13 +299,13 @@ export const unsaveAlbum = async (id) => {
  * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
  * @returns {Promise} A Promise that resolves with the response from the API if successful.
  */
-export const getPodcastEpisodes = async (podcastId) => {
+export const getPodcastEpisodes = async (podcastId, offset) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/shows/` + podcastId + `/episodes?limit=50`,
+				url: `https://api.spotify.com/v1/shows/${podcastId}/episodes?limit=5&offset=${offset}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -328,7 +328,7 @@ export const getArtistTopTracks = async (artistId) => {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/artists/` + artistId + `/top-tracks?country=ES`,
+				url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=ES`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -351,7 +351,7 @@ export const getRelatedArtists = async (artistId) => {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/artists/` + artistId + `/related-artists`,
+				url: `https://api.spotify.com/v1/artists/${artistId}/related-artists`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -374,7 +374,7 @@ export const userFollowArtist = async (artistId) => {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/me/following/contains?type=artist&ids=` + artistId,
+				url: `https://api.spotify.com/v1/me/following/contains?type=artist&ids=${artistId}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -397,7 +397,7 @@ export const followArtist = async (artistId) => {
 		const response = await axios(
 			{
 				method: "PUT",
-				url: `https://api.spotify.com/v1/me/following?type=artist&ids=` + artistId,
+				url: `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
@@ -420,7 +420,7 @@ export const unfollowArtist = async (artistId) => {
 		const response = await axios(
 			{
 				method: "DELETE",
-				url: `https://api.spotify.com/v1/me/following?type=artist&ids=` + artistId,
+				url: `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},

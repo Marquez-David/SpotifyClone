@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View, Text, Pressable, Image } from 'react-native';
+import { ScrollView, View, Text, Pressable, Image, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -25,25 +25,71 @@ const usePodcastEpisodes = (podcastId) => {
   useEffect(() => {
     const fetchPodcastEpisodes = async () => {
       try {
-        const response = await getPodcastEpisodes(podcastId);
+        const response = await getPodcastEpisodes(podcastId, 0);
         setPodcastEpisodes(response);
       } catch (error) {
         console.log('Error while calling function fetchPodcastEpisodes(): ' + error);
       }
     };
-
-    fetchPodcastEpisodes(podcastId);
+    fetchPodcastEpisodes();
   }, []);
 
-  return { podcastEpisodes };
+  return { podcastEpisodes, setPodcastEpisodes };
+};
+
+/**
+ * A custom hook for managing scroll-based offset and loading more podcast episodes.
+ * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
+ * @param {Array} podcastEpisodes - The current list of podcast episodes.
+ * @param {function} setPodcastEpisodes - A function to update the list of podcast episodes.
+ * @param {boolean} loading - A boolean indicating whether data is currently being loaded.
+ * @param {function} setLoading - A function to update the loading status.
+ * @returns {Object} An object containing a function to handle scrolling events.
+ */
+const useOffset = (podcastId, podcastEpisodes, setPodcastEpisodes, loading, setLoading) => {
+  const [offset, setOffset] = useState(0);
+
+  const handleScroll = (event) => {
+    if (loading) return;
+    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
+
+    const maxScroll = Math.round(contentSize.height - layoutMeasurement.height);
+    const currentScroll = Math.round(contentOffset.y);
+    if (currentScroll >= maxScroll - currentScroll) {
+      setLoading(true);
+      setOffset(offset + 5)
+    }
+  };
+
+  useEffect(() => {
+    const fetchNewPodcastEpisodes = async () => {
+      try {
+        if (offset > 0) {
+          const response = await getPodcastEpisodes(podcastId, offset);
+          setPodcastEpisodes(podcastEpisodes.concat(response));
+        }
+      } catch (error) {
+        console.log('Error while calling function fetchPodcastEpisodes(): ' + error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNewPodcastEpisodes();
+  }, [offset]);
+
+  return { handleScroll };
 };
 
 const PodcastScreen = () => {
   const param = useRoute().params.data;
-  const { podcastEpisodes } = usePodcastEpisodes(param.id);
+
+  const [loading, setLoading] = useState(false);
+  const { podcastEpisodes, setPodcastEpisodes } = usePodcastEpisodes(param.id);
+  const { handleScroll } = useOffset(param.id, podcastEpisodes, setPodcastEpisodes, loading, setLoading);
 
   return (
-    <ScrollView style={styles.background}>
+    <ScrollView onScroll={handleScroll} scrollEventThrottle={16} style={styles.background} >
       <View style={styles.headerView}>
         <Image style={styles.image} source={{ uri: param.images[0].url }} />
         <View style={styles.headerTextView}>
