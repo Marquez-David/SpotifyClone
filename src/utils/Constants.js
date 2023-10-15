@@ -1,3 +1,6 @@
+/**
+ * Configuration object for Spotify authentication.
+ */
 export const spotifyAuthConfig = {
   clientId: '7daaab95ed8a4075b87484c630c8d509',
   clientSecret: '06b3901cbe974827af18f980fccc52f2',
@@ -20,4 +23,13 @@ export const spotifyAuthConfig = {
     authorizationEndpoint: 'https://accounts.spotify.com/authorize',
     tokenEndpoint: 'https://accounts.spotify.com/api/token',
   },
+};
+
+/**
+ * An object that defines offset values for various categories, 
+ * used for managing infinite scrolling.
+ */
+export const offsets = {
+  playlists: 8,
+  podcasts: 5,
 };

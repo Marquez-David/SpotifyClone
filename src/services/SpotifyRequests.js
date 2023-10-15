@@ -207,19 +207,19 @@ export const getAlbum = async (id) => {
  * @param {string} id - The ID of the playlist to fetch.
  * @returns {Array} An array of playlist track items.
  */
-export const getPlaylist = async (id) => {
+export const getPlaylist = async (id, offset) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
 		const response = await axios(
 			{
 				method: "GET",
-				url: `https://api.spotify.com/v1/playlists/${id}`,
+				url: `https://api.spotify.com/v1/playlists/${id}/tracks?limit=8&offset=${offset}`,
 				headers: {
 					Authorization: `Bearer ${accessToken}`,
 				},
 			}
 		);
-		return response.data.tracks.items;
+		return response.data.items;
 	} catch (error) {
 		console.log("Error while fetching a single playlist: " + error.message);
 	}

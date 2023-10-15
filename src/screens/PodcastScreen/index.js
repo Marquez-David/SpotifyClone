@@ -7,7 +7,7 @@ import colors from '../../utils/colors';
 import styles from './styles';
 
 import { podcastStrings } from '../../utils/strings';
-
+import { offsets } from '../../utils/constants';
 import { shortenText } from '../../utils/helpers';
 
 import { getPodcastEpisodes } from '../../services/SpotifyRequests';
@@ -19,34 +19,33 @@ import EpisodeCard from '../../components/EpisodeCard';
  * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
  * @returns {Object} An object containing the podcast episodes as its property.
  */
-const usePodcastEpisodes = (podcastId) => {
+const usePodcastEpisodes = (podcastId, offset, setLoading) => {
   const [podcastEpisodes, setPodcastEpisodes] = useState(null);
 
   useEffect(() => {
     const fetchPodcastEpisodes = async () => {
       try {
-        const response = await getPodcastEpisodes(podcastId, 0);
-        setPodcastEpisodes(response);
+        const response = await getPodcastEpisodes(podcastId, offset);
+        offset > 0 ? setPodcastEpisodes(podcastEpisodes.concat(response)) : setPodcastEpisodes(response);
       } catch (error) {
         console.log('Error while calling function fetchPodcastEpisodes(): ' + error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchPodcastEpisodes();
-  }, []);
+  }, [offset]);
 
   return { podcastEpisodes, setPodcastEpisodes };
 };
 
 /**
- * A custom hook for managing scroll-based offset and loading more podcast episodes.
- * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
- * @param {Array} podcastEpisodes - The current list of podcast episodes.
- * @param {function} setPodcastEpisodes - A function to update the list of podcast episodes.
+ * A custom hook for managing scroll-based offset and loading more data.
  * @param {boolean} loading - A boolean indicating whether data is currently being loaded.
  * @param {function} setLoading - A function to update the loading status.
- * @returns {Object} An object containing a function to handle scrolling events.
+ * @returns {Object} An object containing the current offset and a function to handle scrolling events.
  */
-const useOffset = (podcastId, podcastEpisodes, setPodcastEpisodes, loading, setLoading) => {
+const useOffset = (loading, setLoading) => {
   const [offset, setOffset] = useState(0);
 
   const handleScroll = (event) => {
@@ -57,36 +56,19 @@ const useOffset = (podcastId, podcastEpisodes, setPodcastEpisodes, loading, setL
     const currentScroll = Math.round(contentOffset.y);
     if (currentScroll >= maxScroll - currentScroll) {
       setLoading(true);
-      setOffset(offset + 5)
+      setOffset((prev) => prev + offsets.podcasts)
     }
   };
 
-  useEffect(() => {
-    const fetchNewPodcastEpisodes = async () => {
-      try {
-        if (offset > 0) {
-          const response = await getPodcastEpisodes(podcastId, offset);
-          setPodcastEpisodes(podcastEpisodes.concat(response));
-        }
-      } catch (error) {
-        console.log('Error while calling function fetchPodcastEpisodes(): ' + error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNewPodcastEpisodes();
-  }, [offset]);
-
-  return { handleScroll };
+  return { offset, handleScroll };
 };
 
 const PodcastScreen = () => {
   const param = useRoute().params.data;
 
   const [loading, setLoading] = useState(false);
-  const { podcastEpisodes, setPodcastEpisodes } = usePodcastEpisodes(param.id);
-  const { handleScroll } = useOffset(param.id, podcastEpisodes, setPodcastEpisodes, loading, setLoading);
+  const { offset, handleScroll } = useOffset(loading, setLoading);
+  const { podcastEpisodes } = usePodcastEpisodes(param.id, offset, setLoading);
 
   return (
     <ScrollView onScroll={handleScroll} scrollEventThrottle={16} style={styles.background} >
