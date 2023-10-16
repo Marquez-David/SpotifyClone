@@ -51,18 +51,27 @@ const styles = StyleSheet.create({
 	textView: {
 		flexDirection: 'column',
 		alignSelf: 'center',
+		//width: '100%',
 	},
 	/**
 	 * Text style for the 'playlistNameText' component.
 	 * Represents the text style for the playlist name with the following properties:
 	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
 	 * - marginLeft: 7 (left margin spacing)
-	 * - fontWeight: 'bold' (bold font weight)
+	 * - fontFamily: 'GothamBold' (font family 'GothamBold')
 	*/
 	playlistNameText: {
 		color: colors.spotifyWhite,
 		marginLeft: 7,
-		fontWeight: 'bold',
+		fontFamily: 'GothamBold',
+	},
+	/**
+	 * Vertical Slider Item View style.
+	 * Represents the style for an item within a vertical slider with the following properties:
+	 * - marginVertical: 7 (vertical margin of 7 units)
+	*/
+	verticalSliderItemView: {
+		marginVertical: 7,
 	},
 });
 

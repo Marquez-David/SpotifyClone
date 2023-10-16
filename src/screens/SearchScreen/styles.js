@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
    * Represents the style for the title text with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 30 (font size of 30 units)
-   * - fontWeight: 'bold' (text weight set to bold)
+   * - fontFamily: 'GothamBold' (font family 'GothamBold')
   */
   titleText: {
     color: colors.spotifyWhite,
     fontSize: 30,
-    fontWeight: 'bold',
+    fontFamily: 'GothamBold',
   },
   /**
    * Search bar view style.
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
    * - alignSelf: 'center' (horizontally center the element within its containing space)
    * - bottom: 5 (set 5 units of space from the bottom edge)
    * - fontSize: 17 (set font size to 17 units)
-   * - fontWeight: 'bold' (text weight set to bold)
+   * - fontFamily: 'GothamBold' (font family 'GothamBold')
   */
   categoriesTitleText: {
     color: colors.spotifyWhite,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     bottom: 5,
     fontSize: 17,
-    fontWeight: 'bold',
+    fontFamily: 'GothamBold',
   },
 });
 

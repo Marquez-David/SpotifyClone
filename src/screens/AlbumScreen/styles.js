@@ -42,13 +42,13 @@ const styles = StyleSheet.create({
    * - marginTop: 10 (top margin spacing)
    * - fontSize: 20 (font size in points)
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
-   * - fontWeight: 'bold' (bold font weight)
+   * - fontFamily: 'GothamBold' (font family 'GothamBold')
   */
   titleText: {
     marginTop: 10,
     fontSize: 20,
     color: colors.spotifyWhite,
-    fontWeight: "bold",
+    fontFamily: 'GothamBold',
   },
   /**
    * Description text style.

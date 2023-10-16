@@ -8,14 +8,12 @@ const styles = StyleSheet.create({
 	 * - flex: 1 (flexible size to fit available space)
 	 * - height: 66 (height in points)
 	 * - width: '85%' (width spanning the entire available space)
-	 * - marginTop: 17 (vertical margin spacing)
 	 * - flexDirection: 'row' (horizontal layout direction)
 	*/
 	imageView: {
 		flex: 1,
 		height: 66,
 		width: '85%',
-		marginTop: 17,
 		flexDirection: 'row',
 	},
 	/**
@@ -55,12 +53,14 @@ const styles = StyleSheet.create({
 	 * Represents the text style for the playlist name with the following properties:
 	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
 	 * - marginLeft: 7 (left margin spacing)
-	 * - fontWeight: 'bold' (bold font weight)
+	 * - fontSize: 14 (font size in points)
+	 * - fontFamily: 'GothamBold' (font family 'GothamBold')
 	*/
 	playlistNameText: {
 		color: colors.spotifyWhite,
 		marginLeft: 7,
-		fontWeight: 'bold',
+		fontSize: 14,
+		fontFamily: 'GothamBold',
 	},
 	/**
 	 * Text style for the 'ownerText' component.

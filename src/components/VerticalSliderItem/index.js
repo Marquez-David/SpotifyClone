@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import styles from './styles';
 
-import { parseLibraryData, handleNavigation } from '../../utils/helpers';
+import { handleNavigation } from '../../utils/helpers';
 
 import { libraryStrings } from '../../utils/strings';
 

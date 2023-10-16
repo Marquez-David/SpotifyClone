@@ -7,28 +7,24 @@ const styles = StyleSheet.create({
 	 * Represents the text style for the categories header with the following properties:
 	 * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
 	 * - fontSize: 17 (font size in points)
-	 * - fontWeight: 'bold' (bold font weight)
-	 * - textAlign: 'left' (text alignment to the left)
+	 * - fontFamily: 'GothamMedium_1' (font family 'GothamMedium_1')
 	*/
 	subcategoryHeaderGrayText: {
 		color: colors.spotifyGray,
 		fontSize: 17,
-		fontWeight: 'bold',
-		textAlign: 'left',
+		fontFamily: 'GothamMedium_1',
 	},
 	/**
 	 * Categories header text style for categories.
 	 * Represents the text style for the categories header with the following properties:
 	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
 	 * - fontSize: 17 (font size in points)
-	 * - fontWeight: 'bold' (bold font weight)
-	 * - textAlign: 'left' (text alignment to the left)
+	 * - fontFamily: 'GothamBold' (font family 'GothamBold')
 	*/
 	subcategoryHeaderWhiteText: {
 		color: colors.spotifyWhite,
 		fontSize: 17,
-		fontWeight: 'bold',
-		textAlign: 'left',
+		fontFamily: 'GothamBold',
 	},
 	/**
 	 * Style for the pressables in categories.

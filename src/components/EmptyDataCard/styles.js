@@ -37,13 +37,13 @@ const styles = StyleSheet.create({
    * Represents the text style for the component title with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 25 (font size in points)
-   * - fontWeight: 'bold' (bold font weight)
+   * - fontFamily: 'GothamBold' (font family 'GothamBold')
    * - textAlign: 'center' (text alignment to the center)
   */
   titleText: {
     color: colors.spotifyWhite,
     fontSize: 25,
-    fontWeight: 'bold',
+    fontFamily: 'GothamBold',
     textAlign: 'center',
   },
   /**
@@ -79,13 +79,13 @@ const styles = StyleSheet.create({
    * Represents the text style for the pressable text with the following properties:
    * - color: colors.spotifyBlack (text color using the 'spotifyBlack' color from the 'colors' object)
    * - fontSize: 16.5 (font size in points)
-   * - fontWeight: 'bold' (bold font weight)
+   * fontFamily
    * - textAlign: 'center' (text alignment to the center)
   */
   buttonText: {
     color: colors.spotifyBlack,
     fontSize: 16.5,
-    fontWeight: 'bold',
+    fontFamily: 'GothamBold',
     textAlign: 'center',
   },
 });

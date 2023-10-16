@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
    * - flex: 1 (flexible size to fit available space)
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 27 (font size in points)
-   * - fontWeight: 'bold' (bold font weight)
+   * - fontFamily: 'GothamBold' (font family 'GothamBold')
    * - textAlign: 'left' (text alignment to the left)
    * - marginLeft: 7 (left margin spacing)
   */
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     color: colors.spotifyWhite,
     fontSize: 27,
-    fontWeight: 'bold',
+    fontFamily: 'GothamBold',
     textAlign: 'left',
     marginLeft: 7,
   },
