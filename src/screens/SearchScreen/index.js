@@ -1,33 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ScrollView, View, Text, Image } from 'react-native';
+
 import styles from '../SearchScreen/styles';
 import { searchStrings } from '../../utils/strings';
+
+import { useCategories } from '../../hooks/useCategories';
+
 import SearchBar from '../../components/SearchBar';
-import { getBrowseCategories } from '../../services/SpotifyRequests'
-
-/**
- * Custom hook for managing categories state and fetching data.
- * Returns an object with categories and a setter function.
- * @returns 
- */
-const useCategories = () => {
-  const [categories, setCategories] = useState(null);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        let data = await getBrowseCategories();
-        setCategories(data);
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchCategories();
-  }, []);
-
-  return { categories, setCategories };
-};
 
 const SearchScreen = () => {
   const [searchText, setSearchText] = useState(null);

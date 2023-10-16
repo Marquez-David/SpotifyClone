@@ -9,6 +9,21 @@ import {
 } from "./strings";
 
 /**
+ * Parse the items parameter and returns the corresponding title for each case
+ * @param {*} items 
+ * @param {*} title 
+ * @returns 
+ */
+export const parseTitle = (items, title) => {
+  var newTitle = title;
+  if (title === carouselStrings.findOutMoreAbout) {
+    newTitle += items?.[1].artists[0].name;
+  }
+
+  return newTitle;
+};
+
+/**
  * Converts milliseconds into hours and minutes format.
  * @param {*} milliseconds 
  * @returns 

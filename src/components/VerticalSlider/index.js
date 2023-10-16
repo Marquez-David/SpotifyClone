@@ -11,21 +11,7 @@ import { parseLibraryData } from '../../utils/helpers';
 import SearchBar from '../SearchBar';
 import VerticalSliderItem from '../VerticalSliderItem';
 
-/**
- * This custom hook manages the state of searchText and its corresponding setSearchText.
- * It resets the searchText whenever the "subcategory" parameter changes.
- * @param {*} subcategory 
- * @returns 
- */
-const useSearchText = (subcategory) => {
-	const [searchText, setSearchText] = useState('');
-
-	useEffect(() => {
-		setSearchText('');
-	}, [subcategory]);
-
-	return { searchText, setSearchText };
-};
+import { useSearchText } from '../../hooks/useSearchText';
 
 /**
  * Uses an object mapping to determine the appropriate search text based on the subcategory. 
@@ -85,8 +71,8 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 			{items.map((item) => {
 				const { data, description } = parseLibraryData(item, subcategory);
 				return (
-					<View style={styles.verticalSliderItemView}>
-						<VerticalSliderItem key={data.id} data={data} subcategory={subcategory} description={description} />
+					<View key={data.id} style={styles.verticalSliderItemView}>
+						<VerticalSliderItem data={data} subcategory={subcategory} description={description} />
 					</View>
 				);
 			})}

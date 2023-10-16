@@ -10,64 +10,15 @@ import { podcastStrings } from '../../utils/strings';
 import { offsets } from '../../utils/constants';
 import { shortenText } from '../../utils/helpers';
 
-import { getPodcastEpisodes } from '../../services/SpotifyRequests';
+import { usePodcastEpisodes } from '../../hooks/usePodcastEpisodes';
+import { useOffset } from '../../hooks/useOffset';
 
 import EpisodeCard from '../../components/EpisodeCard';
-
-/**
- * A custom hook for fetching and managing podcast episodes based on the provided podcast ID.
- * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
- * @returns {Object} An object containing the podcast episodes as its property.
- */
-const usePodcastEpisodes = (podcastId, offset, setLoading) => {
-  const [podcastEpisodes, setPodcastEpisodes] = useState(null);
-
-  useEffect(() => {
-    const fetchPodcastEpisodes = async () => {
-      try {
-        const response = await getPodcastEpisodes(podcastId, offset);
-        offset > 0 ? setPodcastEpisodes(podcastEpisodes.concat(response)) : setPodcastEpisodes(response);
-      } catch (error) {
-        console.log('Error while calling function fetchPodcastEpisodes(): ' + error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPodcastEpisodes();
-  }, [offset]);
-
-  return { podcastEpisodes, setPodcastEpisodes };
-};
-
-/**
- * A custom hook for managing scroll-based offset and loading more data.
- * @param {boolean} loading - A boolean indicating whether data is currently being loaded.
- * @param {function} setLoading - A function to update the loading status.
- * @returns {Object} An object containing the current offset and a function to handle scrolling events.
- */
-const useOffset = (loading, setLoading) => {
-  const [offset, setOffset] = useState(0);
-
-  const handleScroll = (event) => {
-    if (loading) return;
-    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-
-    const maxScroll = Math.round(contentSize.height - layoutMeasurement.height);
-    const currentScroll = Math.round(contentOffset.y);
-    if (currentScroll >= maxScroll - currentScroll) {
-      setLoading(true);
-      setOffset((prev) => prev + offsets.podcasts)
-    }
-  };
-
-  return { offset, handleScroll };
-};
 
 const PodcastScreen = () => {
   const param = useRoute().params.data;
 
-  const [loading, setLoading] = useState(false);
-  const { offset, handleScroll } = useOffset(loading, setLoading);
+  const { offset, setLoading, handleScroll } = useOffset(offsets.podcasts);
   const { podcastEpisodes } = usePodcastEpisodes(param.id, offset, setLoading);
 
   return (
