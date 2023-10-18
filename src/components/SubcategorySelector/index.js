@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { libraryStrings } from '../../utils/strings';
 import styles from './styles';
 
@@ -23,20 +23,20 @@ const renderSubcategorySelector = (category, subcategory, setSubcategory) => {
     const musicTexts = [libraryStrings.playlists, libraryStrings.artists, libraryStrings.albums];
     for (let i = 0; i < musicTexts.length; i++) {
       components.push(
-        <Pressable key={i} style={styles.subcategoryPressables} onPress={() => setSubcategory(musicTexts[i])}>
+        <TouchableOpacity key={i} style={styles.subcategoryTouchableOpacity} onPress={() => setSubcategory(musicTexts[i])}>
           <Text style={subcategory === musicTexts[i] ? styles.subcategoryHeaderWhiteText : styles.subcategoryHeaderGrayText}>{musicTexts[i]}</Text>
           {subcategory === musicTexts[i] && renderPressedBar()}
-        </Pressable>
+        </TouchableOpacity>
       );
     }
   } else {
     const podcastsTexts = [libraryStrings.episodes, libraryStrings.downloads, libraryStrings.programs];
     for (let i = 0; i < podcastsTexts.length; i++) {
       components.push(
-        <Pressable key={i} style={styles.subcategoryPressables} onPress={() => setSubcategory(podcastsTexts[i])}>
+        <TouchableOpacity key={i} style={styles.subcategoryTouchableOpacity} onPress={() => setSubcategory(podcastsTexts[i])}>
           <Text style={subcategory === podcastsTexts[i] ? styles.subcategoryHeaderWhiteText : styles.subcategoryHeaderGrayText}>{podcastsTexts[i]}</Text>
           {subcategory === podcastsTexts[i] && renderPressedBar()}
-        </Pressable>
+        </TouchableOpacity>
       );
     }
   }

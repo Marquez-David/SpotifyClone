@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ScrollView, View, Text, Pressable, Image } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { getYear } from '../../utils/helpers';
@@ -24,9 +24,9 @@ const AlbumScreen = () => {
           {param.artists[0].name + ' • ' + getYear(param.release_date)}
         </Text>
       </View>
-      <Pressable onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomPressable}>
-        <Text style={styles.pressableText}>{albumStrings.randomMode}</Text>
-      </Pressable>
+      <TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomTouchableOpacity}>
+        <Text style={styles.touchableOpacityText}>{albumStrings.randomMode}</Text>
+      </TouchableOpacity>
       <View style={styles.songsView}>
         {album?.map((item) => (
           <StandardSongCard key={item.id} item={item} />

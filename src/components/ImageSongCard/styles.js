@@ -72,13 +72,13 @@ const styles = StyleSheet.create({
     fontSize: 12.5,
   },
   /**
-   * Style for the dots pressable.
-   * Represents the style for a pressable to access additional options (dots) with the following properties:
+   * Style for the dots button.
+   * Represents the style for a button to access additional options (dots) with the following properties:
    * - flexDirection: 'row' (horizontal layout direction)
    * - position: 'absolute' (positioning as absolute)
    * - right: 1 (right position spacing)
   */
-  dotsPressable: {
+  dotsButton: {
     flexDirection: 'row',
     position: 'absolute',
     right: 1,

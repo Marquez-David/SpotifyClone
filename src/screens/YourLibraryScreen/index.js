@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Pressable } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 import { libraryStrings } from '../../utils/strings';
@@ -53,18 +53,18 @@ const YourLibraryScreen = () => {
   return (
     <View style={styles.background}>
       <View style={styles.headers}>
-        <Pressable onPress={() => setCategory(libraryStrings.music)}>
+        <TouchableOpacity onPress={() => setCategory(libraryStrings.music)}>
           <Text
             style={category === libraryStrings.music ? styles.categoryWhiteText : styles.categoryGrayText}>
             {libraryStrings.music}
           </Text>
-        </Pressable>
-        <Pressable onPress={() => setCategory(libraryStrings.podcasts)}>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setCategory(libraryStrings.podcasts)}>
           <Text
             style={category === libraryStrings.podcasts ? styles.categoryWhiteText : styles.categoryGrayText}>
             {libraryStrings.podcasts}
           </Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
       <View style={styles.headers}>
         <SubcategorySelector

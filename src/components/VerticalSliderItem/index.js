@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Pressable } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import styles from './styles';
 
@@ -16,7 +16,7 @@ const VerticalSliderItem = ({ data, subcategory, description }) => {
   const navigation = useNavigation();
 
   return (
-    <Pressable style={styles.imageView} onPress={() => handleNavigation(data, navigation)}>
+    <TouchableOpacity style={styles.imageView} onPress={() => handleNavigation(data, navigation)}>
       <Image
         style={subcategory !== libraryStrings.artists ? styles.carouselImage : styles.carouselArtistsImage}
         source={{ uri: data.images[0].url }}
@@ -27,7 +27,7 @@ const VerticalSliderItem = ({ data, subcategory, description }) => {
           <Text style={styles.ownerText}>{description}</Text>
         }
       </View>
-    </Pressable>
+    </TouchableOpacity>
   )
 };
 

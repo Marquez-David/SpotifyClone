@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ScrollView, View, Text, Pressable, Image } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 import styles from './styles';
 
@@ -24,9 +24,9 @@ const PlaylistScreen = () => {
         <Image style={styles.image} source={{ uri: param.images[0].url }} />
         <Text style={styles.titleText}>{param.name}</Text>
       </View>
-      <Pressable onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomPressable}>
-        <Text style={styles.pressableText}>{albumStrings.randomMode}</Text>
-      </Pressable>
+      <TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomTouchableOpacity}>
+        <Text style={styles.touchableOpacityText}>{albumStrings.randomMode}</Text>
+      </TouchableOpacity>
       <View style={styles.songsView}>
         {playlist?.map((item, index) => (
           <ImageSongCard key={index} item={item.track} />

@@ -65,14 +65,14 @@ const styles = StyleSheet.create({
     padding: 13,
   },
   /**
-   * Pressable Text style.
-   * Represents the style for text within a pressable element with the following properties:
+   * TouchableOpacity Text style.
+   * Represents the style for text within a TouchableOpacity element with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontFamily: 'GothamBold' (font family 'GothamBold')
    * - fontSize: 16 (font size of 16 units)
    * - textAlign: 'center' (centered text alignment)
   */
-  pressableText: {
+  touchableOpacityText: {
     color: colors.spotifyWhite,
     fontFamily: 'GothamBold',
     fontSize: 16,

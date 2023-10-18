@@ -21,7 +21,7 @@ const StandardSongCard = ({ item }) => {
           <Text style={styles.descriptionText}>{extractArtistNames(item.artists)}</Text>
         </View>
       </View>
-      <View style={styles.dotsPressable}>
+      <View style={styles.dotsButton}>
         <Entypo.Button
           name='dots-three-vertical'
           size={15}

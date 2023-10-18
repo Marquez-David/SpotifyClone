@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Pressable, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
 import { podcastStrings, modalDialogStrings } from '../../utils/strings';
@@ -51,9 +51,9 @@ const ArtistHeader = ({ artist }) => {
         onPress={() => navigation.goBack()}>
       </AntDesign.Button>
       <View style={styles.rightButtonsView}>
-        <Pressable style={styles.followButton} onPress={() => handleFollowArtist(artist.id, userFollowsArtist, setButtonText, setUserFollowsArtist)}>
+        <TouchableOpacity style={styles.followButton} onPress={() => handleFollowArtist(artist.id, userFollowsArtist, setButtonText, setUserFollowsArtist)}>
           <Text style={styles.followButtonText}>{buttonText}</Text>
-        </Pressable>
+        </TouchableOpacity>
         <Entypo.Button
           name='dots-three-vertical'
           size={19}

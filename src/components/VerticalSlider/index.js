@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Pressable, Image, ScrollView, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -58,7 +58,7 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 			)}
 
 			{isPlaylistsSubcategory && (
-				<Pressable style={styles.imageView} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+				<TouchableOpacity style={styles.imageView} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
 					<View style={styles.iconView}>
 						<Ionicons name='add' size={30} color={colors.spotifyWhite} />
 					</View>
@@ -67,7 +67,7 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 							{libraryStrings.createPlaylist}
 						</Text>
 					</View>
-				</Pressable>
+				</TouchableOpacity>
 			)}
 
 			{items.map((item) => {

@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
   },
   /**
-   * View for the pressable component.
-   * Represents a view for a pressable component with the following properties:
+   * View for the TouchableOpacity component.
+   * Represents a view for a TouchableOpacity component with the following properties:
    * - paddingHorizontal: 50 (horizontal padding spacing)
    * - marginTop: 30 (top margin spacing)
   */
-  pressableView: {
+  touchableOpacityView: {
     paddingHorizontal: 50,
     marginTop: 30,
   },
@@ -61,28 +61,28 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   /**
-   * Component pressable style.
-   * Represents the style for the pressable component with the following properties:
+   * Component touchableOpacity style.
+   * Represents the style for the touchableOpacity component with the following properties:
    * - borderRadius: 50 (border radius in points to create a circular shape)
    * - height: 45 (height in points)
    * - backgroundColor: colors.spotifyWhite (background color using the 'spotifyWhite' color from the 'colors' object)
    * - justifyContent: 'center' (justify content to the center of the container)
   */
-  pressable: {
+  touchableOpacity: {
     borderRadius: 50,
     height: 45,
     backgroundColor: colors.spotifyWhite,
     justifyContent: 'center',
   },
   /**
-   * Pressable text style.
-   * Represents the text style for the pressable text with the following properties:
+   * TouchableOpacity text style.
+   * Represents the text style for the TouchableOpacity text with the following properties:
    * - color: colors.spotifyBlack (text color using the 'spotifyBlack' color from the 'colors' object)
    * - fontSize: 16.5 (font size in points)
    * fontFamily
    * - textAlign: 'center' (text alignment to the center)
   */
-  buttonText: {
+  touchableOpacityText: {
     color: colors.spotifyBlack,
     fontSize: 16.5,
     fontFamily: 'GothamBold',

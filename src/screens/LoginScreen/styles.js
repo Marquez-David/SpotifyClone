@@ -28,20 +28,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   /**
-   * Styling for the Spotify pressables.
-   * Represents a view for pressables with the following properties:
+   * Styling for the Spotify TouchableOpacities.
+   * Represents a view for TouchableOpacities with the following properties:
    * - flex: 1 (flexible size to fit available space)
    * - paddingBottom: 40 (bottom padding spacing)
    * - justifyContent: 'flex-end' (justify content to the bottom of the container)
   */
-  pressableView: {
+  touchableOpacityView: {
     flex: 1,
     paddingBottom: 40,
     justifyContent: 'flex-end',
   },
   /**
-   * Style for generic pressables.
-   * Represents the style for generic pressable components with the following properties:
+   * Style for generic TouchableOpacities.
+   * Represents the style for generic TouchableOpacities components with the following properties:
    * - borderRadius: 50 (border radius in points to create a circular shape)
    * - marginHorizontal: 25 (horizontal margin spacing)
    * - padding: 17 (padding in points)
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
    * - alignContent: 'center' (align content to the center of the container)
    * - flexDirection: 'row' (horizontal layout direction)
   */
-  genericPressable: {
+  genericTouchableOpacity: {
     borderRadius: 50,
     marginHorizontal: 25,
     padding: 17,
@@ -72,15 +72,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   /**
-   * Text style for all pressables.
-   * Represents the text style for all pressables with the following properties:
+   * Text style for all TouchableOpacities.
+   * Represents the text style for all TouchableOpacities with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 20 (font size in points)
    * - fontFamily: 'GothamBold' (custom family font)
    * - textAlign: 'center' (text alignment to the center)
    * - flex: 1 (flexible size to fit available space)
   */
-  pressableText: {
+  touchableOpacityText: {
     color: colors.spotifyWhite,
     fontSize: 20,
     fontFamily: 'GothamBold',

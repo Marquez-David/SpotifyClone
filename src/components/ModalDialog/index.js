@@ -1,4 +1,4 @@
-import { View, Text, Modal, Pressable } from 'react-native';
+import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import { useContext } from 'react';
 import { ModalContext } from '../../context/modal';
 
@@ -14,11 +14,11 @@ const ModalDialog = ({ text, visible }) => {
       visible={visible}>
       <View style={styles.modalView}>
         <Text style={styles.textStyle}>{text}</Text>
-        <Pressable
+        <TouchableOpacity
           style={styles.button}
           onPress={closeModal}>
-          <Text style={styles.pressableText}>{modalDialogStrings.ok}</Text>
-        </Pressable>
+          <Text style={styles.touchableOpacityText}>{modalDialogStrings.ok}</Text>
+        </TouchableOpacity>
       </View>
     </Modal>
   );

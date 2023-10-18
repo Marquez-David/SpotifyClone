@@ -67,15 +67,15 @@ const styles = StyleSheet.create({
     paddingBottom: Dimensions.get('window').height / 30,
   },
   /**
-   * Random Pressable style.
-   * Represents the style for a pressable element with the following properties:
+   * Random TouchableOpacity style.
+   * Represents the style for a TouchableOpacity component with the following properties:
    * - marginHorizontal: Dimensions.get('window').width / 6 (horizontal margin based on window dimensions)
    * - justifyContent: 'center' (centered alignment of children)
    * - borderRadius: 50 (border radius of 50 units)
    * - backgroundColor: colors.spotifyGreen (background color using the 'spotifyGreen' color from the 'colors' object)
    * - marginTop: 16 (top margin of 16 units)
   */
-  randomPressable: {
+  randomTouchableOpacity: {
     marginHorizontal: Dimensions.get('window').width / 6,
     justifyContent: 'center',
     borderRadius: 50,
@@ -83,15 +83,15 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   /**
-   * Pressable Text style.
-   * Represents the style for the text within a pressable element with the following properties:
+   * TouchableOpacity Text style.
+   * Represents the style for the text within a TouchableOpacity component with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 19 (font size of 19 units)
    * - paddingVertical: 12 (vertical padding of 12 units)
    * - textAlign: 'center' (centered text alignment)
    * - fontFamily: 'GothamMedium' (font family 'GothamMedium')
   */
-  pressableText: {
+  touchableOpacityText: {
     color: colors.spotifyWhite,
     fontSize: 19,
     paddingVertical: 12,

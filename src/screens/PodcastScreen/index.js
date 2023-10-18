@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ScrollView, View, Text, Pressable, Image, ActivityIndicator } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -32,9 +32,9 @@ const PodcastScreen = () => {
         </View>
       </View>
       <View style={styles.buttonsView}>
-        <Pressable style={styles.followButton} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+        <TouchableOpacity style={styles.followButton} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
           <Text style={styles.followButtonText}>{podcastStrings.follow}</Text>
-        </Pressable>
+        </TouchableOpacity>
         <Entypo.Button
           name='dots-three-vertical'
           style={{ marginLeft: 9 }}

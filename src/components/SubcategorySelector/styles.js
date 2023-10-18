@@ -27,18 +27,18 @@ const styles = StyleSheet.create({
 		fontFamily: 'GothamBold',
 	},
 	/**
-	 * Style for the pressables in categories.
-	 * Represents the style for the pressables in categories with the following properties:
+	 * Style for the touchableOpacity in categories.
+	 * Represents the style for the touchableOpacity in categories with the following properties:
 	 * - marginLeft: 20 (left margin spacing)
 	 * - marginTop: 20 (top margin spacing)
 	*/
-	subcategoryPressables: {
+	subcategoryTouchableOpacity: {
 		marginLeft: 22,
 		marginTop: 20,
 	},
 	/**
-	 * Style for the bar when a pressable is pressed.
-	 * Represents the style for the bar when a pressable is pressed with the following properties:
+	 * Style for the bar when a touchableOpacity is pressed.
+	 * Represents the style for the bar when a touchableOpacity is pressed with the following properties:
 	 * - backgroundColor: colors.spotifyGreen (background color using the 'spotifyGreen' color from the 'colors' object)
 	 * - height: 3 (height in points)
 	 * - width: '100%' (width spanning the entire available space)

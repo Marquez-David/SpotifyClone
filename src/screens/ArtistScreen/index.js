@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Image, ScrollView, Pressable } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { roundNumber } from '../../utils/helpers';
@@ -28,9 +28,9 @@ const ArtistScreen = () => {
         <Text style={styles.title}>{param.name}</Text>
         <Text style={styles.followers}>{roundNumber(param.followers.total)}</Text>
       </View>
-      <Pressable onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomPressable}>
-        <Text style={styles.pressableText}>{artistStrings.randomMode}</Text>
-      </Pressable>
+      <TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomTouchableOpacity}>
+        <Text style={styles.touchableOpacityText}>{artistStrings.randomMode}</Text>
+      </TouchableOpacity>
       <View style={styles.popularSongsView}>
         <Text style={styles.popularSongsTitle}>{artistStrings.popularSongs}</Text>
         {topTracks?.slice(0, 5).map((item) => (
