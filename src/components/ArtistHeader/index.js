@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { View, Pressable, Text } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-import { podcastStrings } from '../../utils/strings';
+import { podcastStrings, modalDialogStrings } from '../../utils/strings';
 import colors from '../../utils/colors';
 import styles from './styles';
 
@@ -14,8 +14,7 @@ import { followArtist, unfollowArtist } from '../../services/SpotifyRequests';
 import { useUserFollowsArtist } from '../../hooks/useUserFollowsArtist';
 import { useButtonText } from '../../hooks/useButtonText';
 
-
-
+import { ModalContext } from '../../context/modal';
 
 /**
  * Handles following or unfollowing a specific artist based on user interaction.
@@ -40,6 +39,7 @@ const ArtistHeader = ({ artist }) => {
   const navigation = useNavigation();
   const { userFollowsArtist, setUserFollowsArtist } = useUserFollowsArtist(artist.id);
   const { buttonText, setButtonText } = useButtonText(userFollowsArtist, podcastStrings.following, podcastStrings.follow);
+  const { openModal } = useContext(ModalContext);
   return (
     <View style={styles.artistHeaderView}>
       <AntDesign.Button
@@ -60,7 +60,7 @@ const ArtistHeader = ({ artist }) => {
           backgroundColor={'transparent'}
           color={colors.spotifyWhite}
           style={{ marginLeft: 10 }}
-          onPress={() => console.log('dots')}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
         </Entypo.Button>
       </View>
     </View>

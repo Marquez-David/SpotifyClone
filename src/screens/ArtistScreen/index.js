@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Image, ScrollView, Pressable } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { roundNumber } from '../../utils/helpers';
-import { artistStrings, carouselStrings } from '../../utils/strings';
+import { artistStrings, carouselStrings, modalDialogStrings } from '../../utils/strings';
 import styles from './styles';
 
 import { useRelatedArtist } from '../../hooks/useRelatedArtists';
 import { useArtistTopTracks } from '../../hooks/useArtistTopTracks';
+import { ModalContext } from '../../context/modal';
 
 import ImageSongCard from '../../components/ImageSongCard';
 import HorizontalCarousel from '../../components/HorizontalCarousel';
@@ -17,6 +18,7 @@ const ArtistScreen = () => {
   const param = useRoute().params.data;
   const { topTracks } = useArtistTopTracks(param.id);
   const { relatedArtist } = useRelatedArtist(param.id);
+  const { openModal } = useContext(ModalContext);
 
   return (
     <ScrollView style={styles.background}>
@@ -26,7 +28,7 @@ const ArtistScreen = () => {
         <Text style={styles.title}>{param.name}</Text>
         <Text style={styles.followers}>{roundNumber(param.followers.total)}</Text>
       </View>
-      <Pressable onPress={() => console.log('random mode')} style={styles.randomPressable}>
+      <Pressable onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomPressable}>
         <Text style={styles.pressableText}>{artistStrings.randomMode}</Text>
       </Pressable>
       <View style={styles.popularSongsView}>

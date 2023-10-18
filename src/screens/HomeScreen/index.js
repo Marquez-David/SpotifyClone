@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View, Text } from 'react-native';
 
 import styles from './styles';
 import colors from '../../utils/colors';
 import { parseTitle } from '../../utils/helpers';
 
-import { carouselStrings } from '../../utils/strings';
+import { carouselStrings, modalDialogStrings } from '../../utils/strings';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { useSavedPlaylists } from '../../hooks/useSavedPlaylists';
@@ -15,7 +15,11 @@ import { useMessage } from '../../hooks/useMessage';
 
 import HorizontalCarousel from '../../components/HorizontalCarousel';
 
+import { ModalContext } from '../../context/modal';
+
 const HomeScreen = () => {
+  const { openModal } = useContext(ModalContext);
+
   const { playlists } = useSavedPlaylists();
   const { artistAlbums } = useArtistsAlbums();
   const { podcasts } = useSavedPodcasts();
@@ -32,21 +36,21 @@ const HomeScreen = () => {
           name='notifications-outline'
           size={27} backgroundColor={colors.appBackground}
           color={colors.spotifyWhite}
-          onPress={() => console.log('Notificacion')}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
         </Ionicons.Button>
         <Ionicons.Button
           name='time-outline'
           size={27}
           backgroundColor={colors.appBackground}
           color={colors.spotifyWhite}
-          onPress={() => console.log('Timer')}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
         </Ionicons.Button>
         <Ionicons.Button
           name='settings-outline'
           size={27}
           backgroundColor={colors.appBackground}
           color={colors.spotifyWhite}
-          onPress={() => console.log('Settings')}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
         </Ionicons.Button>
       </View>
       <View style={styles.flatListContainer}>
@@ -57,7 +61,7 @@ const HomeScreen = () => {
           </View>
         ))}
       </View>
-    </ScrollView >
+    </ScrollView>
   );
 };
 

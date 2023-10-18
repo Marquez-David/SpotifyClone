@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View, Text, Pressable, Image, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
@@ -6,13 +6,13 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import colors from '../../utils/colors';
 import styles from './styles';
 
-import { podcastStrings } from '../../utils/strings';
+import { podcastStrings, modalDialogStrings } from '../../utils/strings';
 import { offsets } from '../../utils/constants';
 import { shortenText } from '../../utils/helpers';
 
 import { usePodcastEpisodes } from '../../hooks/usePodcastEpisodes';
 import { useOffset } from '../../hooks/useOffset';
-
+import { ModalContext } from '../../context/modal';
 import EpisodeCard from '../../components/EpisodeCard';
 
 const PodcastScreen = () => {
@@ -20,6 +20,7 @@ const PodcastScreen = () => {
 
   const { offset, setLoading, handleScroll } = useOffset(offsets.podcasts);
   const { podcastEpisodes } = usePodcastEpisodes(param.id, offset, setLoading);
+  const { openModal } = useContext(ModalContext);
 
   return (
     <ScrollView onScroll={handleScroll} scrollEventThrottle={16} style={styles.background} >
@@ -31,7 +32,7 @@ const PodcastScreen = () => {
         </View>
       </View>
       <View style={styles.buttonsView}>
-        <Pressable style={styles.followButton} onPress={() => console.log('a')}>
+        <Pressable style={styles.followButton} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
           <Text style={styles.followButtonText}>{podcastStrings.follow}</Text>
         </Pressable>
         <Entypo.Button
@@ -40,7 +41,7 @@ const PodcastScreen = () => {
           size={16}
           backgroundColor={colors.appBackground}
           color={colors.spotifyGray}
-          onPress={() => console.log('dots')}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
         </Entypo.Button>
       </View>
       <View style={styles.descriptionView}>

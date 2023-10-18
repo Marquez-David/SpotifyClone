@@ -85,7 +85,7 @@ export const searchStrings = {
 };
 
 export const albumStrings = {
-  randomMode: "RANDOM",
+  randomMode: "SHUFFLE PLAY",
 };
 
 export const podcastStrings = {
@@ -97,7 +97,12 @@ export const podcastStrings = {
 
 export const artistStrings = {
   followers: " FOLLOWERS",
-  randomMode: "RANDOM MODE",
+  randomMode: "SHUFFLE PLAY",
   popularSongs: "Popular songs",
   relatedArtists: "Related artists",
+};
+
+export const modalDialogStrings = {
+  undeDevelopment: 'Oops! It seems that this feature is under development. You will be able to enjoy it soon. 🚀',
+  ok: 'OK 👌',
 };

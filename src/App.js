@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { NavigationLogin, NavigationHome } from "./navigation/Navigation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { ModalProvider } from './context/modal';
+
 /**
  * Verifies the validity of an hasAccess token and updates the state accordingly.
  * @param {*} setHasAccess 
@@ -42,8 +44,8 @@ export default function App() {
     const [hasAccess, setHasAccess] = useState(-1); //-1 = init state, 0 = no access, 1 = access
     useEffect(() => { checkTokenValidity(setHasAccess) }, []);
     return (
-        <>
+        <ModalProvider>
             {renderInitialComponent(hasAccess)}
-        </>
+        </ModalProvider>
     );
 }

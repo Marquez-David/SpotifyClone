@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View } from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 
+import { modalDialogStrings } from '../../utils/strings';
 import colors from '../../utils/colors';
 import styles from './styles';
 
@@ -12,7 +13,7 @@ import { saveAlbum, unsaveAlbum } from '../../services/SpotifyRequests';
 
 import { useButtonType } from '../../hooks/useButtonType';
 import { useButtonColor } from '../../hooks/useButtonColor';
-
+import { ModalContext } from '../../context/modal';
 
 /**
  * Toggles the save state of an album, updating the relevant UI properties.
@@ -40,6 +41,7 @@ const Header = ({ params }) => {
   const { isSaved, setIsSaved } = useIsAlbumSaved(params.type, params.id);
   const { buttonType, setButtonType } = useButtonType(isSaved, 'heart', 'hearto');
   const { buttonColor, setButtonColor } = useButtonColor(isSaved, colors.spotifyGreen, colors.spotifyWhite);
+  const { openModal } = useContext(ModalContext);
 
   return (
     <View style={styles.background}>
@@ -58,7 +60,7 @@ const Header = ({ params }) => {
           size={21}
           color={colors.spotifyWhite}
           backgroundColor={colors.appBackground}
-          onPress={() => console.log('dots')}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
         </Entypo.Button>
       </View>
     </View>

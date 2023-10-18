@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Pressable, Image, ScrollView, TextInput } from 'react-native';
 import styles from './styles';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { libraryStrings, verticalSliderStrings } from '../../utils/strings';
+import { libraryStrings, verticalSliderStrings, modalDialogStrings } from '../../utils/strings';
 import colors from '../../utils/colors';
 
 import { parseLibraryData } from '../../utils/helpers';
@@ -12,6 +12,7 @@ import SearchBar from '../SearchBar';
 import VerticalSliderItem from '../VerticalSliderItem';
 
 import { useSearchText } from '../../hooks/useSearchText';
+import { ModalContext } from '../../context/modal';
 
 /**
  * Uses an object mapping to determine the appropriate search text based on the subcategory. 
@@ -41,6 +42,7 @@ const getFilteredItems = (items, subcategory, searchText) => {
 
 const VerticalSlider = ({ category, subcategory, data }) => {
 	const { searchText, setSearchText } = useSearchText(subcategory);
+	const { openModal } = useContext(ModalContext);
 
 	const isPlaylistsSubcategory = subcategory === libraryStrings.playlists;
 	const items = data && getFilteredItems(data, subcategory, searchText);
@@ -56,7 +58,7 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 			)}
 
 			{isPlaylistsSubcategory && (
-				<View style={styles.imageView}>
+				<Pressable style={styles.imageView} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
 					<View style={styles.iconView}>
 						<Ionicons name='add' size={30} color={colors.spotifyWhite} />
 					</View>
@@ -65,7 +67,7 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 							{libraryStrings.createPlaylist}
 						</Text>
 					</View>
-				</View>
+				</Pressable>
 			)}
 
 			{items.map((item) => {

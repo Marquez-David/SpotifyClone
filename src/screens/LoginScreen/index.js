@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import { SafeAreaView, View, Text, Pressable } from 'react-native';
-
-import styles from './styles';
-import colors from '../../utils/colors';
-import { LoginStrings } from '../../utils/strings';
-import { spotifyAuthConfig } from '../../utils/constants';
-
-import { useNavigation } from "@react-navigation/native";
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import { authorize } from 'react-native-app-auth';
+import styles from './styles';
+import colors from '../../utils/colors';
+import { LoginStrings, modalDialogStrings } from '../../utils/strings';
+import { spotifyAuthConfig } from '../../utils/constants';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { authorize } from 'react-native-app-auth';
+
+import { ModalContext } from '../../context/modal';
 
 /**
  * Handles user login for the application.
@@ -35,7 +34,7 @@ const onLogin = async (navigation) => {
 	} catch (error) {
 		console.log(JSON.stringify(error));
 	}
-}
+};
 
 /*
 async function refreshLogin(refreshToken) {
@@ -47,6 +46,8 @@ async function refreshLogin(refreshToken) {
 
 const LoginScreen = () => {
 	const navigation = useNavigation();
+	const { openModal } = useContext(ModalContext);
+
 	return (
 		<SafeAreaView style={styles.background}>
 			<View style={styles.logoView}>
@@ -57,15 +58,19 @@ const LoginScreen = () => {
 				<Pressable onPress={() => onLogin(navigation)} style={[{ backgroundColor: colors.spotifyGreen }, styles.genericPressable]}>
 					<Text style={[styles.pressableText, { color: 'black' }]}> {LoginStrings.signInWithSpotify}</Text>
 				</Pressable>
-				<Pressable style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericPressable]}>
+				<Pressable
+					style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericPressable]}
+					onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
 					<AntDesign name='google' size={23} color={colors.spotifyWhite}></AntDesign>
 					<Text style={styles.pressableText}> {LoginStrings.signInWithGoogle}</Text>
 				</Pressable>
-				<Pressable style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericPressable]}>
+				<Pressable
+					style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericPressable]}
+					onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
 					<MaterialCommunityIcons name='facebook' size={26} color={colors.spotifyWhite}></MaterialCommunityIcons>
 					<Text style={styles.pressableText}> {LoginStrings.signInWithFacebook}</Text>
 				</Pressable>
-				<Pressable onPress={() => navigation.navigate('Main')} style={styles.genericPressable}>
+				<Pressable onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.genericPressable}>
 					<Text style={[{ paddingTop: 10 }, styles.pressableText]}> {LoginStrings.signIn}</Text>
 				</Pressable>
 			</View>
