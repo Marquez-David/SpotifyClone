@@ -3,14 +3,14 @@ import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
   /**
-   * Style for an individual song view.
-   * Represents the style for a single song view with the following properties:
+   * Style for an individual song TouchableOpacity.
+   * Represents the style for a single song TouchableOpacity with the following properties:
    * - height: 50 (fixed height in points)
    * - marginTop: 10 (top margin spacing)
    * - marginLeft: 15 (left margin spacing)
    * - flexDirection: 'row' (horizontal layout direction)
   */
-  songView: {
+  songTouchableOpacity: {
     height: 50,
     marginTop: 10,
     marginLeft: 15,

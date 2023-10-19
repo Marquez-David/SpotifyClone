@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+
+import { handleNavigation } from '../../utils/helpers';
 import styles from './styles';
 import colors from '../../utils/colors';
 
@@ -13,8 +16,9 @@ import { ModalContext } from '../../context/modal';
 
 const ImageSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
+  const navigation = useNavigation();
   return (
-    <View style={styles.songView}>
+    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
       <Image style={styles.image} source={{ uri: item.album.images[0].url }} />
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{item.name}</Text>
@@ -34,7 +38,7 @@ const ImageSongCard = ({ item }) => {
       </View>
       <View>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 };
 

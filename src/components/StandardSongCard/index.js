@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
+
 import styles from './styles';
 import colors from '../../utils/colors';
 import { modalDialogStrings } from '../../utils/strings';
-import { extractArtistNames } from '../../utils/helpers';
+import { extractArtistNames, handleNavigation } from '../../utils/helpers';
 
 import { ModalContext } from '../../context/modal';
 
@@ -12,8 +14,10 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const StandardSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.songView}>
+    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{item.name}</Text>
         <View style={styles.descriptionView}>
@@ -32,7 +36,7 @@ const StandardSongCard = ({ item }) => {
       </View>
       <View>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 };
 
