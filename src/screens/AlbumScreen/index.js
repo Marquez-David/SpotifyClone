@@ -1,21 +1,20 @@
-import React, { useContext } from 'react';
-import { ScrollView, View, Text, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { ScrollView, View, Text, Image, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { getYear } from '../../utils/helpers';
-import { albumStrings, modalDialogStrings, libraryStrings } from '../../utils/strings';
+import { libraryStrings } from '../../utils/strings';
 import styles from './styles';
 import colors from '../../utils/colors';
 
+import ShufflePlayButton from '../../components/ShufflePlayButton';
 import FallbackDataCard from '../../components/FallbackDataCard';
 import StandardSongCard from '../../components/StandardSongCard';
-import { ModalContext } from '../../context/modal';
 import { useAlbum } from '../../hooks/useAlbum';
 
 const AlbumScreen = () => {
   const param = useRoute().params.data;
   const { isLoading, isError, album, refetch } = useAlbum(param.id);
-  const { openModal } = useContext(ModalContext);
 
   return (
     <ScrollView style={styles.background}>
@@ -26,9 +25,7 @@ const AlbumScreen = () => {
           {param.artists[0].name + ' • ' + getYear(param.release_date)}
         </Text>
       </View>
-      <TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomTouchableOpacity}>
-        <Text style={styles.touchableOpacityText}>{albumStrings.randomMode}</Text>
-      </TouchableOpacity>
+      <ShufflePlayButton />
       {album ?
         <View style={styles.songsView}>
           {album.map((item) => (

@@ -15,11 +15,13 @@ const styles = StyleSheet.create({
    * Represents the style for an image view with the following properties:
    * - alignItems: 'center' (centered alignment of children)
    * - justifyContent: 'flex-end' (alignment of children to the end)
+   * - marginBottom: 20 (bottom margin of 20 units)
    * - zIndex: 1 (z-index for layering)
   */
   imageView: {
     alignItems: 'center',
     justifyContent: 'flex-end',
+    marginBottom: 20,
     zIndex: 1,
   },
   /**

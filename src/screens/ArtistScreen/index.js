@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React from 'react';
+import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { roundNumber } from '../../utils/helpers';
-import { artistStrings, carouselStrings, modalDialogStrings, libraryStrings } from '../../utils/strings';
+import { artistStrings, carouselStrings, libraryStrings } from '../../utils/strings';
 import styles from './styles';
 import colors from '../../utils/colors';
 
 import { useRelatedArtists } from '../../hooks/useRelatedArtists';
 import { useArtistTopTracks } from '../../hooks/useArtistTopTracks';
-import { ModalContext } from '../../context/modal';
 
+import ShufflePlayButton from '../../components/ShufflePlayButton';
 import ImageSongCard from '../../components/ImageSongCard';
 import FallbackDataCard from '../../components/FallbackDataCard';
 import HorizontalCarousel from '../../components/HorizontalCarousel';
@@ -32,8 +32,6 @@ const ArtistScreen = () => {
     refetchRelatedArtists,
   } = useRelatedArtists(param.id);
 
-  const { openModal } = useContext(ModalContext);
-
   return (
     <ScrollView style={styles.background}>
       <View style={styles.imageView}>
@@ -42,12 +40,7 @@ const ArtistScreen = () => {
         <Text style={styles.title}>{param.name}</Text>
         <Text style={styles.followers}>{roundNumber(param.followers.total)}</Text>
       </View>
-      <TouchableOpacity
-        onPress={() => openModal(modalDialogStrings.undeDevelopment)}
-        style={styles.randomTouchableOpacity}
-      >
-        <Text style={styles.touchableOpacityText}>{artistStrings.randomMode}</Text>
-      </TouchableOpacity>
+      <ShufflePlayButton />
       {topTracks && relatedArtists ?
         <>
           <View style={styles.popularSongsView}>
