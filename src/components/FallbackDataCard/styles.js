@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
    * - alignContent: 'center' (align content to the center of the container)
    * - justifyContent: 'center' (justify content to the center of the container)
   */
-  emptyDataCardView: {
+  fallbackDataView: {
     flex: 1,
     alignContent: 'center',
     justifyContent: 'center',

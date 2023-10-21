@@ -1,28 +1,24 @@
-import { useState, useEffect } from "react";
 import { getPlaylist } from "../services/SpotifyRequests";
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { offsets } from "../utils/constants";
 
 /**
- * This custom hook fetches and manages data data through an asynchronous API call. 
- * It returns the playlist data and the corresponding function to update the state with the fetched playlist.
- * @returns 
+ * A custom hook for fetching and managing playlist data using React Query's useInfiniteQuery.
+ * @param {string} playlistId - The ID of the playlist to retrieve.
+ * @returns {Object} An object containing playlist data, loading state, error state, and functions to refetch and fetch the next page.
  */
-export const usePlaylist = (playlistId, offset, setLoading) => {
-  const [playlist, setPlaylist] = useState(null);
+export const usePlaylist = (playlistId) => {
+  const { isLoading, isError, data, refetch, fetchNextPage } = useInfiniteQuery({
+    queryKey: ['playlist', playlistId],
+    queryFn: ({ pageParam = 0 }) => getPlaylist(playlistId, pageParam),
+    getNextPageParam: (lastPage, allPages) => lastPage.length >= offsets.playlists ? allPages?.length * offsets.playlists : undefined,
+  });
 
-  useEffect(() => {
-    const fetchPlaylist = async () => {
-      try {
-        const response = await getPlaylist(playlistId, offset);
-        offset > 0 ? setPlaylist(playlist.concat(response)) : setPlaylist(response);
-      } catch (error) {
-        console.log('Error while calling function getPlaylist(): ' + error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPlaylist();
-  }, [offset]);
-
-  return { playlist };
+  return {
+    isLoading,
+    isError,
+    playlist: data?.pages?.flatMap(page => page),
+    refetch,
+    fetchNextPage,
+  }
 };

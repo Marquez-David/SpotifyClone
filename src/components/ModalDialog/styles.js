@@ -8,10 +8,10 @@ const styles = StyleSheet.create({
    * - display: 'flex' (flexible display)
    * - flexDirection: 'column' (vertical layout with children)
    * - justifyContent: 'space-between' (space between children)
-   * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
+   * - backgroundColor: colors.spotifyWhite (background color using the 'spotifyWhite' color from the 'colors' object)
    * - borderRadius: 25 (border radius of 25 units)
    * - borderWidth: 1 (border width of 1 unit)
-   * - borderColor: colors.appBackground (border color using the 'appBackground' color from the 'colors' object)
+   * - borderColor: colors.spotifyWhite (border color using the 'spotifyWhite' color from the 'colors' object)
    * - position: 'absolute' (absolute positioning)
    * - top: '50%' (positioned at 50% from the top)
    * - left: '25%' (positioned at 25% from the left)
@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    backgroundColor: colors.appBackground,
+    backgroundColor: colors.spotifyWhite,
     borderRadius: 25,
     borderWidth: 1,
-    borderColor: colors.appBackground,
+    borderColor: colors.spotifyWhite,
     position: 'absolute',
     top: '50%',
     left: '25%',
@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
    * - textAlign: 'center' (centered text alignment)
    * - fontSize: 16 (font size of 16 units)
    * - fontFamily: 'GothamBold' (font family 'GothamBold')
-   * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
+   * - color: colors.spotifyBlack (text color using the 'spotifyBlack' color from the 'colors' object)
    * - marginBottom: 20 (bottom margin of 20 units)
   */
   textStyle: {
     textAlign: 'center',
     fontSize: 16,
     fontFamily: 'GothamBold',
-    color: colors.spotifyWhite,
+    color: colors.spotifyBlack,
     marginBottom: 20,
   },
   /**

@@ -2,7 +2,7 @@ import {
   carouselStrings,
   libraryStrings,
   verticalSliderStrings,
-  emptyDataStrings,
+  fallbackDataStrings,
   contentType,
   podcastStrings,
   artistStrings,
@@ -209,44 +209,49 @@ export function parseLibraryData(data, subcategory) {
 
 /**
  * Maps subcategories to corresponding texts for titles, descriptions, and button texts.
- * @param {*} subcategory 
+ * @param {*} type 
  * @returns 
  */
-export function parseEmptyData(subcategory) {
+export function parseFallbackData(type) {
   const textMappings = {
     [libraryStrings.playlists]: {
-      title: emptyDataStrings.playlistsTitle,
-      description: emptyDataStrings.playlistsDescription,
-      buttonText: emptyDataStrings.browseMusic
+      title: fallbackDataStrings.playlistsTitle,
+      description: fallbackDataStrings.playlistsDescription,
+      buttonText: fallbackDataStrings.browseMusic
     },
     [libraryStrings.artists]: {
-      title: emptyDataStrings.artistsTitle,
-      description: emptyDataStrings.artistsDescription,
-      buttonText: emptyDataStrings.browseMusic
+      title: fallbackDataStrings.artistsTitle,
+      description: fallbackDataStrings.artistsDescription,
+      buttonText: fallbackDataStrings.browseMusic
     },
     [libraryStrings.albums]: {
-      title: emptyDataStrings.albumsTitle,
-      description: emptyDataStrings.albumsDescription,
-      buttonText: emptyDataStrings.browseMusic
+      title: fallbackDataStrings.albumsTitle,
+      description: fallbackDataStrings.albumsDescription,
+      buttonText: fallbackDataStrings.browseMusic
     },
     [libraryStrings.episodes]: {
-      title: emptyDataStrings.episodesTitle,
-      description: emptyDataStrings.episodesDescription,
-      buttonText: emptyDataStrings.browsePodcasts
+      title: fallbackDataStrings.episodesTitle,
+      description: fallbackDataStrings.episodesDescription,
+      buttonText: fallbackDataStrings.browsePodcasts
     },
     [libraryStrings.downloads]: {
-      title: emptyDataStrings.downloadsTitle,
-      description: emptyDataStrings.downloadsDescription,
-      buttonText: emptyDataStrings.browsePodcasts
+      title: fallbackDataStrings.downloadsTitle,
+      description: fallbackDataStrings.downloadsDescription,
+      buttonText: fallbackDataStrings.browsePodcasts
     },
     [libraryStrings.programs]: {
-      title: emptyDataStrings.programsTitle,
-      description: emptyDataStrings.programsDescription,
-      buttonText: emptyDataStrings.browsePodcasts
-    }
+      title: fallbackDataStrings.programsTitle,
+      description: fallbackDataStrings.programsDescription,
+      buttonText: fallbackDataStrings.browsePodcasts
+    },
+    [libraryStrings.error]: {
+      title: fallbackDataStrings.errorTitle,
+      description: fallbackDataStrings.errorDescription,
+      buttonText: fallbackDataStrings.tryAgain
+    },
   };
 
-  return textMappings[subcategory] || {};
+  return textMappings[type] || {};
 }
 
 /**
@@ -267,7 +272,27 @@ export function handleNavigation(item, navigation) {
     nav = navigation.navigate("Artist", { title: item.name, data: item });
   }
   return nav;
-}
+};
+
+/**
+ * A utility function for handling scrolling and triggering the fetching of the next page.
+ * @param {Function} fetchNextPage - The function to fetch the next page of data.
+ * @returns {Object} An object containing the fetchNextItems function.
+ */
+export const handleScroll = (fetchNextPage) => {
+
+  const fetchNextItems = (event) => {
+    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
+    const maxScroll = Math.round(contentSize.height - layoutMeasurement.height);
+    const currentScroll = Math.round(contentOffset.y);
+
+    if (currentScroll >= maxScroll - 1) {
+      fetchNextPage();
+    }
+  };
+
+  return { fetchNextItems };
+};
 
 
 

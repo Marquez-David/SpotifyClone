@@ -1,25 +1,15 @@
-import { useState, useEffect } from 'react';
 import { getSavedPodcasts } from '../services/SpotifyRequests';
+import { useQuery } from '@tanstack/react-query';
 
 /**
- * A custom hook for fetching and managing a user's saved podcasts data.
+ * A custom hook for fetching and managing a user's saved podcasts data using React Query.
  * @returns {Object} An object containing the list of saved podcasts.
  */
 export const useSavedPodcasts = () => {
-  const [podcasts, setPodcasts] = useState(null);
+  const { data } = useQuery({
+    queryKey: ['savedPodcasts'],
+    queryFn: getSavedPodcasts,
+  });
 
-  useEffect(() => {
-    const fetchPodcastsData = async () => {
-      try {
-        const podcasts = await getSavedPodcasts();
-        setPodcasts(podcasts);
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchPodcastsData();
-  }, []);
-
-  return { podcasts };
+  return { podcasts: data };
 };

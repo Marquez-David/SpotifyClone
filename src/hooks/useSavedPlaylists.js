@@ -1,26 +1,15 @@
-import { useState, useEffect } from 'react';
 import { getUserPlaylists } from '../services/SpotifyRequests';
+import { useQuery } from '@tanstack/react-query';
 
 /**
- * This custom hook fetches and manages data for user playlists through an asynchronous API call. 
- * It returns the playlists data as part of the state.
- * @returns 
+ * A custom hook for fetching and managing a user's saved playlists using React Query.
+ * @returns {Object} An object containing the list of saved playlists.
  */
 export const useSavedPlaylists = () => {
-  const [playlists, setPlaylists] = useState(null);
+  const { data } = useQuery({
+    queryKey: ['savedPlaylists'],
+    queryFn: getUserPlaylists,
+  });
 
-  useEffect(() => {
-    const fetchPlaylistsData = async () => {
-      try {
-        const playlists = await getUserPlaylists();
-        setPlaylists(playlists);
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchPlaylistsData();
-  }, []);
-
-  return { playlists };
+  return { playlists: data };
 };

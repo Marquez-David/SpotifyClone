@@ -1,26 +1,15 @@
-import { useState, useEffect } from 'react';
 import { getBrowseCategories } from '../services/SpotifyRequests';
+import { useQuery } from '@tanstack/react-query';
 
 /**
- * Custom hook for managing categories state and fetching data.
- * Returns an object with categories and a setter function.
- * @returns 
+ * A custom hook for fetching and managing browse categories data using React Query.
+ * @returns {Object} An object containing the list of browse categories.
  */
 export const useCategories = () => {
-  const [categories, setCategories] = useState(null);
+  const { data } = useQuery({
+    queryKey: ['browseCategories'],
+    queryFn: getBrowseCategories,
+  });
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await getBrowseCategories();
-        setCategories(response);
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchCategories();
-  }, []);
-
-  return { categories, setCategories };
+  return { categories: data }
 };

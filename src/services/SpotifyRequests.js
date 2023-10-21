@@ -185,21 +185,16 @@ export const getBrowseCategories = async () => {
  */
 export const getAlbum = async (id) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/albums/${id}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-
-		return response.data.tracks.items;
-	} catch (error) {
-		console.log("Error while fetching a single album: " + error.message);
-	}
+	const response = await axios(
+		{
+			method: "GET",
+			url: `https://api.spotify.com/v1/albums/${id}`,
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+		}
+	);
+	return response.data.tracks.items;
 };
 
 /**
@@ -209,20 +204,16 @@ export const getAlbum = async (id) => {
  */
 export const getPlaylist = async (id, offset) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/playlists/${id}/tracks?limit=8&offset=${offset}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.items;
-	} catch (error) {
-		console.log("Error while fetching a single playlist: " + error.message);
-	}
+	const response = await axios(
+		{
+			method: "GET",
+			url: `https://api.spotify.com/v1/playlists/${id}/tracks?limit=8&offset=${offset}`,
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+		}
+	);
+	return response.data.items;
 };
 
 /**
@@ -301,20 +292,16 @@ export const unsaveAlbum = async (id) => {
  */
 export const getPodcastEpisodes = async (podcastId, offset) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/shows/${podcastId}/episodes?limit=5&offset=${offset}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.items;
-	} catch (error) {
-		console.log("Error while fetching podcast: " + error.message);
-	}
+	const response = await axios(
+		{
+			method: "GET",
+			url: `https://api.spotify.com/v1/shows/${podcastId}/episodes?limit=5&offset=${offset}`,
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+		}
+	);
+	return response.data.items;
 };
 
 /**
@@ -324,20 +311,16 @@ export const getPodcastEpisodes = async (podcastId, offset) => {
  */
 export const getArtistTopTracks = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=ES`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.tracks;
-	} catch (error) {
-		console.log("Error while fetching artist top tracks: " + error.message);
-	}
+	const response = await axios(
+		{
+			method: "GET",
+			url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=ES`,
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+		}
+	);
+	return response.data.tracks;
 };
 
 /**
@@ -347,20 +330,16 @@ export const getArtistTopTracks = async (artistId) => {
  */
 export const getRelatedArtists = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/artists/${artistId}/related-artists`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.artists;
-	} catch (error) {
-		console.log("Error while fetching related artists: " + error.message);
-	}
+	const response = await axios(
+		{
+			method: "GET",
+			url: `https://api.spotify.com/v1/artists/${artistId}/related-artists`,
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+			},
+		}
+	);
+	return response.data.artists;
 };
 
 /**

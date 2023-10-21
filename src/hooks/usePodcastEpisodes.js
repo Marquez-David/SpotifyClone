@@ -1,27 +1,24 @@
-import { useState, useEffect } from 'react';
 import { getPodcastEpisodes } from '../services/SpotifyRequests';
+import { offsets } from '../utils/constants';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 /**
- * A custom hook for fetching and managing podcast episodes based on the provided podcast ID.
- * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
- * @returns {Object} An object containing the podcast episodes as its property.
+ * A custom hook for fetching and managing podcast episodes using React Query's useInfiniteQuery.
+ * @param {string} podcastId - The ID of the podcast for which to retrieve episodes.
+ * @returns {Object} An object containing podcast episodes, loading state, error state, and functions to refetch and fetch the next page.
  */
-export const usePodcastEpisodes = (podcastId, offset, setLoading) => {
-  const [podcastEpisodes, setPodcastEpisodes] = useState(null);
+export const usePodcastEpisodes = (podcastId) => {
+  const { isLoading, isError, data, refetch, fetchNextPage } = useInfiniteQuery({
+    queryKey: ['podcast', podcastId],
+    queryFn: ({ pageParam = 0 }) => getPodcastEpisodes(podcastId, pageParam),
+    getNextPageParam: (lastPage, allPages) => lastPage.length >= offsets.podcasts ? allPages?.length * offsets.podcasts : undefined,
+  });
 
-  useEffect(() => {
-    const fetchPodcastEpisodes = async () => {
-      try {
-        const response = await getPodcastEpisodes(podcastId, offset);
-        offset > 0 ? setPodcastEpisodes(podcastEpisodes.concat(response)) : setPodcastEpisodes(response);
-      } catch (error) {
-        console.log('Error while calling function fetchPodcastEpisodes(): ' + error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPodcastEpisodes();
-  }, [offset]);
-
-  return { podcastEpisodes, setPodcastEpisodes };
+  return {
+    isLoading,
+    isError,
+    refetch,
+    podcastEpisodes: data?.pages?.flatMap(page => page),
+    fetchNextPage,
+  }
 };

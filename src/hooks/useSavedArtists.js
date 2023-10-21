@@ -1,25 +1,15 @@
-import { useState, useEffect } from 'react';
 import { getFollowingArtists } from '../services/SpotifyRequests';
+import { useQuery } from '@tanstack/react-query';
 
 /**
- * A custom hook for fetching and managing a user's followed artists' data.
- * @returns {Object} An object containing the list of followed artists.
+ * A custom hook for fetching and managing a user's saved artists data using React Query.
+ * @returns {Object} An object containing the list of saved artists.
  */
 export const useSavedArtists = () => {
-  const [artists, setArtists] = useState(null);
+  const { data } = useQuery({
+    queryKey: ['savedArtists'],
+    queryFn: getFollowingArtists,
+  });
 
-  useEffect(() => {
-    const fetchArtistsData = async () => {
-      try {
-        let data = await getFollowingArtists();
-        setArtists(data);
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchArtistsData();
-  }, []);
-
-  return { artists };
+  return { artists: data };
 };

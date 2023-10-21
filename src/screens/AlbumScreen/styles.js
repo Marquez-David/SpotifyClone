@@ -102,6 +102,14 @@ const styles = StyleSheet.create({
   songsView: {
     marginTop: 10,
   },
+  /**
+   * Fallback View style.
+   * Represents the style for a fallback view with the following properties:
+   * - marginVertical: Dimensions.get('window').height / 10 (vertical margin based on window dimensions)
+  */
+  fallbackView: {
+    marginVertical: Dimensions.get('window').height / 10,
+  },
 });
 
 

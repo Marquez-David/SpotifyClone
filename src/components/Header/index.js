@@ -23,22 +23,20 @@ import { ModalContext } from '../../context/modal';
  * @param {function} setButtonColor - A state setter function to update the button color.
  * @param {string} id - The ID of the album to toggle the save state for.
  */
-const handleAlbumSave = async (isSaved, setIsSaved, setButtonType, setButtonColor, id) => {
+const handleAlbumSave = async (isSaved, setButtonType, setButtonColor, id) => {
   if (isSaved) {
     await unsaveAlbum(id);
-    setIsSaved(false);
     setButtonType('hearto');
     setButtonColor(colors.spotifyWhite);
   } else {
     await saveAlbum(id);
-    setIsSaved(true);
     setButtonType('heart');
     setButtonColor(colors.spotifyGreen);
   }
 };
 
 const Header = ({ params }) => {
-  const { isSaved, setIsSaved } = useIsAlbumSaved(params.type, params.id);
+  const { isSaved } = useIsAlbumSaved(params.type, params.id);
   const { buttonType, setButtonType } = useButtonType(isSaved, 'heart', 'hearto');
   const { buttonColor, setButtonColor } = useButtonColor(isSaved, colors.spotifyGreen, colors.spotifyWhite);
   const { openModal } = useContext(ModalContext);
@@ -52,7 +50,7 @@ const Header = ({ params }) => {
             size={21}
             color={buttonColor}
             backgroundColor={colors.appBackground}
-            onPress={() => handleAlbumSave(isSaved, setIsSaved, setButtonType, setButtonColor, params.id)}
+            onPress={() => handleAlbumSave(isSaved, setButtonType, setButtonColor, params.id)}
           />
         ) : null}
         <Entypo.Button

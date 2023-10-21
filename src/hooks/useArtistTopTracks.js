@@ -1,26 +1,21 @@
-import { useState, useEffect } from 'react';
 import { getArtistTopTracks } from '../services/SpotifyRequests';
+import { useQuery } from '@tanstack/react-query';
 
 /**
- * A custom hook for fetching and managing an artist's top tracks based on the provided artist ID.
- * @param {string} artistId - The ID of the artist for which top tracks are to be fetched.
- * @returns {Object} An object containing the artist's top tracks as its property.
+ * A custom hook for fetching and managing top tracks of an artist using React Query's useQuery.
+ * @param {string} artistId - The ID of the artist for which to retrieve top tracks.
+ * @returns {Object} An object containing top tracks data, loading state, error state, and a function to refetch the data.
  */
 export const useArtistTopTracks = (artistId) => {
-  const [topTracks, setTopTracks] = useState(null);
+  const { isLoading, isError, data, refetch } = useQuery({
+    queryKey: ['topTracks', artistId],
+    queryFn: () => getArtistTopTracks(artistId),
+  });
 
-  useEffect(() => {
-    const fetchArtistTopTracks = async () => {
-      try {
-        let data = await getArtistTopTracks(artistId);
-        setTopTracks(data);
-      } catch (error) {
-        console.log('Error while calling function useArtist(): ' + error);
-      }
-    };
-
-    fetchArtistTopTracks();
-  }, []);
-
-  return { topTracks };
+  return {
+    isLoadingTopTracks: isLoading,
+    isErrorTopTracks: isError,
+    topTracks: data,
+    refetchTopTracks: refetch,
+  }
 };

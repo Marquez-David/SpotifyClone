@@ -4,6 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { ModalProvider } from './context/modal';
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 /**
  * Verifies the validity of an hasAccess token and updates the state accordingly.
  * @param {*} setHasAccess 
@@ -36,16 +38,20 @@ const renderInitialComponent = (hasAccess) => {
     if (hasAccess === 0) {
         return <NavigationLogin />;
     } else if (hasAccess === 1) {
-        return <NavigationHome />;
+        return <NavigationHome />
+
     }
 };
 
 export default function App() {
     const [hasAccess, setHasAccess] = useState(-1); //-1 = init state, 0 = no access, 1 = access
     useEffect(() => { checkTokenValidity(setHasAccess) }, []);
+    const queryClient = new QueryClient();
     return (
         <ModalProvider>
-            {renderInitialComponent(hasAccess)}
+            <QueryClientProvider client={queryClient}>
+                {renderInitialComponent(hasAccess)}
+            </QueryClientProvider>
         </ModalProvider>
     );
 }

@@ -1,30 +1,31 @@
 import { useState, useEffect } from 'react';
 import { getArtists, getArtistAlbums } from '../services/SpotifyRequests';
+import { useQuery } from '@tanstack/react-query';
 
 /**
- * This custom hook fetches and manages data for artists and their albums through asynchronous API calls. 
- * It returns the fetched "artists" list as part of the state.
- * @returns 
+ * A custom hook for fetching and managing artist data using React Query.
+ * @returns {Object} An object containing artist data.
+ */
+const useArtist = () => {
+  const { data } = useQuery({
+    queryKey: ['artists'],
+    queryFn: () => getArtists(),
+  });
+
+  return { artist: data };
+};
+
+/**
+ * A custom hook for fetching and managing artist's albums data using React Query.
+ * @returns {Object} An object containing the artist's albums data.
  */
 export const useArtistsAlbums = () => {
-  const [artists, setArtists] = useState(null);
-  const [artistAlbums, setArtistAlbums] = useState(null);
+  const { artist } = useArtist();
+  const { data } = useQuery({
+    queryKey: ['artistsAlbums', artist],
+    queryFn: () => getArtistAlbums(artist),
+    enabled: !!artist, // the query will not execute until artist data is available
+  });
 
-  useEffect(() => {
-    const fetchArtistsData = async () => {
-      try {
-        const artists = await getArtists();
-        setArtists(artists);
-
-        const artistAlbums = await getArtistAlbums(artists);
-        setArtistAlbums(artistAlbums);
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchArtistsData();
-  }, []);
-
-  return { artistAlbums };
+  return { artistAlbums: data };
 };

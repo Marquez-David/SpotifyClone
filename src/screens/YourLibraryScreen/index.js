@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
-import { libraryStrings } from '../../utils/strings';
+import { libraryStrings, modalDialogStrings } from '../../utils/strings';
 
 import { useSavedPlaylists } from '../../hooks/useSavedPlaylists';
 import { useSavedArtists } from '../../hooks/useSavedArtists';
@@ -10,9 +10,10 @@ import { useSavedPodcasts } from '../../hooks/useSavedPodcasts';
 import { useSavedAlbums } from '../../hooks/useSavedAlbums';
 import { useSavedEpisodes } from '../../hooks/userSavedEpisodes';
 import { useSubcategory } from '../../hooks/useSubcategory';
+import { ModalContext } from '../../context/modal';
 
 import VerticalSlider from '../../components/VerticalSlider';
-import EmptyDataCard from '../../components/EmptyDataCard';
+import FallbackDataCard from '../../components/FallbackDataCard';
 import SubcategorySelector from '../../components/SubcategorySelector';
 
 /**
@@ -46,6 +47,7 @@ const parseDataForSubcategory = (subcategory) => {
 const YourLibraryScreen = () => {
   const [category, setCategory] = useState(libraryStrings.music);
   const { subcategory, setSubcategory } = useSubcategory(category);
+  const { openModal } = useContext(ModalContext);
 
   const data = parseDataForSubcategory(subcategory);
   const isEmptyData = data?.length < 1;
@@ -80,7 +82,7 @@ const YourLibraryScreen = () => {
           data={data}
         />
       ) : (
-        <EmptyDataCard subcategory={subcategory} />
+        <FallbackDataCard type={subcategory} onPressAction={() => openModal(modalDialogStrings.undeDevelopment)} />
       )}
     </View>
   );

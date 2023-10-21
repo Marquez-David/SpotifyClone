@@ -1,18 +1,20 @@
 import React, { useContext } from 'react';
-import { ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { getYear } from '../../utils/helpers';
-import { albumStrings, modalDialogStrings } from '../../utils/strings';
+import { albumStrings, modalDialogStrings, libraryStrings } from '../../utils/strings';
 import styles from './styles';
+import colors from '../../utils/colors';
 
+import FallbackDataCard from '../../components/FallbackDataCard';
 import StandardSongCard from '../../components/StandardSongCard';
 import { ModalContext } from '../../context/modal';
 import { useAlbum } from '../../hooks/useAlbum';
 
 const AlbumScreen = () => {
   const param = useRoute().params.data;
-  const { album } = useAlbum(param.id);
+  const { isLoading, isError, album, refetch } = useAlbum(param.id);
   const { openModal } = useContext(ModalContext);
 
   return (
@@ -27,11 +29,17 @@ const AlbumScreen = () => {
       <TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.randomTouchableOpacity}>
         <Text style={styles.touchableOpacityText}>{albumStrings.randomMode}</Text>
       </TouchableOpacity>
-      <View style={styles.songsView}>
-        {album?.map((item) => (
-          <StandardSongCard key={item.id} item={item} />
-        ))}
-      </View>
+      {album ?
+        <View style={styles.songsView}>
+          {album.map((item) => (
+            <StandardSongCard key={item.id} item={item} />
+          ))}
+        </View> :
+        <View style={styles.fallbackView}>
+          {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
+          {isError && !isLoading && <FallbackDataCard type={libraryStrings.error} onPressAction={refetch} />}
+        </View>
+      }
     </ScrollView>
   );
 };

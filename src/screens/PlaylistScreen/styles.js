@@ -98,11 +98,18 @@ const styles = StyleSheet.create({
    * Songs view style
    * Represents the style for the view containing the vertical song list.
    * - marginTop: 10 (top margin spacing)
-   */
+  */
   songsView: {
     marginTop: 10,
   },
+  /**
+   * Fallback View style.
+   * Represents the style for a fallback view with the following properties:
+   * - marginVertical: Dimensions.get('window').height / 10 (vertical margin based on window dimensions)
+  */
+  fallbackView: {
+    marginVertical: Dimensions.get('window').height / 10,
+  },
 });
-
 
 export default styles;

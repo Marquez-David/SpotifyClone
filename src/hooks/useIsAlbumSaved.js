@@ -1,29 +1,19 @@
-import { useState, useEffect } from 'react';
 import { areAlbumsSaved } from '../services/SpotifyRequests';
+import { useQuery } from '@tanstack/react-query';
+import { contentType } from '../utils/strings';
 
 /**
- * Custom hook that checks whether a list of album IDs is saved in the user's Spotify library.
- * * @param {string[]} type - Type of the data.
- * @param {string[]} id - An array of album IDs to check.
- * @returns {Object} - An object containing the state of saved albums and a function to update the state.
+ * A custom hook for checking if an album is saved by the user using React Query.
+ * @param {string} type - The content type, such as "album."
+ * @param {string} albumId - The ID of the album to check for.
+ * @returns {Object} An object containing a boolean flag indicating if the album is saved.
  */
-export const useIsAlbumSaved = (type, id) => {
-  const [isSaved, setIsSaved] = useState(null);
+export const useIsAlbumSaved = (type, albumId) => {
+  const { data } = useQuery({
+    queryKey: ['isAlbumSaved', albumId],
+    queryFn: () => areAlbumsSaved(albumId),
+    enabled: type === contentType.album, // the query will not execute until type is album
+  });
 
-  useEffect(() => {
-    const fetchIsAlbumSaved = async () => {
-      try {
-        if (type === 'album') {
-          let data = await areAlbumsSaved(id);
-          setIsSaved(data?.[0]);
-        }
-      } catch (error) {
-        console.log('Error while calling API: ' + error);
-      }
-    };
-
-    fetchIsAlbumSaved();
-  }, []);
-
-  return { isSaved, setIsSaved };
+  return { isSaved: data?.[0] };
 };

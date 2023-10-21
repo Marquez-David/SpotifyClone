@@ -43,6 +43,7 @@ export const libraryStrings = {
   episodes: "Episodes",
   downloads: "Downloads",
   programs: "Programs",
+  error: 'Error',
 
   createPlaylist: "Create playlist",
 };
@@ -55,7 +56,7 @@ export const verticalSliderStrings = {
   searchForAlbums: "Search for albums",
 };
 
-export const emptyDataStrings = {
+export const fallbackDataStrings = {
   playlistsTitle: "No playlists have been created.",
   playlistsDescription: "Create a new one and add your favorite songs.",
 
@@ -74,8 +75,13 @@ export const emptyDataStrings = {
   programsTitle: "You don't follow any podcast yet.",
   programsDescription: "If you follow a podcast, you will receive new episodes automatically.",
 
+  errorTitle: "Something went wrong.",
+  errorDescription: "An error occurred while loading the data. \n Please try again later.",
+
+  //Button texts
   browsePodcasts: "EXPLORE PODCASTS",
   browseMusic: "EXPLORE MUSIC",
+  tryAgain: "TRY AGAIN",
 };
 
 export const searchStrings = {

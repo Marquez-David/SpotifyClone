@@ -1,26 +1,21 @@
-import { useState, useEffect } from 'react';
 import { getAlbum } from '../services/SpotifyRequests';
+import { useQuery } from '@tanstack/react-query';
 
 /**
- * This custom hook fetches and manages data data through an asynchronous API call. 
- * It returns the album data and the corresponding function to update the state with the fetched album.
- * @returns 
+ * A custom hook for fetching and managing album data using React Query's useQuery.
+ * @param {string} albumId - The ID of the album to retrieve.
+ * @returns {Object} An object containing album data, loading state, and error state.
  */
 export const useAlbum = (albumId) => {
-  const [album, setAlbum] = useState(null);
+  const { isLoading, isError, data, refetch } = useQuery({
+    queryKey: ['album', albumId],
+    queryFn: () => getAlbum(albumId),
+  });
 
-  useEffect(() => {
-    const fetchAlbumData = async () => {
-      try {
-        const response = await getAlbum(albumId);
-        setAlbum(response);
-      } catch (error) {
-        console.log('Error while calling function getAlbum(): ' + error);
-      }
-    };
-
-    fetchAlbumData();
-  }, []);
-
-  return { album, setAlbum };
+  return {
+    isLoading,
+    isError,
+    album: data,
+    refetch,
+  }
 };
