@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
+
 import styles from './styles';
-
 import { handleNavigation } from '../../utils/helpers';
-
+import { spotifyImage } from '../../utils/constants';
 import { contentTypeStrings } from '../../utils/strings';
 
 /**
@@ -19,7 +19,7 @@ const VerticalSliderItem = ({ data, subcategory, description }) => {
     <TouchableOpacity style={styles.imageView} onPress={() => handleNavigation(data, navigation)}>
       <Image
         style={subcategory !== contentTypeStrings.artists ? styles.carouselImage : styles.carouselArtistsImage}
-        source={{ uri: data.images[0].url }}
+        source={{ uri: data.images[0]?.url || spotifyImage }}
       />
       <View style={styles.textView}>
         <Text style={styles.playlistNameText}>{data.name}</Text>
