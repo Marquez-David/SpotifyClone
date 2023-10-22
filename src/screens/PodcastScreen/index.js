@@ -6,7 +6,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import colors from '../../utils/colors';
 import styles from './styles';
 
-import { podcastStrings, modalDialogStrings, libraryStrings } from '../../utils/strings';
+import { podcastStrings, modalDialogStrings, contentTypeStrings } from '../../utils/strings';
 import { shortenText, handleScroll } from '../../utils/helpers';
 
 import FallbackDataCard from '../../components/FallbackDataCard';
@@ -57,7 +57,7 @@ const PodcastScreen = () => {
         </View> :
         <View style={styles.fallbackView}>
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && !isLoading && <FallbackDataCard type={libraryStrings.error} onPressAction={refetch} />}
+          {isError && !isLoading && <FallbackDataCard type={contentTypeStrings.error} onPressAction={refetch} />}
         </View>
       }
     </ScrollView>

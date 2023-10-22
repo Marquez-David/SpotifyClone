@@ -1,6 +1,6 @@
 import {
   carouselStrings,
-  libraryStrings,
+  contentTypeStrings,
   verticalSliderStrings,
   fallbackDataStrings,
   contentType,
@@ -148,18 +148,22 @@ export function parseCarouselData(data, carouselTitle) {
     [carouselStrings.yourPlaylists]: () => {
       response.data = data;
       response.description = data.name + carouselStrings.listComplementString;
+      response.image = data.images?.[0]?.url;
     },
     [carouselStrings.findOutMoreAbout]: () => {
       response.data = data;
       response.description = data.name + '\n' + data.artists[0].name + carouselStrings.albumComplementString;
+      response.image = data.images?.[0]?.url;
     },
     [carouselStrings.yourPodcasts]: () => {
       response.data = data.show;
       response.description = data.show.name + '\n' + carouselStrings.podcastComplementsString + data.show.publisher;
+      response.image = data.show.images?.[0]?.url;
     },
     [carouselStrings.relatedArtists]: () => {
       response.data = data;
       response.description = data.name;
+      response.image = data.images?.[0]?.url;
     },
   };
 
@@ -179,23 +183,23 @@ export function parseLibraryData(data, subcategory) {
   const response = {};
 
   const libraryMappings = {
-    [libraryStrings.playlists]: () => {
+    [contentTypeStrings.playlists]: () => {
       response.data = data;
       response.description = verticalSliderStrings.by + data.owner.display_name;
     },
-    [libraryStrings.artists]: () => {
+    [contentTypeStrings.artists]: () => {
       response.data = data;
       response.description = "";
     },
-    [libraryStrings.albums]: () => {
+    [contentTypeStrings.albums]: () => {
       response.data = data.album;
       response.description = verticalSliderStrings.by + data.album.artists[0].name;
     },
-    [libraryStrings.episodes]: () => {
+    [contentTypeStrings.episodes]: () => {
       response.data = data.episode;
       response.description = convertDate(data.episode.release_date) + ' • ' + convertMilliseconds(data.episode.duration_ms);
     },
-    [libraryStrings.programs]: () => {
+    [contentTypeStrings.programs]: () => {
       response.data = data.show;
       response.description = "";
     },
@@ -214,40 +218,45 @@ export function parseLibraryData(data, subcategory) {
  */
 export function parseFallbackData(type) {
   const textMappings = {
-    [libraryStrings.playlists]: {
+    [contentTypeStrings.playlists]: {
       title: fallbackDataStrings.playlistsTitle,
       description: fallbackDataStrings.playlistsDescription,
       buttonText: fallbackDataStrings.browseMusic
     },
-    [libraryStrings.artists]: {
+    [contentTypeStrings.artists]: {
       title: fallbackDataStrings.artistsTitle,
       description: fallbackDataStrings.artistsDescription,
       buttonText: fallbackDataStrings.browseMusic
     },
-    [libraryStrings.albums]: {
+    [contentTypeStrings.albums]: {
       title: fallbackDataStrings.albumsTitle,
       description: fallbackDataStrings.albumsDescription,
       buttonText: fallbackDataStrings.browseMusic
     },
-    [libraryStrings.episodes]: {
+    [contentTypeStrings.episodes]: {
       title: fallbackDataStrings.episodesTitle,
       description: fallbackDataStrings.episodesDescription,
       buttonText: fallbackDataStrings.browsePodcasts
     },
-    [libraryStrings.downloads]: {
+    [contentTypeStrings.downloads]: {
       title: fallbackDataStrings.downloadsTitle,
       description: fallbackDataStrings.downloadsDescription,
       buttonText: fallbackDataStrings.browsePodcasts
     },
-    [libraryStrings.programs]: {
+    [contentTypeStrings.programs]: {
       title: fallbackDataStrings.programsTitle,
       description: fallbackDataStrings.programsDescription,
       buttonText: fallbackDataStrings.browsePodcasts
     },
-    [libraryStrings.error]: {
+    [contentTypeStrings.error]: {
       title: fallbackDataStrings.errorTitle,
       description: fallbackDataStrings.errorDescription,
       buttonText: fallbackDataStrings.tryAgain
+    },
+    [contentTypeStrings.empty]: {
+      title: fallbackDataStrings.emptyPlaylistTitle,
+      description: fallbackDataStrings.emptyPlaylistDescription,
+      buttonText: fallbackDataStrings.browseMusic
     },
   };
 

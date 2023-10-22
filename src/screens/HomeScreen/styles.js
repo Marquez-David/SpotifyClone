@@ -17,13 +17,15 @@ const styles = StyleSheet.create({
    * Represents a view for the home header menu with the following properties:
    * - flex: 1 (flexible size to fit available space)
    * - flexDirection: 'row' (horizontal layout direction)
-   * - paddingVertical: 25 (vertical padding spacing)
+   * - alignItems: 'center' (align items to the center of the container)
+   * - paddingVertical: 15 (vertical padding spacing)
    * - paddingLeft: 5 (left padding spacing)
   */
   homeHeader: {
     flex: 1,
     flexDirection: 'row',
-    paddingVertical: 25,
+    alignItems: 'center',
+    paddingVertical: 15,
     paddingLeft: 5,
   },
   /**

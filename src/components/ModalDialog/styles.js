@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
    * - flexDirection: 'column' (vertical layout with children)
    * - justifyContent: 'space-between' (space between children)
    * - backgroundColor: colors.spotifyWhite (background color using the 'spotifyWhite' color from the 'colors' object)
-   * - borderRadius: 25 (border radius of 25 units)
+   * - borderRadius: 15 (border radius of 15 units)
    * - borderWidth: 1 (border width of 1 unit)
    * - borderColor: colors.spotifyWhite (border color using the 'spotifyWhite' color from the 'colors' object)
    * - position: 'absolute' (absolute positioning)
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     backgroundColor: colors.spotifyWhite,
-    borderRadius: 25,
+    borderRadius: 15,
     borderWidth: 1,
     borderColor: colors.spotifyWhite,
     position: 'absolute',

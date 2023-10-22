@@ -97,10 +97,10 @@ const styles = StyleSheet.create({
   /**
    * Songs view style
    * Represents the style for the view containing the vertical song list.
-   * - marginTop: 10 (top margin spacing)
+   * - marginTop: 5 (top margin spacing)
   */
   songsView: {
-    marginTop: 10,
+    marginTop: 5,
   },
   /**
    * Fallback View style.

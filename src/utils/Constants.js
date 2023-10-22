@@ -25,6 +25,8 @@ export const spotifyAuthConfig = {
   },
 };
 
+export const spotifyImage = 'https://i.scdn.co/image/ab6775700000ee85ba52bfae57feb3cb5847fb86';
+
 /**
  * An object that defines offset values for various categories, 
  * used for managing infinite scrolling.

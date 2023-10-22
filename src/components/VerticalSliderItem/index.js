@@ -5,7 +5,7 @@ import styles from './styles';
 
 import { handleNavigation } from '../../utils/helpers';
 
-import { libraryStrings } from '../../utils/strings';
+import { contentTypeStrings } from '../../utils/strings';
 
 /**
  * This component renders an image and its related text data based on the provided "item" object and "subcategory." 
@@ -18,12 +18,12 @@ const VerticalSliderItem = ({ data, subcategory, description }) => {
   return (
     <TouchableOpacity style={styles.imageView} onPress={() => handleNavigation(data, navigation)}>
       <Image
-        style={subcategory !== libraryStrings.artists ? styles.carouselImage : styles.carouselArtistsImage}
+        style={subcategory !== contentTypeStrings.artists ? styles.carouselImage : styles.carouselArtistsImage}
         source={{ uri: data.images[0].url }}
       />
       <View style={styles.textView}>
         <Text style={styles.playlistNameText}>{data.name}</Text>
-        {(subcategory != libraryStrings.artists && subcategory != libraryStrings.programs) &&
+        {(subcategory != contentTypeStrings.artists && subcategory != contentTypeStrings.programs) &&
           <Text style={styles.ownerText}>{description}</Text>
         }
       </View>

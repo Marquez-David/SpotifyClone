@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { libraryStrings } from '../../utils/strings';
+import { contentTypeStrings } from '../../utils/strings';
 import styles from './styles';
 
 /**
@@ -19,8 +19,8 @@ const renderPressedBar = () => (
 const renderSubcategorySelector = (category, subcategory, setSubcategory) => {
   const components = [];
 
-  if (category === libraryStrings.music) {
-    const musicTexts = [libraryStrings.playlists, libraryStrings.artists, libraryStrings.albums];
+  if (category === contentTypeStrings.music) {
+    const musicTexts = [contentTypeStrings.playlists, contentTypeStrings.artists, contentTypeStrings.albums];
     for (let i = 0; i < musicTexts.length; i++) {
       components.push(
         <TouchableOpacity key={i} style={styles.subcategoryTouchableOpacity} onPress={() => setSubcategory(musicTexts[i])}>
@@ -30,7 +30,7 @@ const renderSubcategorySelector = (category, subcategory, setSubcategory) => {
       );
     }
   } else {
-    const podcastsTexts = [libraryStrings.episodes, libraryStrings.downloads, libraryStrings.programs];
+    const podcastsTexts = [contentTypeStrings.episodes, contentTypeStrings.downloads, contentTypeStrings.programs];
     for (let i = 0; i < podcastsTexts.length; i++) {
       components.push(
         <TouchableOpacity key={i} style={styles.subcategoryTouchableOpacity} onPress={() => setSubcategory(podcastsTexts[i])}>

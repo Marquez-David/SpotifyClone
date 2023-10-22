@@ -33,7 +33,7 @@ export const carouselStrings = {
   podcastComplementsString: "Podcast • ",
 };
 
-export const libraryStrings = {
+export const contentTypeStrings = {
   music: "Music",
   podcasts: "Podcasts",
 
@@ -43,7 +43,9 @@ export const libraryStrings = {
   episodes: "Episodes",
   downloads: "Downloads",
   programs: "Programs",
+
   error: 'Error',
+  empty: 'Empty',
 
   createPlaylist: "Create playlist",
 };
@@ -78,6 +80,9 @@ export const fallbackDataStrings = {
   errorTitle: "Something went wrong.",
   errorDescription: "An error occurred while loading the data. \n Please try again later.",
 
+  emptyPlaylistTitle: "This playlist is empty.",
+  emptyPlaylistDescription: "You can add your favorite songs to this playlist and start enjoying your music.",
+
   //Button texts
   browsePodcasts: "EXPLORE PODCASTS",
   browseMusic: "EXPLORE MUSIC",
@@ -90,9 +95,7 @@ export const searchStrings = {
   artistsSongsOrPodcasts: "Artists, songs or podcasts..."
 };
 
-export const albumStrings = {
-  randomMode: "SHUFFLE PLAY",
-};
+export const shufflePlay = "SHUFFLE PLAY";
 
 export const podcastStrings = {
   follow: "FOLLOW",

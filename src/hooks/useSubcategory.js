@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { libraryStrings } from '../utils/strings';
+import { contentTypeStrings } from '../utils/strings';
 
 /**
  * A custom hook for managing subcategories based on a selected category.
@@ -7,14 +7,14 @@ import { libraryStrings } from '../utils/strings';
  * @returns {Object} An object containing the current subcategory and a function to set the subcategory.
  */
 export const useSubcategory = (category) => {
-  const [subcategory, setSubcategory] = useState(libraryStrings.playlists);
+  const [subcategory, setSubcategory] = useState(contentTypeStrings.playlists);
 
   useEffect(() => {
     const handleSubcategories = () => {
-      if (category === libraryStrings.music) {
-        setSubcategory(libraryStrings.playlists);
+      if (category === contentTypeStrings.music) {
+        setSubcategory(contentTypeStrings.playlists);
       } else {
-        setSubcategory(libraryStrings.episodes);
+        setSubcategory(contentTypeStrings.episodes);
       }
     };
 

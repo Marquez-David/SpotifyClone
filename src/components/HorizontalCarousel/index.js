@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
+import { spotifyImage } from '../../utils/constants';
 import { carouselStrings } from '../../utils/strings';
 import styles from './styles';
 
@@ -18,7 +19,7 @@ const HorizontalCarousel = ({ items, title }) => {
         renderItem={({ item }) => (
           <TouchableOpacity style={title === carouselStrings.relatedArtists ? styles.artistImageView : styles.imageView}
             onPress={() => title === carouselStrings.relatedArtists ? null : handleNavigation(parseCarouselData(item, title).data, navigation)}>
-            <Image style={title === carouselStrings.relatedArtists ? styles.carouselArtistImage : styles.carouselImage} source={{ uri: parseCarouselData(item, title).data.images[0].url }} />
+            <Image style={title === carouselStrings.relatedArtists ? styles.carouselArtistImage : styles.carouselImage} source={{ uri: parseCarouselData(item, title).image || spotifyImage }} />
             <Text style={title === carouselStrings.relatedArtists ? styles.artistDescriptionText : styles.descriptionText}>{parseCarouselData(item, title).description}</Text>
           </TouchableOpacity>
         )}

@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { roundNumber } from '../../utils/helpers';
-import { artistStrings, carouselStrings, libraryStrings } from '../../utils/strings';
+import { artistStrings, carouselStrings, contentTypeStrings } from '../../utils/strings';
 import styles from './styles';
 import colors from '../../utils/colors';
 
@@ -57,7 +57,7 @@ const ArtistScreen = () => {
         <View style={styles.fallbackView}>
           {(isLoadingTopTracks || isLoadingRelatedArtists) && <ActivityIndicator color={colors.spotifyGreen} />}
           {(isErrorTopTracks || isErrorRelatedArtists) && (
-            <FallbackDataCard type={libraryStrings.error} onPressAction={refetchTopTracks && refetchRelatedArtists} />
+            <FallbackDataCard type={contentTypeStrings.error} onPressAction={refetchTopTracks && refetchRelatedArtists} />
           )}
         </View>
       }

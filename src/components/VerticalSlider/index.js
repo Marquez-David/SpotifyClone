@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { libraryStrings, verticalSliderStrings, modalDialogStrings } from '../../utils/strings';
+import { contentTypeStrings, verticalSliderStrings, modalDialogStrings } from '../../utils/strings';
 import colors from '../../utils/colors';
 
 import { parseLibraryData } from '../../utils/helpers';
@@ -21,9 +21,9 @@ import { ModalContext } from '../../context/modal';
  */
 const parseSearchText = (subcategory) => {
 	const subcategoryToSearchText = {
-		[libraryStrings.playlists]: verticalSliderStrings.searchForPlayLists,
-		[libraryStrings.artists]: verticalSliderStrings.searchForArtists,
-		[libraryStrings.albums]: verticalSliderStrings.searchForAlbums,
+		[contentTypeStrings.playlists]: verticalSliderStrings.searchForPlayLists,
+		[contentTypeStrings.artists]: verticalSliderStrings.searchForArtists,
+		[contentTypeStrings.albums]: verticalSliderStrings.searchForAlbums,
 	};
 
 	return subcategoryToSearchText[subcategory];
@@ -44,12 +44,12 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 	const { searchText, setSearchText } = useSearchText(subcategory);
 	const { openModal } = useContext(ModalContext);
 
-	const isPlaylistsSubcategory = subcategory === libraryStrings.playlists;
+	const isPlaylistsSubcategory = subcategory === contentTypeStrings.playlists;
 	const items = data && getFilteredItems(data, subcategory, searchText);
 
 	return (
 		<ScrollView style={styles.verticalSliderView}>
-			{(category === libraryStrings.music) && (
+			{(category === contentTypeStrings.music) && (
 				<SearchBar
 					labelText={parseSearchText(subcategory)}
 					valueText={searchText}
@@ -64,7 +64,7 @@ const VerticalSlider = ({ category, subcategory, data }) => {
 					</View>
 					<View style={styles.textView}>
 						<Text style={styles.playlistNameText}>
-							{libraryStrings.createPlaylist}
+							{contentTypeStrings.createPlaylist}
 						</Text>
 					</View>
 				</TouchableOpacity>
