@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useNavigation } from "@react-navigation/native";
 
 import styles from './styles';
 import colors from '../../utils/colors';
 import { modalDialogStrings } from '../../utils/strings';
-import { extractArtistNames, handleNavigation } from '../../utils/helpers';
+import { extractArtistNames, shortenText } from '../../utils/helpers';
 
 import { ModalContext } from '../../context/modal';
 
@@ -14,12 +13,11 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const StandardSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
-  const navigation = useNavigation();
 
   return (
     <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
       <View style={styles.titleView}>
-        <Text style={styles.titleText}>{item.name}</Text>
+        <Text style={styles.titleText}>{shortenText(item.name, 8)}</Text>
         <View style={styles.descriptionView}>
           {item.explicit ? <MaterialIcons name='explicit' size={15} color={colors.spotifyGray}></MaterialIcons> : null}
           <Text style={styles.descriptionText}>{extractArtistNames(item.artists)}</Text>
