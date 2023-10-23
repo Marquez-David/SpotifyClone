@@ -10,8 +10,8 @@ const FallbackDataCard = ({ type, onPressAction }) => {
   return (
     <View style={styles.fallbackDataView}>
       <View style={styles.textView}>
-        <Text style={styles.titleText}> {title}</Text>
-        <Text style={styles.descriptionText}> {description}</Text>
+        <Text style={styles.titleText}>{title}</Text>
+        <Text style={styles.descriptionText}>{description}</Text>
       </View>
       <View style={styles.touchableOpacityView}>
         <TouchableOpacity style={styles.touchableOpacity} onPress={onPressAction}>

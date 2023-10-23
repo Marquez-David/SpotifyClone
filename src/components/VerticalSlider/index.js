@@ -1,33 +1,16 @@
-import React, { useContext } from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import React from 'react';
+import { View, ScrollView } from 'react-native';
 import styles from './styles';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { contentTypeStrings, verticalSliderStrings, modalDialogStrings } from '../../utils/strings';
-import colors from '../../utils/colors';
+import { subcategories } from '../../utils/strings';
 
-import { parseLibraryData } from '../../utils/helpers';
+import { parseLibraryData, parseSearchText } from '../../utils/helpers';
 
 import SearchBar from '../SearchBar';
+import CreatePlaylistCard from '../CreatePlaylistCard';
 import VerticalSliderItem from '../VerticalSliderItem';
 
 import { useSearchText } from '../../hooks/useSearchText';
-import { ModalContext } from '../../context/modal';
-
-/**
- * Uses an object mapping to determine the appropriate search text based on the subcategory. 
- * @param {*} subcategory 
- * @returns 
- */
-const parseSearchText = (subcategory) => {
-	const subcategoryToSearchText = {
-		[contentTypeStrings.playlists]: verticalSliderStrings.searchForPlayLists,
-		[contentTypeStrings.artists]: verticalSliderStrings.searchForArtists,
-		[contentTypeStrings.albums]: verticalSliderStrings.searchForAlbums,
-	};
-
-	return subcategoryToSearchText[subcategory];
-};
 
 /**
  * Filters the provided "items" array to search only the items whose name contains the provided "searchText."
@@ -40,35 +23,14 @@ const getFilteredItems = (items, subcategory, searchText) => {
 	return items.filter((item) => parseLibraryData(item, subcategory).data.name.toLowerCase().includes(searchText.toLowerCase()));
 };
 
-const VerticalSlider = ({ category, subcategory, data }) => {
+const VerticalSlider = ({ data, subcategory }) => {
 	const { searchText, setSearchText } = useSearchText(subcategory);
-	const { openModal } = useContext(ModalContext);
-
-	const isPlaylistsSubcategory = subcategory === contentTypeStrings.playlists;
 	const items = data && getFilteredItems(data, subcategory, searchText);
 
 	return (
 		<ScrollView style={styles.verticalSliderView}>
-			{(category === contentTypeStrings.music) && (
-				<SearchBar
-					labelText={parseSearchText(subcategory)}
-					valueText={searchText}
-					changeText={setSearchText}
-				/>
-			)}
-
-			{isPlaylistsSubcategory && (
-				<TouchableOpacity style={styles.imageView} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
-					<View style={styles.iconView}>
-						<Ionicons name='add' size={30} color={colors.spotifyWhite} />
-					</View>
-					<View style={styles.textView}>
-						<Text style={styles.playlistNameText}>
-							{contentTypeStrings.createPlaylist}
-						</Text>
-					</View>
-				</TouchableOpacity>
-			)}
+			<SearchBar labelText={parseSearchText(subcategory)} valueText={searchText} changeText={setSearchText} />
+			{subcategory === subcategories.playlists && <CreatePlaylistCard />}
 
 			{items.map((item) => {
 				const { data, description } = parseLibraryData(item, subcategory);

@@ -23,21 +23,19 @@ import { ModalContext } from '../../context/modal';
  * @param {function} setButtonText - A function to set the text of a button based on the action.
  * @param {function} setUserFollowsArtist - A function to update the user's follow status for the artist.
  */
-const handleFollowArtist = async (artistsId, useFollowsArtist, setButtonText, setUserFollowsArtist) => {
+const handleFollowArtist = async (artistsId, useFollowsArtist, setButtonText) => {
   if (useFollowsArtist) {
     await unfollowArtist(artistsId);
-    setUserFollowsArtist(false);
     setButtonText(podcastStrings.follow);
   } else {
     await followArtist(artistsId);
-    setUserFollowsArtist(true);
     setButtonText(podcastStrings.following);
   }
 };
 
 const ArtistHeader = ({ artist }) => {
   const navigation = useNavigation();
-  const { userFollowsArtist, setUserFollowsArtist } = useUserFollowsArtist(artist.id);
+  const { userFollowsArtist } = useUserFollowsArtist(artist.id);
   const { buttonText, setButtonText } = useButtonText(userFollowsArtist, podcastStrings.following, podcastStrings.follow);
   const { openModal } = useContext(ModalContext);
   return (
@@ -51,7 +49,7 @@ const ArtistHeader = ({ artist }) => {
         onPress={() => navigation.goBack()}>
       </AntDesign.Button>
       <View style={styles.rightButtonsView}>
-        <TouchableOpacity style={styles.followButton} onPress={() => handleFollowArtist(artist.id, userFollowsArtist, setButtonText, setUserFollowsArtist)}>
+        <TouchableOpacity style={styles.followButton} onPress={() => handleFollowArtist(artist.id, userFollowsArtist, setButtonText)}>
           <Text style={styles.followButtonText}>{buttonText}</Text>
         </TouchableOpacity>
         <Entypo.Button

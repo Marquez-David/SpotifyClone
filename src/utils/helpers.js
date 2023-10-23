@@ -1,11 +1,14 @@
 import {
   carouselStrings,
-  contentTypeStrings,
+  categories,
+  subcategories,
+  subcategoryRoutes,
   verticalSliderStrings,
   fallbackDataStrings,
   contentType,
   podcastStrings,
   artistStrings,
+  searchLabelStrings,
 } from "./strings";
 
 /**
@@ -183,23 +186,23 @@ export function parseLibraryData(data, subcategory) {
   const response = {};
 
   const libraryMappings = {
-    [contentTypeStrings.playlists]: () => {
+    [subcategories.playlists]: () => {
       response.data = data;
       response.description = verticalSliderStrings.by + data.owner.display_name;
     },
-    [contentTypeStrings.artists]: () => {
+    [subcategories.artists]: () => {
       response.data = data;
       response.description = "";
     },
-    [contentTypeStrings.albums]: () => {
+    [subcategories.albums]: () => {
       response.data = data.album;
       response.description = verticalSliderStrings.by + data.album.artists[0].name;
     },
-    [contentTypeStrings.episodes]: () => {
+    [subcategories.episodes]: () => {
       response.data = data.episode;
-      response.description = convertDate(data.episode.release_date) + ' • ' + convertMilliseconds(data.episode.duration_ms);
+      response.description = convertDate(data?.episode?.release_date) + ' • ' + convertMilliseconds(data.episode.duration_ms);
     },
-    [contentTypeStrings.programs]: () => {
+    [subcategories.podcasts]: () => {
       response.data = data.show;
       response.description = "";
     },
@@ -209,7 +212,38 @@ export function parseLibraryData(data, subcategory) {
   mappingFunction();
 
   return response;
-}
+};
+
+export const parseSubcategoryRoute = (subcategory) => {
+  const routeMappings = {
+    [subcategories.playlists]: subcategoryRoutes.playlists,
+    [subcategories.artists]: subcategoryRoutes.artists,
+    [subcategories.albums]: subcategoryRoutes.albums,
+    [subcategories.episodes]: subcategoryRoutes.episodes,
+    [subcategories.downloads]: subcategoryRoutes.downloads,
+    [subcategories.podcasts]: subcategoryRoutes.podcasts,
+  };
+
+  return routeMappings[subcategory];
+};
+
+/**
+ * Uses an object mapping to determine the appropriate search text based on the subcategory. 
+ * @param {*} subcategory 
+ * @returns 
+ */
+export function parseSearchText(subcategory) {
+  const subcategoryToSearchText = {
+    [subcategories.playlists]: searchLabelStrings.searchForPlayLists,
+    [subcategories.artists]: searchLabelStrings.searchForArtists,
+    [subcategories.albums]: searchLabelStrings.searchForAlbums,
+    [subcategories.episodes]: searchLabelStrings.searchForEpisodes,
+    [subcategories.downloads]: searchLabelStrings.searchForDownloads,
+    [subcategories.podcasts]: searchLabelStrings.searchForPrograms,
+  };
+
+  return subcategoryToSearchText[subcategory];
+};
 
 /**
  * Maps subcategories to corresponding texts for titles, descriptions, and button texts.
@@ -218,42 +252,42 @@ export function parseLibraryData(data, subcategory) {
  */
 export function parseFallbackData(type) {
   const textMappings = {
-    [contentTypeStrings.playlists]: {
+    [subcategories.playlists]: {
       title: fallbackDataStrings.playlistsTitle,
       description: fallbackDataStrings.playlistsDescription,
       buttonText: fallbackDataStrings.browseMusic
     },
-    [contentTypeStrings.artists]: {
+    [subcategories.artists]: {
       title: fallbackDataStrings.artistsTitle,
       description: fallbackDataStrings.artistsDescription,
       buttonText: fallbackDataStrings.browseMusic
     },
-    [contentTypeStrings.albums]: {
+    [subcategories.albums]: {
       title: fallbackDataStrings.albumsTitle,
       description: fallbackDataStrings.albumsDescription,
       buttonText: fallbackDataStrings.browseMusic
     },
-    [contentTypeStrings.episodes]: {
+    [subcategories.episodes]: {
       title: fallbackDataStrings.episodesTitle,
       description: fallbackDataStrings.episodesDescription,
       buttonText: fallbackDataStrings.browsePodcasts
     },
-    [contentTypeStrings.downloads]: {
+    [subcategories.downloads]: {
       title: fallbackDataStrings.downloadsTitle,
       description: fallbackDataStrings.downloadsDescription,
       buttonText: fallbackDataStrings.browsePodcasts
     },
-    [contentTypeStrings.programs]: {
+    [subcategories.podcasts]: {
       title: fallbackDataStrings.programsTitle,
       description: fallbackDataStrings.programsDescription,
       buttonText: fallbackDataStrings.browsePodcasts
     },
-    [contentTypeStrings.error]: {
+    [subcategories.error]: {
       title: fallbackDataStrings.errorTitle,
       description: fallbackDataStrings.errorDescription,
       buttonText: fallbackDataStrings.tryAgain
     },
-    [contentTypeStrings.empty]: {
+    [subcategories.empty]: {
       title: fallbackDataStrings.emptyPlaylistTitle,
       description: fallbackDataStrings.emptyPlaylistDescription,
       buttonText: fallbackDataStrings.browseMusic
@@ -301,6 +335,17 @@ export const handleScroll = (fetchNextPage) => {
   };
 
   return { fetchNextItems };
+};
+
+/**
+ * Get subcategories based on the selected category.
+ * @param {string} category - The selected category (e.g., "music" or "library").
+ * @returns {Array} An array of subcategories based on the selected category.
+ */
+export const getSubcategories = (category) => {
+  return category === categories.music ?
+    [subcategories.playlists, subcategories.artists, subcategories.albums] :
+    [subcategories.episodes, subcategories.downloads, subcategories.podcasts];
 };
 
 

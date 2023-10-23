@@ -6,7 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
 import colors from '../../utils/colors';
-import { LoginStrings, modalDialogStrings } from '../../utils/strings';
+import { loginStrings, modalDialogStrings } from '../../utils/strings';
 import { spotifyAuthConfig } from '../../utils/constants';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -52,26 +52,26 @@ const LoginScreen = () => {
 		<SafeAreaView style={styles.background}>
 			<View style={styles.logoView}>
 				<Entypo name='spotify' size={90} color={colors.spotifyWhite}></Entypo>
-				<Text style={[{ marginTop: 70 }, styles.logoText]}> {LoginStrings.loginString1} {LoginStrings.loginString2}</Text>
+				<Text style={[{ marginTop: 70 }, styles.logoText]}> {loginStrings.loginString1} {loginStrings.loginString2}</Text>
 			</View>
 			<View style={styles.touchableOpacityView}>
 				<TouchableOpacity onPress={() => onLogin(navigation)} style={[{ backgroundColor: colors.spotifyGreen }, styles.genericTouchableOpacity]}>
-					<Text style={[styles.touchableOpacityText, { color: 'black' }]}> {LoginStrings.signInWithSpotify}</Text>
+					<Text style={[styles.touchableOpacityText, { color: 'black' }]}> {loginStrings.signInWithSpotify}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericTouchableOpacity]}
 					onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
 					<AntDesign name='google' size={23} color={colors.spotifyWhite}></AntDesign>
-					<Text style={styles.touchableOpacityText}> {LoginStrings.signInWithGoogle}</Text>
+					<Text style={styles.touchableOpacityText}> {loginStrings.signInWithGoogle}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericTouchableOpacity]}
 					onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
 					<MaterialCommunityIcons name='facebook' size={26} color={colors.spotifyWhite}></MaterialCommunityIcons>
-					<Text style={styles.touchableOpacityText}> {LoginStrings.signInWithFacebook}</Text>
+					<Text style={styles.touchableOpacityText}> {loginStrings.signInWithFacebook}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.genericTouchableOpacity}>
-					<Text style={[{ paddingTop: 10 }, styles.touchableOpacityText]}> {LoginStrings.signIn}</Text>
+					<Text style={[{ paddingTop: 10 }, styles.touchableOpacityText]}> {loginStrings.signIn}</Text>
 				</TouchableOpacity>
 			</View>
 		</SafeAreaView>

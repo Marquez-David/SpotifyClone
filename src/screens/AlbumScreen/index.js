@@ -3,7 +3,7 @@ import { ScrollView, View, Text, Image, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { getYear } from '../../utils/helpers';
-import { contentTypeStrings } from '../../utils/strings';
+import { subcategories } from '../../utils/strings';
 import styles from './styles';
 import colors from '../../utils/colors';
 
@@ -34,7 +34,7 @@ const AlbumScreen = () => {
         </View> :
         <View style={styles.fallbackView}>
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && !isLoading && <FallbackDataCard type={contentTypeStrings.error} onPressAction={refetch} />}
+          {isError && !isLoading && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
         </View>
       }
     </ScrollView>

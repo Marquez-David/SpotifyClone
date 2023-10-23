@@ -6,7 +6,7 @@ import styles from './styles';
 import colors from '../../utils/colors';
 import { handleScroll } from '../../utils/helpers';
 import { spotifyImage } from '../../utils/constants';
-import { contentTypeStrings, modalDialogStrings } from '../../utils/strings';
+import { subcategories, modalDialogStrings } from '../../utils/strings';
 
 import ShufflePlayButton from '../../components/ShufflePlayButton';
 import FallbackDataCard from '../../components/FallbackDataCard';
@@ -35,9 +35,9 @@ const PlaylistScreen = () => {
           ))}
         </View> :
         <View style={styles.fallbackView}>
-          {playlist?.length === 0 && <FallbackDataCard type={contentTypeStrings.empty} onPressAction={() => openModal(modalDialogStrings.undeDevelopment)} />}
+          {playlist?.length === 0 && <FallbackDataCard type={subcategories.empty} onPressAction={() => openModal(modalDialogStrings.undeDevelopment)} />}
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && !isLoading && <FallbackDataCard type={contentTypeStrings.error} onPressAction={refetch} />}
+          {isError && !isLoading && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
         </View>
       }
     </ScrollView>

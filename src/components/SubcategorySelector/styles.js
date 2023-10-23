@@ -3,13 +3,21 @@ import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
 	/**
+	 * View style for the headers menu in your library.
+	 * Represents a view for the headers menu with the following properties:
+	 * - flexDirection: 'row' (horizontal layout direction)
+	*/
+	headers: {
+		flexDirection: 'row',
+	},
+	/**
 	 * Categories header text style for categories.
 	 * Represents the text style for the categories header with the following properties:
 	 * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
 	 * - fontSize: 17 (font size in points)
 	 * - fontFamily: 'GothamMedium_1' (font family 'GothamMedium_1')
 	*/
-	subcategoryHeaderGrayText: {
+	grayText: {
 		color: colors.spotifyGray,
 		fontSize: 17,
 		fontFamily: 'GothamMedium_1',
@@ -21,7 +29,7 @@ const styles = StyleSheet.create({
 	 * - fontSize: 17 (font size in points)
 	 * - fontFamily: 'GothamBold' (font family 'GothamBold')
 	*/
-	subcategoryHeaderWhiteText: {
+	whiteText: {
 		color: colors.spotifyWhite,
 		fontSize: 17,
 		fontFamily: 'GothamBold',

@@ -5,12 +5,10 @@ const styles = StyleSheet.create({
   /**
    * General component view.
    * Represents a view for an empty data card with the following properties:
-   * - flex: 1 (flexible size to fit available space)
    * - alignContent: 'center' (align content to the center of the container)
    * - justifyContent: 'center' (justify content to the center of the container)
   */
   fallbackDataView: {
-    flex: 1,
     alignContent: 'center',
     justifyContent: 'center',
   },

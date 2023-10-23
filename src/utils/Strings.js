@@ -1,3 +1,4 @@
+//Content type according to the API, used to manage the navigation
 export const contentType = {
   playlist: 'playlist',
   album: 'album',
@@ -5,7 +6,41 @@ export const contentType = {
   artist: 'artist',
 };
 
-export const LoginStrings = {
+//Library categories
+export const categories = {
+  music: 'Music',
+  podcasts: 'Podcast',
+};
+
+//Library subcategories
+export const subcategories = {
+  playlists: "Playlists",
+  artists: "Artists",
+  albums: "Albums",
+  episodes: "Episodes",
+  downloads: "Downloads",
+  podcasts: "Programs",
+
+  //To manage errors and empty data
+  error: "error",
+  empty: "empty",
+};
+
+//Subcategory routes
+export const subcategoryRoutes = {
+  playlists: "playlists",
+  artists: "following?type=artist",
+  albums: "albums",
+  episodes: "episodes",
+  downloads: "downloads",
+  podcasts: "shows",
+};
+
+//Create playlist
+export const createPlaylist = "Create playlist";
+
+//Strings used in LoginScreen
+export const loginStrings = {
   loginString1: "Millions of Songs. \n",
   loginString2: "Free on Spotify.",
   signInWithSpotify: "Sign in with Spotify",
@@ -15,12 +50,14 @@ export const LoginStrings = {
   signIn: "Sign In",
 };
 
+//Strings used in HomeScreen
 export const homeStrings = {
   goodMorning: "Good morning!",
   goodAfternoon: "Good afternoon!",
   goodEvening: "Good evening!",
 };
 
+//Strings used in Carousel component
 export const carouselStrings = {
   recentlyPlayed: "Recently played",
   yourPlaylists: "Your playlists",
@@ -33,31 +70,21 @@ export const carouselStrings = {
   podcastComplementsString: "Podcast • ",
 };
 
-export const contentTypeStrings = {
-  music: "Music",
-  podcasts: "Podcasts",
-
-  playlists: "Playlists",
-  artists: "Artists",
-  albums: "Albums",
-  episodes: "Episodes",
-  downloads: "Downloads",
-  programs: "Programs",
-
-  error: 'Error',
-  empty: 'Empty',
-
-  createPlaylist: "Create playlist",
-};
-
 export const verticalSliderStrings = {
   by: "by ",
+};
 
+//Strings used in Search component
+export const searchLabelStrings = {
   searchForPlayLists: "Search for playlists",
   searchForArtists: "Search for artists",
   searchForAlbums: "Search for albums",
+  searchForEpisodes: "Search for episodes",
+  searchForDownloads: "Search for downloads",
+  searchForPrograms: "Search for podcasts",
 };
 
+//Strings used in FallBackDataCard component
 export const fallbackDataStrings = {
   playlistsTitle: "No playlists have been created.",
   playlistsDescription: "Create a new one and add your favorite songs.",
@@ -97,6 +124,7 @@ export const searchStrings = {
 
 export const shufflePlay = "SHUFFLE PLAY";
 
+//Strings used in PodcastScreen
 export const podcastStrings = {
   follow: "FOLLOW",
   following: "FOLLOWING",
@@ -104,6 +132,7 @@ export const podcastStrings = {
   allEpisodes: "All episodes",
 };
 
+//Strings used in ArtistScreen
 export const artistStrings = {
   followers: " FOLLOWERS",
   randomMode: "SHUFFLE PLAY",
@@ -111,6 +140,7 @@ export const artistStrings = {
   relatedArtists: "Related artists",
 };
 
+//Strings used in modal component
 export const modalDialogStrings = {
   undeDevelopment: 'Oops! It seems that this feature is under development. You will be able to enjoy it soon. 🚀',
   ok: 'OK 👌',
