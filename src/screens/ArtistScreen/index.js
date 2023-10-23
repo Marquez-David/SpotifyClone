@@ -41,7 +41,13 @@ const ArtistScreen = () => {
         <Text style={styles.followers}>{roundNumber(param.followers.total)}</Text>
       </View>
       <ShufflePlayButton />
-      {topTracks && relatedArtists ?
+      {isLoadingTopTracks || isLoadingRelatedArtists || isErrorTopTracks || isErrorRelatedArtists ?
+        <View style={styles.fallbackView}>
+          {(isLoadingTopTracks || isLoadingRelatedArtists) && <ActivityIndicator color={colors.spotifyGreen} />}
+          {(isErrorTopTracks || isErrorRelatedArtists) && (
+            <FallbackDataCard type={subcategories.error} onPressAction={refetchTopTracks && refetchRelatedArtists} />
+          )}
+        </View> :
         <>
           <View style={styles.popularSongsView}>
             <Text style={styles.popularSongsTitle}>{artistStrings.popularSongs}</Text>
@@ -53,13 +59,7 @@ const ArtistScreen = () => {
             <Text style={styles.relatedArtistTitle}>{artistStrings.relatedArtists}</Text>
             <HorizontalCarousel items={relatedArtists.slice(0, 5)} title={carouselStrings.relatedArtists} />
           </View>
-        </> :
-        <View style={styles.fallbackView}>
-          {(isLoadingTopTracks || isLoadingRelatedArtists) && <ActivityIndicator color={colors.spotifyGreen} />}
-          {(isErrorTopTracks || isErrorRelatedArtists) && (
-            <FallbackDataCard type={subcategories.error} onPressAction={refetchTopTracks && refetchRelatedArtists} />
-          )}
-        </View>
+        </>
       }
     </ScrollView>
   );

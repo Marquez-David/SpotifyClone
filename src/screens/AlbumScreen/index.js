@@ -26,15 +26,15 @@ const AlbumScreen = () => {
         </Text>
       </View>
       <ShufflePlayButton />
-      {album ?
+      {isLoading || isError ?
+        <View style={styles.fallbackView}>
+          {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
+          {isError && !isLoading && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
+        </View> :
         <View style={styles.songsView}>
           {album.map((item) => (
             <StandardSongCard key={item.id} item={item} />
           ))}
-        </View> :
-        <View style={styles.fallbackView}>
-          {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && !isLoading && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
         </View>
       }
     </ScrollView>

@@ -69,28 +69,6 @@ export const getArtistAlbums = async (artistId) => {
 };
 
 /**
- * Retrieves a list of saved albums for the authenticated user.
- * @returns {Array} An array of saved album items.
- */
-export const getSavedAlbums = async () => {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/me/albums`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.items;
-	} catch (error) {
-		console.log("Error while fetching user albums: " + error.message);
-	}
-};
-
-/**
  * Retrieves a list of saved podcasts for the authenticated user.
  * @returns {Array} An array of saved podcast items.
  */
@@ -118,20 +96,14 @@ export const getSavedPodcasts = async () => {
  */
 export const getBrowseCategories = async () => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/browse/categories`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.categories.items;
-	} catch (error) {
-		console.log("Error while fetching categories: " + error.message);
-	}
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/browse/categories`,
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		},
+	});
+	return response.data.categories.items;
 };
 
 /**

@@ -19,9 +19,7 @@ import { ModalContext } from '../../context/modal';
 
 const HomeScreen = () => {
   const { openModal } = useContext(ModalContext);
-
   const { playlists } = useSavedPlaylists();
-
   const { artistAlbums } = useArtistsAlbums();
   const { podcasts } = useSavedPodcasts();
   const { message } = useMessage();

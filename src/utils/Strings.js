@@ -118,7 +118,6 @@ export const fallbackDataStrings = {
 
 export const searchStrings = {
   search: "Search",
-  exploreAll: "Explore all",
   artistsSongsOrPodcasts: "Artists, songs or podcasts..."
 };
 

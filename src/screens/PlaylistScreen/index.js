@@ -27,17 +27,17 @@ const PlaylistScreen = () => {
         <Image style={styles.image} source={{ uri: param.images[0]?.url || spotifyImage }} />
         <Text style={styles.titleText}>{param.name}</Text>
       </View>
-      {playlist?.length > 0 ?
+      {playlist?.length === 0 || isLoading || isError ?
+        <View style={styles.fallbackView}>
+          {playlist?.length === 0 && <FallbackDataCard type={subcategories.empty} onPressAction={() => openModal(modalDialogStrings.undeDevelopment)} />}
+          {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
+          {isError && !isLoading && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
+        </View> :
         <View style={styles.songsView}>
           <ShufflePlayButton />
           {playlist.map((item, index) => (
             <ImageSongCard key={index} item={item.track} />
           ))}
-        </View> :
-        <View style={styles.fallbackView}>
-          {playlist?.length === 0 && <FallbackDataCard type={subcategories.empty} onPressAction={() => openModal(modalDialogStrings.undeDevelopment)} />}
-          {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && !isLoading && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
         </View>
       }
     </ScrollView>

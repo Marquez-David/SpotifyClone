@@ -107,6 +107,14 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: 'GothamBold',
   },
+  /**
+   * Fallback View style.
+   * Represents the style for a fallback view with the following properties:
+   * - marginVertical: Dimensions.get('window').height / 3.5 (vertical margin based on window dimensions)
+  */
+  fallbackView: {
+    marginVertical: Dimensions.get('window').height / 3.5,
+  },
 });
 
 export default styles;

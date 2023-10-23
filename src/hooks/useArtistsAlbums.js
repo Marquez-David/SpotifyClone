@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { getArtists, getArtistAlbums } from '../services/SpotifyRequests';
 import { useQuery } from '@tanstack/react-query';
 

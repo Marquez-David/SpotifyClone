@@ -49,15 +49,15 @@ const PodcastScreen = () => {
       <View style={styles.episodesHeaderView}>
         <Text style={styles.episodesHeaderText}>{podcastStrings.allEpisodes}</Text>
       </View>
-      {podcastEpisodes ?
+      {isLoading || isError ?
+        <View style={styles.fallbackView}>
+          {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
+          {isError && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
+        </View> :
         <View style={styles.songsView}>
           {podcastEpisodes.map((item) => (
             <EpisodeCard key={item.id} data={item} podcastTitle={param.type} />
           ))}
-        </View> :
-        <View style={styles.fallbackView}>
-          {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
         </View>
       }
     </ScrollView>
