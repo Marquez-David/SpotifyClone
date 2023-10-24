@@ -7,11 +7,6 @@ import { handleNavigation } from '../../utils/helpers';
 import { spotifyImage } from '../../utils/constants';
 import { subcategories } from '../../utils/strings';
 
-/**
- * This component renders an image and its related text data based on the provided "item" object and "subcategory." 
- * @param {*} param0 
- * @returns 
- */
 const VerticalSliderItem = ({ data, subcategory, description }) => {
   const navigation = useNavigation();
 

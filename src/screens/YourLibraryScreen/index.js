@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, ActivityIndicator } from 'react-native';
 
 import { parseSubcategoryRoute } from '../../utils/helpers';
 import { categories, modalDialogStrings, subcategories } from '../../utils/strings';

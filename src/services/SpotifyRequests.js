@@ -346,7 +346,6 @@ export const unfollowArtist = async (artistId) => {
  */
 export const getSavedContent = async (content) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-
 	const response = await axios({
 		method: "GET",
 		url: `https://api.spotify.com/v1/me/${content}`,

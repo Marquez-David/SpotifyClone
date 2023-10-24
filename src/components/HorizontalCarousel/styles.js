@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
 	/**
 	 * Specific view style for each artists image in the carousel.
 	 * Represents an image view with the following properties:
-	 * - flex: 1 (flexible size to fit available space)
 	 * - marginLeft: 8 (left margin spacing)
+	 * - width: 130 (width in points)
 	*/
 	artistImageView: {
-		flex: 1,
 		marginLeft: 8,
+		width: 130,
 	},
 	/**
 	 * Image style for the carousel.
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 	 * - height: 150 (height in points)
 	 * - width: 150 (width in points)
 	*/
-	carouselImage: {
+	image: {
 		height: 150,
 		width: 150,
 	},
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 	 * - width: 130 (width in points)
 	 * - borderRadius: 100 (border radius of 100 units)
 	*/
-	carouselArtistImage: {
+	artistImage: {
 		height: 130,
 		width: 130,
 		borderRadius: 100,
