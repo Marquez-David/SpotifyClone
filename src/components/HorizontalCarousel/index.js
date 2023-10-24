@@ -13,7 +13,6 @@ import { ModalContext } from '../../context/modal';
 const HorizontalCarousel = ({ items, title }) => {
   const navigation = useNavigation();
   const { openModal } = useContext(ModalContext);
-  //title === carouselStrings.relatedArtists ? null : handleNavigation(parseCarouselData(item, title).data, navigation)
   return (
     <View style={styles.carouseView}>
       <FlatList
@@ -22,7 +21,7 @@ const HorizontalCarousel = ({ items, title }) => {
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
           <TouchableOpacity style={title === carouselStrings.relatedArtists ? styles.artistImageView : styles.imageView}
-            onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+            onPress={() => title === carouselStrings.relatedArtists ? openModal(modalDialogStrings.undeDevelopment) : handleNavigation(parseCarouselData(item, title).data, navigation)}>
             <Image style={title === carouselStrings.relatedArtists ? styles.artistImage : styles.image} source={{ uri: parseCarouselData(item, title).image || spotifyImage }} />
             <Text style={title === carouselStrings.relatedArtists ? styles.artistDescriptionText : styles.descriptionText}>{parseCarouselData(item, title).description}</Text>
           </TouchableOpacity>
