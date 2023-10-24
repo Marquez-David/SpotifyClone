@@ -29,7 +29,7 @@ const onLogin = async (navigation) => {
 			const expirationDate = new Date(result.accessTokenExpirationDate).getTime();
 			await AsyncStorage.setItem('spotifyToken', result.accessToken);
 			await AsyncStorage.setItem('tokenExpirationDate', expirationDate.toString());
-			navigation.navigate('Main');
+			navigation.navigate('HomeStack');
 		}
 	} catch (error) {
 		console.log(JSON.stringify(error));

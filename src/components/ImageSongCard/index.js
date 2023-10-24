@@ -11,9 +11,11 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { ModalContext } from '../../context/modal';
+import { PlayerContext } from '../../context/player';
 
 const ImageSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
+  const { openPlayer } = useContext(PlayerContext);
   return (
     <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
       <Image style={styles.image} source={{ uri: item.album.images[0].url }} />

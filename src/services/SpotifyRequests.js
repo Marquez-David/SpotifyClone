@@ -356,4 +356,17 @@ export const getSavedContent = async (content) => {
 	return response.data.items || response.data.artists.items;
 };
 
+export const playSong = async () => {
+
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "PUT",
+		url: `https://api.spotify.com/v1/me/player/play`,
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		},
+	});
+	return response;
+};
+
 

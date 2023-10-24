@@ -6,14 +6,16 @@ import colors from '../../utils/colors';
 import { modalDialogStrings } from '../../utils/strings';
 import { extractArtistNames, shortenText } from '../../utils/helpers';
 
+import { useDevices } from '../../hooks/useDevices';
 import { ModalContext } from '../../context/modal';
+import { PlayerContext } from '../../context/player';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const StandardSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
-
+  const { openPlayer } = useContext(PlayerContext);
   return (
     <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
       <View style={styles.titleView}>

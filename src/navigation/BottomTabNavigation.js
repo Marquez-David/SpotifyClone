@@ -1,17 +1,16 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import HomeScreen from '../screens/HomeScreen';
-import SearchScreen from '../screens/SearchScreen';
-import YourLibraryScreen from '../screens/YourLibraryScreen';
-import PremiumScreen from '../screens/PremiumScreen';
-import styles from './styles';
+import { HomeStackNavigation } from './HomeStackNavigation';
+import { LibraryStackNavigation } from './LibraryStackNavigation';
+import { SearchStackNavigation } from './SearchStackNavigation';
 
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import OcticonsIcon from 'react-native-vector-icons/Octicons';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import styles from './styles';
 
 /**
  * Constant that maps different icon component types to their respective imports, enabling dynamic 
@@ -52,43 +51,31 @@ const isIconFocused = (isFocused, focusedIcon, unfocusedIcon, focusedComponent, 
 }
 
 const Tab = createBottomTabNavigator();
-function BottomTabNavigation() {
-  return (
-    <Tab.Navigator initialRouteName='Home' screenOptions={{ tabBarActiveTintColor: 'white', tabBarStyle: styles.bottomContainer }}>
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => isIconFocused(focused, "home", "home", "foundationIcon", "octiconsIcon")
-        }}
-      />
-      <Tab.Screen
-        name="Search"
-        component={SearchScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => isIconFocused(focused, "search", "search", "octiconsIcon", "octiconsIcon")
-        }}
-      />
-      <Tab.Screen
-        name="Your library"
-        component={YourLibraryScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => isIconFocused(focused, "library", "library-outline", "ionicons", "ionicons")
-        }}
-      />
-      {/*<Tab.Screen
-        name="Premium"
-        component={PremiumScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => isIconFocused(focused, "spotify", "spotify", "fontisto", "fontisto")
-        }}
-      />*/}
-    </Tab.Navigator>
-  );
-}
-
-export default BottomTabNavigation;
+export const BottomTabNavigation = () => (
+  <Tab.Navigator initialRouteName='Home' screenOptions={{ tabBarActiveTintColor: 'white', tabBarStyle: styles.bottomContainer }}>
+    <Tab.Screen
+      name="Home"
+      component={HomeStackNavigation}
+      options={{
+        headerShown: false,
+        tabBarIcon: ({ focused }) => isIconFocused(focused, "home", "home", "foundationIcon", "octiconsIcon")
+      }}
+    />
+    <Tab.Screen
+      name="Search"
+      component={SearchStackNavigation}
+      options={{
+        headerShown: false,
+        tabBarIcon: ({ focused }) => isIconFocused(focused, "search", "search", "octiconsIcon", "octiconsIcon")
+      }}
+    />
+    <Tab.Screen
+      name="Your library"
+      component={LibraryStackNavigation}
+      options={{
+        headerShown: false,
+        tabBarIcon: ({ focused }) => isIconFocused(focused, "library", "library-outline", "ionicons", "ionicons")
+      }}
+    />
+  </Tab.Navigator>
+);
