@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
   },
   playButton: {
     flex: 1,
-    left: 5,
     alignSelf: 'center',
+    justifyContent: 'center',
   },
 });
 

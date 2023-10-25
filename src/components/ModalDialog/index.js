@@ -2,10 +2,9 @@ import { View, Text, Modal, TouchableOpacity } from 'react-native';
 import { useContext } from 'react';
 import { ModalContext } from '../../context/modal';
 
-import { modalDialogStrings } from '../../utils/strings';
 import styles from './styles';
 
-const ModalDialog = ({ text, visible }) => {
+const ModalDialog = ({ visible, text, buttonText }) => {
   const { closeModal } = useContext(ModalContext);
   return (
     <Modal
@@ -17,7 +16,7 @@ const ModalDialog = ({ text, visible }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={closeModal}>
-          <Text style={styles.touchableOpacityText}>{modalDialogStrings.ok}</Text>
+          <Text style={styles.touchableOpacityText}>{buttonText}</Text>
         </TouchableOpacity>
       </View>
     </Modal>

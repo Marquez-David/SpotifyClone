@@ -17,7 +17,7 @@ const StandardSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
   const { openPlayer } = useContext(PlayerContext);
   return (
-    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{shortenText(item.name, 8)}</Text>
         <View style={styles.descriptionView}>

@@ -10,7 +10,7 @@ export const ModalProvider = ({ children }) => {
   return (
     <ModalContext.Provider value={{ modal, openModal, closeModal }}>
       {children}
-      <ModalDialog text={modal.text} visible={modal.visible} />
+      <ModalDialog visible={modal.visible} text={modal.text} buttonText={modal.buttonText} />
     </ModalContext.Provider>
   )
 };

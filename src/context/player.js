@@ -1,16 +1,16 @@
 import { createContext } from 'react'
 import SongPlayer from '../components/SongPlayer';
-import { usePlayer } from '../hooks/usePlayer';
+import { useSongPlayer } from '../hooks/useSongPlayer';
 
 export const PlayerContext = createContext();
 
 export const PlayerProvider = ({ children }) => {
-  const { player, openPlayer } = usePlayer();
+  const { player, setPlayer, play, pause } = useSongPlayer();
 
   return (
-    <PlayerContext.Provider value={{ player, openPlayer }}>
+    <PlayerContext.Provider value={{ player, setPlayer, play, pause }}>
       {children}
-      <SongPlayer visible={player.visible} item={player.item} />
+      <SongPlayer visible={player.visible} type={player.type} item={player.item} />
     </PlayerContext.Provider>
   )
 };

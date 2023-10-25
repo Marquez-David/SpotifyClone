@@ -58,7 +58,7 @@ const Header = ({ params }) => {
           size={21}
           color={colors.spotifyWhite}
           backgroundColor={colors.appBackground}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
         </Entypo.Button>
       </View>
     </View>

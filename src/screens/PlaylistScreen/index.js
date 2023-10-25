@@ -29,7 +29,7 @@ const PlaylistScreen = () => {
       </View>
       {playlist?.length === 0 || isLoading || isError ?
         <View style={styles.fallbackView}>
-          {playlist?.length === 0 && <FallbackDataCard type={subcategories.empty} onPressAction={() => openModal(modalDialogStrings.undeDevelopment)} />}
+          {playlist?.length === 0 && <FallbackDataCard type={subcategories.empty} onPressAction={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)} />}
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
           {isError && !isLoading && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
         </View> :

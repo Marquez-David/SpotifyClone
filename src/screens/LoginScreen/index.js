@@ -60,17 +60,17 @@ const LoginScreen = () => {
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericTouchableOpacity]}
-					onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+					onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
 					<AntDesign name='google' size={23} color={colors.spotifyWhite}></AntDesign>
 					<Text style={styles.touchableOpacityText}> {loginStrings.signInWithGoogle}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericTouchableOpacity]}
-					onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+					onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
 					<MaterialCommunityIcons name='facebook' size={26} color={colors.spotifyWhite}></MaterialCommunityIcons>
 					<Text style={styles.touchableOpacityText}> {loginStrings.signInWithFacebook}</Text>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.genericTouchableOpacity}>
+				<TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)} style={styles.genericTouchableOpacity}>
 					<Text style={[{ paddingTop: 10 }, styles.touchableOpacityText]}> {loginStrings.signIn}</Text>
 				</TouchableOpacity>
 			</View>

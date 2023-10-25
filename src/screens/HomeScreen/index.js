@@ -35,21 +35,21 @@ const HomeScreen = () => {
           name='notifications-outline'
           size={27} backgroundColor={colors.appBackground}
           color={colors.spotifyWhite}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
         </Ionicons.Button>
         <Ionicons.Button
           name='time-outline'
           size={27}
           backgroundColor={colors.appBackground}
           color={colors.spotifyWhite}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
         </Ionicons.Button>
         <Ionicons.Button
           name='settings-outline'
           size={27}
           backgroundColor={colors.appBackground}
           color={colors.spotifyWhite}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
         </Ionicons.Button>
       </View>
       <View style={styles.flatListContainer}>

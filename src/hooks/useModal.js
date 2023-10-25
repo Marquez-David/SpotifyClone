@@ -7,13 +7,15 @@ import { useState } from 'react';
 export const useModal = () => {
   const [modal, setModal] = useState({
     text: '',
+    buttonText: '',
     visible: false,
   });
 
   // Function to open the modal with a specified text
-  const openModal = (text2) => {
+  const openModal = (text2, buttonText2) => {
     setModal({
       text: text2,
+      buttonText: buttonText2,
       visible: true,
     });
   };
@@ -22,6 +24,7 @@ export const useModal = () => {
   const closeModal = () => {
     setModal({
       text: '',
+      buttonText: '',
       visible: false,
     });
   };

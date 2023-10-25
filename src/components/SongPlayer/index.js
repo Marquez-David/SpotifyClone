@@ -1,32 +1,31 @@
 import React, { useContext } from 'react';
 import { View, Text, Image } from 'react-native';
 
-import { ModalContext } from '../../context/modal';
+import { PlayerContext } from '../../context/player';
 
-import { modalDialogStrings } from '../../utils/strings';
 import { extractArtistNames } from '../../utils/helpers';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from '../../utils/colors';
 import styles from './styles';
 
-const SongPlayer = ({ visible, item }) => {
-  const { openModal } = useContext(ModalContext);
+const SongPlayer = ({ visible, type, item }) => {
+  const { play, pause } = useContext(PlayerContext);
   return (
     <>
       {visible &&
         <View style={styles.customComponent}>
-          {/*<Image style={styles.image} source={{ uri: item.album.images[0].url }} />*/}
+          {<Image style={styles.image} source={{ uri: item.album.images[0].url }} />}
           <View style={styles.titleView}>
-            <Text style={styles.titleText}>{'item.name'}</Text>
-            <Text style={styles.descriptionText}>{'extractArtistNames(item.artists)'}</Text>
+            <Text style={styles.titleText}>{item.name}</Text>
+            <Text style={styles.descriptionText}>{extractArtistNames(item.artists)}</Text>
           </View>
           <FontAwesome.Button
-            name='play'
+            name={type}
             size={16}
             style={styles.playButton}
             backgroundColor={colors.bottomTabBackground}
             color={colors.spotifyWhite}
-            onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+            onPress={() => type === 'pause' ? pause(item) : play(item, item.track_number)}>
           </FontAwesome.Button>
         </View>
       }

@@ -9,7 +9,7 @@ import { ModalContext } from '../../context/modal';
 const ShufflePlayButton = () => {
   const { openModal } = useContext(ModalContext);
   return (
-    <TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment)} style={styles.shufflePlayTouchableOpacity}>
+    <TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)} style={styles.shufflePlayTouchableOpacity}>
       <Text style={styles.touchableOpacityText}>{shufflePlay}</Text>
     </TouchableOpacity>
   );

@@ -11,7 +11,7 @@ import { ModalContext } from '../../context/modal';
 const CreatePlaylistCard = () => {
   const { openModal } = useContext(ModalContext);
   return (
-    <TouchableOpacity style={styles.imageView} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+    <TouchableOpacity style={styles.imageView} onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
       <View style={styles.iconView}>
         <Ionicons name='add' size={30} color={colors.spotifyWhite} />
       </View>

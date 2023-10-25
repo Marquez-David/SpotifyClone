@@ -356,15 +356,59 @@ export const getSavedContent = async (content) => {
 	return response.data.items || response.data.artists.items;
 };
 
-export const playSong = async () => {
+/**
+ * Fetch and retrieve information about available devices for the user's Spotify account.
+ * @returns {Array} An array of available devices.
+ */
+export const getAvailableDevices = async () => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/player/devices`,
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		}
+	});
+	return response.data.devices;
+};
 
+
+
+
+
+
+
+
+
+
+
+export const playSong = async (deviceId, albumId, position) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const url = `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`;
+	const data = {
+		context_uri: albumId,
+		offset: {
+			position: position - 1
+		},
+		position_ms: 13
+	};
+	const response = await axios.put(url, data, {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+			'Content-Type': 'application/json'
+		}
+	});
+	return response;
+};
+
+export const stopSong = async (deviceId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	const response = await axios({
 		method: "PUT",
-		url: `https://api.spotify.com/v1/me/player/play`,
+		url: `https://api.spotify.com/v1/me/player/pause?device_id${deviceId}`,
 		headers: {
 			Authorization: `Bearer ${accessToken}`,
-		},
+		}
 	});
 	return response;
 };

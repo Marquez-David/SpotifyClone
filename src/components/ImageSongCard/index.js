@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
@@ -10,14 +10,15 @@ import { extractArtistNames, shortenText } from '../../utils/helpers';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { ModalContext } from '../../context/modal';
 import { PlayerContext } from '../../context/player';
+import { ModalContext } from '../../context/modal';
 
 const ImageSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
-  const { openPlayer } = useContext(PlayerContext);
+  const { play } = useContext(PlayerContext);
+
   return (
-    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => play(item)}>
       <Image style={styles.image} source={{ uri: item.album.images[0].url }} />
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{shortenText(item.name, 7)}</Text>
@@ -32,7 +33,7 @@ const ImageSongCard = ({ item }) => {
           size={15}
           backgroundColor={colors.appBackground}
           color={colors.spotifyGray}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
         </Entypo.Button>
       </View>
       <View>

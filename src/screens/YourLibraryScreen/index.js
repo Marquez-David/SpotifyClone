@@ -29,7 +29,7 @@ const YourLibraryScreen = () => {
         <View style={styles.fallbackView}>
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
           {isError && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
-          {data?.length === 0 && <FallbackDataCard type={subcategory} onPressAction={() => openModal(modalDialogStrings.undeDevelopment)} />}
+          {data?.length === 0 && <FallbackDataCard type={subcategory} onPressAction={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)} />}
         </View> :
         <VerticalSlider data={data} subcategory={subcategory} />
       }

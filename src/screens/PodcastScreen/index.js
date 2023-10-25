@@ -31,7 +31,7 @@ const PodcastScreen = () => {
         </View>
       </View>
       <View style={styles.buttonsView}>
-        <TouchableOpacity style={styles.followButton} onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+        <TouchableOpacity style={styles.followButton} onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
           <Text style={styles.followButtonText}>{podcastStrings.follow}</Text>
         </TouchableOpacity>
         <Entypo.Button
@@ -40,7 +40,7 @@ const PodcastScreen = () => {
           size={16}
           backgroundColor={colors.appBackground}
           color={colors.spotifyGray}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
         </Entypo.Button>
       </View>
       <View style={styles.descriptionView}>

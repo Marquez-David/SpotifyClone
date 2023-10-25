@@ -58,7 +58,7 @@ const ArtistHeader = ({ artist }) => {
           backgroundColor={'transparent'}
           color={colors.spotifyWhite}
           style={{ marginLeft: 10 }}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
         </Entypo.Button>
       </View>
     </View>

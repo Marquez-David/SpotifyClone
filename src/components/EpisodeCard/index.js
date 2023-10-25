@@ -30,7 +30,7 @@ const EpisodeCard = ({ data, podcastTitle }) => {
             size={36}
             backgroundColor={colors.episodeCardBackground}
             color={colors.spotifyWhite}
-            onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+            onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
           </Ionicons.Button>
           <Text style={styles.dateText}>{dayOfWeek(data.release_date) + ' • ' + convertMilliseconds(data.duration_ms)}</Text>
         </View>
@@ -40,14 +40,14 @@ const EpisodeCard = ({ data, podcastTitle }) => {
             size={27}
             backgroundColor={colors.episodeCardBackground}
             color={colors.spotifyGray}
-            onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+            onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
           </Ionicons.Button>
           <Ionicons.Button
             name='arrow-down-circle-outline'
             size={27}
             backgroundColor={colors.episodeCardBackground}
             color={colors.spotifyGray}
-            onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+            onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
           </Ionicons.Button>
         </View>
       </View>
