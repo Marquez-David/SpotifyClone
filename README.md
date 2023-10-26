@@ -32,7 +32,8 @@ This project is organized in a single main directory, `src`, which contains the 
 4. `Services` #Contains code responsible for connecting with Spotify APIs.
 5. `Utils` #Contains helper functions that are used across different parts of the application.
 6. `Assets` #The Assets directory is used to store static files, such as images, fonts, or other resources required by the project.
-7. `Hooks` #This directory contain custom hooks that are used across the application. 
+7. `Hooks` #This directory contain custom hooks that are used across the application.
+8. `Context` #The Context directory holds the context providers and related code for managing the global state of the application, allowing data to be shared and accessed across different components and screens.
 
 Before installation, make sure you are inside the source main directory.
 
