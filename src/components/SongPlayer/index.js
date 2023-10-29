@@ -8,7 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from '../../utils/colors';
 import styles from './styles';
 
-const SongPlayer = ({ visible, type, item }) => {
+const SongPlayer = ({ visible, state, item }) => {
   const { play, pause } = useContext(PlayerContext);
   return (
     <>
@@ -20,12 +20,12 @@ const SongPlayer = ({ visible, type, item }) => {
             <Text style={styles.descriptionText}>{extractArtistNames(item.artist)}</Text>
           </View>
           <FontAwesome.Button
-            name={type}
+            name={state}
             size={16}
             style={styles.playButton}
             backgroundColor={colors.bottomTabBackground}
             color={colors.spotifyWhite}
-            onPress={() => type === 'pause' ? pause(item) : play(item)}>
+            onPress={() => state === 'pause' ? pause() : play()}>
           </FontAwesome.Button>
         </View>
       }

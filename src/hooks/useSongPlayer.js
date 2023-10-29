@@ -1,12 +1,17 @@
-import { useState } from 'react';
-import TrackPlayer from 'react-native-track-player';
+import { useState, useEffect } from 'react';
+import TrackPlayer, { useIsPlaying } from 'react-native-track-player';
 
 export const useSongPlayer = () => {
-  const [player, setPlayer] = useState({ visible: false, type: '', setup: false, queue: [] });
+  const { playing } = useIsPlaying();
+  const [player, setPlayer] = useState({ visible: false, state: '', setup: false, queue: [] });
   !player.setup ? TrackPlayer.setupPlayer() : null;
 
-  const updatePlayer = async (playerType, playerQueue) => {
-    setPlayer({ visible: true, type: playerType, setup: true, queue: playerQueue });
+  useEffect(() => {
+    setPlayer((prevState) => ({ ...prevState, state: playing ? 'pause' : 'play' }));
+  }, [playing]);
+
+  const updatePlayer = async (playerQueue) => {
+    setPlayer((prevState) => ({ ...prevState, queue: playerQueue }));
   };
 
   const playSong = async (item) => {
@@ -18,16 +23,14 @@ export const useSongPlayer = () => {
     }];
     await TrackPlayer.setQueue(song);
     await TrackPlayer.play();
-    updatePlayer('pause', song);
+    updatePlayer(song);
   };
 
   const play = async () => {
-    updatePlayer('pause', player.queue);
     await TrackPlayer.play();
   };
 
   const pause = async () => {
-    updatePlayer('play', player.queue);
     await TrackPlayer.pause();
   };
 
