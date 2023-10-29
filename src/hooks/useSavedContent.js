@@ -1,4 +1,4 @@
-import { getSavedContent } from '../services/SpotifyRequests';
+import { getSavedContent } from '../services/requests';
 import { useQuery } from '@tanstack/react-query';
 
 /**

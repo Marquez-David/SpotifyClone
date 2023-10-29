@@ -143,11 +143,7 @@ export const artistStrings = {
 export const modalDialogStrings = {
   //Title texts
   undeDevelopment: 'Oops! It seems that this feature is under development. You will be able to enjoy it soon. 🚀',
-  noDevices: 'No devices found! \n Please open a player in your Spotify account to continue.',
-  errorAPI: 'An error occurred while communicating with the Spotify API.',
 
   //Button texts
   ok: 'OK 👌',
-  understood: 'Understood 🎵',
-  tryLater: 'I will try again later',
 };

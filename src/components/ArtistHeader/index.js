@@ -9,7 +9,7 @@ import styles from './styles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-import { followArtist, unfollowArtist } from '../../services/SpotifyRequests';
+import { followArtist, unfollowArtist } from '../../services/requests';
 
 import { useUserFollowsArtist } from '../../hooks/useUserFollowsArtist';
 import { useButtonText } from '../../hooks/useButtonText';

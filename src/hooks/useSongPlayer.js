@@ -1,38 +1,35 @@
-import { useState, useContext } from 'react';
-import { useQuery } from '@tanstack/react-query';
-
-import { modalDialogStrings } from '../utils/strings';
-
-import { getAvailableDevices, playSong, stopSong } from '../services/SpotifyRequests';
-import { ModalContext } from '../context/modal';
-
+import { useState } from 'react';
+import TrackPlayer from 'react-native-track-player';
 
 export const useSongPlayer = () => {
-  const { openModal } = useContext(ModalContext);
-  const [player, setPlayer] = useState({ visible: false, type: '', item: {} });
-  const { data } = useQuery({ queryKey: ['devices'], queryFn: () => getAvailableDevices() });
+  const [player, setPlayer] = useState({ visible: false, type: '', setup: false, queue: [] });
+  !player.setup ? TrackPlayer.setupPlayer() : null;
 
-  const updatePlayer = (playerVisible, playerType, playerItem) => {
-    setPlayer({ visible: playerVisible, type: playerType, item: playerItem });
+  const updatePlayer = async (playerType, playerQueue) => {
+    setPlayer({ visible: true, type: playerType, setup: true, queue: playerQueue });
   };
 
-  const play = async (item) => {
-    if (!data?.length) { //No device available
-      openModal(modalDialogStrings.noDevices, modalDialogStrings.understood);
-    } else {
-      updatePlayer(true, 'pause', item);
-      const response = await playSong(data[0].id, item.album.uri, item.track_number);
-    }
+  const playSong = async (item) => {
+    const song = [{
+      title: item.name,
+      artwork: item.album.images[0].url,
+      url: item.preview_url,
+      artist: item.artists,
+    }];
+    await TrackPlayer.setQueue(song);
+    await TrackPlayer.play();
+    updatePlayer('pause', song);
   };
 
-  const pause = async (item) => {
-    if (!data?.length) { //No device found
-      openModal(modalDialogStrings.noDevices, modalDialogStrings.understood);
-    } else {
-      updatePlayer(true, 'play', item);
-      const response = await stopSong(data[0].id);
-    }
+  const play = async () => {
+    updatePlayer('pause', player.queue);
+    await TrackPlayer.play();
   };
 
-  return { player, setPlayer, play, pause }
+  const pause = async () => {
+    updatePlayer('play', player.queue);
+    await TrackPlayer.pause();
+  };
+
+  return { player, play, pause, playSong }
 };

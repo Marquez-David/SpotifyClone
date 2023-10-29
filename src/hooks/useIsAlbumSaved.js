@@ -1,4 +1,4 @@
-import { areAlbumsSaved } from '../services/SpotifyRequests';
+import { areAlbumsSaved } from '../services/requests';
 import { useQuery } from '@tanstack/react-query';
 import { contentType } from '../utils/strings';
 

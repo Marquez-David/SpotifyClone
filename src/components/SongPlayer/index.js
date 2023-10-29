@@ -14,10 +14,10 @@ const SongPlayer = ({ visible, type, item }) => {
     <>
       {visible &&
         <View style={styles.customComponent}>
-          {<Image style={styles.image} source={{ uri: item.album.images[0].url }} />}
+          {<Image style={styles.image} source={{ uri: item.artwork }} />}
           <View style={styles.titleView}>
-            <Text style={styles.titleText}>{item.name}</Text>
-            <Text style={styles.descriptionText}>{extractArtistNames(item.artists)}</Text>
+            <Text style={styles.titleText}>{item.title}</Text>
+            <Text style={styles.descriptionText}>{extractArtistNames(item.artist)}</Text>
           </View>
           <FontAwesome.Button
             name={type}
@@ -25,7 +25,7 @@ const SongPlayer = ({ visible, type, item }) => {
             style={styles.playButton}
             backgroundColor={colors.bottomTabBackground}
             color={colors.spotifyWhite}
-            onPress={() => type === 'pause' ? pause(item) : play(item, item.track_number)}>
+            onPress={() => type === 'pause' ? pause(item) : play(item)}>
           </FontAwesome.Button>
         </View>
       }

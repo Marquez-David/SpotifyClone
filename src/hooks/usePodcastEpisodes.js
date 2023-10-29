@@ -1,4 +1,4 @@
-import { getPodcastEpisodes } from '../services/SpotifyRequests';
+import { getPodcastEpisodes } from '../services/requests';
 import { offsets } from '../utils/constants';
 import { useInfiniteQuery } from '@tanstack/react-query';
 

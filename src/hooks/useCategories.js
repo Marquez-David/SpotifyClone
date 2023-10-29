@@ -1,4 +1,4 @@
-import { getBrowseCategories } from '../services/SpotifyRequests';
+import { getBrowseCategories } from '../services/requests';
 import { useQuery } from '@tanstack/react-query';
 
 /**

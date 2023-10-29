@@ -1,4 +1,4 @@
-import { getRelatedArtists } from "../services/SpotifyRequests";
+import { getRelatedArtists } from "../services/requests";
 import { useQuery } from "@tanstack/react-query";
 
 /**

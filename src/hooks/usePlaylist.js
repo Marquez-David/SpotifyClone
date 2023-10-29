@@ -1,4 +1,4 @@
-import { getPlaylist } from "../services/SpotifyRequests";
+import { getPlaylist } from "../services/requests";
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { offsets } from "../utils/constants";
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
@@ -15,10 +15,10 @@ import { ModalContext } from '../../context/modal';
 
 const ImageSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
-  const { play } = useContext(PlayerContext);
+  const { playSong } = useContext(PlayerContext);
 
   return (
-    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => play(item)}>
+    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => playSong(item)}>
       <Image style={styles.image} source={{ uri: item.album.images[0].url }} />
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{shortenText(item.name, 7)}</Text>

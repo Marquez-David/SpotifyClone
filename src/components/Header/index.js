@@ -9,7 +9,7 @@ import colors from '../../utils/colors';
 import styles from './styles';
 
 import { useIsAlbumSaved } from '../../hooks/useIsAlbumSaved';
-import { saveAlbum, unsaveAlbum } from '../../services/SpotifyRequests';
+import { saveAlbum, unsaveAlbum } from '../../services/requests';
 
 import { useButtonType } from '../../hooks/useButtonType';
 import { useButtonColor } from '../../hooks/useButtonColor';
