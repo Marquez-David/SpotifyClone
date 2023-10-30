@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
    * - backgroundColor: colors.bottomTabBackground (background color using the 'bottomTabBackground' color from the 'colors' object)
   */
   bottomContainer: {
+    position: 'absolute',
+    bottom: 0,
     backgroundColor: colors.bottomTabBackground,
   },
   /**

@@ -32,9 +32,10 @@ const AlbumScreen = () => {
           {isError && !isLoading && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
         </View> :
         <View style={styles.songsView}>
-          {album.map((item) => (
-            <StandardSongCard key={item.id} item={item} />
-          ))}
+          {album.map((item) => {
+            const album = { ...item, image: param.images[0].url };
+            return <StandardSongCard key={item.id} item={album} />
+          })}
         </View>
       }
     </ScrollView>

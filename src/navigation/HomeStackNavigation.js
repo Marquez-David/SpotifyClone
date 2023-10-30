@@ -9,8 +9,6 @@ import PodcastScreen from '../screens/PodcastScreen';
 import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen';
 
-import { PlayerProvider } from '../context/player';
-
 const HomeStack = createNativeStackNavigator();
 export const HomeStackNavigation = () => (
   <HomeStack.Navigator>

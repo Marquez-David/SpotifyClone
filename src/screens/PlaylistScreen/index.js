@@ -35,9 +35,10 @@ const PlaylistScreen = () => {
         </View> :
         <View style={styles.songsView}>
           <ShufflePlayButton />
-          {playlist.map((item, index) => (
-            <ImageSongCard key={index} item={item.track} />
-          ))}
+          {playlist.map((item, index) => {
+            const playlist = { ...item.track, image: item.track.album.images[0].url };
+            return <ImageSongCard key={index} item={playlist} />
+          })}
         </View>
       }
     </ScrollView>

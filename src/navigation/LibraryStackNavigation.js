@@ -9,8 +9,6 @@ import PlaylistScreen from '../screens/PlaylistScreen';
 import PodcastScreen from '../screens/PodcastScreen';
 import ArtistScreen from '../screens/ArtistScreen';
 import Header from '../components/Header';
-import HomeScreen from '../screens/HomeScreen';
-import { PlayerProvider } from '../context/player';
 
 const LibraryStack = createNativeStackNavigator();
 export const LibraryStackNavigation = () => (

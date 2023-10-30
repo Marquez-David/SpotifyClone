@@ -13,9 +13,8 @@ const styles = StyleSheet.create({
    * - backgroundColor: colors.bottomTabBackground (background color using the 'bottomTabBackground' color from the 'colors' object)
   */
   customComponent: {
-    position: 'absolute',
+    position: 'relative',
     width: '100%',
-    bottom: 49,
     justifyContent: 'space-between',
     flexDirection: 'row',
     backgroundColor: colors.bottomTabBackground,

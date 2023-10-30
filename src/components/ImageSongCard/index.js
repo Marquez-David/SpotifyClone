@@ -15,11 +15,11 @@ import { ModalContext } from '../../context/modal';
 
 const ImageSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
-  const { playSong } = useContext(PlayerContext);
+  const { song } = useContext(PlayerContext);
 
   return (
-    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => playSong(item)}>
-      <Image style={styles.image} source={{ uri: item.album.images[0].url }} />
+    <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => song(item)}>
+      <Image style={styles.image} source={{ uri: item.image }} />
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{shortenText(item.name, 7)}</Text>
         <View style={styles.descriptionView}>
