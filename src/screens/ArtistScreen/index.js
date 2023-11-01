@@ -51,9 +51,10 @@ const ArtistScreen = () => {
         <>
           <View style={styles.popularSongsView}>
             <Text style={styles.popularSongsTitle}>{artistStrings.popularSongs}</Text>
-            {topTracks.slice(0, 5).map((item) => (
-              <ImageSongCard key={item.id} item={item} />
-            ))}
+            {topTracks.slice(0, 5).map((item) => {
+              const topTrack = { ...item.album, image: item.album.images[0].url };
+              return <ImageSongCard key={item.id} item={topTrack} />
+            })}
           </View>
           <View style={styles.relatedArtistView}>
             <Text style={styles.relatedArtistTitle}>{artistStrings.relatedArtists}</Text>
