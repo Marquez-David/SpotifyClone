@@ -3,18 +3,19 @@ import colors from "../../utils/colors";
 
 const styles = StyleSheet.create({
   /**
-   * Custom Component style.
-   * Represents the style for a custom component with the following properties:
-   * - position: 'absolute' (absolute positioning)
+   * Player View style.
+   * Represents the style for a player view with the following properties:
+   * - position: 'relative' (relative positioning)
    * - width: '100%' (width of 100% to span the entire width)
-   * - bottom: 49 (positioned 49 units from the bottom)
    * - justifyContent: 'space-between' (space between children)
    * - flexDirection: 'row' (horizontal layout with children)
    * - backgroundColor: colors.bottomTabBackground (background color using the 'bottomTabBackground' color from the 'colors' object)
   */
-  customComponent: {
-    position: 'relative',
-    width: '100%',
+  playerView: {
+    position: 'absolute',
+    left: 12, right: 12,
+    borderRadius: 12,
+    bottom: 49 + 8, //assume bottomnavigation height
     justifyContent: 'space-between',
     flexDirection: 'row',
     backgroundColor: colors.bottomTabBackground,

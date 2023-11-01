@@ -348,6 +348,24 @@ export const getSubcategories = (category) => {
     [subcategories.episodes, subcategories.downloads, subcategories.podcasts];
 };
 
+/**
+ * Takes a list of song data objects and transforms them into a consistent format for a playback queue.
+ * It maps over the list, extracting relevant information such as title, artwork, URL, and artist.
+ * @param {Array} response - An array of song data objects from the Spotify API response.
+ * @param {Object} item - The main item (e.g., playlist or album) used for default artwork if not found in song data.
+ * @returns {Array} - An array of formatted song objects for the playback queue.
+ */
+export const createQueue = (response, item) => {
+  return response.map((song) => (
+    {
+      title: song.name ?? song.track.name,
+      artwork: song.track?.album.images[0].url ?? item.images[0].url,
+      url: song.preview_url ?? song.track.preview_url,
+      artist: song.artists ?? song.track.artists
+    }
+  ));
+};
+
 
 
 

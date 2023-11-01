@@ -356,3 +356,21 @@ export const getSavedContent = async (content) => {
 	return response.data.items || response.data.artists.items;
 };
 
+/**
+ * Fetch the tracks associated with a Spotify playlist or album.
+ * @param {string} type - The type of item (e.g., 'playlist' or 'album').
+ * @param {string} itemId - The ID of the Spotify playlist or album to fetch tracks from.
+ * @returns {Array} - An array of track items retrieved from the Spotify API response.
+ */
+export const getSongQueue = async (type, itemId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/${type}s/${itemId}`,
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		}
+	});
+	return response.data.tracks.items;
+};
+

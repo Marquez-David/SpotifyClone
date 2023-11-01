@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import TrackPlayer, { useIsPlaying } from 'react-native-track-player';
+import { getSongQueue } from '../services/requests';
+import { createQueue } from '../utils/helpers';
 
 export const useSongPlayer = () => {
   const { playing } = useIsPlaying();
@@ -13,8 +15,17 @@ export const useSongPlayer = () => {
     setPlayer((prevState) => ({ ...prevState, visible: true, setup: true, queue: playerQueue }));
   };
 
-  const shuffle = async () => {
-    console.log('shuffle');
+  const shuffle = async (item) => {
+    !player.setup ? TrackPlayer.setupPlayer() : null;
+    try {
+      const response = await getSongQueue(item.type, item.id);
+      const songs = createQueue(response, item);
+      await TrackPlayer.setQueue(songs);
+      await TrackPlayer.play();
+      updatePlayer(songs);
+    } catch (error) {
+      console.log('Error while fetching song queue: ' + error.message);
+    }
   };
 
   const song = async (item) => {

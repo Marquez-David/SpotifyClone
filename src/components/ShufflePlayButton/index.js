@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import { useRoute } from "@react-navigation/native";
 
-import { modalDialogStrings, shufflePlay } from '../../utils/strings';
+import { shufflePlay } from '../../utils/strings';
 import styles from './styles';
 
-import { ModalContext } from '../../context/modal';
+import { PlayerContext } from '../../context/player';
 
 const ShufflePlayButton = () => {
-  const { openModal } = useContext(ModalContext);
+  const item = useRoute().params.data;
+  const { shuffle } = useContext(PlayerContext);
   return (
-    <TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)} style={styles.shufflePlayTouchableOpacity}>
+    <TouchableOpacity style={styles.shufflePlayTouchableOpacity} onPress={() => shuffle(item)}>
       <Text style={styles.touchableOpacityText}>{shufflePlay}</Text>
     </TouchableOpacity>
   );

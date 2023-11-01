@@ -13,7 +13,7 @@ const SongPlayer = ({ visible, state, item }) => {
   return (
     <>
       {visible &&
-        <View style={styles.customComponent}>
+        <View style={styles.playerView}>
           {<Image style={styles.image} source={{ uri: item.artwork }} />}
           <View style={styles.titleView}>
             <Text style={styles.titleText}>{item.title}</Text>
