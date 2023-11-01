@@ -16,7 +16,7 @@ the images below.
 
 <br>
 
-| HomeScreen | SearchScreen | LibraryPlaylist | LibraryAlbum |
+| HomeScreen | SearchScreen | LibraryPlaylist | LibraryPrograms |
 |:---------------:|:---------------:|:---------------:|:---------------:|
 | ![HomeScreen](src/assets/screenshots/HomeScreen.png) | ![SearchScreen](src/assets/screenshots/SearchScreen.png) | ![YourLibraryScreen](src/assets/screenshots/YourLibraryScreen.png) | ![YourLibraryScreen3](src/assets/screenshots/YourLibraryScreen3.png) 
 | ArtistScreen | AlbumScreen | PlaylistScreen | PodcastScreen |  
