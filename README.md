@@ -19,8 +19,8 @@ the images below.
 | HomeScreen | SearchScreen | LibraryPlaylist | LibraryAlbum |
 |:---------------:|:---------------:|:---------------:|:---------------:|
 | ![HomeScreen](src/assets/screenshots/HomeScreen.png) | ![SearchScreen](src/assets/screenshots/SearchScreen.png) | ![YourLibraryScreen](src/assets/screenshots/YourLibraryScreen.png) | ![YourLibraryScreen3](src/assets/screenshots/YourLibraryScreen3.png) 
-| LibraryPodcast | AlbumScreen | PlaylistScreen | PodcastScreen |  
-![YourLibraryScreen2](src/assets/screenshots/YourLibraryScreen2.png) | ![AlbumScreen](src/assets/screenshots/AlbumScreen.png) | ![PlaylistScreen](src/assets/screenshots/PlaylistScreen.png) | ![PodcastScreen](src/assets/screenshots/PodcastScreen.png)
+| ArtistScreen | AlbumScreen | PlaylistScreen | PodcastScreen |  
+![ArtistScreen](src/assets/screenshots/ArtistScreen.png) | ![AlbumScreen](src/assets/screenshots/AlbumScreen.png) | ![PlaylistScreen](src/assets/screenshots/PlaylistScreen.png) | ![PodcastScreen](src/assets/screenshots/PodcastScreen.png)
 
 ## Structure
 
