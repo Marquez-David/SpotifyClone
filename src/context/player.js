@@ -15,7 +15,7 @@ export const PlayerProvider = ({ children }) => {
   return (
     <PlayerContext.Provider value={{ player, play, pause, song, shuffle }}>
       {children}
-      <SongPlayer visible={player.visible} state={player.state} item={player.queue[0]} />
+      <SongPlayer visible={player.visible} state={player.state} item={player.currentSong} />
     </PlayerContext.Provider>
   )
 };

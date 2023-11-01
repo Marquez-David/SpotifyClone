@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
   /**
    * Player View style.
    * Represents the style for a player view with the following properties:
-   * - position: 'relative' (relative positioning)
+   * - position: 'absolute' (absolute positioning)
+   * - bottom: 50 (set 50 units of space from the bottom edge)
    * - width: '100%' (width of 100% to span the entire width)
    * - justifyContent: 'space-between' (space between children)
    * - flexDirection: 'row' (horizontal layout with children)
@@ -13,9 +14,8 @@ const styles = StyleSheet.create({
   */
   playerView: {
     position: 'absolute',
-    left: 12, right: 12,
-    borderRadius: 12,
-    bottom: 49 + 8, //assume bottomnavigation height
+    bottom: 49,
+    width: '100%',
     justifyContent: 'space-between',
     flexDirection: 'row',
     backgroundColor: colors.bottomTabBackground,
