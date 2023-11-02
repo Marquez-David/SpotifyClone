@@ -9,6 +9,7 @@ import styles from './styles';
 import { useSavedContent } from '../../hooks/useSavedContent';
 import { useSubcategory } from '../../hooks/useSubcategory';
 import { ModalContext } from '../../context/modal';
+import { PlayerContext } from '../../context/player';
 
 import VerticalSlider from '../../components/VerticalSlider';
 import FallbackDataCard from '../../components/FallbackDataCard';
@@ -19,10 +20,11 @@ const YourLibraryScreen = () => {
   const [category, setCategory] = useState(categories.music);
   const { subcategory, setSubcategory } = useSubcategory(category);
   const { openModal } = useContext(ModalContext);
+  const { player } = useContext(PlayerContext);
   const { isLoading, isError, data, refetch } = useSavedContent(parseSubcategoryRoute(subcategory));
 
   return (
-    <View style={styles.background}>
+    <View style={player.visible ? styles.margedBackground : styles.background}>
       <CategorySelector selected={category} setSelected={setCategory} />
       <SubcategorySelector category={category} selected={subcategory} setSelected={setSubcategory} />
       {isLoading || isError || data?.length === 0 ?

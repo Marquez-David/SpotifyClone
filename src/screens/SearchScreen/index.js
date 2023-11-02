@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { ScrollView, View, Text, Image, ActivityIndicator } from 'react-native';
 
 import colors from '../../utils/colors';
@@ -10,12 +10,15 @@ import { useCategories } from '../../hooks/useCategories';
 import FallbackDataCard from '../../components/FallbackDataCard';
 import SearchBar from '../../components/SearchBar';
 
+import { PlayerContext } from '../../context/player';
+
 const SearchScreen = () => {
   const [searchText, setSearchText] = useState(null);
   const { isLoading, isError, categories, refetch } = useCategories();
+  const { player } = useContext(PlayerContext);
 
   return (
-    <ScrollView style={styles.background}>
+    <ScrollView style={player.visible ? styles.margedBackground : styles.background}>
       <View style={styles.titleView}>
         <Text style={styles.titleText}>{searchStrings.search}</Text>
       </View>

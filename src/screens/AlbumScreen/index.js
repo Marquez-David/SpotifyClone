@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View, Text, Image, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
@@ -6,18 +6,21 @@ import { getYear } from '../../utils/helpers';
 import { subcategories } from '../../utils/strings';
 import styles from './styles';
 import colors from '../../utils/colors';
+import dimensions from '../../utils/dimensions';
 
 import ShufflePlayButton from '../../components/ShufflePlayButton';
 import FallbackDataCard from '../../components/FallbackDataCard';
 import StandardSongCard from '../../components/StandardSongCard';
 import { useAlbum } from '../../hooks/useAlbum';
+import { PlayerContext } from '../../context/player';
 
 const AlbumScreen = () => {
   const param = useRoute().params.data;
   const { isLoading, isError, album, refetch } = useAlbum(param.id);
+  const { player } = useContext(PlayerContext);
 
   return (
-    <ScrollView style={styles.background}>
+    <ScrollView style={player.visible ? styles.margedBackground : styles.background}>
       <View style={styles.headerView}>
         <Image style={styles.image} source={{ uri: param.images[0].url }} />
         <Text style={styles.titleText}>{param.name}</Text>
@@ -38,7 +41,7 @@ const AlbumScreen = () => {
           })}
         </View>
       }
-    </ScrollView>
+    </ScrollView >
   );
 };
 

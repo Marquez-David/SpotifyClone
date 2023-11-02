@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import colors from "../../utils/colors";
+import dimensions from "../../utils/dimensions";
 
 const styles = StyleSheet.create({
   /**
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
   */
   playerView: {
     position: 'absolute',
-    bottom: 49,
+    bottom: dimensions.playerMarginBottom,
     width: '100%',
     justifyContent: 'space-between',
     flexDirection: 'row',

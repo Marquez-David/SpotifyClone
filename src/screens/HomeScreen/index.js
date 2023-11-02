@@ -16,9 +16,11 @@ import { useMessage } from '../../hooks/useMessage';
 import HorizontalCarousel from '../../components/HorizontalCarousel';
 
 import { ModalContext } from '../../context/modal';
+import { PlayerContext } from '../../context/player';
 
 const HomeScreen = () => {
   const { openModal } = useContext(ModalContext);
+  const { player } = useContext(PlayerContext);
   const { playlists } = useSavedPlaylists();
   const { artistAlbums } = useArtistsAlbums();
   const { podcasts } = useSavedPodcasts();
@@ -28,7 +30,7 @@ const HomeScreen = () => {
   const data = [playlists, artistAlbums, podcasts];
 
   return (
-    <ScrollView style={styles.background}>
+    <ScrollView style={player.visible ? styles.margedBackground : styles.background}>
       <View style={styles.homeHeader}>
         <Text style={styles.homeHeaderText}>{message}</Text>
         <Ionicons.Button

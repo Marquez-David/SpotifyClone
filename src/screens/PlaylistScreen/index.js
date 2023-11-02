@@ -13,6 +13,7 @@ import FallbackDataCard from '../../components/FallbackDataCard';
 import ImageSongCard from '../../components/ImageSongCard';
 
 import { ModalContext } from '../../context/modal';
+import { PlayerContext } from '../../context/player';
 import { usePlaylist } from '../../hooks/usePlaylist';
 
 const PlaylistScreen = () => {
@@ -20,9 +21,10 @@ const PlaylistScreen = () => {
   const { isLoading, isError, playlist, refetch, fetchNextPage } = usePlaylist(param.id);
   const { fetchNextItems } = handleScroll(fetchNextPage);
   const { openModal } = useContext(ModalContext);
+  const { player } = useContext(PlayerContext);
 
   return (
-    <ScrollView onScroll={fetchNextItems} style={styles.background}>
+    <ScrollView onScroll={fetchNextItems} style={player.visible ? styles.margedBackground : styles.background}>
       <View style={styles.headerView}>
         <Image style={styles.image} source={{ uri: param.images[0]?.url || spotifyImage }} />
         <Text style={styles.titleText}>{param.name}</Text>

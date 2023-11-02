@@ -9,7 +9,6 @@ import styles from './styles';
 
 import { ModalContext } from '../../context/modal';
 
-
 const HorizontalCarousel = ({ items, title }) => {
   const navigation = useNavigation();
   const { openModal } = useContext(ModalContext);
