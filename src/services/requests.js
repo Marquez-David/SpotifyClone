@@ -390,3 +390,35 @@ export const getUserInfo = async () => {
 	return response.data;
 };
 
+/**
+ * Fetches the user's recently played tracks from the Spotify API.
+ * @returns {Array} - An array of recently played track items.
+ */
+export const getRecentlyPlayed = async () => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/player/recently-played?limit=10`,
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		}
+	});
+	return response.data.items;
+};
+
+/**
+ * Fetches a list of featured playlists from the Spotify API.
+ * @returns {Array} - An array of featured playlists.
+ */
+export const getFeaturePlaylists = async () => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/browse/featured-playlists?limit=10`,
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		}
+	});
+	return response.data.playlists.items;
+};
+

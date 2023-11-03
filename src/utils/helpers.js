@@ -133,7 +133,19 @@ export function parseCarouselData(data, carouselTitle) {
   const response = {};
 
   const carouselMappings = {
+    [carouselStrings.recentlyPlayed]: () => {
+      response.data = data.track.album;
+      response.description = data.track.name;
+      response.image = data.track.album.images?.[0]?.url;
+      response.type = data.track.type;
+    },
     [carouselStrings.yourPlaylists]: () => {
+      response.data = data;
+      response.description = data.name;
+      response.image = data.images?.[0]?.url;
+      response.type = data.type;
+    },
+    [carouselStrings.featuredPlaylists]: () => {
       response.data = data;
       response.description = data.name;
       response.image = data.images?.[0]?.url;
@@ -294,7 +306,7 @@ export function parseFallbackData(type) {
  */
 export function handleNavigation(item, navigation) {
   let nav;
-  if (item.type === contentType.album) {
+  if (item.type === contentType.album || item.type === contentType.track) {
     nav = navigation.navigate("Album", { title: item.name, data: item });
   } else if (item.type === contentType.playlist) {
     nav = navigation.navigate("Playlist", { title: item.name, data: item });

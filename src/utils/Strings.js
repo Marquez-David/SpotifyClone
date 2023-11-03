@@ -4,6 +4,7 @@ export const contentType = {
   album: 'album',
   podcast: 'show',
   artist: 'artist',
+  track: 'track',
 };
 
 //Library categories
@@ -64,6 +65,7 @@ export const carouselStrings = {
   findOutMoreAbout: "Find out more about ",
   yourPodcasts: "Your podcasts",
   relatedArtists: "Related artists",
+  featuredPlaylists: "Stay up to date",
 };
 
 export const verticalSliderStrings = {

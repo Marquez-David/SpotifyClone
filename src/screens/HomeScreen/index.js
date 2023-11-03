@@ -8,7 +8,9 @@ import { carouselStrings, modalDialogStrings } from '../../utils/strings';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { useUser } from '../../hooks/useUser';
+import { useRecentlyPlayed } from '../../hooks/useRecentlyPlayed';
 import { useSavedPlaylists } from '../../hooks/useSavedPlaylists';
+import { useFeaturedPlaylists } from '../../hooks/useFeaturedPlaylists';
 import { useArtistsAlbums } from '../../hooks/useArtistsAlbums';
 import { useSavedPodcasts } from '../../hooks/useSavedPodcasts';
 import { useMessage } from '../../hooks/useMessage';
@@ -25,8 +27,9 @@ const HomeScreen = () => {
 
   const { message } = useMessage();
   const { isLoadingUser, image } = useUser();
-
+  const { recentlyPlayed } = useRecentlyPlayed();
   const { playlists } = useSavedPlaylists();
+  const { featuredPlaylists } = useFeaturedPlaylists();
   const { artistAlbums } = useArtistsAlbums();
   const { podcasts } = useSavedPodcasts();
 
@@ -43,7 +46,9 @@ const HomeScreen = () => {
         {!isLoadingUser && <ProfileIcon image={image} />}
       </View>
       <View style={styles.carouselView}>
+        <HorizontalCarousel items={recentlyPlayed} title={carouselStrings.recentlyPlayed} />
         <HorizontalCarousel items={playlists} title={carouselStrings.yourPlaylists} />
+        <HorizontalCarousel items={featuredPlaylists} title={carouselStrings.featuredPlaylists} />
         <HorizontalCarousel items={artistAlbums} title={carouselStrings.findOutMoreAbout} />
         <HorizontalCarousel items={podcasts} title={carouselStrings.yourPodcasts} />
       </View>
