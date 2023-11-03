@@ -374,3 +374,19 @@ export const getSongQueue = async (type, itemId) => {
 	return response.data.tracks.items;
 };
 
+/**
+ * Fetches user information.
+ * @returns {Promise<Object>} - A promise that resolves to the user's information.
+ */
+export const getUserInfo = async () => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me`,
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		}
+	});
+	return response.data;
+};
+
