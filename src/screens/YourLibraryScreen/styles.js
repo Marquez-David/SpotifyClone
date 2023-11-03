@@ -4,8 +4,8 @@ import dimensions from '../../utils/dimensions';
 
 const styles = StyleSheet.create({
 	/**
-	 * App background style.
-	 * Represents the background style for the entire app with the following properties:
+	 * Background style.
+	 * Represents the style for a background with the following properties:
 	 * - flex: 1 (flexible size to fit available space)
 	 * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
 	*/
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 	},
 	/**
 	 * Marged Background style.
-	 * Represents the style for a background with the following properties:
+	 * Represents the style for a background with margin at the bottom with the following properties:
 	 * - flex: 1 (flexible size to fit available space)
 	 * - marginBottom: dimensions.marginPlayerVisible (bottom margin based on 'marginPlayerVisible' from 'dimensions')
 	 * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)

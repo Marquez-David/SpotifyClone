@@ -12,21 +12,6 @@ import {
 } from "./strings";
 
 /**
- * Parse the items parameter and returns the corresponding title for each case
- * @param {*} items 
- * @param {*} title 
- * @returns 
- */
-export const parseTitle = (items, title) => {
-  var newTitle = title;
-  if (title === carouselStrings.findOutMoreAbout) {
-    newTitle += items?.[1].artists[0].name;
-  }
-
-  return newTitle;
-};
-
-/**
  * Converts milliseconds into hours and minutes format.
  * @param {*} milliseconds 
  * @returns 
@@ -150,17 +135,17 @@ export function parseCarouselData(data, carouselTitle) {
   const carouselMappings = {
     [carouselStrings.yourPlaylists]: () => {
       response.data = data;
-      response.description = data.name + carouselStrings.listComplementString;
+      response.description = data.name;
       response.image = data.images?.[0]?.url;
     },
     [carouselStrings.findOutMoreAbout]: () => {
       response.data = data;
-      response.description = data.name + '\n' + data.artists[0].name + carouselStrings.albumComplementString;
+      response.description = data.name;
       response.image = data.images?.[0]?.url;
     },
     [carouselStrings.yourPodcasts]: () => {
       response.data = data.show;
-      response.description = data.show.name + '\n' + carouselStrings.podcastComplementsString + data.show.publisher;
+      response.description = data.show.name;
       response.image = data.show.images?.[0]?.url;
     },
     [carouselStrings.relatedArtists]: () => {
@@ -196,7 +181,7 @@ export function parseLibraryData(data, subcategory) {
     },
     [subcategories.albums]: () => {
       response.data = data.album;
-      response.description = verticalSliderStrings.by + data.album.artists[0].name;
+      response.description = data.album.artists[0].name;
     },
     [subcategories.episodes]: () => {
       response.data = data.episode;

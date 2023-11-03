@@ -4,39 +4,41 @@ import dimensions from '../../utils/dimensions';
 
 const styles = StyleSheet.create({
   /**
-   * App background style.
-   * Represents the background style for the entire app with the following properties:
+   * Background style.
+   * Represents the style for a background with the following properties:
    * - flex: 1 (flexible size to fit available space)
+   * - paddingHorizontal: 10 (horizontal padding of 10 units)
    * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
   */
   background: {
     flex: 1,
+    paddingHorizontal: 10,
     backgroundColor: colors.appBackground,
   },
   /**
    * Marged Background style.
-   * Represents the style for a background with the following properties:
+   * Represents the style for a background with margin at the bottom with the following properties:
    * - flex: 1 (flexible size to fit available space)
+   * - paddingHorizontal: 10 (horizontal padding of 10 units)
    * - marginBottom: dimensions.marginPlayerVisible (bottom margin based on 'marginPlayerVisible' from 'dimensions')
    * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
   */
   margedBackground: {
     flex: 1,
+    paddingHorizontal: 10,
     marginBottom: dimensions.marginPlayerVisible,
     backgroundColor: colors.appBackground,
   },
   /**
-   * Title view style.
-   * Represents the style for the title view with the following properties:
-   * - marginLeft: 20 (20 units left margin)
-   * - marginTop: 20 (20 units top margin)
+   * Title View style.
+   * Represents the style for a title view with the following properties:
+   * - marginTop: 20 (top margin of 20 units)
   */
   titleView: {
-    marginLeft: 20,
     marginTop: 20,
   },
   /**
-   * Title text style.
+   * Title Text style.
    * Represents the style for the title text with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - fontSize: 30 (font size of 30 units)
@@ -48,18 +50,10 @@ const styles = StyleSheet.create({
     fontFamily: 'GothamBold',
   },
   /**
-   * Search bar view style.
-   * Represents the style for the search bar view with the following properties:
-   * - marginLeft: 20 (20 units left margin)
-  */
-  searchBarView: {
-    marginLeft: 20,
-  },
-  /**
-   * Style for the "Explore" text.
-   * Properties:
+   * Explore Text style.
+   * Represents the style for the explore text with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
-   * - marginTop: 10 (add 10 units of margin from the top)
+   * - marginTop: 10 (top margin of 10 units)
    * - fontSize: 15 (font size of 15 units)
   */
   exploreText: {
@@ -68,48 +62,47 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   /**
-   * Style for the container that holds multiple card views.
-   * Properties:
-   * - flexDirection: 'row' (arrange items in a row)
-   * - flexWrap: 'wrap' (wrap items to the next line if needed)
-   * - justifyContent: 'center' (center items along the horizontal axis)
-   * - marginTop: 20 (add margin from the top)
+   * Card Container style.
+   * Represents the style for a container of cards with the following properties:
+   * - flexDirection: 'row' (horizontal layout with children)
+   * - flexWrap: 'wrap' (wrapping of children to the next line)
+   * - justifyContent: 'space-between' (space between children)
+   * - marginTop: 13 (top margin of 13 units)
   */
   cardContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     marginTop: 13,
   },
   /**
-   * Style for an individual card view.
-   * Properties:
-   * - marginBottom: 10 (add margin at the bottom)
-   * - marginHorizontal: 10 (add margin horizontally, both left and right)
-   * - backgroundColor: 'green' (set background color to green)
+   * Card View style.
+   * Represents the style for a card view with the following properties:
+   * - marginBottom: 10 (bottom margin of 10 units)
   */
   cardView: {
     marginBottom: 10,
-    marginHorizontal: 10,
   },
   /**
-   * Style for the image within the card.
-   * Properties:
-   * - width: Dimensions.get('window').width / 2.35 (set image width relative to screen width)
-   * - height: 100 (set a fixed image height)
+   * Card Image style.
+   * Represents the style for a card image with the following properties:
+   * - borderRadius: 10 (border radius of 10 units)
+   * - width: Dimensions.get('window').width / 2.2 (width based on window dimensions)
+   * - height: 100 (height of 100 units)
   */
   cardImage: {
-    width: Dimensions.get('window').width / 2.35,
+    borderRadius: 10,
+    width: Dimensions.get('window').width / 2.2,
     height: 100,
   },
   /**
-   * Style for the title text within categories.
-   * Properties:
+   * Categories Title Text style.
+   * Represents the style for the categories title text with the following properties:
    * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
-   * - position: 'absolute' (positioning is absolute within its containing element)
-   * - alignSelf: 'center' (horizontally center the element within its containing space)
-   * - bottom: 5 (set 5 units of space from the bottom edge)
-   * - fontSize: 17 (set font size to 17 units)
+   * - position: 'absolute' (absolute positioning)
+   * - alignSelf: 'center' (centered horizontal alignment)
+   * - bottom: 5 (positioned 5 units from the bottom)
+   * - fontSize: 17 (font size of 17 units)
    * - fontFamily: 'GothamBold' (font family 'GothamBold')
   */
   categoriesTitleText: {

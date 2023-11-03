@@ -2,14 +2,14 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 	/**
-	 * View style for verticalSlider component.
-	 * Represents a vertical slider view with the following properties:
+	 * Vertical Slider View style.
+	 * Represents the style for a vertical slider view with the following properties:
 	 * - flex: 1 (flexible size to fit available space)
-	 * - marginLeft: 20 (left margin spacing)
+	 * - paddingHorizontal: 10 (horizontal padding of 10 units)
 	*/
 	verticalSliderView: {
 		flex: 1,
-		marginLeft: 20,
+		paddingHorizontal: 10,
 	},
 	/**
 	 * Vertical Slider Item View style.

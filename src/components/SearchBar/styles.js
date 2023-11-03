@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
 	 * Represents a search bar view with the following properties:
 	 * - flex: 1 (flexible size to fit available space)
 	 * - marginTop: 17 (vertical margin spacing)
-	 * - marginRight: 20 (right margin spacing)
 	 * - borderRadius: 8 (border radius in points)
 	 * - flexDirection: 'row' (horizontal layout direction)
 	 * - alignItems: 'center' (center items vertically)
@@ -16,7 +15,6 @@ const styles = StyleSheet.create({
 	searchBarView: {
 		flex: 1,
 		marginTop: 17,
-		marginRight: 20,
 		borderRadius: 8,
 		flexDirection: 'row',
 		alignItems: 'center',

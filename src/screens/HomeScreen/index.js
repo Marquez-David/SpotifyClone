@@ -3,7 +3,6 @@ import { ScrollView, View, Text } from 'react-native';
 
 import styles from './styles';
 import colors from '../../utils/colors';
-import { parseTitle } from '../../utils/helpers';
 
 import { carouselStrings, modalDialogStrings } from '../../utils/strings';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -23,14 +22,13 @@ import { PlayerContext } from '../../context/player';
 const HomeScreen = () => {
   const { openModal } = useContext(ModalContext);
   const { player } = useContext(PlayerContext);
+
+  const { message } = useMessage();
   const { isLoadingUser, image } = useUser();
+
   const { playlists } = useSavedPlaylists();
   const { artistAlbums } = useArtistsAlbums();
   const { podcasts } = useSavedPodcasts();
-  const { message } = useMessage();
-
-  const horizontalCarouselStrings = [carouselStrings.yourPlaylists, carouselStrings.findOutMoreAbout, carouselStrings.yourPodcasts];
-  const data = [playlists, artistAlbums, podcasts];
 
   return (
     <ScrollView style={player.visible ? styles.margedBackground : styles.background}>
@@ -44,13 +42,10 @@ const HomeScreen = () => {
         </Ionicons.Button>
         {!isLoadingUser && <ProfileIcon image={image} />}
       </View>
-      <View style={styles.flatListContainer}>
-        {data?.map((items, index) => (
-          <View style={styles.carouselView} key={index}>
-            <Text style={styles.titleText}>{parseTitle(items, horizontalCarouselStrings[index])}</Text>
-            <HorizontalCarousel items={items} title={horizontalCarouselStrings[index]} />
-          </View>
-        ))}
+      <View style={styles.carouselView}>
+        <HorizontalCarousel items={playlists} title={carouselStrings.yourPlaylists} />
+        <HorizontalCarousel items={artistAlbums} title={carouselStrings.findOutMoreAbout} />
+        <HorizontalCarousel items={podcasts} title={carouselStrings.yourPodcasts} />
       </View>
     </ScrollView>
   );

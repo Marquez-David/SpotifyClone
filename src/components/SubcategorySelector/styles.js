@@ -3,18 +3,18 @@ import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
 	/**
-	 * View style for the headers menu in your library.
-	 * Represents a view for the headers menu with the following properties:
-	 * - flexDirection: 'row' (horizontal layout direction)
+	 * Headers style.
+	 * Represents the style for headers with the following properties:
+	 * - flexDirection: 'row' (horizontal layout with children)
 	*/
 	headers: {
 		flexDirection: 'row',
 	},
 	/**
-	 * Categories header text style for categories.
-	 * Represents the text style for the categories header with the following properties:
+	 * Gray Text style.
+	 * Represents the style for gray text with the following properties:
 	 * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
-	 * - fontSize: 17 (font size in points)
+	 * - fontSize: 17 (font size of 17 units)
 	 * - fontFamily: 'GothamMedium_1' (font family 'GothamMedium_1')
 	*/
 	grayText: {
@@ -23,10 +23,10 @@ const styles = StyleSheet.create({
 		fontFamily: 'GothamMedium_1',
 	},
 	/**
-	 * Categories header text style for categories.
-	 * Represents the text style for the categories header with the following properties:
+	 * White Text style.
+	 * Represents the style for white text with the following properties:
 	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
-	 * - fontSize: 17 (font size in points)
+	 * - fontSize: 17 (font size of 17 units)
 	 * - fontFamily: 'GothamBold' (font family 'GothamBold')
 	*/
 	whiteText: {
@@ -35,22 +35,22 @@ const styles = StyleSheet.create({
 		fontFamily: 'GothamBold',
 	},
 	/**
-	 * Style for the touchableOpacity in categories.
-	 * Represents the style for the touchableOpacity in categories with the following properties:
-	 * - marginLeft: 20 (left margin spacing)
-	 * - marginTop: 20 (top margin spacing)
+	 * Subcategory TouchableOpacity style.
+	 * Represents the style for a touchable opacity for subcategories with the following properties:
+	 * - paddingHorizontal: 10 (horizontal padding of 10 units)
+	 * - marginTop: 20 (top margin of 20 units)
 	*/
 	subcategoryTouchableOpacity: {
-		marginLeft: 22,
+		paddingHorizontal: 10,
 		marginTop: 20,
 	},
 	/**
-	 * Style for the bar when a touchableOpacity is pressed.
-	 * Represents the style for the bar when a touchableOpacity is pressed with the following properties:
+	 * Is Pressed Bar style.
+	 * Represents the style for a bar indicating a pressed state with the following properties:
 	 * - backgroundColor: colors.spotifyGreen (background color using the 'spotifyGreen' color from the 'colors' object)
-	 * - height: 3 (height in points)
-	 * - width: '100%' (width spanning the entire available space)
-	 * - marginTop: 7 (top margin spacing)
+	 * - height: 3 (height of 3 units)
+	 * - width: '100%' (width of 100%)
+	 * - marginTop: 7 (top margin of 7 units)
 	*/
 	isPressedBar: {
 		backgroundColor: colors.spotifyGreen,

@@ -64,10 +64,6 @@ export const carouselStrings = {
   findOutMoreAbout: "Find out more about ",
   yourPodcasts: "Your podcasts",
   relatedArtists: "Related artists",
-
-  listComplementString: " • List",
-  albumComplementString: " • Album",
-  podcastComplementsString: "Podcast • ",
 };
 
 export const verticalSliderStrings = {
