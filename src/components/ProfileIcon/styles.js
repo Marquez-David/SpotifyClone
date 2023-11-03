@@ -13,13 +13,13 @@ const styles = StyleSheet.create({
    * Profile Icon style.
    * Represents the style for a profile icon with the following properties:
    * - borderRadius: 50 (border radius of 50 units, for a circular icon)
-   * - height: 37 (height of 37 units)
-   * - width: 37 (width of 37 units)
+   * - height: 34 (height of 34 units)
+   * - width: 34 (width of 34 units)
   */
   profileIcon: {
     borderRadius: 50,
-    height: 37,
-    width: 37,
+    height: 34,
+    width: 34,
   },
 });
 

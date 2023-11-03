@@ -17,25 +17,25 @@ const styles = StyleSheet.create({
 	 * Represents the style for the title text with the following properties:
 	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
 	 * - fontSize: 25 (font size of 25 units)
-	 * - fontWeight: 'bold' (bold font weight)
+	 * - fontFamily: 'GothamBold' (font family 'GothamBold')
 	 * - textAlign: 'left' (left-aligned text)
-	 * - marginBottom: 10 (bottom margin of 10 units)
+	 * - marginVertical: 7 (vertical margin of 7 units)
 	*/
 	titleText: {
 		color: colors.spotifyWhite,
 		fontSize: 25,
-		fontWeight: 'bold',
+		fontFamily: 'GothamBold',
 		textAlign: 'left',
-		marginBottom: 10,
+		marginVertical: 7,
 	},
 	/**
 	 * Image View style.
 	 * Represents the style for an image view with the following properties:
-	 * - marginHorizontal: 5 (horizontal margin of 5 units)
+	 * - marginRight: 8 (right margin of 8 units)
 	 * - width: 120 (width of 120 units)
 	*/
 	imageView: {
-		marginHorizontal: 5,
+		marginRight: 8,
 		width: 120,
 	},
 	/**
@@ -43,10 +43,16 @@ const styles = StyleSheet.create({
 	 * Represents the style for an image with the following properties:
 	 * - height: 120 (height of 120 units)
 	 * - width: 120 (width of 120 units)
+	 * - alignItems: 'center' (centered horizontal alignment)
+	 * - justifyContent: 'center' (centered vertical alignment)
+	 * - backgroundColor: colors.spotifySuperDarkGray (background color using the 'spotifySuperDarkGray' color from the 'colors' object)
 	*/
 	image: {
 		height: 120,
 		width: 120,
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: colors.spotifySuperDarkGray,
 	},
 	/**
 	 * Artist Image View style.

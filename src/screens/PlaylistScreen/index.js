@@ -5,9 +5,9 @@ import { useRoute } from "@react-navigation/native";
 import styles from './styles';
 import colors from '../../utils/colors';
 import { handleScroll } from '../../utils/helpers';
-import { spotifyImage } from '../../utils/constants';
 import { subcategories, modalDialogStrings } from '../../utils/strings';
 
+import ConditionalImage from '../../components/ConditionalImage';
 import ShufflePlayButton from '../../components/ShufflePlayButton';
 import FallbackDataCard from '../../components/FallbackDataCard';
 import ImageSongCard from '../../components/ImageSongCard';
@@ -26,7 +26,7 @@ const PlaylistScreen = () => {
   return (
     <ScrollView onScroll={fetchNextItems} style={player.visible ? styles.margedBackground : styles.background}>
       <View style={styles.headerView}>
-        <Image style={styles.image} source={{ uri: param.images[0]?.url || spotifyImage }} />
+        <ConditionalImage image={param.images[0]?.url} size={55} style={styles.image} />
         <Text style={styles.titleText}>{param.name}</Text>
       </View>
       {playlist?.length === 0 || isLoading || isError ?

@@ -137,21 +137,25 @@ export function parseCarouselData(data, carouselTitle) {
       response.data = data;
       response.description = data.name;
       response.image = data.images?.[0]?.url;
+      response.type = data.type;
     },
     [carouselStrings.findOutMoreAbout]: () => {
       response.data = data;
       response.description = data.name;
       response.image = data.images?.[0]?.url;
+      response.type = data.type;
     },
     [carouselStrings.yourPodcasts]: () => {
       response.data = data.show;
       response.description = data.show.name;
       response.image = data.show.images?.[0]?.url;
+      response.type = data.show.type;
     },
     [carouselStrings.relatedArtists]: () => {
       response.data = data;
       response.description = data.name;
       response.image = data.images?.[0]?.url;
+      response.type = data.type;
     },
   };
 

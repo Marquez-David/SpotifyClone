@@ -1,17 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-import { spotifyImage } from '../../utils/constants';
-import { carouselStrings, modalDialogStrings } from '../../utils/strings';
+import ConditionalImage from '../ConditionalImage';
+
+import { contentType } from '../../utils/strings';
 import { parseCarouselData, handleNavigation } from '../../utils/helpers';
 import styles from './styles';
 
-import { ModalContext } from '../../context/modal';
-
 const HorizontalCarousel = ({ items, title }) => {
   const navigation = useNavigation();
-  const { openModal } = useContext(ModalContext);
   return (
     <View style={styles.carouseView}>
       <Text style={styles.titleText}>{title}</Text>
@@ -19,13 +17,15 @@ const HorizontalCarousel = ({ items, title }) => {
         data={items}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={title === carouselStrings.relatedArtists ? styles.artistImageView : styles.imageView}
-            onPress={() => title === carouselStrings.relatedArtists ? openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok) : handleNavigation(parseCarouselData(item, title).data, navigation)}>
-            <Image style={title === carouselStrings.relatedArtists ? styles.artistImage : styles.image} source={{ uri: parseCarouselData(item, title).image || spotifyImage }} />
-            <Text style={styles.descriptionText}>{parseCarouselData(item, title).description}</Text>
-          </TouchableOpacity>
-        )}
+        renderItem={({ item }) => {
+          const { data, type, image, description } = parseCarouselData(item, title);
+          return (
+            <TouchableOpacity style={type === contentType.artist ? styles.artistImageView : styles.imageView} onPress={() => handleNavigation(data, navigation)}>
+              <ConditionalImage image={image} size={40} style={type === contentType.artist ? styles.artistImage : styles.image} />
+              <Text style={styles.descriptionText}>{description}</Text>
+            </TouchableOpacity>
+          )
+        }}
       />
     </View>
   );

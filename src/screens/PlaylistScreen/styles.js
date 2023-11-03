@@ -42,12 +42,18 @@ const styles = StyleSheet.create({
   /**
    * Image style.
    * Represents the style for an image with the following properties:
-   * - width: 175 (fixed width in points)
-   * - height: 175 (fixed height in points)
+   * - height: 120 (height of 120 units)
+   * - width: 120 (width of 120 units)
+   * - alignItems: 'center' (centered horizontal alignment)
+   * - justifyContent: 'center' (centered vertical alignment)
+   * - backgroundColor: colors.spotifyBlack (background color using the 'spotifyBlack' color from the 'colors' object)
   */
   image: {
     width: 175,
     height: 175,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.spotifySuperDarkGray,
   },
   /**
    * Title text style.

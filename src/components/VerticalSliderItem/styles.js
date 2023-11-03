@@ -27,26 +27,32 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 	},
 	/**
-	 * View style for the 'carouselArtistsImage' component.
-	 * Represents an image view for carousel artists with the following properties:
+	 * View style for the 'verticalArtistsImage' component.
+	 * Represents an image view for vertical artists with the following properties:
 	 * - borderRadius: 50 (border radius in points to create a circular image)
 	 * - height: 66 (height in points)
 	 * - width: 66 (width in points)
 	*/
-	carouselArtistsImage: {
+	verticalArtistsImage: {
 		borderRadius: 50,
 		height: 66,
 		width: 66,
 	},
 	/**
-	 * View style for the 'carouselImage' component.
-	 * Represents an image view for carousel with the following properties:
-	 * - height: 66 (height in points)
-	 * - width: 66 (width in points)
+	 * Vertical Image style.
+	 * Represents the style for a vertical image with the following properties:
+	 * - height: 66 (height of 66 units)
+	 * - width: 66 (width of 66 units)
+	 * - alignItems: 'center' (centered horizontal alignment)
+	 * - justifyContent: 'center' (centered vertical alignment)
+	 * - backgroundColor: colors.spotifySuperDarkGray (background color using the 'spotifySuperDarkGray' color from the 'colors' object)
 	*/
-	carouselImage: {
+	verticalImage: {
 		height: 66,
 		width: 66,
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: colors.spotifySuperDarkGray,
 	},
 	/**
 	 * Text style for the 'playlistNameText' component.

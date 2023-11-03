@@ -14,6 +14,6 @@ export const useUser = () => {
   return {
     isLoadingUser: isLoading,
     user: data,
-    image: data?.images[0].url
+    image: data?.images[0]?.url
   };
 };
