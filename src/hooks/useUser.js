@@ -6,13 +6,12 @@ import { useQuery } from '@tanstack/react-query';
  * @returns {Object} - An object containing user-related data, including user information and user image.
  */
 export const useUser = () => {
-  const { isLoading, data } = useQuery({
+  const { data } = useQuery({
     queryKey: ['user'],
     queryFn: () => getUserInfo(),
   });
 
   return {
-    isLoadingUser: isLoading,
     user: data,
     image: data?.images[0]?.url
   };

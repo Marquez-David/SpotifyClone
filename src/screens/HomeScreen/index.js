@@ -26,7 +26,7 @@ const HomeScreen = () => {
   const { player } = useContext(PlayerContext);
 
   const { message } = useMessage();
-  const { isLoadingUser, image } = useUser();
+  const { image } = useUser();
   const { recentlyPlayed } = useRecentlyPlayed();
   const { playlists } = useSavedPlaylists();
   const { featuredPlaylists } = useFeaturedPlaylists();
@@ -43,7 +43,7 @@ const HomeScreen = () => {
           color={colors.spotifyWhite}
           onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
         </Ionicons.Button>
-        {!isLoadingUser && <ProfileIcon image={image} />}
+        <ProfileIcon image={image} />
       </View>
       <View style={styles.carouselView}>
         <HorizontalCarousel items={recentlyPlayed} title={carouselStrings.recentlyPlayed} />
