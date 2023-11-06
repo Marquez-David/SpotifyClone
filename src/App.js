@@ -41,7 +41,7 @@ const renderInitialComponent = (hasAccess) => {
   if (hasAccess === 0) {
     return <LoginStackNavigation />;
   } else if (hasAccess === 1) {
-    return <LoginStackNavigation />
+    return <BottomTabNavigation />
 
   }
 };
