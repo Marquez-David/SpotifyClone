@@ -5,10 +5,10 @@ import { useNavigation } from "@react-navigation/native";
 import ConditionalImage from '../ConditionalImage';
 
 import { contentType } from '../../utils/strings';
-import { parseCarouselData, handleNavigation } from '../../utils/helpers';
+import { handleNavigation } from '../../utils/helpers';
 import styles from './styles';
 
-const HorizontalCarousel = ({ items, title, isLoading }) => {
+const HorizontalCarousel = ({ items, title }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.carouseView}>
@@ -18,13 +18,12 @@ const HorizontalCarousel = ({ items, title, isLoading }) => {
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => {
-          const { data, type, image, description } = parseCarouselData(item, title);
           return (
             <TouchableOpacity
-              style={type === contentType.artist ? styles.artistImageView : styles.imageView}
-              onPress={() => handleNavigation(data, navigation)}>
-              <ConditionalImage image={image} size={40} style={type === contentType.artist ? styles.artistImage : styles.image} />
-              <Text style={styles.descriptionText}>{description}</Text>
+              style={item.type === contentType.artist ? styles.artistImageView : styles.imageView}
+              onPress={() => handleNavigation(item, navigation)}>
+              <ConditionalImage image={item.images[0]?.url} size={40} style={item.type === contentType.artist ? styles.artistImage : styles.image} />
+              <Text style={styles.descriptionText}>{item.name}</Text>
             </TouchableOpacity>
           )
         }}

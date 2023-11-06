@@ -5,20 +5,16 @@ const styles = StyleSheet.create({
 	/**
 	 * Search bar view style.
 	 * Represents a search bar view with the following properties:
-	 * - flex: 1 (flexible size to fit available space)
-	 * - marginTop: 17 (vertical margin spacing)
 	 * - borderRadius: 8 (border radius in points)
 	 * - flexDirection: 'row' (horizontal layout direction)
 	 * - alignItems: 'center' (center items vertically)
-	 * - backgroundColor: colors.spotifyDarkGray (background color using the 'spotifyDarkGray' color from the 'colors' object)
+	 * - backgroundColor: colors.spotifySuperDarkGray (background color using the 'spotifySuperDarkGray' color from the 'colors' object)
 	*/
 	searchBarView: {
-		flex: 1,
-		marginTop: 17,
 		borderRadius: 8,
 		flexDirection: 'row',
 		alignItems: 'center',
-		backgroundColor: colors.spotifyDarkGray,
+		backgroundColor: colors.spotifySuperDarkGray,
 	},
 	/**
 	 * Search bar text style.

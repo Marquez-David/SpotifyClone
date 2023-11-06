@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { roundNumber } from '../../utils/helpers';
-import { artistStrings, carouselStrings, subcategories } from '../../utils/strings';
+import { artistStrings, carouselStrings } from '../../utils/strings';
 import styles from './styles';
 import colors from '../../utils/colors';
 
@@ -13,7 +13,7 @@ import { PlayerContext } from '../../context/player';
 
 import ShufflePlayButton from '../../components/ShufflePlayButton';
 import ImageSongCard from '../../components/ImageSongCard';
-import FallbackDataCard from '../../components/FallbackDataCard';
+import FallbackDataCard from '../../components/ErrorCard';
 import HorizontalCarousel from '../../components/HorizontalCarousel';
 import ArtistHeader from '../../components/ArtistHeader';
 
@@ -47,7 +47,7 @@ const ArtistScreen = () => {
         <View style={styles.fallbackView}>
           {(isLoadingTopTracks || isLoadingRelatedArtists) && <ActivityIndicator color={colors.spotifyGreen} />}
           {(isErrorTopTracks || isErrorRelatedArtists) && (
-            <FallbackDataCard type={subcategories.error} onPressAction={refetchTopTracks && refetchRelatedArtists} />
+            <FallbackDataCard onPressAction={refetchTopTracks && refetchRelatedArtists} />
           )}
         </View> :
         <>

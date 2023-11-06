@@ -2,46 +2,42 @@ import { StyleSheet } from 'react-native';
 import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
-  /**
-   * Headers style.
-   * Represents the style for headers with the following properties:
-   * - flexDirection: 'row' (horizontal layout with children)
-  */
-  headers: {
-    flexDirection: 'row',
-  },
-  /**
-   * White Text style.
-   * Represents the style for white text with the following properties:
-   * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
-   * - fontFamily: 'GothamBold' (font family 'GothamBold')
-   * - fontSize: 30 (font size of 30 units)
-   * - paddingHorizontal: 10 (horizontal padding of 10 units)
-   * - marginTop: 20 (top margin of 20 units)
-  */
-  whiteText: {
-    color: colors.spotifyWhite,
-    fontFamily: 'GothamBold',
-    fontSize: 30,
-    paddingHorizontal: 10,
-    marginTop: 20,
-  },
-  /**
-   * Gray Text style.
-   * Represents the style for gray text with the following properties:
-   * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
-   * - fontFamily: 'GothamMedium_1' (font family 'GothamMedium_1')
-   * - fontSize: 30 (font size of 30 units)
-   * - paddingHorizontal: 10 (horizontal padding of 10 units)
-   * - marginTop: 20 (top margin of 20 units)
-  */
-  grayText: {
-    color: colors.spotifyGray,
-    fontFamily: 'GothamMedium_1',
-    fontSize: 30,
-    paddingHorizontal: 10,
-    marginTop: 20,
-  },
+	/**
+	 * Headers style.
+	 * Represents the style for headers with the following properties:
+	 * - marginVertical: 15 (vertical margin of 15 units)
+	*/
+	headers: {
+		marginVertical: 15,
+	},
+	/**
+	 * Subcategory View style.
+	 * Represents the style for a subcategory view with the following properties:
+	 * - marginRight: 10 (right margin of 10 units)
+	 * - borderRadius: 50 (border radius of 50 units)
+	 * - paddingHorizontal: 17 (horizontal padding of 17 units)
+	 * - paddingVertical: 7 (vertical padding of 7 units)
+	 * - backgroundColor: colors.spotifySuperDarkGray (background color using the 'spotifySuperDarkGray' color from the 'colors' object)
+	*/
+	subcategoryView: {
+		marginRight: 10,
+		borderRadius: 50,
+		paddingHorizontal: 17,
+		paddingVertical: 7,
+		backgroundColor: colors.spotifySuperDarkGray,
+	},
+	/**
+	 * Subcategory Text style.
+	 * Represents the style for subcategory text with the following properties:
+	 * - fontSize: 15 (font size of 15 units)
+	 * - fontFamily: 'GothamMedium' (font family 'GothamMedium')
+	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
+	*/
+	subcategoryText: {
+		fontSize: 15,
+		fontFamily: 'GothamMedium',
+		color: colors.spotifyWhite,
+	}
 });
 
 export default styles;

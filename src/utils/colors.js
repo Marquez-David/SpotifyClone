@@ -1,9 +1,9 @@
 const colors = {
   primary: '#FF0000',
   secondary: '#00FF00',
-  appBackground: '#121212',
+  appBackground: '#000000',
   episodeCardBackground: '#282828',
-  bottomTabBackground: '#282828',
+  bottomTabBackground: '#000000',
   spotifyWhite: '#FFFFFF',
   spotifyBlack: '#191414',
   spotifyGreen: '#1DB954',

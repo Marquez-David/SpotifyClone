@@ -4,7 +4,7 @@ import { View, Text, Image } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from "../../utils/colors";
 import styles from './styles';
-import { modalDialogStrings } from "../../utils/strings";
+import { modalStrings } from "../../utils/strings";
 
 import { ModalContext } from "../../context/modal";
 import { shortenText, convertMilliseconds, dayOfWeek } from "../../utils/helpers";
@@ -30,7 +30,7 @@ const EpisodeCard = ({ data, podcastTitle }) => {
             size={36}
             backgroundColor={colors.episodeCardBackground}
             color={colors.spotifyWhite}
-            onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+            onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
           </Ionicons.Button>
           <Text style={styles.dateText}>{dayOfWeek(data.release_date) + ' • ' + convertMilliseconds(data.duration_ms)}</Text>
         </View>
@@ -40,14 +40,14 @@ const EpisodeCard = ({ data, podcastTitle }) => {
             size={27}
             backgroundColor={colors.episodeCardBackground}
             color={colors.spotifyGray}
-            onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+            onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
           </Ionicons.Button>
           <Ionicons.Button
             name='arrow-down-circle-outline'
             size={27}
             backgroundColor={colors.episodeCardBackground}
             color={colors.spotifyGray}
-            onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+            onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
           </Ionicons.Button>
         </View>
       </View>

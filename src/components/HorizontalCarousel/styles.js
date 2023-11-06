@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
 	 * Represents the style for an image with the following properties:
 	 * - height: 120 (height of 120 units)
 	 * - width: 120 (width of 120 units)
+	 * - borderRadius: 5 (border radius of 5 units)
 	 * - alignItems: 'center' (centered horizontal alignment)
 	 * - justifyContent: 'center' (centered vertical alignment)
 	 * - backgroundColor: colors.spotifySuperDarkGray (background color using the 'spotifySuperDarkGray' color from the 'colors' object)
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
 	image: {
 		height: 120,
 		width: 120,
+		borderRadius: 5,
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: colors.spotifySuperDarkGray,

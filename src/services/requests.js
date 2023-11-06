@@ -1,94 +1,83 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-/**
- * Retrieves a list of playlists created by the authenticated user.
- * @returns {Array} An array of user's playlists.
- */
-export const getUserPlaylists = async () => {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/me/playlists`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.items;
-	} catch (error) {
-		console.log("Error while fetching user playlists: " + error.message);
-	}
-};
+/*
+|================================================================================================================|
+|====================================== HOME CONTENT ============================================================|
+|================================================================================================================|
+*/
 
 /**
- * Retrieves the top artist ID for the authenticated user.
- * @returns {string} The ID of the user's top artist.
+ * Fetches a list of featured playlists from the Spotify API.
+ * @returns {Array} - An array of featured playlists.
  */
-export const getArtists = async () => {
+export const getFeaturePlaylists = async () => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/me/top/artists`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.items[0].id;
-	} catch (error) {
-		console.log("Error while fetching user top artist id: " + error.message);
-	}
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/browse/featured-playlists?limit=10`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data.playlists.items;
 };
 
-/**
- * Retrieves a list of albums by a specific artist.
- * @param {string} artistId - The ID of the artist whose albums are being fetched.
- * @returns {Array} An array of albums by the specified artist.
- */
-export const getArtistAlbums = async (artistId) => {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/artists/${artistId}/albums?limit=7`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.items;
-	} catch (error) {
-		console.log("Error while fetching artists albums: " + error.message);
-	}
-};
+/*
+|================================================================================================================|
+|=================================== LIBRARY CONTENT ============================================================|
+|================================================================================================================|
+*/
 
 /**
- * Retrieves a list of saved podcasts for the authenticated user.
- * @returns {Array} An array of saved podcast items.
+ * Retrieves various types of content from the user's Spotify library.
+ * @returns {Array} - An array containing user's library content including playlists, albums, artists, episodes, and podcasts.
  */
-export const getSavedPodcasts = async () => {
+export const getLibraryContent = async () => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/me/shows`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data.items;
-	} catch (error) {
-		console.log("Error while fetching user podcasts: " + error.message);
-	}
+
+	const playlistsResponse = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/playlists`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+
+	const albumsResponse = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/albums`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+
+	const artistsResponse = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/following?type=artist`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+
+	const episodesResponse = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/episodes`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+
+	const podcastsResponse = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/shows`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+
+	const playlists = playlistsResponse.data.items;
+	const albums = albumsResponse.data.items.map(obj => obj.album);
+	const artists = artistsResponse.data.artists.items;
+	const episodes = episodesResponse.data.items.map(obj => obj.episode);
+	const podcasts = podcastsResponse.data.items.map(obj => obj.show);
+
+	return [...playlists, ...albums, ...artists, ...episodes, ...podcasts];
 };
+
+/*
+|================================================================================================================|
+|======================================= SEARCH CONTENT =========================================================|
+|================================================================================================================|
+*/
 
 /**
  * Retrieves a list of browse categories using the provided access token.
@@ -99,69 +88,46 @@ export const getBrowseCategories = async () => {
 	const response = await axios({
 		method: "GET",
 		url: `https://api.spotify.com/v1/browse/categories`,
-		headers: {
-			Authorization: `Bearer ${accessToken}`,
-		},
+		headers: { Authorization: `Bearer ${accessToken}` }
 	});
 	return response.data.categories.items;
 };
 
+/*
+|================================================================================================================|
+|======================================== ALBUM CONTENT =========================================================|
+|================================================================================================================|
+*/
+
 /**
  * Retrieves album details and its tracks using the provided album ID and access token.
- * @param {string} id - The ID of the album to fetch.
+ * @param {string} albumId - The ID of the album to fetch.
  * @returns {Array} An array of album track items.
  */
-export const getAlbum = async (id) => {
+export const getAlbum = async (albumId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	const response = await axios(
-		{
-			method: "GET",
-			url: `https://api.spotify.com/v1/albums/${id}`,
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	);
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/albums/${albumId}`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
 	return response.data.tracks.items;
 };
 
 /**
- * Retrieves playlist details and its tracks using the provided playlist ID and access token.
- * @param {string} id - The ID of the playlist to fetch.
- * @returns {Array} An array of playlist track items.
- */
-export const getPlaylist = async (id, offset) => {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	const response = await axios(
-		{
-			method: "GET",
-			url: `https://api.spotify.com/v1/playlists/${id}/tracks?limit=8&offset=${offset}`,
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	);
-	return response.data.items;
-};
-
-/**
  * Retrieves information about whether a list of albums is saved in the user's Spotify library.
- * @param {string[]} ids - An array of album IDs to check.
- * @returns {Promise<boolean[]>} - An array of boolean values indicating if each album is saved.
+ * @param {string[]} albumId - The id of the album to check.
+ * @returns {Promise<boolean>} - A boolean value indicating if the album is saved.
  */
-export const areAlbumsSaved = async (ids) => {
+export const isAlbumSaved = async (albumId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/me/albums/contains?ids=${ids}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		return response.data;
+		const response = await axios({
+			method: "GET",
+			url: `https://api.spotify.com/v1/me/albums/contains?ids=${albumId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
+		return response.data[0];
 	} catch (error) {
 		console.log("Error while fetching albums: " + error.message);
 	}
@@ -169,21 +135,17 @@ export const areAlbumsSaved = async (ids) => {
 
 /**
  * This function makes an asynchronous request to the Spotify API to add the specified album to the user's library.
- * @param {string} id - The ID of the album to be saved.
+ * @param {string} albumId - The ID of the album to be saved.
  * @returns {Promise} A Promise that resolves with the API response when the album is successfully saved.
  */
-export const saveAlbum = async (id) => {
+export const saveAlbum = async (albumId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
-		const response = await axios(
-			{
-				method: "PUT", //update
-				url: `https://api.spotify.com/v1/me/albums?ids=${id}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
+		const response = await axios({
+			method: "PUT",
+			url: `https://api.spotify.com/v1/me/albums?ids=${albumId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
 		return response
 	} catch (error) {
 		console.log("Error while saving albums: " + error.message);
@@ -192,45 +154,28 @@ export const saveAlbum = async (id) => {
 
 /**
  * This function makes an asynchronous request to the Spotify API to remove the specified album to the user's library.
- * @param {string} id - The ID of the album to be removed.
+ * @param {string} albumId - The ID of the album to be removed.
  * @returns {Promise} A Promise that resolves with the API response when the album is successfully removed.
  */
-export const unsaveAlbum = async (id) => {
+export const unsaveAlbum = async (albumId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
-		const response = await axios(
-			{
-				method: "DELETE",
-				url: `https://api.spotify.com/v1/me/albums?ids=${id}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
+		const response = await axios({
+			method: "DELETE",
+			url: `https://api.spotify.com/v1/me/albums?ids=${albumId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
 		return response
 	} catch (error) {
 		console.log("Error while unsaving albums: " + error.message);
 	}
 };
 
-/**
- * Fetches podcast episodes for the given podcast ID using the Spotify API.
- * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
- * @returns {Promise} A Promise that resolves with the response from the API if successful.
- */
-export const getPodcastEpisodes = async (podcastId, offset) => {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	const response = await axios(
-		{
-			method: "GET",
-			url: `https://api.spotify.com/v1/shows/${podcastId}/episodes?limit=5&offset=${offset}`,
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	);
-	return response.data.items;
-};
+/*
+|================================================================================================================|
+|======================================== ARTIST CONTENT ========================================================|
+|================================================================================================================|
+*/
 
 /**
  * Fetches the top tracks of a specific artist based on the provided artist ID and country code.
@@ -239,15 +184,11 @@ export const getPodcastEpisodes = async (podcastId, offset) => {
  */
 export const getArtistTopTracks = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	const response = await axios(
-		{
-			method: "GET",
-			url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=ES`,
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	);
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=ES`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
 	return response.data.tracks;
 };
 
@@ -258,15 +199,11 @@ export const getArtistTopTracks = async (artistId) => {
  */
 export const getRelatedArtists = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	const response = await axios(
-		{
-			method: "GET",
-			url: `https://api.spotify.com/v1/artists/${artistId}/related-artists`,
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	);
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/artists/${artistId}/related-artists`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
 	return response.data.artists;
 };
 
@@ -278,15 +215,11 @@ export const getRelatedArtists = async (artistId) => {
 export const getUserFollowsArtist = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
-		const response = await axios(
-			{
-				method: "GET",
-				url: `https://api.spotify.com/v1/me/following/contains?type=artist&ids=${artistId}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
+		const response = await axios({
+			method: "GET",
+			url: `https://api.spotify.com/v1/me/following/contains?type=artist&ids=${artistId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
 		return response.data;
 	} catch (error) {
 		console.log("Error while checking if user follows artists: " + error.message);
@@ -301,15 +234,11 @@ export const getUserFollowsArtist = async (artistId) => {
 export const followArtist = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
-		const response = await axios(
-			{
-				method: "PUT",
-				url: `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
+		const response = await axios({
+			method: "PUT",
+			url: `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
 		return response.data;
 	} catch (error) {
 		console.log("Error while following artist: " + error.message);
@@ -324,37 +253,64 @@ export const followArtist = async (artistId) => {
 export const unfollowArtist = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
-		const response = await axios(
-			{
-				method: "DELETE",
-				url: `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`,
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
+		const response = await axios({
+			method: "DELETE",
+			url: `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
 		return response.data;
 	} catch (error) {
 		console.log("Error while unfollowing artist: " + error.message);
 	}
 };
 
+/*
+|================================================================================================================|
+|======================================== PLAYLIST CONTENT ======================================================|
+|================================================================================================================|
+*/
+
 /**
- * Fetch saved content items (e.g., saved albums, playlists, artists...) from the user's Spotify account.
- * @param {string} content - The type of content to retrieve.
- * @returns {Array} An array of saved content items.
+ * Retrieves playlist details and its tracks using the provided playlist ID and access token.
+ * @param {string} playlistId - The ID of the playlist to fetch.
+ * @returns {Array} An array of playlist track items.
  */
-export const getSavedContent = async (content) => {
+export const getPlaylist = async (playlistId, offset) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	const response = await axios({
 		method: "GET",
-		url: `https://api.spotify.com/v1/me/${content}`,
-		headers: {
-			Authorization: `Bearer ${accessToken}`,
-		}
+		url: `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=8&offset=${offset}`,
+		headers: { Authorization: `Bearer ${accessToken}` }
 	});
-	return response.data.items || response.data.artists.items;
+	return response.data.items;
 };
+
+/*
+|================================================================================================================|
+|========================================= PODCAST CONTENT ======================================================|
+|================================================================================================================|
+*/
+
+/**
+ * Fetches podcast episodes for the given podcast ID using the Spotify API.
+ * @param {string} podcastId - The ID of the podcast for which episodes are to be fetched.
+ * @returns {Promise} A Promise that resolves with the response from the API if successful.
+ */
+export const getPodcastEpisodes = async (podcastId, offset) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/shows/${podcastId}/episodes?limit=5&offset=${offset}`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data.items;
+};
+
+/*
+|================================================================================================================|
+|========================================== SONG CONTENT ========================================================|
+|================================================================================================================|
+*/
 
 /**
  * Fetch the tracks associated with a Spotify playlist or album.
@@ -367,12 +323,16 @@ export const getSongQueue = async (type, itemId) => {
 	const response = await axios({
 		method: "GET",
 		url: `https://api.spotify.com/v1/${type}s/${itemId}`,
-		headers: {
-			Authorization: `Bearer ${accessToken}`,
-		}
+		headers: { Authorization: `Bearer ${accessToken}` }
 	});
 	return response.data.tracks.items;
 };
+
+/*
+|================================================================================================================|
+|========================================== USER CONTENT ========================================================|
+|================================================================================================================|
+*/
 
 /**
  * Fetches user information.
@@ -383,42 +343,8 @@ export const getUserInfo = async () => {
 	const response = await axios({
 		method: "GET",
 		url: `https://api.spotify.com/v1/me`,
-		headers: {
-			Authorization: `Bearer ${accessToken}`,
-		}
+		headers: { Authorization: `Bearer ${accessToken}` }
 	});
 	return response.data;
-};
-
-/**
- * Fetches the user's recently played tracks from the Spotify API.
- * @returns {Array} - An array of recently played track items.
- */
-export const getRecentlyPlayed = async () => {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	const response = await axios({
-		method: "GET",
-		url: `https://api.spotify.com/v1/me/player/recently-played?limit=10`,
-		headers: {
-			Authorization: `Bearer ${accessToken}`,
-		}
-	});
-	return response.data.items;
-};
-
-/**
- * Fetches a list of featured playlists from the Spotify API.
- * @returns {Array} - An array of featured playlists.
- */
-export const getFeaturePlaylists = async () => {
-	const accessToken = await AsyncStorage.getItem("spotifyToken");
-	const response = await axios({
-		method: "GET",
-		url: `https://api.spotify.com/v1/browse/featured-playlists?limit=10`,
-		headers: {
-			Authorization: `Bearer ${accessToken}`,
-		}
-	});
-	return response.data.playlists.items;
 };
 

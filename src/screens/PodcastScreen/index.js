@@ -6,10 +6,10 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import colors from '../../utils/colors';
 import styles from './styles';
 
-import { podcastStrings, modalDialogStrings, subcategories } from '../../utils/strings';
+import { podcastStrings, modalStrings } from '../../utils/strings';
 import { shortenText, handleScroll } from '../../utils/helpers';
 
-import FallbackDataCard from '../../components/FallbackDataCard';
+import FallbackDataCard from '../../components/ErrorCard';
 import { usePodcastEpisodes } from '../../hooks/usePodcastEpisodes';
 import { ModalContext } from '../../context/modal';
 import { PlayerContext } from '../../context/player';
@@ -33,7 +33,7 @@ const PodcastScreen = () => {
         </View>
       </View>
       <View style={styles.buttonsView}>
-        <TouchableOpacity style={styles.followButton} onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+        <TouchableOpacity style={styles.followButton} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
           <Text style={styles.followButtonText}>{podcastStrings.follow}</Text>
         </TouchableOpacity>
         <Entypo.Button
@@ -42,7 +42,7 @@ const PodcastScreen = () => {
           size={16}
           backgroundColor={colors.appBackground}
           color={colors.spotifyGray}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+          onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
         </Entypo.Button>
       </View>
       <View style={styles.descriptionView}>
@@ -54,7 +54,7 @@ const PodcastScreen = () => {
       {isLoading || isError ?
         <View style={styles.fallbackView}>
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && <FallbackDataCard type={subcategories.error} onPressAction={refetch} />}
+          {isError && <FallbackDataCard onPressAction={refetch} />}
         </View> :
         <View style={styles.songsView}>
           {podcastEpisodes.map((item) => (

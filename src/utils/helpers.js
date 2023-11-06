@@ -1,14 +1,7 @@
 import {
-  carouselStrings,
-  categories,
-  subcategories,
-  subcategoryRoutes,
-  verticalSliderStrings,
-  fallbackDataStrings,
   contentType,
   podcastStrings,
   artistStrings,
-  searchLabelStrings,
 } from "./strings";
 
 /**
@@ -86,26 +79,7 @@ export function extractArtistNames(artists) {
  * @returns {string} The shortened or original text based on word count.
  */
 export function shortenText(text, words) {
-  return countWords(text) > words ? sliceText(text, words) + podcastStrings.etc : text;
-}
-
-/**
- * Counts the number of words in the given text.
- * @param {string} text - The input text to be processed.
- * @returns {number} The total number of words in the input text.
- */
-export function countWords(text) {
-  return text.split(' ').length;
-}
-
-/**
- * Slices the given text into a substring containing a specified number of words.
- * @param {string} text - The input text to be processed.
- * @param {number} words - The maximum number of words to include in the sliced text.
- * @returns {string} A substring containing the specified number of words from the input text.
- */
-export function sliceText(text, words) {
-  return text.split(' ').slice(0, words).join(' ');
+  return text.split(' ').length > words ? text.split(' ').slice(0, words).join(' ') + podcastStrings.etc : text;
 }
 
 /**
@@ -122,181 +96,6 @@ export function roundNumber(number) {
   }
   return result + artistStrings.followers;
 };
-
-/**
- * Parse the data parameter and returns the corresponding object for each case
- * @param {*} data 
- * @param {*} carouselTitle 
- * @returns 
- */
-export function parseCarouselData(data, carouselTitle) {
-  const response = {};
-
-  const carouselMappings = {
-    [carouselStrings.recentlyPlayed]: () => {
-      response.data = data.track.album;
-      response.description = data.track.name;
-      response.image = data.track.album.images?.[0]?.url;
-      response.type = data.track.type;
-    },
-    [carouselStrings.yourPlaylists]: () => {
-      response.data = data;
-      response.description = data.name;
-      response.image = data.images?.[0]?.url;
-      response.type = data.type;
-    },
-    [carouselStrings.featuredPlaylists]: () => {
-      response.data = data;
-      response.description = data.name;
-      response.image = data.images?.[0]?.url;
-      response.type = data.type;
-    },
-    [carouselStrings.findOutMoreAbout]: () => {
-      response.data = data;
-      response.description = data.name;
-      response.image = data.images?.[0]?.url;
-      response.type = data.type;
-    },
-    [carouselStrings.yourPodcasts]: () => {
-      response.data = data.show;
-      response.description = data.show.name;
-      response.image = data.show.images?.[0]?.url;
-      response.type = data.show.type;
-    },
-    [carouselStrings.relatedArtists]: () => {
-      response.data = data;
-      response.description = data.name;
-      response.image = data.images?.[0]?.url;
-      response.type = data.type;
-    },
-  };
-
-  const mappingFunction = carouselMappings[carouselTitle];
-  mappingFunction();
-
-  return response;
-}
-
-/**
- * Returns an object data with the data, description properties, depending on the subcategory provided.
- * @param {*} item 
- * @param {*} subcategory 
- * @returns 
- */
-export function parseLibraryData(data, subcategory) {
-  const response = {};
-
-  const libraryMappings = {
-    [subcategories.playlists]: () => {
-      response.data = data;
-      response.description = verticalSliderStrings.by + data.owner.display_name;
-    },
-    [subcategories.artists]: () => {
-      response.data = data;
-      response.description = "";
-    },
-    [subcategories.albums]: () => {
-      response.data = data.album;
-      response.description = data.album.artists[0].name;
-    },
-    [subcategories.episodes]: () => {
-      response.data = data.episode;
-      response.description = convertDate(data?.episode?.release_date) + ' • ' + convertMilliseconds(data.episode.duration_ms);
-    },
-    [subcategories.podcasts]: () => {
-      response.data = data.show;
-      response.description = "";
-    },
-  };
-
-  const mappingFunction = libraryMappings[subcategory];
-  mappingFunction();
-
-  return response;
-};
-
-export const parseSubcategoryRoute = (subcategory) => {
-  const routeMappings = {
-    [subcategories.playlists]: subcategoryRoutes.playlists,
-    [subcategories.artists]: subcategoryRoutes.artists,
-    [subcategories.albums]: subcategoryRoutes.albums,
-    [subcategories.episodes]: subcategoryRoutes.episodes,
-    [subcategories.downloads]: subcategoryRoutes.downloads,
-    [subcategories.podcasts]: subcategoryRoutes.podcasts,
-  };
-
-  return routeMappings[subcategory];
-};
-
-/**
- * Uses an object mapping to determine the appropriate search text based on the subcategory. 
- * @param {*} subcategory 
- * @returns 
- */
-export function parseSearchText(subcategory) {
-  const subcategoryToSearchText = {
-    [subcategories.playlists]: searchLabelStrings.searchForPlayLists,
-    [subcategories.artists]: searchLabelStrings.searchForArtists,
-    [subcategories.albums]: searchLabelStrings.searchForAlbums,
-    [subcategories.episodes]: searchLabelStrings.searchForEpisodes,
-    [subcategories.downloads]: searchLabelStrings.searchForDownloads,
-    [subcategories.podcasts]: searchLabelStrings.searchForPrograms,
-  };
-
-  return subcategoryToSearchText[subcategory];
-};
-
-/**
- * Maps subcategories to corresponding texts for titles, descriptions, and button texts.
- * @param {*} type 
- * @returns 
- */
-export function parseFallbackData(type) {
-  const textMappings = {
-    [subcategories.playlists]: {
-      title: fallbackDataStrings.playlistsTitle,
-      description: fallbackDataStrings.playlistsDescription,
-      buttonText: fallbackDataStrings.browseMusic
-    },
-    [subcategories.artists]: {
-      title: fallbackDataStrings.artistsTitle,
-      description: fallbackDataStrings.artistsDescription,
-      buttonText: fallbackDataStrings.browseMusic
-    },
-    [subcategories.albums]: {
-      title: fallbackDataStrings.albumsTitle,
-      description: fallbackDataStrings.albumsDescription,
-      buttonText: fallbackDataStrings.browseMusic
-    },
-    [subcategories.episodes]: {
-      title: fallbackDataStrings.episodesTitle,
-      description: fallbackDataStrings.episodesDescription,
-      buttonText: fallbackDataStrings.browsePodcasts
-    },
-    [subcategories.downloads]: {
-      title: fallbackDataStrings.downloadsTitle,
-      description: fallbackDataStrings.downloadsDescription,
-      buttonText: fallbackDataStrings.browsePodcasts
-    },
-    [subcategories.podcasts]: {
-      title: fallbackDataStrings.programsTitle,
-      description: fallbackDataStrings.programsDescription,
-      buttonText: fallbackDataStrings.browsePodcasts
-    },
-    [subcategories.error]: {
-      title: fallbackDataStrings.errorTitle,
-      description: fallbackDataStrings.errorDescription,
-      buttonText: fallbackDataStrings.tryAgain
-    },
-    [subcategories.empty]: {
-      title: fallbackDataStrings.emptyPlaylistTitle,
-      description: fallbackDataStrings.emptyPlaylistDescription,
-      buttonText: fallbackDataStrings.browseMusic
-    },
-  };
-
-  return textMappings[type] || {};
-}
 
 /**
  * Navigate to the corresponding screen based on the content type of the item.
@@ -336,17 +135,6 @@ export const handleScroll = (fetchNextPage) => {
   };
 
   return { fetchNextItems };
-};
-
-/**
- * Get subcategories based on the selected category.
- * @param {string} category - The selected category (e.g., "music" or "library").
- * @returns {Array} An array of subcategories based on the selected category.
- */
-export const getSubcategories = (category) => {
-  return category === categories.music ?
-    [subcategories.playlists, subcategories.artists, subcategories.albums] :
-    [subcategories.episodes, subcategories.downloads, subcategories.podcasts];
 };
 
 /**

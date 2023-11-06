@@ -1,4 +1,4 @@
-import { areAlbumsSaved } from '../services/requests';
+import { isAlbumSaved } from '../services/requests';
 import { useQuery } from '@tanstack/react-query';
 import { contentType } from '../utils/strings';
 
@@ -11,9 +11,9 @@ import { contentType } from '../utils/strings';
 export const useIsAlbumSaved = (type, albumId) => {
   const { data } = useQuery({
     queryKey: ['isAlbumSaved', albumId],
-    queryFn: () => areAlbumsSaved(albumId),
+    queryFn: () => isAlbumSaved(albumId),
     enabled: type === contentType.album, // the query will not execute until type is album
   });
 
-  return { isSaved: data?.[0] };
+  return { isSaved: data };
 };

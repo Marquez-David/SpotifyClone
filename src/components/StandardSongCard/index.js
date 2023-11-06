@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 import colors from '../../utils/colors';
-import { modalDialogStrings } from '../../utils/strings';
+import { modalStrings } from '../../utils/strings';
 import { extractArtistNames, shortenText } from '../../utils/helpers';
 
 import { ModalContext } from '../../context/modal';
@@ -30,7 +30,7 @@ const StandardSongCard = ({ item }) => {
           size={15}
           backgroundColor={colors.appBackground}
           color={colors.spotifyGray}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment)}>
+          onPress={() => openModal(modalStrings.undeDevelopment)}>
         </Entypo.Button>
       </View>
       <View>

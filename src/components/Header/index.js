@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-import { modalDialogStrings } from '../../utils/strings';
+import { modalStrings } from '../../utils/strings';
 import colors from '../../utils/colors';
 import styles from './styles';
 
@@ -58,7 +58,7 @@ const Header = ({ params }) => {
           size={21}
           color={colors.spotifyWhite}
           backgroundColor={colors.appBackground}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+          onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
         </Entypo.Button>
       </View>
     </View>

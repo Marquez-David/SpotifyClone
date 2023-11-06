@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import colors from '../../utils/colors';
 
-import { modalDialogStrings } from '../../utils/strings';
+import { modalStrings } from '../../utils/strings';
 import { extractArtistNames, shortenText } from '../../utils/helpers';
 
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -33,7 +33,7 @@ const ImageSongCard = ({ item }) => {
           size={15}
           backgroundColor={colors.appBackground}
           color={colors.spotifyGray}
-          onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+          onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
         </Entypo.Button>
       </View>
       <View>

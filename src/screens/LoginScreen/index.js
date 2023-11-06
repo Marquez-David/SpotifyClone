@@ -6,7 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
 import colors from '../../utils/colors';
-import { loginStrings, modalDialogStrings } from '../../utils/strings';
+import { loginStrings, modalStrings } from '../../utils/strings';
 import { spotifyAuthConfig } from '../../utils/constants';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -60,17 +60,17 @@ const LoginScreen = () => {
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericTouchableOpacity]}
-					onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+					onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
 					<AntDesign name='google' size={23} color={colors.spotifyWhite}></AntDesign>
 					<Text style={styles.touchableOpacityText}> {loginStrings.signInWithGoogle}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={[{ marginTop: 15, borderColor: colors.spotifyWhite, borderWidth: 0.7, }, styles.genericTouchableOpacity]}
-					onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)}>
+					onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
 					<MaterialCommunityIcons name='facebook' size={26} color={colors.spotifyWhite}></MaterialCommunityIcons>
 					<Text style={styles.touchableOpacityText}> {loginStrings.signInWithFacebook}</Text>
 				</TouchableOpacity>
-				<TouchableOpacity onPress={() => openModal(modalDialogStrings.undeDevelopment, modalDialogStrings.ok)} style={styles.genericTouchableOpacity}>
+				<TouchableOpacity onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)} style={styles.genericTouchableOpacity}>
 					<Text style={[{ paddingTop: 10 }, styles.touchableOpacityText]}> {loginStrings.signIn}</Text>
 				</TouchableOpacity>
 			</View>

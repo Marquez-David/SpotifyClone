@@ -1,18 +1,27 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 
-import { categories } from '../../utils/strings';
+import { categorySelectorStrings, modalStrings } from '../../utils/strings';
 import styles from './styles';
 
-const CategorySelector = ({ selected, setSelected }) => (
-  <View style={styles.headers}>
-    <TouchableOpacity onPress={() => setSelected(categories.music)}>
-      <Text style={selected === categories.music ? styles.whiteText : styles.grayText}>{categories.music}</Text>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={() => setSelected(categories.podcasts)}>
-      <Text style={selected === categories.podcasts ? styles.whiteText : styles.grayText}>{categories.podcasts}</Text>
-    </TouchableOpacity>
-  </View>
-);
+import { ModalContext } from '../../context/modal';
 
-export default CategorySelector;
+const SubcategorySelector = () => {
+  const { openModal } = useContext(ModalContext);
+  return (
+    <View style={styles.headers}>
+      <FlatList
+        data={Object.values(categorySelectorStrings)}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <TouchableOpacity style={styles.subcategoryView} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+            <Text style={styles.subcategoryText}>{item}</Text>
+          </TouchableOpacity>
+        )}
+      />
+    </View>
+  );
+};
+
+export default SubcategorySelector;
