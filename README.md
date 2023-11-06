@@ -15,7 +15,7 @@ This project is a clone of the popular music streaming application, Spotify. It 
 
 <br>
 
-| HomeScreen | SearchScreen | LibraryPlaylist | LibraryPrograms |
+| HomeScreen | SearchScreen | LibraryPlaylist |
 |:---------------:|:---------------:|:---------------:|:---------------:|
 | ![HomeScreen](src/assets/screenshots/HomeScreen.png) | ![SearchScreen](src/assets/screenshots/SearchScreen.png) | ![YourLibraryScreen](src/assets/screenshots/YourLibraryScreen.png)
 | ArtistScreen | AlbumScreen | PlaylistScreen | PodcastScreen |  
