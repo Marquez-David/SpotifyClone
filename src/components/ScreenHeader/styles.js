@@ -28,13 +28,11 @@ const styles = StyleSheet.create({
    * - borderRadius: 50 (border radius of 50 units, for a circular icon)
    * - height: 34 (height of 34 units)
    * - width: 34 (width of 34 units)
-   * - color: colors.spotifyWhite (icon color using the 'spotifyWhite' color from the 'colors' object)
   */
   profileIcon: {
     borderRadius: 50,
     height: 34,
     width: 34,
-    color: colors.spotifyWhite,
   },
   /**
    * Title Text style.
