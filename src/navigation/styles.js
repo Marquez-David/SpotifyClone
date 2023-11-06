@@ -11,25 +11,28 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bottomTabBackground,
   },
   /**
-   * Style for focused icons in the bottom navigation bar.
-   * Represents the style for the focused icons in the bottom navigation bar with the following properties:
+   * Style icons in the bottom navigation bar.
+   * Represents the style for the icons in the bottom navigation bar with the following properties:
    * - fontSize: 24 (font size in points)
    * - color: colors.spotifyWhite (icon color using the 'spotifyWhite' color from the 'colors' object)
   */
-  focusedIconStyle: {
+  icon: {
     fontSize: 24,
+    position: 'absolute',
     color: colors.spotifyWhite,
   },
   /**
-   * Style for unfocused icons in the bottom navigation bar.
-   * Represents the style for the unfocused icons in the bottom navigation bar with the following properties:
-   * - fontSize: 21 (font size in points)
+   * Circle Icon style.
+   * Represents the style for a circular icon with the following properties:
+   * - fontSize: 14 (font size of 14 units)
+   * - position: 'absolute' (absolute positioning)
    * - color: colors.spotifyWhite (icon color using the 'spotifyWhite' color from the 'colors' object)
   */
-  unfocusedIconStyle: {
-    fontSize: 21,
+  circleIcon: {
+    fontSize: 14,
+    position: 'absolute',
     color: colors.spotifyWhite,
-  },
+  }
 });
 
 export default styles;

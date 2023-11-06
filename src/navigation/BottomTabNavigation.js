@@ -5,50 +5,9 @@ import { HomeStackNavigation } from './HomeStackNavigation';
 import { LibraryStackNavigation } from './LibraryStackNavigation';
 import { SearchStackNavigation } from './SearchStackNavigation';
 
-import FoundationIcon from 'react-native-vector-icons/Foundation';
-import OcticonsIcon from 'react-native-vector-icons/Octicons';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import styles from './styles';
-
-/**
- * Constant that maps different icon component types to their respective imports, enabling dynamic 
- * component selection based on the provided component prop.
- */
-const iconComponents = {
-  foundationIcon: FoundationIcon,
-  octiconsIcon: OcticonsIcon,
-  evilIcons: EvilIcons,
-  ionicons: Ionicons,
-  fontisto: Fontisto,
-}
-
-/**
- * Dynamically renders an icon based on the provided props, utilizing the iconComponents 
- * object to retrieve the appropriate component.
- * @param {*} props 
- * @returns 
- */
-function MyIconComponent(props) {
-  const MyComponent = iconComponents[props.component];
-  return <MyComponent name={props.name} style={props.style} />;
-}
-
-/**
- * Renders an icon component based on the provided focus state.
- * @param {*} isFocused 
- * @param {*} focusedIcon 
- * @param {*} unfocusedIcon 
- * @param {*} focusedComponent 
- * @param {*} unfocusedComponent 
- * @returns 
- */
-const isIconFocused = (isFocused, focusedIcon, unfocusedIcon, focusedComponent, unfocusedComponent) => {
-  return isFocused
-    ? <MyIconComponent name={focusedIcon} component={focusedComponent} style={styles.focusedIconStyle} />
-    : <MyIconComponent name={unfocusedIcon} component={unfocusedComponent} style={styles.unfocusedIconStyle} />
-}
 
 const Tab = createBottomTabNavigator();
 export const BottomTabNavigation = () => (
@@ -58,7 +17,14 @@ export const BottomTabNavigation = () => (
       component={HomeStackNavigation}
       options={{
         headerShown: false,
-        tabBarIcon: ({ focused }) => isIconFocused(focused, "home", "home", "foundationIcon", "octiconsIcon")
+        tabBarShowLabel: false,
+        tabBarIcon: ({ focused }) => (
+          focused ? (
+            <Ionicons name="home-sharp" style={styles.icon} />
+          ) : (
+            <Ionicons name="home-outline" style={styles.icon} />
+          )
+        )
       }}
     />
     <Tab.Screen
@@ -66,7 +32,17 @@ export const BottomTabNavigation = () => (
       component={SearchStackNavigation}
       options={{
         headerShown: false,
-        tabBarIcon: ({ focused }) => isIconFocused(focused, "search", "search", "octiconsIcon", "octiconsIcon")
+        tabBarShowLabel: false,
+        tabBarIcon: ({ focused }) => (
+          focused ? (
+            <>
+              <MaterialIcons name="circle" style={styles.circleIcon} />
+              <MaterialIcons name="location-searching" style={styles.icon} />
+            </>
+          ) : (
+            <MaterialIcons name="location-searching" style={styles.icon} />
+          )
+        )
       }}
     />
     <Tab.Screen
@@ -74,7 +50,14 @@ export const BottomTabNavigation = () => (
       component={LibraryStackNavigation}
       options={{
         headerShown: false,
-        tabBarIcon: ({ focused }) => isIconFocused(focused, "library", "library-outline", "ionicons", "ionicons")
+        tabBarShowLabel: false,
+        tabBarIcon: ({ focused }) => (
+          focused ? (
+            <Ionicons name="library-sharp" style={styles.icon} />
+          ) : (
+            <Ionicons name="library-outline" style={styles.icon} />
+          )
+        )
       }}
     />
   </Tab.Navigator>
