@@ -1,33 +1,41 @@
 import React, { useContext } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import { PlayerContext } from '../../context/player';
+import { ModalContext } from '../../context/modal';
 
+import { modalStrings } from '../../utils/strings';
 import { extractArtistNames } from '../../utils/helpers';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../../utils/colors';
 import styles from './styles';
 
+
 const SongPlayer = ({ visible, state, item }) => {
   const { play, pause } = useContext(PlayerContext);
+  const { openModal } = useContext(ModalContext);
+
   return (
     <>
       {visible &&
-        <View style={styles.playerView}>
+        <TouchableOpacity style={[styles.playerView, { backgroundColor: 'green' }]} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)} >
           {<Image style={styles.image} source={{ uri: item.artwork }} />}
           <View style={styles.titleView}>
             <Text style={styles.titleText}>{item.title}</Text>
             <Text style={styles.descriptionText}>{extractArtistNames(item.artist)}</Text>
           </View>
-          <FontAwesome.Button
-            name={state}
-            size={16}
-            style={styles.playButton}
-            backgroundColor={colors.bottomTabBackground}
-            color={colors.spotifyWhite}
-            onPress={() => state === 'pause' ? pause() : play()}>
-          </FontAwesome.Button>
-        </View>
+          <TouchableOpacity style={styles.touchablePlay} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+            <MaterialIcons name={'computer'} size={21} color={colors.spotifyWhite} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.touchablePlay} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+            <FontAwesome name={'heart-o'} size={21} color={colors.spotifyWhite} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.touchablePlay} onPress={() => state === 'pause' ? pause() : play()}>
+            <Ionicons name={state} size={22} color={colors.spotifyWhite} />
+          </TouchableOpacity>
+        </TouchableOpacity>
       }
     </>
   );

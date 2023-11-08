@@ -1,5 +1,5 @@
 const dimensions = {
-  playerMarginBottom: 49,
+  playerMarginBottom: 45,
   marginPlayerVisible: 59,
 };
 

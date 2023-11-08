@@ -3,84 +3,43 @@ import colors from "../../utils/colors";
 import dimensions from "../../utils/dimensions";
 
 const styles = StyleSheet.create({
-  /**
-   * Player View style.
-   * Represents the style for a player view with the following properties:
-   * - position: 'absolute' (absolute positioning)
-   * - bottom: 50 (set 50 units of space from the bottom edge)
-   * - width: '100%' (width of 100% to span the entire width)
-   * - justifyContent: 'space-between' (space between children)
-   * - flexDirection: 'row' (horizontal layout with children)
-   * - backgroundColor: colors.bottomTabBackground (background color using the 'bottomTabBackground' color from the 'colors' object)
-  */
   playerView: {
     position: 'absolute',
-    bottom: dimensions.playerMarginBottom,
-    width: '100%',
-    justifyContent: 'space-between',
     flexDirection: 'row',
-    backgroundColor: colors.bottomTabBackground,
+    borderRadius: 7,
+    height: 53,
+    width: '100%',
+    paddingHorizontal: 11,
+    justifyContent: 'space-between',
+    bottom: dimensions.playerMarginBottom,
   },
-  /**
-   * Image style.
-   * Represents the style for an image with the following properties:
-   * - width: 55 (width of 55 units)
-   * - height: 60 (height of 60 units)
-  */
   image: {
-    width: 55,
-    height: 60,
+    alignSelf: 'center',
+    width: 40,
+    height: 40,
+    borderRadius: 5,
   },
-  /**
-   * Title View style.
-   * Represents the style for a view containing the title with the following properties:
-   * - flex: 1 (flexible size to fit available space)
-   * - marginLeft: 10 (left margin of 10 units)
-   * - justifyContent: 'center' (centered vertical alignment of children)
-   * - flexDirection: 'column' (vertical layout with children)
-  */
   titleView: {
     flex: 1,
     marginLeft: 10,
     justifyContent: 'center',
     flexDirection: 'column',
   },
-  /**
-   * Title Text style.
-   * Represents the style for the title text with the following properties:
-   * - fontSize: 14 (font size of 14 units)
-   * - fontFamily: 'GothamMedium_1' (font family 'GothamMedium_1')
-   * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
-  */
   titleText: {
     fontSize: 14,
     fontFamily: 'GothamMedium_1',
     color: colors.spotifyWhite,
   },
-  /**
-   * Description Text style.
-   * Represents the style for the description text with the following properties:
-   * - fontSize: 14 (font size of 14 units)
-   * - fontFamily: 'GothamMedium_1' (font family 'GothamMedium_1')
-   * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
-  */
   descriptionText: {
-    fontSize: 14,
+    fontSize: 13,
     fontFamily: 'GothamMedium_1',
-    color: colors.spotifyGray,
+    opacity: 0.7,
+    color: colors.spotifyWhite,
   },
-  /**
-   * Play Button style.
-   * Represents the style for a play button with the following properties:
-   * - flex: 1 (flexible size to fit available space)
-   * - alignSelf: 'center' (centered horizontal alignment)
-   * - justifyContent: 'center' (centered vertical alignment)
-  */
-  playButton: {
-    flex: 1,
-    alignSelf: 'center',
+  touchablePlay: {
     justifyContent: 'center',
-  },
+    paddingHorizontal: 10,
+  }
 });
 
 export default styles;
