@@ -21,8 +21,8 @@ export const libraryStrings = {
   library: "Your library",
 };
 
-export const searchStrings = {
-  search: "Explore",
+export const exploreStrings = {
+  explore: "Explore",
 };
 
 export const podcastStrings = {

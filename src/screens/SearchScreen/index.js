@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { ScrollView } from 'react-native';
 
 import styles from './styles';
-import { searchStrings } from '../../utils/strings';
+import { exploreStrings } from '../../utils/strings';
 
 import ScreenHeader from '../../components/ScreenHeader';
 import ExploreGrid from '../../components/ExploreGrid';
@@ -15,7 +15,7 @@ const SearchScreen = () => {
   const { player } = useContext(PlayerContext);
   return (
     <ScrollView style={player.visible ? styles.margedBackground : styles.background}>
-      <ScreenHeader title={searchStrings.search} icon={'camera-outline'} />
+      <ScreenHeader title={exploreStrings.explore} icon={'camera-outline'} />
       <SearchBar valueText={searchText} changeText={setSearchText} />
       <ExploreGrid />
     </ScrollView>

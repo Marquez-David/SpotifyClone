@@ -13,32 +13,14 @@ export const BottomTabNavigation = () => (
     <Tab.Screen
       name="Home"
       component={HomeStackNavigation}
-      options={{
-        headerShown: false,
-        focusedIcon: 'home',
-        unfocusedIcon: 'home-outline',
-        labelText: 'Home',
-      }}
-    />
+      options={{ headerShown: false, focusedIcon: 'home', unfocusedIcon: 'home-outline' }} />
     <Tab.Screen
-      name="Search"
+      name="Explore"
       component={SearchStackNavigation}
-      options={{
-        headerShown: false,
-        focusedIcon: 'search-outline',
-        unfocusedIcon: 'circle',
-        labelText: 'Explore',
-      }}
-    />
+      options={{ headerShown: false, focusedIcon: 'search-outline', unfocusedIcon: 'circle' }} />
     <Tab.Screen
       name="Your library"
       component={LibraryStackNavigation}
-      options={{
-        headerShown: false,
-        focusedIcon: 'library',
-        unfocusedIcon: 'library-outline',
-        labelText: 'Library',
-      }}
-    />
+      options={{ headerShown: false, focusedIcon: 'library', unfocusedIcon: 'library-outline' }} />
   </Tab.Navigator>
 );
