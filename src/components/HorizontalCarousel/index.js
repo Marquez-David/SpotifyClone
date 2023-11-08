@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { ModalContext } from '../../context/modal';
 import ConditionalImage from '../ConditionalImage';
 
-import { contentType, modalStrings } from '../../utils/strings';
+import { contentType } from '../../utils/strings';
 import { handleNavigation } from '../../utils/helpers';
 import styles from './styles';
 
@@ -23,7 +23,7 @@ const HorizontalCarousel = ({ items, title }) => {
           return (
             <TouchableOpacity
               style={item.type === contentType.artist ? styles.artistImageView : styles.imageView}
-              onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+              onPress={() => openModal()}>
               <ConditionalImage image={item.images[0]?.url} size={40} style={item.type === contentType.artist ? styles.artistImage : styles.image} />
               <Text style={styles.descriptionText}>{item.name}</Text>
             </TouchableOpacity>

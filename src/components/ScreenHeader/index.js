@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import colors from '../../utils/colors';
-import { modalStrings } from '../../utils/strings';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
@@ -16,13 +15,13 @@ const ScreenHeader = ({ title, icon }) => {
 
   return (
     <View style={styles.header}>
-      <TouchableOpacity style={styles.profileIconView} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+      <TouchableOpacity style={styles.profileIconView} onPress={() => openModal()}>
         {image ? (<Image style={styles.profileIcon} source={{ uri: image }} />
         ) : (<EvilIcons name='user' size={36} color={colors.spotifyWhite} style={styles.profileIcon} />
         )}
       </TouchableOpacity>
       <Text style={styles.titleText}>{title}</Text>
-      <TouchableOpacity style={styles.touchableIcon} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+      <TouchableOpacity style={styles.touchableIcon} onPress={() => openModal()}>
         <Ionicons name={icon} style={styles.icon} />
       </TouchableOpacity>
     </View>

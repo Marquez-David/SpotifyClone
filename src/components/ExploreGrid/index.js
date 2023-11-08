@@ -3,7 +3,6 @@ import { View, Text, Image, ActivityIndicator, TouchableOpacity } from 'react-na
 
 import colors from '../../utils/colors';
 import styles from './styles';
-import { modalStrings } from '../../utils/strings';
 
 import { useCategories } from '../../hooks/useCategories';
 import FallbackDataCard from '../ErrorCard';
@@ -21,7 +20,7 @@ const ExploreGrid = () => {
         </View> :
         <View style={styles.cardContainer}>
           {categories?.map((item) => (
-            <TouchableOpacity key={item.id} style={styles.cardView} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+            <TouchableOpacity key={item.id} style={styles.cardView} onPress={() => openModal()}>
               <Image source={{ uri: item.icons[0].url }} style={styles.cardImage} />
               <Text style={styles.categoriesTitleText}>{item.name}</Text>
             </TouchableOpacity>

@@ -5,7 +5,6 @@ import { useRoute } from "@react-navigation/native";
 import styles from './styles';
 import colors from '../../utils/colors';
 import { handleScroll } from '../../utils/helpers';
-import { modalStrings } from '../../utils/strings';
 
 import ConditionalImage from '../../components/ConditionalImage';
 import ShufflePlayButton from '../../components/ShufflePlayButton';
@@ -29,7 +28,7 @@ const PlaylistScreen = () => {
       </View>
       {playlist?.length === 0 || isLoading || isError ?
         <View style={styles.fallbackView}>
-          {playlist?.length === 0 && <FallbackDataCard onPressAction={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)} />}
+          {playlist?.length === 0 && <FallbackDataCard onPressAction={() => openModal()} />}
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
           {isError && !isLoading && <FallbackDataCard onPressAction={refetch} />}
         </View> :

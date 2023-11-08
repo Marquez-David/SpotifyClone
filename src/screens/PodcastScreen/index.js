@@ -6,7 +6,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import colors from '../../utils/colors';
 import styles from './styles';
 
-import { podcastStrings, modalStrings } from '../../utils/strings';
+import { podcastStrings } from '../../utils/strings';
 import { shortenText, handleScroll } from '../../utils/helpers';
 
 import FallbackDataCard from '../../components/ErrorCard';
@@ -31,7 +31,7 @@ const PodcastScreen = () => {
         </View>
       </View>
       <View style={styles.buttonsView}>
-        <TouchableOpacity style={styles.followButton} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+        <TouchableOpacity style={styles.followButton} onPress={() => openModal()}>
           <Text style={styles.followButtonText}>{podcastStrings.follow}</Text>
         </TouchableOpacity>
         <Entypo.Button
@@ -40,7 +40,7 @@ const PodcastScreen = () => {
           size={16}
           backgroundColor={colors.appBackground}
           color={colors.spotifyGray}
-          onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+          onPress={() => openModal()}>
         </Entypo.Button>
       </View>
       <View style={styles.descriptionView}>

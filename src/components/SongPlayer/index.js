@@ -4,7 +4,6 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { PlayerContext } from '../../context/player';
 import { ModalContext } from '../../context/modal';
 
-import { modalStrings } from '../../utils/strings';
 import { extractArtistNames } from '../../utils/helpers';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -20,16 +19,16 @@ const SongPlayer = ({ visible, state, item }) => {
   return (
     <>
       {visible &&
-        <TouchableOpacity style={[styles.playerView, { backgroundColor: 'green' }]} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)} >
+        <TouchableOpacity style={[styles.playerView, { backgroundColor: 'green' }]} onPress={() => openModal()} >
           {<Image style={styles.image} source={{ uri: item.artwork }} />}
           <View style={styles.titleView}>
             <Text style={styles.titleText}>{item.title}</Text>
             <Text style={styles.descriptionText}>{extractArtistNames(item.artist)}</Text>
           </View>
-          <TouchableOpacity style={styles.touchablePlay} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+          <TouchableOpacity style={styles.touchablePlay} onPress={() => openModal()}>
             <MaterialIcons name={'computer'} size={21} color={colors.spotifyWhite} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.touchablePlay} onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+          <TouchableOpacity style={styles.touchablePlay} onPress={() => openModal()}>
             <FontAwesome name={'heart-o'} size={21} color={colors.spotifyWhite} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.touchablePlay} onPress={() => state === 'pause' ? pause() : play()}>

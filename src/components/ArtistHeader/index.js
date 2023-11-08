@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-import { podcastStrings, modalStrings } from '../../utils/strings';
+import { podcastStrings } from '../../utils/strings';
 import colors from '../../utils/colors';
 import styles from './styles';
 
@@ -58,7 +58,7 @@ const ArtistHeader = ({ artist }) => {
           backgroundColor={'transparent'}
           color={colors.spotifyWhite}
           style={{ marginLeft: 10 }}
-          onPress={() => openModal(modalStrings.undeDevelopment, modalStrings.ok)}>
+          onPress={() => openModal()}>
         </Entypo.Button>
       </View>
     </View>
