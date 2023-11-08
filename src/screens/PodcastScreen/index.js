@@ -9,6 +9,7 @@ import styles from './styles';
 import { podcastStrings } from '../../utils/strings';
 import { shortenText, handleScroll } from '../../utils/helpers';
 
+import BottomPadding from '../../components/BottomPadding';
 import FallbackDataCard from '../../components/ErrorCard';
 import { usePodcastEpisodes } from '../../hooks/usePodcastEpisodes';
 import { ModalContext } from '../../context/modal';
@@ -60,6 +61,7 @@ const PodcastScreen = () => {
           ))}
         </View>
       }
+      <BottomPadding />
     </ScrollView>
   );
 };

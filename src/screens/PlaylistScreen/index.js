@@ -6,6 +6,7 @@ import styles from './styles';
 import colors from '../../utils/colors';
 import { handleScroll } from '../../utils/helpers';
 
+import BottomPadding from '../../components/BottomPadding';
 import ConditionalImage from '../../components/ConditionalImage';
 import ShufflePlayButton from '../../components/ShufflePlayButton';
 import FallbackDataCard from '../../components/ErrorCard';
@@ -40,6 +41,7 @@ const PlaylistScreen = () => {
           })}
         </View>
       }
+      <BottomPadding />
     </ScrollView>
   );
 };

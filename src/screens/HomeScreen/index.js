@@ -7,6 +7,7 @@ import { carouselStrings } from '../../utils/strings';
 import { useFeaturedPlaylists } from '../../hooks/useFeaturedPlaylists';
 import { useMessage } from '../../hooks/useMessage';
 
+import BottomPadding from '../../components/BottomPadding';
 import ScreenHeader from '../../components/ScreenHeader';
 import HorizontalCarousel from '../../components/HorizontalCarousel';
 
@@ -20,6 +21,7 @@ const HomeScreen = () => {
       <View style={styles.carouselView}>
         <HorizontalCarousel items={featuredPlaylists} title={carouselStrings.featuredPlaylists} />
       </View>
+      <BottomPadding />
     </ScrollView>
   );
 };

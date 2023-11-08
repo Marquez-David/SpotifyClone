@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import colors from "../../utils/colors";
-import dimensions from "../../utils/dimensions";
 
 const styles = StyleSheet.create({
   playerView: {
@@ -11,7 +10,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 11,
     justifyContent: 'space-between',
-    bottom: dimensions.playerMarginBottom,
+    bottom: 45,
   },
   image: {
     alignSelf: 'center',

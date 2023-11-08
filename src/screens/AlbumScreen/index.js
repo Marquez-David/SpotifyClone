@@ -9,6 +9,7 @@ import colors from '../../utils/colors';
 import ShufflePlayButton from '../../components/ShufflePlayButton';
 import FallbackDataCard from '../../components/ErrorCard';
 import StandardSongCard from '../../components/StandardSongCard';
+import BottomPadding from '../../components/BottomPadding';
 import { useAlbum } from '../../hooks/useAlbum';
 
 const AlbumScreen = () => {
@@ -37,6 +38,7 @@ const AlbumScreen = () => {
           })}
         </View>
       }
+      <BottomPadding />
     </ScrollView >
   );
 };

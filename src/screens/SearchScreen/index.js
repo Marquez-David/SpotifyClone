@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native';
 import styles from './styles';
 import { exploreStrings } from '../../utils/strings';
 
+import BottomPadding from '../../components/BottomPadding';
 import ScreenHeader from '../../components/ScreenHeader';
 import ExploreGrid from '../../components/ExploreGrid';
 import SearchBar from '../../components/SearchBar';
@@ -15,6 +16,7 @@ const SearchScreen = () => {
       <ScreenHeader title={exploreStrings.explore} icon={'camera-outline'} />
       <SearchBar valueText={searchText} changeText={setSearchText} />
       <ExploreGrid />
+      <BottomPadding />
     </ScrollView>
   );
 };

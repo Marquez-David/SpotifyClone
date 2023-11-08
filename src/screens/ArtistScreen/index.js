@@ -10,6 +10,7 @@ import colors from '../../utils/colors';
 import { useRelatedArtists } from '../../hooks/useRelatedArtists';
 import { useArtistTopTracks } from '../../hooks/useArtistTopTracks';
 
+import BottomPadding from '../../components/BottomPadding';
 import ShufflePlayButton from '../../components/ShufflePlayButton';
 import ImageSongCard from '../../components/ImageSongCard';
 import FallbackDataCard from '../../components/ErrorCard';
@@ -62,6 +63,7 @@ const ArtistScreen = () => {
           </View>
         </>
       }
+      <BottomPadding />
     </ScrollView>
   );
 };
