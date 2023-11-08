@@ -12,19 +12,17 @@ import { shortenText, handleScroll } from '../../utils/helpers';
 import FallbackDataCard from '../../components/ErrorCard';
 import { usePodcastEpisodes } from '../../hooks/usePodcastEpisodes';
 import { ModalContext } from '../../context/modal';
-import { PlayerContext } from '../../context/player';
 import EpisodeCard from '../../components/EpisodeCard';
 
 const PodcastScreen = () => {
   const param = useRoute().params.data;
   const { openModal } = useContext(ModalContext);
-  const { player } = useContext(PlayerContext);
   const { isLoading, isError, podcastEpisodes, refetch, fetchNextPage } = usePodcastEpisodes(param.id);
 
   const { fetchNextItems } = handleScroll(fetchNextPage);
 
   return (
-    <ScrollView onScroll={fetchNextItems} style={player.visible ? styles.margedBackground : styles.background} >
+    <ScrollView onScroll={fetchNextItems} style={styles.background} >
       <View style={styles.headerView}>
         <Image style={styles.image} source={{ uri: param.images[0].url }} />
         <View style={styles.headerTextView}>

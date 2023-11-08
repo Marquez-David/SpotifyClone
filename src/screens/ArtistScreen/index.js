@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
@@ -9,7 +9,6 @@ import colors from '../../utils/colors';
 
 import { useRelatedArtists } from '../../hooks/useRelatedArtists';
 import { useArtistTopTracks } from '../../hooks/useArtistTopTracks';
-import { PlayerContext } from '../../context/player';
 
 import ShufflePlayButton from '../../components/ShufflePlayButton';
 import ImageSongCard from '../../components/ImageSongCard';
@@ -19,7 +18,6 @@ import ArtistHeader from '../../components/ArtistHeader';
 
 const ArtistScreen = () => {
   const param = useRoute().params.data;
-  const { player } = useContext(PlayerContext);
   const {
     isLoadingTopTracks,
     isErrorTopTracks,
@@ -35,7 +33,7 @@ const ArtistScreen = () => {
   } = useRelatedArtists(param.id);
 
   return (
-    <ScrollView style={player.visible ? styles.margedBackground : styles.background}>
+    <ScrollView style={styles.background}>
       <View style={styles.imageView}>
         <ArtistHeader artist={param} />
         <Image style={styles.image} source={{ uri: param.images[0].url }} />

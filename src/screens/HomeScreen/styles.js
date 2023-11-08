@@ -16,20 +16,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.appBackground,
   },
   /**
-   * Marged Background style.
-   * Represents the style for a background with margin at the bottom with the following properties:
-   * - flex: 1 (flexible size to fit available space)
-   * - paddingLeft: 10 (left padding spacing)
-   * - marginBottom: dimensions.marginPlayerVisible (bottom margin based on 'marginPlayerVisible' from 'dimensions')
-   * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
-  */
-  margedBackground: {
-    flex: 1,
-    paddingLeft: 10,
-    marginBottom: dimensions.marginPlayerVisible,
-    backgroundColor: colors.appBackground,
-  },
-  /**
    * View style for the carousel view.
    * Represents a view for the carousel with the following properties:
    * - flex: 1 (flexible size to fit available space)

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { ScrollView, View, ActivityIndicator } from 'react-native';
 
 import { libraryStrings } from '../../utils/strings';
@@ -6,8 +6,6 @@ import styles from './styles';
 
 import { useSearchText } from '../../hooks/useSearchText';
 import { useLibraryContent } from '../../hooks/useLibraryContent';
-
-import { PlayerContext } from '../../context/player';
 
 import ContentCard from '../../components/ContentCard';
 import ScreenHeader from '../../components/ScreenHeader';
@@ -18,11 +16,10 @@ import colors from '../../utils/colors';
 
 const YourLibraryScreen = () => {
   const { searchText, setSearchText } = useSearchText('');
-  const { player } = useContext(PlayerContext);
   const { isLoading, isError, data, refetch } = useLibraryContent();
 
   return (
-    <ScrollView style={player.visible ? styles.margedBackground : styles.background}>
+    <ScrollView style={styles.background}>
       <ScreenHeader title={libraryStrings.library} icon={"add"} />
       <SearchBar valueText={searchText} changeText={setSearchText} />
       <CategorySelector />

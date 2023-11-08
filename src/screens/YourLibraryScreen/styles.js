@@ -8,12 +8,6 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 10,
 		backgroundColor: colors.appBackground,
 	},
-	margedBackground: {
-		flex: 1,
-		paddingHorizontal: 10,
-		marginBottom: dimensions.marginPlayerVisible,
-		backgroundColor: colors.appBackground,
-	},
 	iconsView: {
 		flexDirection: 'row',
 		alignItems: 'center',

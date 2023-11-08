@@ -1,6 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import colors from '../../utils/colors';
-import dimensions from '../../utils/dimensions';
 
 const styles = StyleSheet.create({
   /**
@@ -9,16 +8,6 @@ const styles = StyleSheet.create({
    * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
   */
   background: {
-    backgroundColor: colors.appBackground,
-  },
-  /**
-   * Marged Background style.
-   * Represents the style for a background with margin at the bottom with the following properties:
-   * - marginBottom: dimensions.marginPlayerVisible (bottom margin based on 'marginPlayerVisible' from 'dimensions')
-   * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
-  */
-  margedBackground: {
-    marginBottom: dimensions.marginPlayerVisible,
     backgroundColor: colors.appBackground,
   },
   /**

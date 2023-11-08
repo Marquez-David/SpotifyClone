@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ScrollView, View, Text, Image, ActivityIndicator } from 'react-native';
+import { ScrollView, View, Text, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import styles from './styles';
@@ -13,7 +13,6 @@ import FallbackDataCard from '../../components/ErrorCard';
 import ImageSongCard from '../../components/ImageSongCard';
 
 import { ModalContext } from '../../context/modal';
-import { PlayerContext } from '../../context/player';
 import { usePlaylist } from '../../hooks/usePlaylist';
 
 const PlaylistScreen = () => {
@@ -21,10 +20,9 @@ const PlaylistScreen = () => {
   const { isLoading, isError, playlist, refetch, fetchNextPage } = usePlaylist(param.id);
   const { fetchNextItems } = handleScroll(fetchNextPage);
   const { openModal } = useContext(ModalContext);
-  const { player } = useContext(PlayerContext);
 
   return (
-    <ScrollView onScroll={fetchNextItems} style={player.visible ? styles.margedBackground : styles.background}>
+    <ScrollView onScroll={fetchNextItems} style={styles.background}>
       <View style={styles.headerView}>
         <ConditionalImage image={param.images[0]?.url} size={55} style={styles.image} />
         <Text style={styles.titleText}>{param.name}</Text>

@@ -14,18 +14,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.appBackground,
   },
   /**
-   * Marged Background style.
-   * Represents the style for a background with the following properties:
-   * - flex: 1 (flexible size to fit available space)
-   * - marginBottom: dimensions.marginPlayerVisible (bottom margin based on 'marginPlayerVisible' from 'dimensions')
-   * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
-  */
-  margedBackground: {
-    flex: 1,
-    marginBottom: dimensions.marginPlayerVisible,
-    backgroundColor: colors.appBackground,
-  },
-  /**
    * Header information view style.
    * Represents the style for a view containing header information with the following properties:
    * - flex: 1 (flexible size to fit available space)
