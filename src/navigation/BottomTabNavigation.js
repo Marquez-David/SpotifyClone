@@ -5,26 +5,19 @@ import { HomeStackNavigation } from './HomeStackNavigation';
 import { LibraryStackNavigation } from './LibraryStackNavigation';
 import { SearchStackNavigation } from './SearchStackNavigation';
 
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import styles from './styles';
+import CustomTabBar from '../components/CustomTabBar';
 
 const Tab = createBottomTabNavigator();
 export const BottomTabNavigation = () => (
-  <Tab.Navigator initialRouteName='Home' screenOptions={{ tabBarActiveTintColor: 'white', tabBarStyle: styles.bottomContainer }}>
+  <Tab.Navigator initialRouteName='Home' tabBar={props => <CustomTabBar {...props} />}>
     <Tab.Screen
       name="Home"
       component={HomeStackNavigation}
       options={{
         headerShown: false,
-        tabBarShowLabel: false,
-        tabBarIcon: ({ focused }) => (
-          focused ? (
-            <Ionicons name="home-sharp" style={styles.icon} />
-          ) : (
-            <Ionicons name="home-outline" style={styles.icon} />
-          )
-        )
+        focusedIcon: 'home',
+        unfocusedIcon: 'home-outline',
+        labelText: 'Home',
       }}
     />
     <Tab.Screen
@@ -32,17 +25,9 @@ export const BottomTabNavigation = () => (
       component={SearchStackNavigation}
       options={{
         headerShown: false,
-        tabBarShowLabel: false,
-        tabBarIcon: ({ focused }) => (
-          focused ? (
-            <>
-              <MaterialIcons name="circle" style={styles.circleIcon} />
-              <MaterialIcons name="location-searching" style={styles.icon} />
-            </>
-          ) : (
-            <MaterialIcons name="location-searching" style={styles.icon} />
-          )
-        )
+        focusedIcon: 'search-outline',
+        unfocusedIcon: 'circle',
+        labelText: 'Explore',
       }}
     />
     <Tab.Screen
@@ -50,14 +35,9 @@ export const BottomTabNavigation = () => (
       component={LibraryStackNavigation}
       options={{
         headerShown: false,
-        tabBarShowLabel: false,
-        tabBarIcon: ({ focused }) => (
-          focused ? (
-            <Ionicons name="library-sharp" style={styles.icon} />
-          ) : (
-            <Ionicons name="library-outline" style={styles.icon} />
-          )
-        )
+        focusedIcon: 'library',
+        unfocusedIcon: 'library-outline',
+        labelText: 'Library',
       }}
     />
   </Tab.Navigator>

@@ -22,7 +22,7 @@ export const libraryStrings = {
 };
 
 export const searchStrings = {
-  search: "Search",
+  search: "Explore",
 };
 
 export const podcastStrings = {
