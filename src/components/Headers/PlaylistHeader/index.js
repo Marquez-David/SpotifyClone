@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 
 import { useRequest } from '../../../hooks/useRequest';
@@ -10,13 +10,15 @@ import AddUserButton from '../../CustomButtons/AddUserButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
 import ShuffleButton from '../../CustomButtons/ShuffleButton';
 import PlayButton from '../../CustomButtons/PlayButton';
-
 import ConditionalImage from '../../ConditionalImage';
+
+import { ModalContext } from '../../../context/modal';
 
 import styles from './styles';
 
 const PlaylistHeader = ({ playlist }) => {
   const { data } = useRequest(playlist.owner.href);
+  const { openModal } = useContext(ModalContext);
   return (
     <View style={styles.playlistHeaderView}>
       <ArrowBackButton />
@@ -25,7 +27,7 @@ const PlaylistHeader = ({ playlist }) => {
       </View>
       <Text style={styles.titleText}>{playlist.name}</Text>
       {playlist.description.length > 0 && <Text style={styles.descriptionText}>{playlist.description}</Text>}
-      <ProfileButton image={data?.images[0].url} name={data?.display_name} />
+      <ProfileButton image={data?.images[0].url} name={data?.display_name} onPress={() => openModal()} />
       <View style={styles.buttonsView} >
         <View style={styles.leftButtons}>
           <DownloadButton style={{ marginRight: 20 }} />

@@ -1,16 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { TouchableOpacity, Text, Image } from 'react-native';
-
-import { ModalContext } from '../../../context/modal';
 
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import colors from '../../../utils/colors';
 import styles from './styles';
 
-const ProfileButton = ({ image, name }) => {
-  const { openModal } = useContext(ModalContext);
+const ProfileButton = ({ image, name, onPress }) => {
   return (
-    <TouchableOpacity style={styles.touchableProfile} onPress={() => openModal()}>
+    <TouchableOpacity style={styles.touchableProfile} onPress={onPress}>
       {image ? (
         <Image style={styles.image} source={{ uri: image }} />
       ) : (

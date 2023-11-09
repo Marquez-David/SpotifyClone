@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 
 import { useIsAlbumSaved } from '../../../hooks/useIsAlbumSaved';
 import ArrowBackButton from '../../CustomButtons/ArrowBackButton';
@@ -12,7 +13,7 @@ import ShuffleButton from '../../CustomButtons/ShuffleButton';
 
 import { useRequest } from '../../../hooks/useRequest';
 import { saveAlbum, unsaveAlbum } from '../../../services/requests';
-import { getYear } from '../../../utils/helpers';
+import { getYear, handleNavigation } from '../../../utils/helpers';
 import { albumStrings } from '../../../utils/strings';
 import styles from './styles';
 
@@ -22,6 +23,7 @@ const handleAlbumSave = async (isSaved, id, refetch) => {
 };
 
 const AlbumHeader = ({ album }) => {
+  const navigation = useNavigation();
   const { isSaved, refetch } = useIsAlbumSaved(album.id);
   const { data } = useRequest(album.artists[0].href);
   return (
@@ -31,7 +33,7 @@ const AlbumHeader = ({ album }) => {
         <Image style={styles.image} source={{ uri: album.images[0].url }} />
       </View>
       <Text style={styles.titleText}>{album.name}</Text>
-      <ProfileButton image={data?.images[0].url} name={album.label} />
+      <ProfileButton image={data?.images[0].url} name={album.label} onPress={() => handleNavigation(data, navigation)} />
       <Text style={styles.releaseDateText}>{albumStrings.album + " • " + getYear(album.release_date)}</Text>
       <View style={styles.buttonsView}>
         <View style={styles.leftButtons}>
