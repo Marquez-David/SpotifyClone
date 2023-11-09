@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import colors from '../../utils/colors';
+import colors from '../../../utils/colors';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './styles';
 
-import { useUser } from '../../hooks/useUser';
+import { useUser } from '../../../hooks/useUser';
 
-import { ModalContext } from '../../context/modal';
+import { ModalContext } from '../../../context/modal';
 
 const ScreenHeader = ({ title, icon }) => {
   const { image } = useUser();

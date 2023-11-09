@@ -5,7 +5,7 @@ import styles from './styles';
 import { exploreStrings } from '../../utils/strings';
 
 import BottomPadding from '../../components/BottomPadding';
-import ScreenHeader from '../../components/ScreenHeader';
+import ScreenHeader from '../../components/Headers/ScreenHeader';
 import ExploreGrid from '../../components/ExploreGrid';
 import SearchBar from '../../components/SearchBar';
 

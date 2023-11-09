@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
    * - marginTop: 10 (top margin spacing)
    */
   songsView: {
-    marginTop: 10,
+    marginTop: 0,
   },
   /**
    * Fallback View style.

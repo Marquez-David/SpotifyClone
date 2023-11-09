@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../utils/colors';
+import colors from '../../../utils/colors';
 
 const styles = StyleSheet.create({
 	/**
@@ -55,28 +55,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: colors.spotifySuperDarkGray,
-	},
-	/**
-	 * Artist Image View style.
-	 * Represents the style for an artist image view with the following properties:
-	 * - marginLeft: 8 (left margin of 8 units)
-	 * - width: 110 (width of 110 units)
-	*/
-	artistImageView: {
-		marginLeft: 8,
-		width: 110,
-	},
-	/**
-	 * Artist Image style.
-	 * Represents the style for an artist image with the following properties:
-	 * - height: 110 (height of 110 units)
-	 * - width: 110 (width of 110 units)
-	 * - borderRadius: 100 (border radius of 100 units, for a circular image)
-	*/
-	artistImage: {
-		height: 110,
-		width: 110,
-		borderRadius: 100,
 	},
 	/**
 	 * Description Text style.

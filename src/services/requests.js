@@ -348,3 +348,14 @@ export const getUserInfo = async () => {
 	return response.data;
 };
 
+
+export const requestItem = async (request) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: request,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data;
+};
+

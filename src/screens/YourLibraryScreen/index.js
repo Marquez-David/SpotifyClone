@@ -8,7 +8,7 @@ import { useSearchText } from '../../hooks/useSearchText';
 import { useLibraryContent } from '../../hooks/useLibraryContent';
 
 import ContentCard from '../../components/ContentCard';
-import ScreenHeader from '../../components/ScreenHeader';
+import ScreenHeader from '../../components/Headers/ScreenHeader';
 import SearchBar from '../../components/SearchBar';
 import ErrorCard from '../../components/ErrorCard';
 import CategorySelector from '../../components/CategorySelector';

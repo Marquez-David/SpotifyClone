@@ -8,8 +8,8 @@ import { useFeaturedPlaylists } from '../../hooks/useFeaturedPlaylists';
 import { useMessage } from '../../hooks/useMessage';
 
 import BottomPadding from '../../components/BottomPadding';
-import ScreenHeader from '../../components/ScreenHeader';
-import HorizontalCarousel from '../../components/HorizontalCarousel';
+import ScreenHeader from '../../components/Headers/ScreenHeader';
+import HorizontalCarousel from '../../components/HorizontalCarousels/HorizontalCarousel';
 
 const HomeScreen = () => {
   const { message } = useMessage();

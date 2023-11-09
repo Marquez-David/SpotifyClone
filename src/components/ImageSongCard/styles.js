@@ -7,14 +7,12 @@ const styles = StyleSheet.create({
    * Represents the style for a single song TouchableOpacity with the following properties:
    * - height: 50 (fixed height in points)
    * - marginTop: 10 (top margin spacing)
-   * - marginLeft: 15 (left margin spacing)
    * - flexDirection: 'row' (horizontal layout direction)
    * - alignItems: 'center' (align items vertically centered)
   */
   songTouchableOpacity: {
     height: 50,
     marginTop: 10,
-    marginLeft: 15,
     flexDirection: 'row',
     alignItems: 'center',
   },

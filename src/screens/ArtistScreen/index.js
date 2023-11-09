@@ -1,24 +1,26 @@
 import React from 'react';
-import { View, Text, Image, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, Image, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
-import { roundNumber } from '../../utils/helpers';
-import { artistStrings, carouselStrings } from '../../utils/strings';
+import { artistStrings } from '../../utils/strings';
 import styles from './styles';
 import colors from '../../utils/colors';
 
 import { useRelatedArtists } from '../../hooks/useRelatedArtists';
 import { useArtistTopTracks } from '../../hooks/useArtistTopTracks';
 
+import ArtistsCarousel from '../../components/HorizontalCarousels/ArtistsCarousel';
+
 import BottomPadding from '../../components/BottomPadding';
-import ShufflePlayButton from '../../components/ShufflePlayButton';
 import ImageSongCard from '../../components/ImageSongCard';
 import FallbackDataCard from '../../components/ErrorCard';
-import HorizontalCarousel from '../../components/HorizontalCarousel';
-import ArtistHeader from '../../components/ArtistHeader';
+import ArtistHeader from '../../components/Headers/ArtistHeader';
 
 const ArtistScreen = () => {
   const param = useRoute().params.data;
+  //const { openModal } = useContext(ModalContext);
+
+
   const {
     isLoadingTopTracks,
     isErrorTopTracks,
@@ -35,35 +37,27 @@ const ArtistScreen = () => {
 
   return (
     <ScrollView style={styles.background}>
-      <View style={styles.imageView}>
-        <ArtistHeader artist={param} />
-        <Image style={styles.image} source={{ uri: param.images[0].url }} />
-        <Text style={styles.title}>{param.name}</Text>
-        <Text style={styles.followers}>{roundNumber(param.followers.total)}</Text>
-      </View>
-      <ShufflePlayButton />
-      {isLoadingTopTracks || isLoadingRelatedArtists || isErrorTopTracks || isErrorRelatedArtists ?
-        <View style={styles.fallbackView}>
-          {(isLoadingTopTracks || isLoadingRelatedArtists) && <ActivityIndicator color={colors.spotifyGreen} />}
-          {(isErrorTopTracks || isErrorRelatedArtists) && (
-            <FallbackDataCard onPressAction={refetchTopTracks && refetchRelatedArtists} />
-          )}
-        </View> :
-        <>
+      <ArtistHeader artist={param} />
+      <View style={styles.contentView}>
+        {isLoadingTopTracks || isLoadingRelatedArtists || isErrorTopTracks || isErrorRelatedArtists ?
+          <View style={styles.fallbackView}>
+            {(isLoadingTopTracks || isLoadingRelatedArtists) && <ActivityIndicator color={colors.spotifyGreen} />}
+            {(isErrorTopTracks || isErrorRelatedArtists) && (
+              <FallbackDataCard onPressAction={refetchTopTracks && refetchRelatedArtists} />
+            )}
+          </View> :
           <View style={styles.popularSongsView}>
             <Text style={styles.popularSongsTitle}>{artistStrings.popularSongs}</Text>
             {topTracks.slice(0, 5).map((item) => {
-              const topTrack = { ...item.album, image: item.album.images[0].url };
+              const topTrack = { ...item.album, image: item.album.images[0].url }
               return <ImageSongCard key={item.id} item={topTrack} />
             })}
-          </View>
-          <View style={styles.relatedArtistView}>
             <Text style={styles.relatedArtistTitle}>{artistStrings.relatedArtists}</Text>
-            <HorizontalCarousel items={relatedArtists.slice(0, 5)} title={carouselStrings.relatedArtists} />
+            <ArtistsCarousel artists={relatedArtists.slice(0, 5)} />
           </View>
-        </>
-      }
-      <BottomPadding />
+        }
+        <BottomPadding />
+      </View>
     </ScrollView>
   );
 };

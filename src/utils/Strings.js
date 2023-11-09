@@ -17,6 +17,10 @@ export const homeStrings = {
   goodEvening: "Good evening!",
 };
 
+export const albumStrings = {
+  album: "Album",
+};
+
 export const libraryStrings = {
   library: "Your library",
 };
@@ -26,14 +30,12 @@ export const exploreStrings = {
 };
 
 export const podcastStrings = {
-  follow: "FOLLOW",
-  following: "FOLLOWING",
   etc: "...",
   allEpisodes: "All episodes",
 };
 
 export const artistStrings = {
-  followers: " FOLLOWERS",
+  followers: " followers",
   randomMode: "SHUFFLE PLAY",
   popularSongs: "Popular songs",
   relatedArtists: "Related artists",
@@ -77,6 +79,11 @@ export const errorCardStrings = {
   tryAgain: "TRY AGAIN",
 };
 
+export const followButtonStrings = {
+  follow: "Follow",
+  following: "Following",
+};
+
 /************************************
 ********** GENERIC STRINGS **********
 *************************************/
@@ -87,6 +94,3 @@ export const contentType = {
   artist: 'artist',
   track: 'track',
 };
-
-
-export const shufflePlay = "SHUFFLE PLAY";

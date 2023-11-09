@@ -6,9 +6,8 @@ import styles from './styles';
 import colors from '../../utils/colors';
 import { handleScroll } from '../../utils/helpers';
 
+import PlaylistHeader from '../../components/Headers/PlaylistHeader';
 import BottomPadding from '../../components/BottomPadding';
-import ConditionalImage from '../../components/ConditionalImage';
-import ShufflePlayButton from '../../components/ShufflePlayButton';
 import FallbackDataCard from '../../components/ErrorCard';
 import ImageSongCard from '../../components/ImageSongCard';
 
@@ -23,10 +22,7 @@ const PlaylistScreen = () => {
 
   return (
     <ScrollView onScroll={fetchNextItems} style={styles.background}>
-      <View style={styles.headerView}>
-        <ConditionalImage image={param.images[0]?.url} size={55} style={styles.image} />
-        <Text style={styles.titleText}>{param.name}</Text>
-      </View>
+      <PlaylistHeader playlist={param} />
       {playlist?.length === 0 || isLoading || isError ?
         <View style={styles.fallbackView}>
           {playlist?.length === 0 && <FallbackDataCard onPressAction={() => openModal()} />}
@@ -34,7 +30,6 @@ const PlaylistScreen = () => {
           {isError && !isLoading && <FallbackDataCard onPressAction={refetch} />}
         </View> :
         <View style={styles.songsView}>
-          <ShufflePlayButton />
           {playlist.map((item, index) => {
             const playlist = { ...item.track, image: item.track.album.images[0].url };
             return <ImageSongCard key={index} item={playlist} />
