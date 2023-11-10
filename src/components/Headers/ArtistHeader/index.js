@@ -7,12 +7,21 @@ import OptionsButton from '../../CustomButtons/OptionsButton';
 import ShuffleButton from '../../CustomButtons/ShuffleButton';
 import PlayButton from '../../CustomButtons/PlayButton';
 
+import { useIsArtistSaved } from '../../../hooks/useIsArtistSaved';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { roundNumber } from '../../../utils/helpers';
+import { unfollowArtist, followArtist } from '../../../services/requests';
 import colors from '../../../utils/colors';
 import styles from './styles';
 
+const handleFollowArtist = async (isSaved, artistsId, refetch) => {
+  isSaved ? await unfollowArtist(artistsId) : await followArtist(artistsId);
+  refetch();
+}
+
 const ArtistHeader = ({ artist }) => {
+  const { isSaved, refetch } = useIsArtistSaved(artist.id);
   const navigation = useNavigation();
   return (
     <>
@@ -26,7 +35,7 @@ const ArtistHeader = ({ artist }) => {
       <Text style={styles.followersText}>{roundNumber(artist.followers.total)}</Text>
       <View style={styles.buttonsView}>
         <View style={styles.leftButtons}>
-          <FollowButton artistId={artist.id} />
+          <FollowButton isSaved={isSaved} onPress={() => handleFollowArtist(isSaved, artist.id, refetch)} />
           <OptionsButton style={{ marginLeft: 26 }} />
         </View>
         <View style={styles.rightButtons}>

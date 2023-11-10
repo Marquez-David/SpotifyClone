@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
    * Background style.
    * Represents the style for a background container with the following properties:
    * - flex: 1 (flexible size to fit available space)
-   * - marginHorizontal: 18 (horizontal margin of 18 units)
    * - marginVertical: 10 (vertical margin of 10 units)
    * - borderRadius: 5 (border radius of 5 units)
    * - borderWidth: 1.3 (border width of 1.3 units)
@@ -15,7 +14,6 @@ const styles = StyleSheet.create({
   */
   background: {
     flex: 1,
-    marginHorizontal: 18,
     marginVertical: 10,
     borderRadius: 5,
     borderWidth: 1.3,

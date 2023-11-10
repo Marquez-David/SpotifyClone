@@ -220,7 +220,7 @@ export const getUserFollowsArtist = async (artistId) => {
 			url: `https://api.spotify.com/v1/me/following/contains?type=artist&ids=${artistId}`,
 			headers: { Authorization: `Bearer ${accessToken}` }
 		});
-		return response.data;
+		return response.data[0];
 	} catch (error) {
 		console.log("Error while checking if user follows artists: " + error.message);
 	}
@@ -306,6 +306,61 @@ export const getPodcastEpisodes = async (podcastId, offset) => {
 	return response.data.items;
 };
 
+/**
+ * Checks if the current user follows a specific podcast on Spotify.
+ * @param {string} podcastId - The unique identifier of the podcast.
+ * @returns {boolean} - A boolean value indicating whether the user follows the specified podcast.
+ */
+export const getUserFollowPodcast = async (podcastId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/shows/contains?ids=${podcastId}`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data[0];
+};
+
+/**
+ * Allows the current user to follow a specific podcast on Spotify.
+ * @param {string} podcastId - The unique identifier of the podcast to be followed.
+ * @returns {Object} - The response data from the Spotify API after following the podcast.
+ * @throws {Error} - Throws an error if there's an issue while following the podcast.
+ */
+export const followPodcast = async (podcastId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios({
+			method: "PUT",
+			url: `https://api.spotify.com/v1/me/shows?ids=${podcastId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
+		return response.data;
+	} catch (error) {
+		console.log("Error while following podcast: " + error.message);
+	}
+};
+
+/**
+ * Allows the current user to unfollow a specific podcast on Spotify.
+ * @param {string} podcastId - The unique identifier of the podcast to be unfollowed.
+ * @returns {Object} - The response data from the Spotify API after unfollowing the podcast.
+ * @throws {Error} - Throws an error if there's an issue while unfollowing the podcast.
+ */
+export const unfollowPodcast = async (podcastId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios({
+			method: "DELETE",
+			url: `https://api.spotify.com/v1/me/shows?ids=${podcastId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
+		return response.data;
+	} catch (error) {
+		console.log("Error while unfollowing podcast: " + error.message);
+	}
+};
+
 /*
 |================================================================================================================|
 |========================================== SONG CONTENT ========================================================|
@@ -347,7 +402,6 @@ export const getUserInfo = async () => {
 	});
 	return response.data;
 };
-
 
 export const requestItem = async (request) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
