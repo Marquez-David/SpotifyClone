@@ -5,10 +5,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import colors from '../../../utils/colors';
 import { ModalContext } from '../../../context/modal';
 
-const FilterButton = ({ style }) => {
+const FilterButton = () => {
   const { openModal } = useContext(ModalContext)
   return (
-    <TouchableOpacity style={style} onPress={() => openModal()}>
+    <TouchableOpacity onPress={() => openModal()}>
       <MaterialCommunityIcons name={'tune-variant'} size={24} color={colors.spotifyWhite} />
     </TouchableOpacity>
   )

@@ -6,10 +6,10 @@ import colors from '../../../utils/colors';
 
 import { ModalContext } from '../../../context/modal';
 
-const OptionsButton = ({ style }) => {
+const OptionsButton = () => {
   const { openModal } = useContext(ModalContext)
   return (
-    <TouchableOpacity style={style} onPress={() => openModal()}>
+    <TouchableOpacity onPress={() => openModal()}>
       <Entypo name='dots-three-vertical' size={17} color={colors.spotifyGray} />
     </TouchableOpacity>
   )

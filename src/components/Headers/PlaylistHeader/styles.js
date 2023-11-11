@@ -111,15 +111,15 @@ const styles = StyleSheet.create({
   /**
    * Style for the left buttons.
    * Provides the following properties:
-   * - flex: 1 (takes up all available space)
-   * - alignItems: 'center' (horizontal center alignment of elements)
-   * - justifyContent: 'flex-start' (alignment of elements at the beginning of the container)
+   * - width: '30%' (width taking up 30% of the available space)
+   * - alignItems: 'center' (center alignment of elements horizontally)
+   * - justifyContent: 'space-between' (space between elements)
    * - flexDirection: 'row' (elements arranged in a row)
   */
   leftButtons: {
-    flex: 1,
+    width: '30%',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     flexDirection: 'row',
   },
   /**

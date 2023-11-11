@@ -30,12 +30,12 @@ const PlaylistHeader = ({ playlist }) => {
       <ProfileButton image={data?.images[0].url} name={data?.display_name} onPress={() => openModal()} />
       <View style={styles.buttonsView} >
         <View style={styles.leftButtons}>
-          <DownloadButton style={{ marginRight: 20 }} />
-          <AddUserButton style={{ marginRight: 20 }} />
+          <DownloadButton />
+          <AddUserButton />
           <OptionsButton />
         </View>
         <View style={styles.rightButtons}>
-          <ShuffleButton style={{ marginRight: 20 }} />
+          <ShuffleButton />
           <PlayButton backgroundColor={colors.spotifyGreen} size={30} />
 
         </View>

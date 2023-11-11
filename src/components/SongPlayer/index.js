@@ -23,8 +23,8 @@ const SongPlayer = ({ visible, state, item }) => {
             <Text style={styles.descriptionText}>{extractArtistNames(item.artist)}</Text>
           </View>
           <View style={styles.buttonsView}>
-            <DeviceButton style={{ marginRight: 15 }} />
-            <HeartButton style={{ marginRight: 15 }} />
+            <DeviceButton />
+            <HeartButton />
             <ReproduceButton state={state} />
           </View>
         </TouchableOpacity>

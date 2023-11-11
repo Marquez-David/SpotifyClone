@@ -6,10 +6,10 @@ import { ModalContext } from '../../../context/modal';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../../utils/colors';
 
-const DeviceButton = ({ style }) => {
+const DeviceButton = () => {
   const { openModal } = useContext(ModalContext);
   return (
-    <TouchableOpacity style={style} onPress={() => openModal()}>
+    <TouchableOpacity onPress={() => openModal()}>
       <MaterialIcons name={'computer'} size={21} color={colors.spotifyWhite} />
     </TouchableOpacity>
   )

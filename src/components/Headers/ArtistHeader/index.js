@@ -36,7 +36,7 @@ const ArtistHeader = ({ artist }) => {
       <View style={styles.buttonsView}>
         <View style={styles.leftButtons}>
           <FollowButton isSaved={isSaved} onPress={() => handleFollowArtist(isSaved, artist.id, refetch)} />
-          <OptionsButton style={{ marginLeft: 26 }} />
+          <OptionsButton />
         </View>
         <View style={styles.rightButtons}>
           <ShuffleButton />

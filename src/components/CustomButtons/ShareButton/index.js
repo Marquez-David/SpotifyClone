@@ -6,10 +6,10 @@ import colors from '../../../utils/colors';
 
 import { ModalContext } from '../../../context/modal';
 
-const ShareButton = ({ style }) => {
+const ShareButton = () => {
   const { openModal } = useContext(ModalContext)
   return (
-    <TouchableOpacity style={style} onPress={() => openModal()}>
+    <TouchableOpacity onPress={() => openModal()}>
       <Octicons name='share-android' size={17} color={colors.spotifyGray} />
     </TouchableOpacity>
   )

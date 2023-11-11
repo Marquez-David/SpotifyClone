@@ -38,8 +38,8 @@ const AlbumHeader = ({ album }) => {
       <Text style={styles.releaseDateText}>{albumStrings.album + " • " + getYear(album.release_date)}</Text>
       <View style={styles.buttonsView}>
         <View style={styles.leftButtons}>
-          <CheckButton style={{ marginRight: 20 }} isSaved={isSaved} onPress={() => handleAlbumSave(isSaved, album.id, refetch)} />
-          <DownloadButton style={{ marginRight: 20 }} />
+          <CheckButton isSaved={isSaved} onPress={() => handleAlbumSave(isSaved, album.id, refetch)} />
+          <DownloadButton />
           <OptionsButton />
         </View>
         <View style={styles.rightButtons}>

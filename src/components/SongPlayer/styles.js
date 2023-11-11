@@ -81,12 +81,16 @@ const styles = StyleSheet.create({
     color: colors.spotifyWhite,
   },
   /**
-   * Style for the player buttons view.
+   * Style for the buttons view.
    * Provides the following properties:
+   * - width: '30%' (width taking up 30% of the available space)
+   * - justifyContent: 'space-between' (space between elements)
    * - flexDirection: 'row' (elements arranged in a row)
-   * - alignItems: 'center' (center alignment of elements)
+   * - alignItems: 'center' (center alignment of elements horizontally)
   */
   buttonsView: {
+    width: '30%',
+    justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
   }
