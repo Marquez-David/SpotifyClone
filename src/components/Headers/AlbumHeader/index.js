@@ -15,6 +15,7 @@ import { useRequest } from '../../../hooks/useRequest';
 import { saveAlbum, unsaveAlbum } from '../../../services/requests';
 import { getYear, handleNavigation } from '../../../utils/helpers';
 import { albumStrings } from '../../../utils/strings';
+import colors from '../../../utils/colors';
 import styles from './styles';
 
 const handleAlbumSave = async (isSaved, id, refetch) => {
@@ -43,7 +44,7 @@ const AlbumHeader = ({ album }) => {
         </View>
         <View style={styles.rightButtons}>
           <ShuffleButton />
-          <PlayButton />
+          <PlayButton backgroundColor={colors.spotifyGreen} size={32} />
         </View>
       </View>
     </View>

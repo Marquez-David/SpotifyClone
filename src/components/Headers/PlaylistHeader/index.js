@@ -13,7 +13,7 @@ import PlayButton from '../../CustomButtons/PlayButton';
 import ConditionalImage from '../../ConditionalImage';
 
 import { ModalContext } from '../../../context/modal';
-
+import colors from '../../../utils/colors';
 import styles from './styles';
 
 const PlaylistHeader = ({ playlist }) => {
@@ -36,7 +36,8 @@ const PlaylistHeader = ({ playlist }) => {
         </View>
         <View style={styles.rightButtons}>
           <ShuffleButton style={{ marginRight: 20 }} />
-          <PlayButton style={{ marginRight: 20 }} />
+          <PlayButton backgroundColor={colors.spotifyGreen} size={30} />
+
         </View>
       </View>
     </View>

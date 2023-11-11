@@ -45,7 +45,7 @@ export function convertDate(inputDate) {
 export function dayOfWeek(date) {
   const days = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
   date = new Date(date);
-  return days[date.getDay()];
+  return date.getDay() + ' ' + days[date.getDay()];
 }
 
 /**
@@ -79,7 +79,7 @@ export function extractArtistNames(artists) {
  * @returns {string} The shortened or original text based on word count.
  */
 export function shortenText(text, words) {
-  return text.split(' ').length > words ? text.split(' ').slice(0, words).join(' ') + podcastStrings.etc : text;
+  return text.split('').length > words ? text.split('').slice(0, words).join('') + podcastStrings.etc : text;
 }
 
 /**

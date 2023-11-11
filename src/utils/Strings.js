@@ -31,7 +31,7 @@ export const exploreStrings = {
 
 export const podcastStrings = {
   etc: "...",
-  allEpisodes: "All episodes",
+  allEpisodes: "All episodes • Most recent",
 };
 
 export const artistStrings = {

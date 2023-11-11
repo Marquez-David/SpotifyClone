@@ -1,56 +1,50 @@
-import React, { useContext } from "react";
+import React from "react";
 import { View, Text, Image } from "react-native";
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useIsEpisodeSaved } from "../../hooks/useIsEpisodeSaved";
+
+import CheckButton from "../CustomButtons/CheckButton";
+import DownloadButton from "../CustomButtons/DownloadButton";
+import ShareButton from "../CustomButtons/ShareButton";
+import OptionsButton from "../CustomButtons/OptionsButton";
+import PlayButton from "../CustomButtons/PlayButton";
+
+import { saveEpisode, unsaveEpisode } from "../../services/requests";
 import colors from "../../utils/colors";
 import styles from './styles';
 
-import { ModalContext } from "../../context/modal";
 import { shortenText, convertMilliseconds, dayOfWeek } from "../../utils/helpers";
 
-const EpisodeCard = ({ data, podcastTitle }) => {
-  const { openModal } = useContext(ModalContext);
+const handleEpisodeSave = async (isSaved, id, refetch) => {
+  isSaved ? await unsaveEpisode(id) : await saveEpisode(id);
+  refetch();
+};
+
+const EpisodeCard = ({ data }) => {
+  const { isSaved, refetch } = useIsEpisodeSaved(data.id);
   return (
     <View style={styles.background}>
       <View style={styles.headerView}>
         <Image style={styles.image} source={{ uri: data.images[0].url }} />
         <View style={styles.textHeaderView}>
-          <Text style={styles.title}>{shortenText(data.name, 10)}</Text>
-          <Text style={styles.podcastTitle}>{podcastTitle}</Text>
+          <Text style={styles.title}>{shortenText(data.name, 65)}</Text>
         </View>
       </View>
-      <View style={styles.descriptionView}>
-        <Text style={styles.description}>{shortenText(data.description, 20)}</Text>
-      </View>
+      <Text style={styles.description}>{shortenText(data.description, 110)}</Text>
+      <Text style={styles.dateText}>{dayOfWeek(data.release_date) + ' • ' + convertMilliseconds(data.duration_ms)}</Text>
       <View style={styles.buttonsView}>
-        <View style={styles.playButtonView}>
-          <Ionicons.Button
-            name='play-circle'
-            size={36}
-            backgroundColor={colors.episodeCardBackground}
-            color={colors.spotifyWhite}
-            onPress={() => openModal()}>
-          </Ionicons.Button>
-          <Text style={styles.dateText}>{dayOfWeek(data.release_date) + ' • ' + convertMilliseconds(data.duration_ms)}</Text>
+        <View style={styles.leftButtons}>
+          <CheckButton isSaved={isSaved} onPress={() => handleEpisodeSave(isSaved, data.id, refetch)} />
+          <DownloadButton />
+          <ShareButton />
+          <OptionsButton />
         </View>
-        <View style={styles.secondaryButtonView}>
-          <Ionicons.Button
-            name='add-circle-outline'
-            size={27}
-            backgroundColor={colors.episodeCardBackground}
-            color={colors.spotifyGray}
-            onPress={() => openModal()}>
-          </Ionicons.Button>
-          <Ionicons.Button
-            name='arrow-down-circle-outline'
-            size={27}
-            backgroundColor={colors.episodeCardBackground}
-            color={colors.spotifyGray}
-            onPress={() => openModal()}>
-          </Ionicons.Button>
+        <View style={styles.righButtons}>
+          <PlayButton backgroundColor={colors.spotifyWhite} size={26} />
         </View>
       </View>
-    </View>
+      <View style={styles.bottomBar}></View>
+    </View >
   )
 };
 

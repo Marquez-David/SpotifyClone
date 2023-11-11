@@ -21,15 +21,27 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   /**
+   * Style for the filter view.
+   * Provides the following properties:
+   * - marginVertical: 12 (vertical margin of 12 units)
+   * - flexDirection: 'row' (elements arranged in a row)
+   * - alignItems: 'center' (center alignment of elements)
+  */
+  filterView: {
+    marginVertical: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  /**
    * Style for the episodes header text.
    * Provides the following properties:
-   * - marginTop: 10 (top margin of 10 units)
+   * - marginLeft: 10 (left margin of 10 units)
    * - fontSize: 16 (font size of 16 units)
    * - fontFamily: 'GothamBold' (font family 'GothamBold')
    * - color: colors.spotifyWhite (white text color)
   */
   episodesHeaderText: {
-    marginTop: 10,
+    marginLeft: 10,
     fontSize: 16,
     fontFamily: 'GothamBold',
     color: colors.spotifyWhite,

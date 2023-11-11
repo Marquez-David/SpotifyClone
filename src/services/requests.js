@@ -361,6 +361,66 @@ export const unfollowPodcast = async (podcastId) => {
 	}
 };
 
+/**
+ * Checks whether the current user has saved a specific episode on Spotify.
+ * @param {string} episodeId - The unique identifier of the episode to be checked.
+ * @returns {boolean} - A boolean value indicating whether the user has saved the specified episode.
+ * @throws {Error} - Throws an error if there's an issue while checking the saved status of the episode.
+ */
+export const isEpisodeSaved = async (episodeId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios({
+			method: "GET",
+			url: `https://api.spotify.com/v1/me/episodes/contains?ids=${episodeId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
+		return response.data[0];
+	} catch (error) {
+		console.log("Error while checking if user follows episodes: " + error.message);
+	}
+};
+
+/**
+ * Adds a specific episode to the user's saved episodes on Spotify.
+ * @param {string} episodeId - The unique identifier of the episode to be saved.
+ * @returns {object} - The response data from the Spotify API after attempting to save the episode.
+ * @throws {Error} - Throws an error if there's an issue while saving the episode.
+ */
+export const saveEpisode = async (episodeId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios({
+			method: "PUT",
+			url: `https://api.spotify.com/v1/me/episodes?ids=${episodeId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
+		return response.data;
+	} catch (error) {
+		console.log("Error while saving episode: " + error.message);
+	}
+};
+
+/**
+ * Removes a specific episode from the user's saved episodes on Spotify.
+ * @param {string} episodeId - The unique identifier of the episode to be unsaved.
+ * @returns {object} - The response data from the Spotify API after attempting to unsave the episode.
+ * @throws {Error} - Throws an error if there's an issue while unsaving the episode.
+ */
+export const unsaveEpisode = async (episodeId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	try {
+		const response = await axios({
+			method: "DELETE",
+			url: `https://api.spotify.com/v1/me/episodes?ids=${episodeId}`,
+			headers: { Authorization: `Bearer ${accessToken}` }
+		});
+		return response.data;
+	} catch (error) {
+		console.log("Error while unsaving episode: " + error.message);
+	}
+};
+
 /*
 |================================================================================================================|
 |========================================== SONG CONTENT ========================================================|

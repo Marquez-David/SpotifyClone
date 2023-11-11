@@ -40,7 +40,7 @@ const ArtistHeader = ({ artist }) => {
         </View>
         <View style={styles.rightButtons}>
           <ShuffleButton />
-          <PlayButton item={artist} />
+          <PlayButton item={artist} backgroundColor={colors.spotifyGreen} size={32} />
         </View>
       </View>
     </>

@@ -10,6 +10,7 @@ import { handleScroll } from '../../utils/helpers';
 
 import PodcastHeader from '../../components/Headers/PodcastHeader';
 import BottomPadding from '../../components/BottomPadding';
+import FilterButton from '../../components/CustomButtons/FilterButton';
 import FallbackDataCard from '../../components/ErrorCard';
 import { usePodcastEpisodes } from '../../hooks/usePodcastEpisodes';
 import EpisodeCard from '../../components/EpisodeCard';
@@ -21,8 +22,12 @@ const PodcastScreen = () => {
   return (
     <ScrollView onScroll={fetchNextItems} style={styles.background} >
       <PodcastHeader podcast={param} />
+
       <View style={styles.contentView}>
-        <Text style={styles.episodesHeaderText}>{podcastStrings.allEpisodes}</Text>
+        <View style={styles.filterView}>
+          <FilterButton />
+          <Text style={styles.episodesHeaderText}>{podcastStrings.allEpisodes}</Text>
+        </View>
         {isLoading || isError ?
           <View style={styles.fallbackView}>
             {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
@@ -30,7 +35,7 @@ const PodcastScreen = () => {
           </View> :
           <>
             {podcastEpisodes.map((item) => (
-              <EpisodeCard key={item.id} data={item} podcastTitle={param.type} />
+              <EpisodeCard key={item.id} data={item} />
             ))}
           </>
         }
