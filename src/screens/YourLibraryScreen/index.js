@@ -13,6 +13,7 @@ import SearchBar from '../../components/SearchBar';
 import ErrorCard from '../../components/Cards/ErrorCard';
 import CategorySelector from '../../components/CategorySelector';
 import colors from '../../utils/colors';
+import BottomPadding from '../../components/BottomPadding';
 
 const YourLibraryScreen = () => {
   const { searchText, setSearchText } = useSearchText('');
@@ -26,6 +27,7 @@ const YourLibraryScreen = () => {
       {isLoading && <View style={styles.fallbackView}><ActivityIndicator color={colors.spotifyGreen} /></View>}
       {isError && <View style={styles.fallbackView}><ErrorCard onPressAction={refetch} /></View>}
       {!isLoading && !isError && data.map((item) => (<ContentCard key={item.id} item={item} />))}
+      <BottomPadding />
     </ScrollView>
   );
 };

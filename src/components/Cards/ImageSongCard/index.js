@@ -20,7 +20,7 @@ const ImageSongCard = ({ item }) => {
     <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => song(item)}>
       <Image style={styles.image} source={{ uri: item.image }} />
       <View style={styles.titleView}>
-        <Text style={styles.titleText}>{shortenText(item.name, 7)}</Text>
+        <Text style={styles.titleText}>{shortenText(item.name, 50)}</Text>
         <View style={styles.descriptionView}>
           {item.explicit ? <MaterialIcons name='explicit' size={15} color={colors.spotifyGray}></MaterialIcons> : null}
           <Text style={styles.descriptionText}>{extractArtistNames(item.artists)}</Text>
