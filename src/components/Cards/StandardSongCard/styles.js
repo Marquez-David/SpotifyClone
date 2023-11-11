@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../utils/colors';
+import colors from '../../../utils/colors';
 
 const styles = StyleSheet.create({
   /**
@@ -8,23 +8,11 @@ const styles = StyleSheet.create({
    * - height: 50 (fixed height in points)
    * - marginTop: 10 (top margin spacing)
    * - flexDirection: 'row' (horizontal layout direction)
-   * - alignItems: 'center' (align items vertically centered)
   */
   songTouchableOpacity: {
     height: 50,
     marginTop: 10,
     flexDirection: 'row',
-    alignItems: 'center',
-  },
-  /**
-   * Style for the song image.
-   * Represents the style for the image of a song with the following properties:
-   * - width: 48 (fixed width in points)
-   * - height: 48 (fixed height in points)
-  */
-  image: {
-    width: 48,
-    height: 48,
   },
   /**
    * Style for the title container.

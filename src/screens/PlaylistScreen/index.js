@@ -8,8 +8,8 @@ import { handleScroll } from '../../utils/helpers';
 
 import PlaylistHeader from '../../components/Headers/PlaylistHeader';
 import BottomPadding from '../../components/BottomPadding';
-import FallbackDataCard from '../../components/ErrorCard';
-import ImageSongCard from '../../components/ImageSongCard';
+import FallbackDataCard from '../../components/Cards/ErrorCard';
+import ImageSongCard from '../../components/Cards/ImageSongCard';
 
 import { ModalContext } from '../../context/modal';
 import { usePlaylist } from '../../hooks/usePlaylist';

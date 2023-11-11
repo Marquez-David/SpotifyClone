@@ -7,8 +7,8 @@ import colors from '../../utils/colors';
 
 import AlbumHeader from '../../components/Headers/AlbumHeader';
 
-import FallbackDataCard from '../../components/ErrorCard';
-import StandardSongCard from '../../components/StandardSongCard';
+import FallbackDataCard from '../../components/Cards/ErrorCard';
+import StandardSongCard from '../../components/Cards/StandardSongCard';
 import BottomPadding from '../../components/BottomPadding';
 import { useAlbum } from '../../hooks/useAlbum';
 

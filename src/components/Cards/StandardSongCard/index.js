@@ -1,26 +1,24 @@
 import React, { useContext } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
-import colors from '../../utils/colors';
+import colors from '../../../utils/colors';
+import { modalStrings } from '../../../utils/strings';
+import { extractArtistNames, shortenText } from '../../../utils/helpers';
 
-import { extractArtistNames, shortenText } from '../../utils/helpers';
+import { ModalContext } from '../../../context/modal';
+import { PlayerContext } from '../../../context/player';
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { PlayerContext } from '../../context/player';
-import { ModalContext } from '../../context/modal';
-
-const ImageSongCard = ({ item }) => {
+const StandardSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
   const { song } = useContext(PlayerContext);
-
   return (
     <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => song(item)}>
-      <Image style={styles.image} source={{ uri: item.image }} />
       <View style={styles.titleView}>
-        <Text style={styles.titleText}>{shortenText(item.name, 7)}</Text>
+        <Text style={styles.titleText}>{shortenText(item.name, 8)}</Text>
         <View style={styles.descriptionView}>
           {item.explicit ? <MaterialIcons name='explicit' size={15} color={colors.spotifyGray}></MaterialIcons> : null}
           <Text style={styles.descriptionText}>{extractArtistNames(item.artists)}</Text>
@@ -32,7 +30,7 @@ const ImageSongCard = ({ item }) => {
           size={15}
           backgroundColor={colors.appBackground}
           color={colors.spotifyGray}
-          onPress={() => openModal()}>
+          onPress={() => openModal(modalStrings.undeDevelopment)}>
         </Entypo.Button>
       </View>
       <View>
@@ -41,4 +39,4 @@ const ImageSongCard = ({ item }) => {
   )
 };
 
-export default ImageSongCard;
+export default StandardSongCard;

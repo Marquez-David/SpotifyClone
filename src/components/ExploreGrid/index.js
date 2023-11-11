@@ -5,7 +5,7 @@ import colors from '../../utils/colors';
 import styles from './styles';
 
 import { useCategories } from '../../hooks/useCategories';
-import FallbackDataCard from '../ErrorCard';
+import FallbackDataCard from '../Cards/ErrorCard';
 import { ModalContext } from '../../context/modal';
 
 const ExploreGrid = () => {

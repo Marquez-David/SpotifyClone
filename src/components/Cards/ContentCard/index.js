@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { contentType } from '../../utils/strings';
-import { handleNavigation } from '../../utils/helpers';
+import { contentType } from '../../../utils/strings';
+import { handleNavigation } from '../../../utils/helpers';
 import styles from './styles';
 
-import ConditionalImage from '../../components/ConditionalImage';
+import ConditionalImage from '../../ConditionalImage';
 
 const ContentCard = ({ item }) => {
   const navigation = useNavigation();

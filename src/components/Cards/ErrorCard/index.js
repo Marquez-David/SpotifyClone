@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { errorCardStrings } from '../../utils/strings';
+import { errorCardStrings } from '../../../utils/strings';
 import styles from './styles';
 
 const ErrorCard = ({ onPressAction }) => {

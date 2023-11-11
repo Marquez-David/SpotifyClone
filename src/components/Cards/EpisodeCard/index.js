@@ -1,19 +1,19 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-import { useIsEpisodeSaved } from "../../hooks/useIsEpisodeSaved";
+import { useIsEpisodeSaved } from "../../../hooks/useIsEpisodeSaved";
 
-import CheckButton from "../CustomButtons/CheckButton";
-import DownloadButton from "../CustomButtons/DownloadButton";
-import ShareButton from "../CustomButtons/ShareButton";
-import OptionsButton from "../CustomButtons/OptionsButton";
-import PlayButton from "../CustomButtons/PlayButton";
+import CheckButton from "../../CustomButtons/CheckButton";
+import DownloadButton from "../../CustomButtons/DownloadButton";
+import ShareButton from "../../CustomButtons/ShareButton";
+import OptionsButton from "../../CustomButtons/OptionsButton";
+import PlayButton from "../../CustomButtons/PlayButton";
 
-import { saveEpisode, unsaveEpisode } from "../../services/requests";
-import colors from "../../utils/colors";
+import { saveEpisode, unsaveEpisode } from "../../../services/requests";
+import colors from "../../../utils/colors";
 import styles from './styles';
 
-import { shortenText, convertMilliseconds, dayOfWeek } from "../../utils/helpers";
+import { shortenText, convertMilliseconds, dayOfWeek } from "../../../utils/helpers";
 
 const handleEpisodeSave = async (isSaved, id, refetch) => {
   isSaved ? await unsaveEpisode(id) : await saveEpisode(id);

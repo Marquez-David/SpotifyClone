@@ -7,10 +7,10 @@ import styles from './styles';
 import { useSearchText } from '../../hooks/useSearchText';
 import { useLibraryContent } from '../../hooks/useLibraryContent';
 
-import ContentCard from '../../components/ContentCard';
+import ContentCard from '../../components/Cards/ContentCard';
 import ScreenHeader from '../../components/Headers/ScreenHeader';
 import SearchBar from '../../components/SearchBar';
-import ErrorCard from '../../components/ErrorCard';
+import ErrorCard from '../../components/Cards/ErrorCard';
 import CategorySelector from '../../components/CategorySelector';
 import colors from '../../utils/colors';
 

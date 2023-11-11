@@ -12,8 +12,8 @@ import { useArtistTopTracks } from '../../hooks/useArtistTopTracks';
 import ArtistsCarousel from '../../components/HorizontalCarousels/ArtistsCarousel';
 
 import BottomPadding from '../../components/BottomPadding';
-import ImageSongCard from '../../components/ImageSongCard';
-import FallbackDataCard from '../../components/ErrorCard';
+import ImageSongCard from '../../components/Cards/ImageSongCard';
+import FallbackDataCard from '../../components/Cards/ErrorCard';
 import ArtistHeader from '../../components/Headers/ArtistHeader';
 
 const ArtistScreen = () => {

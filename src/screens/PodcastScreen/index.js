@@ -11,9 +11,9 @@ import { handleScroll } from '../../utils/helpers';
 import PodcastHeader from '../../components/Headers/PodcastHeader';
 import BottomPadding from '../../components/BottomPadding';
 import FilterButton from '../../components/CustomButtons/FilterButton';
-import FallbackDataCard from '../../components/ErrorCard';
+import FallbackDataCard from '../../components/Cards/ErrorCard';
 import { usePodcastEpisodes } from '../../hooks/usePodcastEpisodes';
-import EpisodeCard from '../../components/EpisodeCard';
+import EpisodeCard from '../../components/Cards/EpisodeCard';
 
 const PodcastScreen = () => {
   const param = useRoute().params.data;
