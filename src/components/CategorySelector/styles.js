@@ -29,12 +29,12 @@ const styles = StyleSheet.create({
 	/**
 	 * Subcategory Text style.
 	 * Represents the style for subcategory text with the following properties:
-	 * - fontSize: 15 (font size of 15 units)
+	 * - fontSize: 12 (font size of 12 units)
 	 * - fontFamily: 'GothamMedium' (font family 'GothamMedium')
 	 * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
 	*/
 	subcategoryText: {
-		fontSize: 15,
+		fontSize: 12,
 		fontFamily: 'GothamMedium',
 		color: colors.spotifyWhite,
 	}

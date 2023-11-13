@@ -155,6 +155,21 @@ export const createQueue = (response, item) => {
   ));
 };
 
+/**
+ * Generates a string indicating the owner of a content item.
+ * @param {object} item - The content item for which the owner information is to be parsed.
+ * @returns {string} - A formatted string indicating the type and owner of the content item.
+ */
+export const parseOwner = (item) => {
+  if (item.type === contentType.album) {
+    return `Album • ${item.label}`;
+  } else if (item.type === contentType.playlist) {
+    return `Playlist • ${item.owner.display_name}`;
+  } else if (item.type === contentType.podcast) {
+    return `Podcast • ${item.publisher}`;
+  }
+};
+
 
 
 
