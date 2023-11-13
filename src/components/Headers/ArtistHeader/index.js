@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import FollowButton from '../../CustomButtons/FollowButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
 import ShuffleButton from '../../CustomButtons/ShuffleButton';
-import PlayButton from '../../CustomButtons/PlayButton';
+import PlaySongButton from '../../CustomButtons/PlaySongButton';
 
 import { useIsArtistSaved } from '../../../hooks/useIsArtistSaved';
 
@@ -40,7 +40,7 @@ const ArtistHeader = ({ artist }) => {
         </View>
         <View style={styles.rightButtons}>
           <ShuffleButton />
-          <PlayButton item={artist} backgroundColor={colors.spotifyGreen} size={32} />
+          <PlaySongButton />
         </View>
       </View>
     </>

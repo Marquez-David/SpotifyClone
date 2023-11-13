@@ -9,7 +9,7 @@ import DownloadButton from '../../CustomButtons/DownloadButton';
 import AddUserButton from '../../CustomButtons/AddUserButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
 import ShuffleButton from '../../CustomButtons/ShuffleButton';
-import PlayButton from '../../CustomButtons/PlayButton';
+import PlaySongButton from '../../CustomButtons/PlaySongButton';
 import ConditionalImage from '../../ConditionalImage';
 
 import { ModalContext } from '../../../context/modal';
@@ -36,8 +36,7 @@ const PlaylistHeader = ({ playlist }) => {
         </View>
         <View style={styles.rightButtons}>
           <ShuffleButton />
-          <PlayButton backgroundColor={colors.spotifyGreen} size={30} />
-
+          <PlaySongButton />
         </View>
       </View>
     </View>

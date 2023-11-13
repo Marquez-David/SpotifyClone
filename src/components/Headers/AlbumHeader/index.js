@@ -8,7 +8,7 @@ import CheckButton from '../../CustomButtons/CheckButton';
 import ProfileButton from '../../CustomButtons/ProfileButton';
 import DownloadButton from '../../CustomButtons/DownloadButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
-import PlayButton from '../../CustomButtons/PlayButton';
+import PlaySongButton from '../../CustomButtons/PlaySongButton';
 import ShuffleButton from '../../CustomButtons/ShuffleButton';
 
 import { useRequest } from '../../../hooks/useRequest';
@@ -44,7 +44,7 @@ const AlbumHeader = ({ album }) => {
         </View>
         <View style={styles.rightButtons}>
           <ShuffleButton />
-          <PlayButton backgroundColor={colors.spotifyGreen} size={32} />
+          <PlaySongButton />
         </View>
       </View>
     </View>

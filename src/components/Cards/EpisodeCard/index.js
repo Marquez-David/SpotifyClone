@@ -7,7 +7,7 @@ import CheckButton from "../../CustomButtons/CheckButton";
 import DownloadButton from "../../CustomButtons/DownloadButton";
 import ShareButton from "../../CustomButtons/ShareButton";
 import OptionsButton from "../../CustomButtons/OptionsButton";
-import PlayButton from "../../CustomButtons/PlayButton";
+import PlayEpisodeButton from "../../CustomButtons/PlayEpisodeButton";
 
 import { saveEpisode, unsaveEpisode } from "../../../services/requests";
 import colors from "../../../utils/colors";
@@ -40,7 +40,7 @@ const EpisodeCard = ({ data }) => {
           <OptionsButton />
         </View>
         <View style={styles.righButtons}>
-          <PlayButton backgroundColor={colors.spotifyWhite} size={26} />
+          <PlayEpisodeButton />
         </View>
       </View>
       <View style={styles.bottomBar}></View>
