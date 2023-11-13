@@ -52,12 +52,6 @@ export const getLibraryContent = async () => {
 		headers: { Authorization: `Bearer ${accessToken}` }
 	});
 
-	const episodesResponse = await axios({
-		method: "GET",
-		url: `https://api.spotify.com/v1/me/episodes`,
-		headers: { Authorization: `Bearer ${accessToken}` }
-	});
-
 	const podcastsResponse = await axios({
 		method: "GET",
 		url: `https://api.spotify.com/v1/me/shows`,
@@ -67,10 +61,9 @@ export const getLibraryContent = async () => {
 	const playlists = playlistsResponse.data.items;
 	const albums = albumsResponse.data.items.map(obj => obj.album);
 	const artists = artistsResponse.data.artists.items;
-	const episodes = episodesResponse.data.items.map(obj => obj.episode);
 	const podcasts = podcastsResponse.data.items.map(obj => obj.show);
 
-	return [...playlists, ...albums, ...artists, ...episodes, ...podcasts];
+	return [...playlists, ...albums, ...artists, ...podcasts];
 };
 
 /*

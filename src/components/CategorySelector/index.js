@@ -1,27 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useCallback } from 'react';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 
-import { categorySelectorStrings } from '../../utils/strings';
+import colors from '../../utils/colors';
 import styles from './styles';
 
-import { ModalContext } from '../../context/modal';
+const CategorySelector = ({ categories, selected, setSelected }) => {
 
-const SubcategorySelector = () => {
-  const { openModal } = useContext(ModalContext);
+  const handleSelect = useCallback((category) => {
+    setSelected((prevSelected) => (prevSelected === category ? '' : category));
+  }, [setSelected]);
+
   return (
     <View style={styles.headers}>
       <FlatList
-        data={Object.values(categorySelectorStrings)}
+        data={Object.values(categories)}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.subcategoryView} onPress={() => openModal()}>
-            <Text style={styles.subcategoryText}>{item}</Text>
-          </TouchableOpacity>
-        )}
+        renderItem={({ item: [categoryName, categoryId] }) => {
+          const backgroundColor = selected === categoryId ? colors.spotifyGreen : colors.spotifySuperDarkGray;
+          const textColor = selected === categoryId ? colors.spotifySuperDarkGray : colors.spotifyWhite;
+          return (
+            <TouchableOpacity
+              style={[styles.categoryView, { backgroundColor: backgroundColor }]}
+              onPress={() => handleSelect(categoryId)}>
+              <Text style={[styles.categoryText, { color: textColor }]}>{categoryName}</Text>
+            </TouchableOpacity>
+          )
+        }}
       />
     </View>
   );
 };
 
-export default SubcategorySelector;
+export default CategorySelector;

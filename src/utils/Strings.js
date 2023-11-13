@@ -62,10 +62,10 @@ export const modalStrings = {
 };
 
 export const categorySelectorStrings = {
-  playlists: "Playlists",
-  podcasts: "Podcasts & Programs",
-  albums: "Albums",
-  artists: "Artists",
+  playlist: ["Playlists", 'playlist'], //[text label, content type]
+  show: ["Podcasts & Programs", 'show'],
+  album: ["Albums", 'album'],
+  artist: ["Artists", 'artist'],
 };
 
 export const errorCardStrings = {
