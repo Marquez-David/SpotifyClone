@@ -7,7 +7,7 @@ import styles from './styles';
 const CategorySelector = ({ categories, selected, setSelected }) => {
 
   const handleSelect = useCallback((category) => {
-    setSelected((prevSelected) => (prevSelected === category ? '' : category));
+    setSelected((prevSelected) => (prevSelected === category ? null : category));
   }, [setSelected]);
 
   return (

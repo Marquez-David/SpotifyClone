@@ -4,16 +4,16 @@ import styles from './styles';
 import { searchBarStrings } from '../../utils/strings';
 import colors from '../../utils/colors';
 
-import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const SearchBar = ({ valueText, changeText }) => (
   <View style={styles.searchBarView}>
-    <Entypo name='magnifying-glass' size={16} color={colors.spotifyWhite} style={{ marginLeft: 10 }} />
+    <Ionicons name='search-outline' size={20} color={colors.spotifySuperDarkGray} style={{ marginLeft: 10 }} />
     <TextInput
       placeholder={searchBarStrings.artistsSongsOrPodcasts}
       value={valueText}
       onChangeText={changeText}
-      placeholderTextColor={colors.spotifyWhite}
+      placeholderTextColor={colors.spotifySuperDarkGray}
       style={styles.searchBarText}></TextInput>
   </View>
 );

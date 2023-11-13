@@ -45,7 +45,7 @@ export const artistStrings = {
 ********* COMPONENT STRINGS *********
 *************************************/
 export const searchBarStrings = {
-  artistsSongsOrPodcasts: "Artists, songs or podcasts..."
+  artistsSongsOrPodcasts: "Search for music, playlists, podcasts..."
 };
 
 export const carouselStrings = {

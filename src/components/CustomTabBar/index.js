@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'react-native-linear-gradient';
 
-import { exploreStrings } from '../../utils/strings';
+import { exploreStrings, libraryStrings } from '../../utils/strings';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../../utils/colors';
@@ -19,10 +19,10 @@ const CustomTabBar = ({ state, descriptors, navigation }) => (
           {route.name === exploreStrings.explore ? (
             <>
               {isFocused && <MaterialCommunityIcons name={unfocusedIcon} size={13} style={styles.circleIcon} />}
-              <Ionicons name={focusedIcon} size={24} color={'white'} />
+              <Ionicons name={focusedIcon} size={24} color={colors.spotifyWhite} />
             </>
           ) : (
-            <Ionicons name={isFocused ? focusedIcon : unfocusedIcon} size={24} color={'white'} />
+            <Ionicons name={isFocused ? focusedIcon : unfocusedIcon} size={24} color={colors.spotifyWhite} />
           )}
           <Text style={styles.labelText}>{route.name}</Text>
         </TouchableOpacity>
