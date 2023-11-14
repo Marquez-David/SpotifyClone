@@ -58,16 +58,20 @@ const styles = StyleSheet.create({
     fontSize: 12.5,
   },
   /**
-   * Style for the dots button.
-   * Represents the style for a button to access additional options (dots) with the following properties:
-   * - flexDirection: 'row' (horizontal layout direction)
-   * - position: 'absolute' (positioning as absolute)
-   * - right: 1 (right position spacing)
+   * Style for the options view.
+   * Provides the following properties:
+   * - padding: 5 (padding of 5 units for all sides)
+   * - right: 15 (positioned 15 units from the right)
+   * - flexDirection: 'row' (elements arranged in a row)
+   * - position: 'absolute' (absolute positioning)
+   * - alignSelf: 'center' (center alignment within the parent container)
   */
-  dotsButton: {
+  optionsView: {
+    padding: 5,
+    right: 15,
     flexDirection: 'row',
     position: 'absolute',
-    right: 1,
+    alignSelf: 'center'
   },
 });
 

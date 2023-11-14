@@ -1,5 +1,4 @@
 import TrackPlayer from 'react-native-track-player';
-import { PlayerContext } from '../context/player';
 
 module.exports = async function () {
   try {

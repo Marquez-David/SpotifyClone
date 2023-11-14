@@ -3,17 +3,13 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 import colors from '../../../utils/colors';
-import { modalStrings } from '../../../utils/strings';
 import { extractArtistNames, shortenText } from '../../../utils/helpers';
-
-import { ModalContext } from '../../../context/modal';
-import { PlayerContext } from '../../../context/player';
-
-import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+import OptionsButton from '../../CustomButtons/OptionsButton';
+import { PlayerContext } from '../../../context/player';
+
 const StandardSongCard = ({ item }) => {
-  const { openModal } = useContext(ModalContext);
   const { song } = useContext(PlayerContext);
   return (
     <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => song(item)}>
@@ -24,16 +20,8 @@ const StandardSongCard = ({ item }) => {
           <Text style={styles.descriptionText}>{extractArtistNames(item.artists)}</Text>
         </View>
       </View>
-      <View style={styles.dotsButton}>
-        <Entypo.Button
-          name='dots-three-vertical'
-          size={15}
-          backgroundColor={colors.appBackground}
-          color={colors.spotifyGray}
-          onPress={() => openModal(modalStrings.undeDevelopment)}>
-        </Entypo.Button>
-      </View>
-      <View>
+      <View style={styles.optionsView}>
+        <OptionsButton />
       </View>
     </TouchableOpacity>
   )

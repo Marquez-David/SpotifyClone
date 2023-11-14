@@ -71,17 +71,18 @@ const styles = StyleSheet.create({
   },
   /**
    * Style for the dots button.
-   * Represents the style for a button to access additional options (dots) with the following properties:
-   * - flexDirection: 'row' (horizontal layout direction)
-   * - position: 'absolute' (positioning as absolute)
-   * - right: 1 (right position spacing)
+   * Provides the following properties:
+   * - flexDirection: 'row' (elements arranged in a row)
+   * - padding: 5 (padding of 5 units for all sides)
+   * - position: 'absolute' (absolute positioning)
+   * - right: 10 (positioned 10 units from the right)
   */
   dotsButton: {
     flexDirection: 'row',
+    padding: 5,
     position: 'absolute',
-    right: 1,
+    right: 10,
   },
 });
-
 
 export default styles;
