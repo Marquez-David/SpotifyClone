@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import { artistStrings } from '../../utils/strings';
@@ -18,9 +18,6 @@ import ArtistHeader from '../../components/Headers/ArtistHeader';
 
 const ArtistScreen = () => {
   const param = useRoute().params.data;
-  //const { openModal } = useContext(ModalContext);
-
-
   const {
     isLoadingTopTracks,
     isErrorTopTracks,
@@ -49,7 +46,7 @@ const ArtistScreen = () => {
           <View style={styles.popularSongsView}>
             <Text style={styles.popularSongsTitle}>{artistStrings.popularSongs}</Text>
             {topTracks.slice(0, 5).map((item) => {
-              const topTrack = { ...item.album, image: item.album.images[0].url }
+              const topTrack = { ...item.album, image: item.album.images[0].url, preview_url: item.preview_url }
               return <ImageSongCard key={item.id} item={topTrack} />
             })}
             <Text style={styles.relatedArtistTitle}>{artistStrings.relatedArtists}</Text>

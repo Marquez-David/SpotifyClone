@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import TrackPlayer, { usePlaybackState } from 'react-native-track-player';
 
 import { LoginStackNavigation } from "./navigation/LoginStackNavigation";
 import { BottomTabNavigation } from './navigation/BottomTabNavigation';
@@ -42,13 +43,14 @@ const renderInitialComponent = (hasAccess) => {
     return <LoginStackNavigation />;
   } else if (hasAccess === 1) {
     return <BottomTabNavigation />
-
   }
 };
 
 export default function App() {
+  const { state } = usePlaybackState();
   const [hasAccess, setHasAccess] = useState(-1); //-1 = init state, 0 = no access, 1 = access
   useEffect(() => { checkTokenValidity(setHasAccess) }, []);
+  !state ? TrackPlayer.setupPlayer() : null;
   const queryClient = new QueryClient();
   return (
     <ModalProvider>

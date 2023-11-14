@@ -9,12 +9,12 @@ import { createQueue } from '../utils/helpers';
  */
 export const useSongPlayer = () => {
   const { playing } = useIsPlaying();
-  const [player, setPlayer] = useState({ visible: false, state: '', setup: false, currentSong: {} });
+  const [player, setPlayer] = useState({ visible: false, state: '', currentSong: {} });
 
   useEffect(() => {
     const listener = async () => {
       const currentSong = await TrackPlayer.getActiveTrack();
-      setPlayer((prevState) => ({ ...prevState, visible: true, setup: true, currentSong: currentSong }));
+      setPlayer((prevState) => ({ ...prevState, visible: true, currentSong: currentSong }));
     };
     TrackPlayer.addEventListener('playback-track-changed', listener);
   }, []);
@@ -23,14 +23,19 @@ export const useSongPlayer = () => {
     setPlayer((prevState) => ({ ...prevState, state: playing ? 'pause' : 'play' }));
   }, [playing]);
 
-  //Set up the audio player if it hasn't been initialized.
-  const setupPlayer = async () => {
-    !player.setup ? TrackPlayer.setupPlayer() : null;
+  //Plays a single song.
+  const song = async (item) => {
+    try {
+      const song = [{ title: item.name, artwork: item.image, url: item.preview_url, artist: item.artists }];
+      await TrackPlayer.setQueue(song);
+      await TrackPlayer.play();
+    } catch (error) {
+      console.log('Error reproduc9ng the song' + error.message)
+    }
   };
 
   //Plays a shuffled queue of songs.
   const shuffle = async (item) => {
-    await setupPlayer();
     try {
       const response = await getSongQueue(item.type, item.id);
       const songs = createQueue(response, item);
@@ -41,17 +46,8 @@ export const useSongPlayer = () => {
     }
   };
 
-  //Plays a single song.
-  const song = async (item) => {
-    await setupPlayer();
-    const song = [{ title: item.name, artwork: item.image, url: item.preview_url, artist: item.artists }];
-    await TrackPlayer.setQueue(song);
-    await TrackPlayer.play();
-  };
-
   //Plays a single episode.
   const episode = async (item) => {
-    await setupPlayer();
     const song = [{ title: item.name, artwork: item.image, url: item.audio_preview_url, artist: item.publisher }];
     await TrackPlayer.setQueue(song);
     await TrackPlayer.play();
