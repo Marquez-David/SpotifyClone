@@ -34,9 +34,12 @@ const PodcastScreen = () => {
             {isError && <FallbackDataCard onPressAction={refetch} />}
           </View> :
           <>
-            {podcastEpisodes.map((item) => (
-              <EpisodeCard key={item.id} data={item} />
-            ))}
+            {podcastEpisodes.map((item) => {
+              const episode = { ...item, image: item.images[0].url, publisher: [{ name: param.publisher }] };
+              return (
+                <EpisodeCard key={episode.id} data={episode} />
+              )
+            })}
           </>
         }
       </View>

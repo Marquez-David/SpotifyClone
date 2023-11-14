@@ -7,7 +7,7 @@ import DeviceButton from '../CustomButtons/DeviceButton';
 import HeartButton from '../CustomButtons/HeartButton';
 import ReproduceButton from '../CustomButtons/ReproduceButton';
 
-import { extractArtistNames } from '../../utils/helpers';
+import { extractArtistNames, shortenText } from '../../utils/helpers';
 import styles from './styles';
 
 
@@ -19,7 +19,7 @@ const SongPlayer = ({ visible, state, item }) => {
         <TouchableOpacity style={[styles.playerView, { backgroundColor: 'green' }]} onPress={() => openModal()} >
           {<Image style={styles.image} source={{ uri: item.artwork }} />}
           <View style={styles.titleView}>
-            <Text style={styles.titleText}>{item.title}</Text>
+            <Text style={styles.titleText}>{shortenText(item.title, 20)}</Text>
             <Text style={styles.descriptionText}>{extractArtistNames(item.artist)}</Text>
           </View>
           <View style={styles.buttonsView}>

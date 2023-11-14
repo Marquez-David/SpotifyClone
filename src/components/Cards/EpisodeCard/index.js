@@ -40,7 +40,7 @@ const EpisodeCard = ({ data }) => {
           <OptionsButton />
         </View>
         <View style={styles.righButtons}>
-          <PlayEpisodeButton />
+          <PlayEpisodeButton item={data} />
         </View>
       </View>
       <View style={styles.bottomBar}></View>

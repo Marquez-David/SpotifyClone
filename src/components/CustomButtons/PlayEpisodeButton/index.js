@@ -5,12 +5,12 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import colors from '../../../utils/colors';
 import styles from './styles';
 
-import { ModalContext } from '../../../context/modal';
+import { PlayerContext } from '../../../context/player';
 
 const PlayEpisodeButton = ({ item }) => {
-  const { openModal } = useContext(ModalContext);
+  const { episode } = useContext(PlayerContext);
   return (
-    <TouchableOpacity style={styles.touchablePlay} onPress={() => openModal()}>
+    <TouchableOpacity style={styles.touchablePlay} onPress={() => episode(item)}>
       <Foundation name='play' size={20} color={colors.spotifyBlack} />
     </TouchableOpacity>
   );

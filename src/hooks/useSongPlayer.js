@@ -49,6 +49,14 @@ export const useSongPlayer = () => {
     await TrackPlayer.play();
   };
 
+  //Plays a single episode.
+  const episode = async (item) => {
+    await setupPlayer();
+    const song = [{ title: item.name, artwork: item.image, url: item.audio_preview_url, artist: item.publisher }];
+    await TrackPlayer.setQueue(song);
+    await TrackPlayer.play();
+  };
+
   //Resumes playback of the current song.
   const play = async () => {
     await TrackPlayer.play();
@@ -59,5 +67,5 @@ export const useSongPlayer = () => {
     await TrackPlayer.pause();
   };
 
-  return { player, play, pause, song, shuffle };
+  return { player, play, pause, song, shuffle, episode };
 };

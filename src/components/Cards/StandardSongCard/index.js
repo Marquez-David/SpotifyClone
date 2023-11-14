@@ -15,7 +15,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const StandardSongCard = ({ item }) => {
   const { openModal } = useContext(ModalContext);
   const { song } = useContext(PlayerContext);
-  console.log(item)
   return (
     <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => song(item)}>
       <View style={styles.titleView}>
