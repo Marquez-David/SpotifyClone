@@ -11,7 +11,7 @@ import axios from "axios";
  * Fetches a list of featured playlists from the Spotify API.
  * @returns {Array} - An array of featured playlists.
  */
-export const getFeaturePlaylists = async () => {
+export const getFeaturedPlaylists = async () => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	const response = await axios({
 		method: "GET",
@@ -19,6 +19,20 @@ export const getFeaturePlaylists = async () => {
 		headers: { Authorization: `Bearer ${accessToken}` }
 	});
 	return response.data.playlists.items;
+};
+
+/**
+ * Fetches a list of featured albums (new releases) from the Spotify API.
+ * @returns {Array} - An array containing the featured albums.
+ */
+export const getFeaturedAlbums = async () => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/browse/new-releases?limit=10`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data.albums.items;
 };
 
 /**

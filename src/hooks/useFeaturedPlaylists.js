@@ -1,4 +1,4 @@
-import { getFeaturePlaylists } from '../services/requests';
+import { getFeaturedPlaylists } from '../services/requests';
 import { useQuery } from '@tanstack/react-query';
 
 /**
@@ -8,10 +8,8 @@ import { useQuery } from '@tanstack/react-query';
 export const useFeaturedPlaylists = () => {
   const { data } = useQuery({
     queryKey: ['featuredPlaylists'],
-    queryFn: () => getFeaturePlaylists(),
+    queryFn: () => getFeaturedPlaylists(),
   });
 
-  return {
-    featuredPlaylists: data,
-  }
+  return { featuredPlaylists: data };
 };

@@ -54,6 +54,7 @@ export const carouselStrings = {
   yourPodcasts: "Your podcasts",
   relatedArtists: "Related artists",
   featuredPlaylists: "Stay up to date",
+  featuredAlbums: "Album discoveries",
 };
 
 export const modalStrings = {
