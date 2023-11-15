@@ -21,6 +21,20 @@ export const getFeaturePlaylists = async () => {
 	return response.data.playlists.items;
 };
 
+/**
+ * Fetches the user's recently played items from the Spotify API.
+ * @returns {Array} - An array containing the recently played items.
+ */
+export const getRecentlyPlayed = async () => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/player/recently-played?limit=8`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data.items;
+};
+
 /*
 |================================================================================================================|
 |=================================== LIBRARY CONTENT ============================================================|
@@ -480,4 +494,3 @@ export const requestItem = async (request) => {
 	});
 	return response.data;
 };
-

@@ -6,7 +6,7 @@ import { exploreStrings } from '../../utils/strings';
 
 import BottomPadding from '../../components/BottomPadding';
 import ScreenHeader from '../../components/Headers/ScreenHeader';
-import ExploreGrid from '../../components/ExploreGrid';
+import ExploreGrid from '../../components/Grids/ExploreGrid';
 import SearchBar from '../../components/SearchBar';
 
 const SearchScreen = () => {

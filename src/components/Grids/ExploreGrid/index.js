@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { View, Text, Image, ActivityIndicator, TouchableOpacity } from 'react-native';
 
-import colors from '../../utils/colors';
+import colors from '../../../utils/colors';
 import styles from './styles';
 
-import { useCategories } from '../../hooks/useCategories';
-import FallbackDataCard from '../Cards/ErrorCard';
-import { ModalContext } from '../../context/modal';
+import { useCategories } from '../../../hooks/useCategories';
+import FallbackDataCard from '../../Cards/ErrorCard';
+import { ModalContext } from '../../../context/modal';
 
 const ExploreGrid = () => {
   const { openModal } = useContext(ModalContext);
