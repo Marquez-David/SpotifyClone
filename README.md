@@ -90,10 +90,7 @@ This project is continuously evolving. Below is a list of upcoming tasks:
   - [ ] Integration of gesture controls for an intuitive user experience.
 
 - Enhance the functionalities of custom buttons.
-  - [ ] Develop onPress for download button.
-  - [ ] Develop onPress for heart button.
-  - [ ] Develop onPress for options button.
-  - [ ] Develop onPress for devices button.
+  - [ ] Develop onPress for download, options... buttons.
 
 - Extend project compatibility to iOS devices.
   - [ ] Adapt the UI/UX for seamless performance on iOS.
