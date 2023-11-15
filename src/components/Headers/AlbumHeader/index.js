@@ -32,7 +32,7 @@ const AlbumHeader = ({ album }) => {
         <Image style={styles.image} source={{ uri: album.images[0].url }} />
       </View>
       <Text style={styles.titleText}>{album.name}</Text>
-      <ProfileButton image={data?.images[0].url} name={album.label} onPress={() => handleNavigation(data, navigation)} />
+      <ProfileButton image={data?.images[0].url} name={album.artists[0].name} onPress={() => handleNavigation(data, navigation)} />
       <Text style={styles.releaseDateText}>{albumStrings.album + " • " + getYear(album.release_date)}</Text>
       <View style={styles.buttonsView}>
         <View style={styles.leftButtons}>
