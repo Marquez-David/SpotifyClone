@@ -16,7 +16,7 @@ const SongPlayer = ({ visible, state, item }) => {
   return (
     <>
       {visible &&
-        <TouchableOpacity style={[styles.playerView, { backgroundColor: 'green' }]} onPress={() => openModal()} >
+        <TouchableOpacity style={[styles.playerView, { backgroundColor: '#700000' }]} onPress={() => openModal()} >
           {<Image style={styles.image} source={{ uri: item.artwork }} />}
           <View style={styles.titleView}>
             <Text style={styles.titleText}>{shortenText(item.title, 20)}</Text>
