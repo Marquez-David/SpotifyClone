@@ -2,21 +2,19 @@ import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
 
 import { useRequest } from '../../../hooks/useRequest';
+import { ModalContext } from '../../../context/modal';
 
 import ArrowBackButton from '../../CustomButtons/ArrowBackButton';
 import ProfileButton from '../../CustomButtons/ProfileButton';
 import DownloadButton from '../../CustomButtons/DownloadButton';
 import AddUserButton from '../../CustomButtons/AddUserButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
-import ShuffleButton from '../../CustomButtons/ShuffleButton';
-import PlaySongButton from '../../CustomButtons/PlaySongButton';
+import PlayQueueButton from '../../CustomButtons/PlayQueueButton';
 import ConditionalImage from '../../ConditionalImage';
 
-import { ModalContext } from '../../../context/modal';
-import colors from '../../../utils/colors';
 import styles from './styles';
 
-const PlaylistHeader = ({ playlist }) => {
+const Playlistplaylist = ({ playlist }) => {
   const { data } = useRequest(playlist.owner.href);
   const { openModal } = useContext(ModalContext);
   return (
@@ -34,13 +32,10 @@ const PlaylistHeader = ({ playlist }) => {
           <AddUserButton />
           <OptionsButton />
         </View>
-        <View style={styles.rightButtons}>
-          <ShuffleButton />
-          <PlaySongButton />
-        </View>
+        <PlayQueueButton item={playlist} />
       </View>
     </View>
   )
 };
 
-export default PlaylistHeader;
+export default Playlistplaylist;

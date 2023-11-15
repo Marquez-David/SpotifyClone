@@ -23,27 +23,19 @@ export const useSongPlayer = () => {
     setPlayer((prevState) => ({ ...prevState, state: playing ? 'pause' : 'play' }));
   }, [playing]);
 
-  //Plays a single song.
-  const song = async (item) => {
-    try {
-      const song = [{ title: item.name, artwork: item.image, url: item.preview_url, artist: item.artists }];
-      await TrackPlayer.setQueue(song);
-      await TrackPlayer.play();
-    } catch (error) {
-      console.log('Error reproduc9ng the song' + error.message)
-    }
+  //Plays a album/playlist
+  const playQueue = async (shuffle, item) => {
+    const response = await getSongQueue(item.type, item.id);
+    const songs = createQueue(response, item, shuffle);
+    await TrackPlayer.setQueue(songs);
+    await TrackPlayer.play();
   };
 
-  //Plays a shuffled queue of songs.
-  const shuffle = async (item) => {
-    try {
-      const response = await getSongQueue(item.type, item.id);
-      const songs = createQueue(response, item);
-      await TrackPlayer.setQueue(songs);
-      await TrackPlayer.play();
-    } catch (error) {
-      console.log('Error while fetching song queue: ' + error.message);
-    }
+  //Plays a single song.
+  const song = async (item) => {
+    const song = [{ title: item.name, artwork: item.image, url: item.preview_url, artist: item.artists }];
+    await TrackPlayer.setQueue(song);
+    await TrackPlayer.play();
   };
 
   //Plays a single episode.
@@ -63,5 +55,5 @@ export const useSongPlayer = () => {
     await TrackPlayer.pause();
   };
 
-  return { player, play, pause, song, shuffle, episode };
+  return { player, play, pause, song, episode, playQueue };
 };

@@ -10,10 +10,10 @@ export const PlayerContext = createContext();
  * @param {Object} children - The child components to be wrapped with the player context.
  */
 export const PlayerProvider = ({ children }) => {
-  const { player, play, pause, song, shuffle, episode } = useSongPlayer();
+  const { player, play, pause, song, episode, playQueue } = useSongPlayer();
 
   return (
-    <PlayerContext.Provider value={{ player, play, pause, song, shuffle, episode }}>
+    <PlayerContext.Provider value={{ player, play, pause, song, episode, playQueue }}>
       {children}
       <SongPlayer visible={player.visible} state={player.state} item={player.currentSong} />
     </PlayerContext.Provider>

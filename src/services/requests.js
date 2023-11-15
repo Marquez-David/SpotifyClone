@@ -201,6 +201,21 @@ export const getRelatedArtists = async (artistId) => {
 };
 
 /**
+ * Fetches the albums associated with a Spotify artist.
+ * @param {string} artistId - The Spotify artist ID for which albums are to be fetched.
+ * @returns {Array} - An array of album objects associated with the specified artist.
+ */
+export const getArtistAlbums = async (artistId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/artists/${artistId}/albums`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data.items;
+};
+
+/**
  * Checks if the current user follows a specific artist based on the provided artist ID.
  * @param {string} artistId - The ID of the artist to be checked for follow status.
  * @returns {boolean} `true` if the user follows the artist, `false` otherwise.

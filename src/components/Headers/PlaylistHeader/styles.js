@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 import colors from '../../../utils/colors';
 
 const styles = StyleSheet.create({
@@ -122,20 +122,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
   },
-  /**
-   * Style for the right buttons.
-   * Provides the following properties:
-   * - flex: 1 (takes up all available space)
-   * - alignItems: 'center' (horizontal center alignment of elements)
-   * - justifyContent: 'flex-end' (alignment of elements at the end of the container)
-   * - flexDirection: 'row' (elements arranged in a row)
-  */
-  rightButtons: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
-  }
 });
 
 export default styles;

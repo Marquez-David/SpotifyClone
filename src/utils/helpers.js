@@ -138,14 +138,14 @@ export const handleScroll = (fetchNextPage) => {
 };
 
 /**
- * Takes a list of song data objects and transforms them into a consistent format for a playback queue.
- * It maps over the list, extracting relevant information such as title, artwork, URL, and artist.
- * @param {Array} response - An array of song data objects from the Spotify API response.
- * @param {Object} item - The main item (e.g., playlist or album) used for default artwork if not found in song data.
- * @returns {Array} - An array of formatted song objects for the playback queue.
+ * Creates a queue of tracks for playback.
+ * @param {Array} response - The Spotify API response containing track information.
+ * @param {Object} item - The selected item (e.g., album, playlist) for which the queue is created.
+ * @param {boolean} isShuffle - A flag indicating whether to shuffle the tracks in the queue.
+ * @returns {Array} - An array of track objects with properties like title, artwork, url, and artist.
  */
-export const createQueue = (response, item) => {
-  return response.map((song) => (
+export const createQueue = (response, item, isShuffle) => {
+  const mappedSongs = response.map((song) => (
     {
       title: song.name ?? song.track.name,
       artwork: song.track?.album.images[0].url ?? item.images[0].url,
@@ -153,6 +153,7 @@ export const createQueue = (response, item) => {
       artist: song.artists ?? song.track.artists
     }
   ));
+  return isShuffle ? mappedSongs.sort(() => Math.random() - 0.5) : mappedSongs;
 };
 
 /**
@@ -168,6 +169,15 @@ export const parseOwner = (item) => {
   } else if (item.type === contentType.podcast) {
     return `Podcast • ${item.publisher}`;
   }
+};
+
+/**
+ * Returns a random item from the provided array.
+ * @param {Array} items - The array from which a random item will be selected.
+ * @returns {*} - A randomly selected item from the array.
+ */
+export const getRandomItem = (items) => {
+  return items[Math.floor(Math.random() * items.length - 1)]
 };
 
 

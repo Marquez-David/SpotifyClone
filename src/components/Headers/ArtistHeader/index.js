@@ -4,13 +4,13 @@ import { useNavigation } from "@react-navigation/native";
 
 import FollowButton from '../../CustomButtons/FollowButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
-import ShuffleButton from '../../CustomButtons/ShuffleButton';
-import PlaySongButton from '../../CustomButtons/PlaySongButton';
+import PlayQueueButton from '../../CustomButtons/PlayQueueButton';
 
 import { useIsArtistSaved } from '../../../hooks/useIsArtistSaved';
+import { useArtistAlbums } from '../../../hooks/useArtistAlbums';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { roundNumber } from '../../../utils/helpers';
+import { roundNumber, getRandomItem } from '../../../utils/helpers';
 import { unfollowArtist, followArtist } from '../../../services/requests';
 import colors from '../../../utils/colors';
 import styles from './styles';
@@ -22,6 +22,7 @@ const handleFollowArtist = async (isSaved, artistsId, refetch) => {
 
 const ArtistHeader = ({ artist }) => {
   const { isSaved, refetch } = useIsArtistSaved(artist.id);
+  const { isLoading, isError, data } = useArtistAlbums(artist.id)
   const navigation = useNavigation();
   return (
     <>
@@ -38,10 +39,7 @@ const ArtistHeader = ({ artist }) => {
           <FollowButton isSaved={isSaved} onPress={() => handleFollowArtist(isSaved, artist.id, refetch)} />
           <OptionsButton />
         </View>
-        <View style={styles.rightButtons}>
-          <ShuffleButton />
-          <PlaySongButton />
-        </View>
+        {!(isLoading || isError) && <PlayQueueButton item={getRandomItem(data)} />}
       </View>
     </>
   )

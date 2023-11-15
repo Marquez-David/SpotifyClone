@@ -8,14 +8,12 @@ import CheckButton from '../../CustomButtons/CheckButton';
 import ProfileButton from '../../CustomButtons/ProfileButton';
 import DownloadButton from '../../CustomButtons/DownloadButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
-import PlaySongButton from '../../CustomButtons/PlaySongButton';
-import ShuffleButton from '../../CustomButtons/ShuffleButton';
+import PlayQueueButton from '../../CustomButtons/PlayQueueButton';
 
 import { useRequest } from '../../../hooks/useRequest';
 import { saveAlbum, unsaveAlbum } from '../../../services/requests';
 import { getYear, handleNavigation } from '../../../utils/helpers';
 import { albumStrings } from '../../../utils/strings';
-import colors from '../../../utils/colors';
 import styles from './styles';
 
 const handleAlbumSave = async (isSaved, id, refetch) => {
@@ -42,10 +40,7 @@ const AlbumHeader = ({ album }) => {
           <DownloadButton />
           <OptionsButton />
         </View>
-        <View style={styles.rightButtons}>
-          <ShuffleButton />
-          <PlaySongButton />
-        </View>
+        <PlayQueueButton item={album} />
       </View>
     </View>
   )
