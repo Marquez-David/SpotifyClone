@@ -12,8 +12,6 @@
 ## Description
 This project is a clone of the popular music streaming application, Spotify. It has been developed using React Native, and the [Spotify API](https://developer.spotify.com/documentation/web-api) for music data. As of now, please note that the project is exclusively supported for Android devices.  
 
-🚀 Please note that this project is still under development and may undergo changes in the future!! 🚀
-
 <br>
 
 | LoginScreen | HomeScreen | ExploreScreen | LibraryScreen |
@@ -77,7 +75,7 @@ yarn android
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ shortly provided you have set up your emulator/simulator correctly.
 
 ## Todo
-This project is continuously evolving. Below is a list of upcoming tasks:
+🚀 This project is still under development and may undergo changes in the future!! 🚀. Below is a list of upcoming tasks:
 
 - Implement advanced functionalities for creating and managing playlists.
   - [ ] Playlist creation with customizable details.
