@@ -91,6 +91,7 @@ This project is continuously evolving. Below is a list of upcoming tasks:
 
 - Enhance the functionalities of custom buttons.
   - [ ] Develop onPress for download, options... buttons.
+  - [ ] Develop LoginScreen buttons for different authentication methods.
 
 - Extend project compatibility to iOS devices.
   - [ ] Adapt the UI/UX for seamless performance on iOS.
