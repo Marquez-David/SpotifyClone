@@ -11,10 +11,5 @@ export const useCategories = () => {
     queryFn: getBrowseCategories,
   });
 
-  return {
-    isLoading,
-    isError,
-    categories: data,
-    refetch,
-  }
+  return { isLoading, isError, categories: data, refetch };
 };

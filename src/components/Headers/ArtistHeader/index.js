@@ -6,8 +6,7 @@ import FollowButton from '../../CustomButtons/FollowButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
 import PlayQueueButton from '../../CustomButtons/PlayQueueButton';
 
-import { useIsArtistSaved } from '../../../hooks/useIsArtistSaved';
-import { useArtistAlbums } from '../../../hooks/useArtistAlbums';
+import { useArtist } from '../../../hooks/useArtist';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { roundNumber, getRandomItem } from '../../../utils/helpers';
@@ -21,8 +20,8 @@ const handleFollowArtist = async (isSaved, artistsId, refetch) => {
 }
 
 const ArtistHeader = ({ artist }) => {
-  const { isSaved, refetch } = useIsArtistSaved(artist.id);
-  const { isLoading, isError, data } = useArtistAlbums(artist.id)
+  const { isSaved, refetch } = useArtist().isSaved(artist.id);
+  const { isLoading, isError, data } = useArtist().albums(artist.id)
   const navigation = useNavigation();
   return (
     <>

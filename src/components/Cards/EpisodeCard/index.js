@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-import { useIsEpisodeSaved } from "../../../hooks/useIsEpisodeSaved";
+import { useEpisode } from "../../../hooks/useEpisode";
 
 import CheckButton from "../../CustomButtons/CheckButton";
 import DownloadButton from "../../CustomButtons/DownloadButton";
@@ -10,7 +10,6 @@ import OptionsButton from "../../CustomButtons/OptionsButton";
 import PlayEpisodeButton from "../../CustomButtons/PlayEpisodeButton";
 
 import { saveEpisode, unsaveEpisode } from "../../../services/requests";
-import colors from "../../../utils/colors";
 import styles from './styles';
 
 import { shortenText, convertMilliseconds, dayOfWeek } from "../../../utils/helpers";
@@ -21,7 +20,7 @@ const handleEpisodeSave = async (isSaved, id, refetch) => {
 };
 
 const EpisodeCard = ({ data }) => {
-  const { isSaved, refetch } = useIsEpisodeSaved(data.id);
+  const { isSaved, refetch } = useEpisode().isSaved(data.id);
   return (
     <View style={styles.background}>
       <View style={styles.headerView}>

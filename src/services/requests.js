@@ -248,7 +248,7 @@ export const getArtistAlbums = async (artistId) => {
  * @param {string} artistId - The ID of the artist to be checked for follow status.
  * @returns {boolean} `true` if the user follows the artist, `false` otherwise.
  */
-export const getUserFollowsArtist = async (artistId) => {
+export const isArtistSaved = async (artistId) => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	try {
 		const response = await axios({

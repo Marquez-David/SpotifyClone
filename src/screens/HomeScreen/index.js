@@ -2,8 +2,8 @@ import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { carouselStrings } from '../../utils/strings';
-import { useFeaturedPlaylists } from '../../hooks/useFeaturedPlaylists';
-import { useFeaturedAlbums } from '../../hooks/useFeaturedAlbums';
+import { usePlaylist } from '../../hooks/usePlaylist';
+import { useAlbum } from '../../hooks/useAlbum';
 import { useRecentlyPlayed } from '../../hooks/useRecentlyPlayed';
 import { useMessage } from '../../hooks/useMessage';
 
@@ -16,9 +16,9 @@ import styles from './styles';
 
 const HomeScreen = () => {
   const { message } = useMessage();
-  const { featuredPlaylists } = useFeaturedPlaylists();
+  const { featuredPlaylists } = usePlaylist().featured();
   const { recentlyPlayed } = useRecentlyPlayed();
-  const { featuredAlbums } = useFeaturedAlbums();
+  const { featuredAlbums } = useAlbum().featured();
   return (
     <ScrollView style={styles.background}>
       <ScreenHeader title={message} icon={'notifications-outline'} />

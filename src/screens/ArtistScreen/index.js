@@ -6,8 +6,7 @@ import { artistStrings } from '../../utils/strings';
 import styles from './styles';
 import colors from '../../utils/colors';
 
-import { useRelatedArtists } from '../../hooks/useRelatedArtists';
-import { useArtistTopTracks } from '../../hooks/useArtistTopTracks';
+import { useArtist } from '../../hooks/useArtist';
 
 import ArtistsCarousel from '../../components/HorizontalCarousels/ArtistsCarousel';
 
@@ -18,29 +17,17 @@ import ArtistHeader from '../../components/Headers/ArtistHeader';
 
 const ArtistScreen = () => {
   const param = useRoute().params.data;
-  const {
-    isLoadingTopTracks,
-    isErrorTopTracks,
-    topTracks,
-    refetchTopTracks,
-  } = useArtistTopTracks(param.id);
-
-  const {
-    isLoadingRelatedArtists,
-    isErrorRelatedArtists,
-    relatedArtists,
-    refetchRelatedArtists,
-  } = useRelatedArtists(param.id);
-
+  const { isLoadingRelated, isErrorRelated, related, refetchRelated } = useArtist().related(param.id);
+  const { isLoadingTopTracks, isErrorTopTracks, topTracks, refetchTopTracks } = useArtist().topTracks(param.id);
   return (
     <ScrollView style={styles.background}>
       <ArtistHeader artist={param} />
       <View style={styles.contentView}>
-        {isLoadingTopTracks || isLoadingRelatedArtists || isErrorTopTracks || isErrorRelatedArtists ?
+        {isLoadingTopTracks || isLoadingRelated || isErrorTopTracks || isErrorRelated ?
           <View style={styles.fallbackView}>
-            {(isLoadingTopTracks || isLoadingRelatedArtists) && <ActivityIndicator color={colors.spotifyGreen} />}
-            {(isErrorTopTracks || isErrorRelatedArtists) && (
-              <FallbackDataCard onPressAction={refetchTopTracks && refetchRelatedArtists} />
+            {(isLoadingTopTracks || isLoadingRelated) && <ActivityIndicator color={colors.spotifyGreen} />}
+            {(isErrorTopTracks || isErrorRelated) && (
+              <FallbackDataCard onPressAction={refetchTopTracks && refetchRelated} />
             )}
           </View> :
           <View style={styles.popularSongsView}>
@@ -50,7 +37,7 @@ const ArtistScreen = () => {
               return <ImageSongCard key={item.id} item={topTrack} />
             })}
             <Text style={styles.relatedArtistTitle}>{artistStrings.relatedArtists}</Text>
-            <ArtistsCarousel artists={relatedArtists.slice(0, 5)} />
+            <ArtistsCarousel artists={related.slice(0, 5)} />
           </View>
         }
         <BottomPadding />

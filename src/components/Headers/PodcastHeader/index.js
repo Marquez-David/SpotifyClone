@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
-import { useIsPodcastSaved } from '../../../hooks/useIsPodcastSaved';
+import { usePodcast } from '../../../hooks/usePodcast';
 
 import ArrowBackButton from '../../CustomButtons/ArrowBackButton';
 import FollowButton from '../../CustomButtons/FollowButton';
@@ -18,7 +18,7 @@ const handleFollowPodcast = async (isSaved, podcastId, refetch) => {
 }
 
 const PodcastHeader = ({ podcast }) => {
-  const { isSaved, refetch } = useIsPodcastSaved(podcast.id);
+  const { isSaved, refetch } = usePodcast().isSaved(podcast.id);
   return (
     <View style={styles.podcastHeaderView}>
       <ArrowBackButton />

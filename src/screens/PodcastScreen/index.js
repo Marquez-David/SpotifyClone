@@ -2,22 +2,21 @@ import React from 'react';
 import { ScrollView, View, Text, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
-import colors from '../../utils/colors';
-import styles from './styles';
-
-import { podcastStrings } from '../../utils/strings';
-import { handleScroll } from '../../utils/helpers';
-
+import { usePodcast } from '../../hooks/usePodcast';
 import PodcastHeader from '../../components/Headers/PodcastHeader';
 import BottomPadding from '../../components/BottomPadding';
 import FilterButton from '../../components/CustomButtons/FilterButton';
 import FallbackDataCard from '../../components/Cards/ErrorCard';
-import { usePodcastEpisodes } from '../../hooks/usePodcastEpisodes';
 import EpisodeCard from '../../components/Cards/EpisodeCard';
+
+import { podcastStrings } from '../../utils/strings';
+import { handleScroll } from '../../utils/helpers';
+import colors from '../../utils/colors';
+import styles from './styles';
 
 const PodcastScreen = () => {
   const param = useRoute().params.data;
-  const { isLoading, isError, podcastEpisodes, refetch, fetchNextPage } = usePodcastEpisodes(param.id);
+  const { isLoading, isError, episodes, refetch, fetchNextPage } = usePodcast().episodes(param.id);
   const { fetchNextItems } = handleScroll(fetchNextPage);
   return (
     <ScrollView onScroll={fetchNextItems} style={styles.background} >
@@ -34,7 +33,7 @@ const PodcastScreen = () => {
             {isError && <FallbackDataCard onPressAction={refetch} />}
           </View> :
           <>
-            {podcastEpisodes.map((item) => {
+            {episodes.map((item) => {
               const episode = { ...item, image: item.images[0].url, publisher: [{ name: param.publisher }] };
               return (
                 <EpisodeCard key={episode.id} data={episode} />

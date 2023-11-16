@@ -16,7 +16,7 @@ import { usePlaylist } from '../../hooks/usePlaylist';
 
 const PlaylistScreen = () => {
   const param = useRoute().params.data;
-  const { isLoading, isError, playlist, refetch, fetchNextPage } = usePlaylist(param.id);
+  const { isLoading, isError, playlist, refetch, fetchNextPage } = usePlaylist().playlist(param.id);
   const { fetchNextItems } = handleScroll(fetchNextPage);
   const { openModal } = useContext(ModalContext);
 

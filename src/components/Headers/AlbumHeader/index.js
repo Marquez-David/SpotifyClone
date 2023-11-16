@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
-import { useIsAlbumSaved } from '../../../hooks/useIsAlbumSaved';
 import ArrowBackButton from '../../CustomButtons/ArrowBackButton';
 import CheckButton from '../../CustomButtons/CheckButton';
 import ProfileButton from '../../CustomButtons/ProfileButton';
@@ -10,6 +9,7 @@ import DownloadButton from '../../CustomButtons/DownloadButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
 import PlayQueueButton from '../../CustomButtons/PlayQueueButton';
 
+import { useAlbum } from '../../../hooks/useAlbum';
 import { useRequest } from '../../../hooks/useRequest';
 import { saveAlbum, unsaveAlbum } from '../../../services/requests';
 import { getYear, handleNavigation } from '../../../utils/helpers';
@@ -23,8 +23,9 @@ const handleAlbumSave = async (isSaved, id, refetch) => {
 
 const AlbumHeader = ({ album }) => {
   const navigation = useNavigation();
-  const { isSaved, refetch } = useIsAlbumSaved(album.id);
   const { data } = useRequest(album.artists[0].href);
+  const { isSaved, refetch } = useAlbum().isSaved(album.id);
+
   return (
     <View style={styles.albumHeaderView}>
       <ArrowBackButton />
