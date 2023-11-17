@@ -16,9 +16,9 @@ This project is a clone of the popular music streaming application, Spotify. It 
 
 | LoginScreen | HomeScreen | ExploreScreen | LibraryScreen |
 |:---------------:|:---------------:|:---------------:|:---------------:|
-| ![LoginScreen](mobile/assets/screenshots/LoginScreen.PNG) | ![HomeScreen](mobile/assets/screenshots/HomeScreen.png) | ![SearchScreen](mobile/assets/screenshots/ExploreScreen.png) | ![YourLibraryScreen](mobile/assets/screenshots/LibraryScreen.png)
+| ![LoginScreen](assets/screenshots/LoginScreen.PNG) | ![HomeScreen](assets/screenshots/HomeScreen.png) | ![SearchScreen](assets/screenshots/ExploreScreen.png) | ![YourLibraryScreen](assets/screenshots/LibraryScreen.png)
 | ArtistScreen | AlbumScreen | PlaylistScreen | PodcastScreen |  
-![ArtistScreen](mobile/assets/screenshots/ArtistScreen.png) | ![AlbumScreen](mobile/assets/screenshots/AlbumScreen.png) | ![PlaylistScreen](mobile/assets/screenshots/PlaylistScreen.png) | ![PodcastScreen](mobile/assets/screenshots/PodcastScreen.png)
+![ArtistScreen](assets/screenshots/ArtistScreen.png) | ![AlbumScreen](assets/screenshots/AlbumScreen.png) | ![PlaylistScreen](assets/screenshots/PlaylistScreen.png) | ![PodcastScreen](assets/screenshots/PodcastScreen.png)
 
 ## Structure
 
