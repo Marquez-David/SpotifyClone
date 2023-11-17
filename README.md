@@ -6,7 +6,7 @@
 
 ## Description
 
-This project aims to replicate the popular music streaming service, Spotify, with both a mobile app and a web page. The mobile app is developed in React Native, while the web page is developed in React.
+This project aims to replicate the popular music streaming service, Spotify, with both a mobile app and a web page.
 
 🚀 Please note that this project is under development and may undergo changes in the future! 🚀
 
