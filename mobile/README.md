@@ -22,7 +22,7 @@ This project is a clone of the popular music streaming application, Spotify. It 
 
 ## Structure
 
-This project is organized in a single main directory, `mobile`, which contains the source code. Inside the directory we can find the different functionalities developed for the correct functioning of the project. The structure of the project can be summarized as follows:
+Inside the directory we can find the different functionalities developed for the correct functioning of the project. The structure of the project can be summarized as follows:
 
 1. `Components` #Contains all the source code and style files for the custom components.
 2. `Navigation` #This Navigation directory is responsible for handling the navigation logic of the application. It defines the routes, screens, and navigation stacks.
