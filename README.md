@@ -1,5 +1,5 @@
 # SpotifyClone
-A clone of the popular music streaming application.
+[![License](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&?style=plastic&logo=appveyor)](https://github.com/Marquez-David/SpotifyClone/blob/main/LICENSE)
 
 ## Repository Structure
 
