@@ -1,11 +1,8 @@
-# SpotifyClone
-[![License](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&?style=plastic&logo=appveyor)](https://github.com/Marquez-David/SpotifyClone/blob/main/LICENSE)
-
-## Table Of Content
+# Spotify Clone
 
 - [Description](#description)
 - [Structure](#structure)
-- [Installation & Prerequisites](#installation)
+- [Installation](#installation)
 
 ## Description
 
@@ -27,3 +24,7 @@ Please note that this will clone the entire repository. If you only need a speci
 ```bash
 git clone https://github.com/Marquez-David/SpotifyClone.git
 ```
+
+##
+
+[![License](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&?style=plastic&logo=appveyor)](https://github.com/Marquez-David/SpotifyClone/blob/main/LICENSE)

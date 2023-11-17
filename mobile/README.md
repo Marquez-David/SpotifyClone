@@ -1,10 +1,8 @@
 # Spotify Clone App
 
-## Table Of Content
-
 - [Description](#description)
 - [Structure](#structure)
-- [Installation & Prerequisites](#installation)
+- [Setup](#setup)
 
 ## Description
 This project is a clone of the popular music streaming application, Spotify. It has been developed using React Native, and the [Spotify API](https://developer.spotify.com/documentation/web-api) for music data. As of now, please note that the project is exclusively supported for Android devices.  
@@ -30,23 +28,28 @@ Inside the directory we can find the different functionalities developed for the
 7. `Hooks` #This directory contain custom hooks that are used across the application.
 8. `Context` #The Context directory holds the context providers and related code for managing the global state of the application, allowing data to be shared and accessed across different components and screens.
 
-Before installation, make sure you are inside the source main directory.
-
-## Installation
+## Setup
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Clone the repository
-```js
-git clone https://github.com/Marquez-David/SpotifyClone.git
-```
+## Step 1: Install dependencies
 
-## Step 2: Start the Metro Server
-
-Before starting metro server make sure that you are in the appropriate folder.
+First of all, make sure you are inside the source main directory.
 ```bash
 cd mobile
 ```
+
+Now, you can install the project dependencies using your favourite package manager:
+
+```bash
+# using npm
+npm install
+
+# OR using Yarn
+yarn install
+```
+
+## Step 2: Start the Metro Server
 
 To start Metro, run the following command from the _root_ of your React Native project:
 
