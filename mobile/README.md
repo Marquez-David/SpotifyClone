@@ -41,7 +41,7 @@ Before installation, make sure you are inside the source main directory.
 
 ## Step 1: Clone the repository
 ```js
-git clone https://github.com/Marquez-David/ReactNative-SpotifyClone.git
+git clone https://github.com/Marquez-David/SpotifyClone.git
 ```
 
 ## Step 2: Start the Metro Server
