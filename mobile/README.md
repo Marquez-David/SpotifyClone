@@ -45,7 +45,10 @@ git clone https://github.com/Marquez-David/SpotifyClone.git
 
 ## Step 2: Start the Metro Server
 
-First, start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Before starting metro server make sure that you are in the appropriate folder.
+```bash
+cd mobile
+```
 
 To start Metro, run the following command from the _root_ of your React Native project:
 
