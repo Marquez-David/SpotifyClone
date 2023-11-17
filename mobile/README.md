@@ -32,12 +32,24 @@ Inside the directory we can find the different functionalities developed for the
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Start the Metro Server
+## Step 1: Install dependencies
 
-Before starting metro server, make sure you are inside the source main directory.
+First of all, make sure you are inside the source main directory.
 ```bash
 cd mobile
 ```
+
+Now, you can install the project dependencies using your favourite package manager:
+
+```bash
+# using npm
+npm install
+
+# OR using Yarn
+yarn install
+```
+
+## Step 2: Start the Metro Server
 
 To start Metro, run the following command from the _root_ of your React Native project:
 
@@ -49,7 +61,7 @@ npm start
 yarn start
 ```
 
-## Step 2: Start the Application
+## Step 3: Start the Application
 
 Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ app:
 
