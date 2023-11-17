@@ -1,4 +1,4 @@
-# SpotifyClone
+# 🎶 SpotifyClone 🎶
 A clone of the popular music streaming application.
 
 ## Repository Structure
