@@ -2,7 +2,10 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		backgroundColor: {
+			'background-side-color': '#121313',
+			'side-icon-color': '#a6a7a6',
+		},
 	},
 	plugins: [],
 }

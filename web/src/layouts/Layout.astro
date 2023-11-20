@@ -23,27 +23,68 @@ const { title } = Astro.props;
 			<aside class="[grid-area:aside] rounded-lg flex-col flex overflow-y-auto">
 				<SideNavBar />
 			</aside>
-			<main class="[grid-area:main] rounded-lg bg-zinc-900"><slot /></main>
+			<main class="[grid-area:main] rounded-lg"><slot /></main>
 
 			<footer class="[grid-area:player] min-h-[100px]"></footer>
 		</div>
+
+		<style>
+			#app {
+				display: grid;
+				grid-template-areas:
+					"aside main main"
+					"player player player";
+				grid-template-columns: 350px 1fr;
+				grid-template-rows: 1fr auto;
+			}
+		</style>
+
+		<style is:global>
+			html {
+				font-family: "CircularStd", system-ui, sans-serif;
+				background: #000101;
+				color: white;
+			}
+
+			@font-face {
+				font-family: "CircularStd";
+				src: url("../assets/fonts/CircularStd-Medium.woff2") format("woff2");
+				font-weight: 500;
+				font-style: normal;
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: "CircularStd";
+				src: url("../assets/fonts/CircularStd-Book.woff2") format("woff2");
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: "CircularStd";
+				src: url("../assets/fonts/CircularStd-Light.woff2") format("woff2");
+				font-weight: 300;
+				font-style: normal;
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: "CircularStd";
+				src: url("../assets/fonts/CircularStd-Bold.woff2") format("woff2");
+				font-weight: 700;
+				font-style: normal;
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: "CircularStd";
+				src: url("../assets/fonts/CircularStd-Black.woff2") format("woff2");
+				font-weight: 900;
+				font-style: normal;
+				font-display: swap;
+			}
+		</style>
 	</body>
 </html>
-
-<style>
-	#app {
-		display: grid;
-		grid-template-areas:
-			"aside main main"
-			"player player player";
-		grid-template-columns: 350px 1fr;
-		grid-template-rows: 1fr auto;
-	}
-</style>
-
-<style is:global>
-	html {
-		font-family: system-ui, sans-serif;
-		background: #000;
-	}
-</style>

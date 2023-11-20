@@ -5,16 +5,16 @@ interface Props {
   item: any;
 }
 
-const { href } = Astro.props;
+const { href, text } = Astro.props;
 ---
 
 <li>
   <a
-    class="flex gap-4 text-zinc-400 hover:text-zinc-100 items-center py-3 px-5 font-medium transition duration-300"
     href={href}
+    class="flex gap-5 text-zinc-400 hover:text-zinc-100 items-center py-3 px-4 font-medium transition duration-300"
   >
     {(<Astro.props.item />)}
-    {Astro.props.text}
+    {text}
     <slot />
   </a>
 </li>
