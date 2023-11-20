@@ -1,0 +1,26 @@
+---
+import LibraryIcon from "../assets/icons/Library.astro";
+import LibraryOutlineIcon from "../assets/icons/LibraryOutline.astro";
+import AddIcon from "../assets/icons/Add.astro";
+import ArrowRightIcon from "../assets/icons/ArrowRight.astro";
+import SearchOutlineIcon from "../assets/icons/SearchOutline.astro";
+import SearchIcon from "../assets/icons/Search.astro";
+import HomeOutlineIcon from "../assets/icons/HomeOutline.astro";
+
+import SideNavItem from "./SideNavItem.astro";
+---
+
+<nav class="flex flex-col flex-1 gap-2">
+  <div class="bg-zinc-900 rounded-lg p-2">
+    <ul>
+      <SideNavItem href="/" item={HomeOutlineIcon} text="Home" />
+      <SideNavItem href="/#" item={SearchOutlineIcon} text="Search" />
+    </ul>
+  </div>
+
+  <div class="bg-zinc-900 rounded-lg p-2 flex-1">
+    <ul>
+      <SideNavItem href="/#" item={LibraryIcon} text="Library" />
+    </ul>
+  </div>
+</nav>
