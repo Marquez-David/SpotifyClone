@@ -1,0 +1,27 @@
+---
+import type { Album } from "@/lib/albums";
+
+interface Props {
+  album: Album;
+}
+
+const { album } = Astro.props;
+const { id, title, color, cover, owner, href, type } = album;
+---
+
+<a
+  href={href}
+  class="album-item flex relative px-4 py-2 overflow-hidden items-center gap-5 rounded-md"
+>
+  <picture class="h-12 w-12 flex-none">
+    <img
+      src={cover}
+      alt={`Cover image of ${title}`}
+      class="object-cover w-full h-full rounded-md"
+    />
+  </picture>
+  <div class="flex flex-auto flex-col truncate">
+    <h4 class="text-white text-sm font-light">{title}</h4>
+    <span class="text-gray text-sm">{`${owner}`}</span>
+  </div>
+</a>
