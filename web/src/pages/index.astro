@@ -1,5 +1,40 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import PlaylistCard from "@/components/Cards/MainCards/PlaylistCard.astro";
+import AlbumCard from "@/components/Cards/MainCards/AlbumCard.astro";
+import TrackCard from "@/components/Cards/MainCards/TrackCard.astro";
+
+import { featuredPlaylists } from "@/lib/featured-playlists";
+import { featuredAlbums } from "@/lib/featured-albums";
+import { recentlyPlayed } from "@/lib/recently-played";
+
+import { homeStrings } from "@/utils/strings";
 ---
 
-<Layout title="Spotify" />
+<Layout title="Spotify">
+  <div id="playlist-container" class="relative transition-all duration-1000">
+    <div class="relative z-10 px-6 pt-10">
+      <h1 class="font-bold text-lg">{homeStrings.featuredPlaylists}</h1>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 my-2"
+      >
+        {recentlyPlayed.map((track) => <TrackCard track={track} />)}
+      </div>
+
+      <h1 class="font-bold text-lg">{homeStrings.featuredPlaylists}</h1>
+      <div class="flex flex-wrap gap-4 mb-4">
+        {
+          featuredPlaylists.map((playlist) => (
+            <PlaylistCard playlist={playlist} />
+          ))
+        }
+      </div>
+
+      <h1 class="font-bold text-lg">{homeStrings.featuredAlbums}</h1>
+      <div class="flex flex-wrap gap-4 mb-4">
+        {featuredAlbums.map((album) => <AlbumCard album={album} />)}
+      </div>
+    </div>
+  </div>
+</Layout>

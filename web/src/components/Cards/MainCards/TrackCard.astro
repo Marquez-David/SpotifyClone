@@ -1,0 +1,28 @@
+---
+import type { Track } from "@/lib/tracks";
+
+interface Props {
+  track: Track;
+}
+
+const { track } = Astro.props;
+const { id, title, album, type } = track;
+---
+
+<a
+  href={album.href}
+  class="track-item h-20 w-auto overflow-hidden gap-5 rounded-md bg-background-elevated-base hover:bg-background-elevated-highlight flex items-center"
+>
+  <picture class="w-auto h-full">
+    <img
+      src={album.cover}
+      alt={`Cover image of ${title}`}
+      class="object-cover w-full h-full"
+    />
+  </picture>
+  <div class="">
+    <h1 class="text-white text-ms font-bold">
+      {title}
+    </h1>
+  </div></a
+>

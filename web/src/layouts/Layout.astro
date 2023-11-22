@@ -23,7 +23,11 @@ const { title } = Astro.props;
 			<aside class="[grid-area:aside] flex-col flex overflow-y-auto">
 				<SideNavBar />
 			</aside>
-			<main class="[grid-area:main] rounded-lg"><slot /></main>
+			<main
+				class="[grid-area:main] rounded-lg overflow-y-auto w-full bg-background-base"
+			>
+				<slot />
+			</main>
 
 			<footer class="[grid-area:player] h-[80px]"></footer>
 		</div>
@@ -34,7 +38,7 @@ const { title } = Astro.props;
 				grid-template-areas:
 					"aside main main"
 					"player player player";
-				grid-template-columns: 390px 1fr;
+				grid-template-columns: 350px 1fr;
 				grid-template-rows: 1fr auto;
 			}
 		</style>

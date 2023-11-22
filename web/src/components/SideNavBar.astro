@@ -1,7 +1,8 @@
 ---
-import PlaylistSideCard from "@/components/Cards/PlaylistSideCard.astro";
-import AlbumSideCard from "@/components/Cards/AlbumSideCard.astro";
-import ArtistSideCard from "@/components/Cards/ArtistSideCard.astro";
+import PlaylistSideCard from "@/components/Cards/SideCards/PlaylistSideCard.astro";
+import AlbumSideCard from "@/components/Cards/SideCards/AlbumSideCard.astro";
+import ArtistSideCard from "@/components/Cards/SideCards/ArtistSideCard.astro";
+
 import SideNavItem from "@/components/SideNavItem.astro";
 
 import LibraryIcon from "@/assets/icons/Library.astro";
@@ -14,14 +15,14 @@ import { artists } from "@/lib/artists";
 ---
 
 <nav class="flex flex-col flex-1 gap-2">
-  <div class="bg-background-side-color rounded-lg p-2">
+  <div class="bg-background-base rounded-lg p-2">
     <ul>
       <SideNavItem href="/" item={HomeOutlineIcon} text="Home" />
       <SideNavItem href="/#" item={SearchOutlineIcon} text="Search" />
     </ul>
   </div>
 
-  <div class="bg-background-side-color rounded-lg p-2 flex-1">
+  <div class="bg-background-base rounded-lg p-2 flex-1">
     <ul>
       <SideNavItem href="/#" item={LibraryIcon} text="Your Library" />
       {playlists.map((playlist) => <PlaylistSideCard playlist={playlist} />)}

@@ -1,0 +1,88 @@
+import type { Track } from "@/lib/tracks";
+
+export const recentlyPlayed: Track[] = [
+  {
+    id: "4aiUHZMIogQdzB2cKfl7E1",
+    title: "La Base",
+    album: {
+      id: "0xEGQSfKAhZj1yAFj4JMYP",
+      title: "El Hombre Hace Planes, Dios Se Ríe",
+      color: "",
+      cover: "https://i.scdn.co/image/ab67616d0000b27349c12156d2fe1e4b3b3b2abf",
+      owner: "Dano",
+      href: "/albums/0xEGQSfKAhZj1yAFj4JMYP",
+      type: "Album",
+    },
+    type: "Track",
+  },
+  {
+    id: "35i9UIPqVIvUo53aUogr5G",
+    title: "Hombrelobo II",
+    album: {
+      id: "0Zdharua6l9gp4xq0fimdd",
+      title: "Underground kings II",
+      color: "",
+      cover: "https://i.scdn.co/image/ab67616d0000b273d7e9105af6a8ebd0209d1e80",
+      owner: "La SDJ Crew",
+      href: "/albums/0Zdharua6l9gp4xq0fimdd",
+      type: "Album",
+    },
+    type: "Track",
+  },
+  {
+    id: "2gaRxx1nCmjfdI1atyO2Ja",
+    title: "La maldicion",
+    album: {
+      id: "2gaRxx1nCmjfdI1atyO2Ja",
+      title: "Underground kings II",
+      color: "",
+      cover: "https://i.scdn.co/image/ab67616d0000b2733eaf3ecf9855f6c094ef3dd8",
+      owner: "La SDJ Crew",
+      href: "/albums/2gaRxx1nCmjfdI1atyO2Ja",
+      type: "Album",
+    },
+    type: "Track",
+  },
+  {
+    id: "7wTXoVGiDC9jS0oxdfwLKv",
+    title: "Black Leaves",
+    album: {
+      id: "1TNajOxU7C8rl6ciy5r1Im",
+      title: "Black Leaves",
+      color: "",
+      cover: "https://i.scdn.co/image/ab67616d0000b2737806c039f7793b80a6a872b2",
+      owner: "KIRBY",
+      href: "/albums/1TNajOxU7C8rl6ciy5r1Im",
+      type: "Album",
+    },
+    type: "Track",
+  },
+  {
+    id: "1HAW56e0zz05phUnzuHF9E",
+    title: "#skeptacore pt.3",
+    album: {
+      id: "603607Iup3eeTPgUM9Qoof",
+      title: "#skeptacore pt.3",
+      color: "",
+      cover: "https://i.scdn.co/image/ab67616d0000b2733118aa4f94859560763bbc74",
+      owner: "Ryder",
+      href: "/albums/603607Iup3eeTPgUM9Qoof",
+      type: "Album",
+    },
+    type: "Track",
+  },
+  {
+    id: "4P6KkAm8PyM1Tm275y6DuZ",
+    title: "Una bala en tu craneo",
+    album: {
+      id: "0Zdharua6l9gp4xq0fimdd",
+      title: "#skeptacore pt.3",
+      color: "",
+      cover: "https://i.scdn.co/image/ab67616d0000b273d7e9105af6a8ebd0209d1e80",
+      owner: "La SDJ Crew",
+      href: "/albums/0Zdharua6l9gp4xq0fimdd",
+      type: "Album",
+    },
+    type: "Track",
+  },
+];

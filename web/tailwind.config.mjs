@@ -5,11 +5,18 @@ export default {
 		extend: {
 			colors: {
 				gray: '#a7a7a7',
+				green: '#1fd660'
 			}
 		},
 		backgroundColor: {
-			'background-side-color': '#121313',
+			'background-base': '#121313',
+			'background-highlight': '#1a1a1a',
+			'background-elevated-base': '#242424',
+			'background-elevated-highlight': '#2a2a2a',
+
+
 			'side-icon-color': '#a6a7a6',
+			'background-card': '#181919',
 		},
 	},
 	plugins: [],
