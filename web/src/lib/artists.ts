@@ -13,7 +13,7 @@ export const artists: Artist[] = [
     name: "Al Safir",
     color: "#21c872",
     cover: "https://i.scdn.co/image/ab6761610000e5eb47bdc9475b8802155ad8c5a6",
-    href: "/artists/5NzCASNJVvcPW4uGwMRlPl",
+    href: "/artist/5NzCASNJVvcPW4uGwMRlPl",
     type: "Artist",
   },
   {
@@ -21,7 +21,7 @@ export const artists: Artist[] = [
     name: "KIRBY",
     color: "#93302a",
     cover: "https://i.scdn.co/image/ab6761610000e5eb05fe433aad7eef8da0f5819f",
-    href: "/artists/5lcDGoJUr5WY5bCFAfYbCU",
+    href: "/artist/5lcDGoJUr5WY5bCFAfYbCU",
     type: "Artist",
   },
   {
@@ -29,7 +29,7 @@ export const artists: Artist[] = [
     name: "PinkPantheress",
     color: "#110c11",
     cover: "https://i.scdn.co/image/ab6761610000e5eb90ddbcd825c7b6142d269e26",
-    href: "/artists/78rUTD7y6Cy67W1RVzYs7t",
+    href: "/artist/78rUTD7y6Cy67W1RVzYs7t",
     type: "Artist",
   },
 ];

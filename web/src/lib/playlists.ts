@@ -4,6 +4,7 @@ export interface Playlist {
   color: string;
   cover: string;
   owner: string,
+  items: Object[];
   href: string;
   type: string;
 };
@@ -11,11 +12,18 @@ export interface Playlist {
 export const playlists: Playlist[] = [
   {
     id: '6FbI5D9YxtUmPfAmRBhR8P',
-    title: "myTechno",
+    title: "SD KONG",
     color: "#21c872",
     cover: "https://mosaic.scdn.co/640/ab67616d0000b27364a8a7f7f7c4959fe3f6ccaaab67616d0000b27373ba1a86fff89dc8de5fba54ab67616d0000b273a686c52635702a171872bc8fab67616d0000b273e51a1fbac92a31cfe875f5c2",
     owner: "Marquez-David",
-    href: "/playlists/6FbI5D9YxtUmPfAmRBhR8P",
+    items: [
+      {
+        id: "string",
+        title: "string",
+        type: "string"
+      }
+    ],
+    href: "/playlist/6FbI5D9YxtUmPfAmRBhR8P",
     type: "Playlist",
   },
   {
@@ -24,7 +32,14 @@ export const playlists: Playlist[] = [
     color: "#555555",
     cover: "https://mosaic.scdn.co/640/ab67616d0000b2732472601180911ff89445cbc8ab67616d0000b2732a29fd126925fbcc2820753bab67616d0000b273431b3ae0a1f015199a1e1095ab67616d0000b27397cae1b2dfe4943cc6c7c755",
     owner: "Marquez-David",
-    href: "/playlists/1ePucvcmC9kpHMZv4dh7tA",
+    items: [
+      {
+        id: "string",
+        title: "string",
+        type: "string"
+      }
+    ],
+    href: "/playlist/1ePucvcmC9kpHMZv4dh7tA",
     type: "Playlist",
   },
   {
@@ -33,7 +48,14 @@ export const playlists: Playlist[] = [
     color: "#2ee9d7",
     cover: "https://mosaic.scdn.co/640/ab67616d0000b27324f0fdd455eec29cc449e36dab67616d0000b2739180ec245c2d22d169155c79ab67616d0000b273adb5dbf4251255a00146d8ebab67616d0000b273c65afbbe40aa51d9ab5fed4e",
     owner: "Marquez-David",
-    href: "/playlists/4SdT2sM2dusodFoVu8xeQ8",
+    items: [
+      {
+        id: "string",
+        title: "string",
+        type: "string"
+      }
+    ],
+    href: "/playlist/4SdT2sM2dusodFoVu8xeQ8",
     type: "Playlist",
   },
   {
@@ -42,7 +64,14 @@ export const playlists: Playlist[] = [
     color: "#df24ff",
     cover: "https://i.scdn.co/image/ab67616d0000b27336c5417732e53e23cb219246",
     owner: "Marquez-David",
-    href: "/playlists/7K6x512IBt0uePowm7u7HD",
+    items: [
+      {
+        id: "string",
+        title: "string",
+        type: "string"
+      }
+    ],
+    href: "/playlist/7K6x512IBt0uePowm7u7HD",
     type: "Playlist",
   },
   {
@@ -51,7 +80,14 @@ export const playlists: Playlist[] = [
     color: "#1e3a8a",
     cover: "https://i.scdn.co/image/ab67616d0000b27349c12156d2fe1e4b3b3b2abf",
     owner: "Marquez-David",
-    href: "/playlists/2T5tdKWzrOUkV9TE7Yjjfn",
+    items: [
+      {
+        id: "string",
+        title: "string",
+        type: "string"
+      }
+    ],
+    href: "/playlist/2T5tdKWzrOUkV9TE7Yjjfn",
     type: "Playlist",
   },
 ];
