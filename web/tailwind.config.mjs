@@ -13,6 +13,7 @@ export default {
 			'background-highlight': '#1a1a1a',
 			'background-elevated-base': '#242424',
 			'background-elevated-highlight': '#2a2a2a',
+			'background-green': '#1ed760',
 
 
 			'side-icon-color': '#a6a7a6',

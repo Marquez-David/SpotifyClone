@@ -1,0 +1,24 @@
+---
+interface Props {
+  track: any;
+  index: number;
+}
+
+const { index, track } = Astro.props;
+---
+
+<tr class="text-sm text-gray">
+  <td class="py-2 rounded-tl-lg rounded-bl-lg w-5">{index + 1}</td>
+  <td class="py-2 pl-4 flex gap-3">
+    <picture>
+      <img src={track.image} alt={track.title} class="w-11 h-11 rounded-md" />
+    </picture>
+    <div class="flex flex-col">
+      <h3 class="text-white">{track.title}</h3>
+      <h3 class="">{track.artists}</h3>
+    </div>
+  </td>
+  <td class="py-2">{track.album}</td>
+  <td class="py-2">{track.added}</td>
+  <td class="py-2 text-center">{track.duration}</td>
+</tr>

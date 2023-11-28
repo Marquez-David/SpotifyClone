@@ -1,38 +1,81 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { albums } from "@/lib/albums.ts";
+
+import AlbumHeader from "@/components/Headers/AlbumHeader.astro";
+import StandardSongCard from "@/components/Cards/SongCards/StandardSongCard.astro";
+
+import PlayButton from "@/components/CustomButtons/Play.astro";
+import OptionsIcon from "@/assets/icons/Options.astro";
+
 import { recentlyPlayed } from "@/lib/recently-played";
 import { featuredAlbums } from "@/lib/featured-albums";
+import { albums } from "@/lib/albums.ts";
 
 import { albumStrings } from "@/utils/strings";
 
 const { id } = Astro.params;
-const data = [...albums, ...recentlyPlayed.map((track) => track.album), ...featuredAlbums];
+const data = [
+  ...albums,
+  ...recentlyPlayed.map((track) => track.album),
+  ...featuredAlbums,
+];
 const album = data.find((d) => d.id === id);
 ---
 
 <Layout title="Spotify">
-  <div id="album-container" class="relative flex flex-col h-full bg-zinc-900 overflow-x-hidden">
-
+  <div
+    id="album-container"
+    class="relative flex flex-col h-full bg-zinc-900 overflow-x-hidden"
+  >
     <header class="flex flex-row gap-8 px-6 mt-12">
       <picture class="aspect-square w-52 h-52 flex-none">
-        <img src={album?.cover} alt={`Cover of ${album?.title}`} class="object-cover w-full h-full shadow-lg" />
+        <img
+          src={album?.cover}
+          alt={`Cover of ${album?.title}`}
+          class="object-cover w-full h-full shadow-lg"
+        />
       </picture>
 
       <div class="flex flex-col">
         <h2 class="flex flex-1 items-end text-sm mt-8">Playlist</h2>
-        <h1 class={`font-bold mt-2 text-white ${ album && album.title.length < 25 ? "text-8xl" : "text-6xl"}`}>
+        <h1
+          class={`font-bold mt-2 text-white ${
+            album && album.title.length < 25 ? "text-8xl" : "text-6xl"
+          }`}
+        >
           {album?.title}
         </h1>
 
         <div class="flex-1 flex items-end text-sm text-gray font-normal">
           <span class="text-white font-bold mr-1">{album?.owner}</span>
-          <span class="text-white mr-1"> {" · " + album?.items.length + albumStrings.songs}</span>
+          <span class="text-white mr-1">
+            {" · " + album?.items.length + albumStrings.songs}</span
+          >
           <span class="text-gray">{albumStrings.albumDuration}</span>
         </div>
-
       </div>
-      
     </header>
+
+    <div class="flex flex-row gap-8 px-6 mt-12 items-center">
+      <PlayButton />
+      <OptionsIcon />
+    </div>
+
+    <section class="p-6">
+      <table
+        class="table-auto text-left min-w-full divide-y divide-gray-500/20"
+      >
+        <AlbumHeader />
+        <tbody>
+          <tr class="h-[16px]"></tr>
+          {
+            album &&
+              album.items.map((track, index) => (
+                <StandardSongCard index={index} track={track} />
+              ))
+          }
+        </tbody>
+      </table>
+    </section>
   </div>
 </Layout>

@@ -18,10 +18,51 @@ export const albums: Album[] = [
     owner: "Al Safir",
     items: [
       {
-        id: "string",
-        title: "string",
-        type: "string",
-      }
+        title: "Acústico",
+        duration: "3:20",
+        artists: "Al Safir, Chalo"
+      },
+      {
+        title: "Squale",
+        duration: "1:57",
+        artists: "Al Safir, Keoks"
+      },
+      {
+        title: "El niño Shars",
+        duration: "2:01",
+        artists: "Al Safir"
+      },
+      {
+        title: "Hash",
+        duration: "1:56",
+        artists: "Al Safir"
+      },
+      {
+        title: "Mandela",
+        duration: "3:13",
+        artists: "Al Safir, Keoks"
+      },
+      {
+        title: "Todo Lo Rompo",
+        duration: "2:58",
+        artists: "Al Safir, Chalo"
+      },
+      {
+        title: "One More Time",
+        duration: "1:18",
+        artists: "Al Safir"
+      },
+      {
+        title: "Bueno Sera",
+        duration: "2:16",
+        artists: "Al Safir, Chalo"
+      },
+      {
+        title: "Amira",
+        duration: "2:44",
+        artists: "Al Safir, Chalo"
+      },
+
     ],
     href: "/album/7Me8eZZE4nxbN3L8zhA08a",
     type: "Album",
@@ -34,10 +75,30 @@ export const albums: Album[] = [
     owner: "Warner Records",
     items: [
       {
-        id: "string",
-        title: "string",
-        type: "string",
-      }
+        title: "Another life (feat. Rema)",
+        duration: "2:52",
+        artists: "PinkPantheress, Rema"
+      },
+      {
+        title: "True romance",
+        duration: "2:16",
+        artists: "PinkPantheress"
+      },
+      {
+        title: "Mosquito",
+        duration: "2:26",
+        artists: "PinkPantheress"
+      },
+      {
+        title: "The aisle",
+        duration: "2:45",
+        artists: "PinkPantheress"
+      },
+      {
+        title: "Nice to meet you (feat. Central Cee)",
+        duration: "2:42",
+        artists: "PinkPantheress, Central Cee"
+      },
     ],
     href: "/album/2pOEFqvfxp5uUQ8vQEmVA0",
     type: "Album",

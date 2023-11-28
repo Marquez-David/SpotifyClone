@@ -9,10 +9,10 @@ export const featuredAlbums: Album[] = [
     owner: "Morad, GULEED",
     items: [
       {
-        id: "string",
-        title: "string",
-        type: "string",
-      }
+        title: "Cuando Menos Lo Espera",
+        duration: "3:00",
+        artists: "Morad, GULEED"
+      },
     ],
     href: "/album/5I4I0k75uiUnqyJvh7vxLC",
     type: "Album",
@@ -25,10 +25,45 @@ export const featuredAlbums: Album[] = [
     owner: "Ana Mena",
     items: [
       {
-        id: "string",
-        title: "string",
-        type: "string",
-      }
+        title: "Lentamente",
+        duration: "3:04",
+        artists: "Ana Mena"
+      },
+      {
+        title: "Bebé",
+        duration: "3:06",
+        artists: "Ana Mena"
+      },
+      {
+        title: "Un Clásico",
+        duration: "2:52",
+        artists: "Ana Mena"
+      },
+      {
+        title: "Me He Pillao x Ti",
+        duration: "3:18",
+        artists: "Ana Mena, Natalia Lacunza"
+      },
+      {
+        title: "Llorando en la Disco",
+        duration: "2:30",
+        artists: "Ana Mena"
+      },
+      {
+        title: "Ben & Jerry's",
+        duration: "1:57",
+        artists: "Ana Mena"
+      },
+      {
+        title: "Mañana dios dirá",
+        duration: "3:44",
+        artists: "Ana Mena"
+      },
+      {
+        title: "Un Millón de Lunas",
+        duration: "3:01",
+        artists: "Ana Mena"
+      },
     ],
     href: "/album/3Bk95OiIUpFX417h8OFnrb",
     type: "Album",
@@ -41,10 +76,16 @@ export const featuredAlbums: Album[] = [
     owner: "Myke Towers",
     items: [
       {
-        id: "string",
-        title: "string",
-        type: "string",
-      }
+        title: "VOODOO",
+        duration: "2:46",
+        artists: "Myke Towers"
+      },
+      {
+        title: "MI DROGA",
+        duration: "2:43",
+        artists: "Myke Towers"
+      },
+
     ],
     href: "/album/3puAvurwvtvi1rodndIPW8",
     type: "Album",
@@ -57,10 +98,15 @@ export const featuredAlbums: Album[] = [
     owner: "Eladio Carrion",
     items: [
       {
-        id: "string",
-        title: "string",
-        type: "string",
-      }
+        title: "Padre Tiempo",
+        duration: "2:46",
+        artists: "Eladio Carrion"
+      },
+      {
+        title: "Gladiador - Remix",
+        duration: "2:46",
+        artists: "Eladio Carrion, Lil Wayne"
+      },
     ],
     href: "/album/6BGN5CVd7koJApotl5Bj8u",
     type: "Album",
@@ -73,10 +119,15 @@ export const featuredAlbums: Album[] = [
     owner: "KAROL G",
     items: [
       {
-        id: "string",
-        title: "string",
-        type: "string",
-      }
+        title: "MIENTRAS ME CURO DEL CORA",
+        duration: "2:44",
+        artists: "KAROL G"
+      },
+      {
+        title: "X SI VOLVEMOS",
+        duration: "3:20",
+        artists: "KAROL G, Romeo Santos"
+      },
     ],
     href: "/album/4kS7bSuU0Jm9LYMosFU2x5",
     type: "Album",

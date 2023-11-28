@@ -27,3 +27,19 @@ export const albumStrings: AlbumStrings = {
   albumDuration: "about 3 hours",
   songs: " songs,"
 };
+
+export interface HeaderStrings {
+  index: string;
+  title: string;
+  album: string;
+  date: string;
+  duration: string;
+};
+
+export const headerStrings: HeaderStrings = {
+  index: "#",
+  title: "Title",
+  album: "Album",
+  date: "Date added",
+  duration: "Duration",
+};
