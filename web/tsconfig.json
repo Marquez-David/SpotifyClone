@@ -16,7 +16,13 @@
       ],
       "@/utils": [
         "src/utils/*"
-      ]
+      ],
+      "@/hooks": [
+        "src/hooks/*"
+      ],
+      "@/storage": [
+        "src/storage/*"
+      ],
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
