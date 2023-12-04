@@ -6,7 +6,7 @@ import styles from './styles';
 
 const BottomPadding = () => {
   const { player } = useContext(PlayerContext);
-  return <View style={player.visible ? styles.bottomMaxPadding : styles.bottomPadding} />
+  return <View style={Object.values(player.currentSong).length != 0 ? styles.bottomMaxPadding : styles.bottomPadding} />
 };
 
 export default BottomPadding;

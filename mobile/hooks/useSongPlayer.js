@@ -10,7 +10,7 @@ import { createQueue } from '../utils/helpers';
 export const useSongPlayer = () => {
   const { playing } = useIsPlaying();
   const { duration, position } = useProgress();
-  const [player, setPlayer] = useState({ visible: false, progress: { position: position, duration: duration }, state: '', currentSong: {} });
+  const [player, setPlayer] = useState({ progress: { position: 1, duration: 1 }, state: '', currentSong: {} });
 
   useEffect(() => {
     if (position && position != 0) {
@@ -21,7 +21,7 @@ export const useSongPlayer = () => {
   useEffect(() => {
     const listener = async () => {
       const currentSong = await TrackPlayer.getActiveTrack();
-      setPlayer((prevState) => ({ ...prevState, visible: true, currentSong: currentSong }));
+      setPlayer((prevState) => ({ ...prevState, currentSong: currentSong }));
     };
     TrackPlayer.addEventListener('playback-track-changed', listener);
   }, []);

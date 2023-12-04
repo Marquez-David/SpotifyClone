@@ -13,12 +13,12 @@ import colors from '../../utils/colors';
 import styles from './styles';
 
 
-const SongPlayer = ({ visible, progress, state, item }) => {
+const SongPlayer = ({ progress, state, item }) => {
   const { openModal } = useContext(ModalContext);
   const { position, duration } = progress;
   return (
     <>
-      {visible &&
+      {Object.values(item).length != 0 &&
         <TouchableOpacity style={[styles.playerView, { backgroundColor: '#700000' }]} onPress={() => openModal()} >
           {<Image style={styles.image} source={{ uri: item.artwork }} />}
           <View style={styles.titleView}>
