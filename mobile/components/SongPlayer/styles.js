@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flexDirection: 'row',
     borderRadius: 7,
-    height: 53,
+    height: 56,
     width: '95%',
     paddingHorizontal: 11,
     justifyContent: 'space-between',
@@ -93,6 +93,34 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  /**
+   * Style for the progress bar view.
+   * Provides the following properties:
+   * - position: 'absolute' (absolute positioning)
+   * - bottom: 0 (positioned at the bottom)
+   * - width: '100%' (width taking up 100% of the available space)
+   * - marginHorizontal: 11 (horizontal margin of 11 units)
+  */
+  progressBarView: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    marginHorizontal: 11,
+  },
+  /**
+   * Style for the progress bar.
+   * Provides the following properties:
+   * - height: 2.5 (height of 2.5 units)
+   * - opacity: 0.7 (opacity of 0.7)
+   * - borderRadius: 7 (border radius of 7 units)
+   * - backgroundColor: 'transparent' (transparent background color)
+  */
+  progressBar: {
+    height: 2.5,
+    opacity: 0.7,
+    borderRadius: 5,
+    backgroundColor: 'transparent',
   }
 });
 

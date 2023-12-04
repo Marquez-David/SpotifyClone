@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import TrackPlayer, { useIsPlaying } from 'react-native-track-player';
+import TrackPlayer, { useIsPlaying, useProgress } from 'react-native-track-player';
 import { getSongQueue } from '../services/requests';
 import { createQueue } from '../utils/helpers';
 
@@ -9,7 +9,14 @@ import { createQueue } from '../utils/helpers';
  */
 export const useSongPlayer = () => {
   const { playing } = useIsPlaying();
-  const [player, setPlayer] = useState({ visible: false, state: '', currentSong: {} });
+  const { duration, position } = useProgress();
+  const [player, setPlayer] = useState({ visible: false, progress: { position: position, duration: duration }, state: '', currentSong: {} });
+
+  useEffect(() => {
+    if (position && position != 0) {
+      setPlayer((prevState) => ({ ...prevState, progress: { position: position, duration: duration } }));
+    }
+  }, [position]);
 
   useEffect(() => {
     const listener = async () => {

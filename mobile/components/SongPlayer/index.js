@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { ProgressBar } from 'react-native-paper';
 
 import { ModalContext } from '../../context/modal';
 
@@ -8,11 +9,13 @@ import HeartButton from '../CustomButtons/HeartButton';
 import ReproduceButton from '../CustomButtons/ReproduceButton';
 
 import { extractArtistNames, shortenText } from '../../utils/helpers';
+import colors from '../../utils/colors';
 import styles from './styles';
 
 
-const SongPlayer = ({ visible, state, item }) => {
+const SongPlayer = ({ visible, progress, state, item }) => {
   const { openModal } = useContext(ModalContext);
+  const { position, duration } = progress;
   return (
     <>
       {visible &&
@@ -27,8 +30,12 @@ const SongPlayer = ({ visible, state, item }) => {
             <HeartButton />
             <ReproduceButton state={state} />
           </View>
+          <View style={styles.progressBarView}>
+            <ProgressBar progress={position / duration} color={colors.spotifyWhite} style={styles.progressBar} />
+          </View>
         </TouchableOpacity>
       }
+
     </>
   );
 };
