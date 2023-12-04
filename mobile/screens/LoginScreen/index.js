@@ -28,6 +28,7 @@ const onLogin = async (navigation) => {
 			console.log("token: " + result.accessToken);
 			const expirationDate = new Date(result.accessTokenExpirationDate).getTime();
 			await AsyncStorage.setItem('spotifyToken', result.accessToken);
+			await AsyncStorage.setItem('refreshToken', result.refreshToken);
 			await AsyncStorage.setItem('tokenExpirationDate', expirationDate.toString());
 			navigation.navigate('HomeStack');
 		}
@@ -35,14 +36,6 @@ const onLogin = async (navigation) => {
 		console.log(JSON.stringify(error));
 	}
 };
-
-/*
-async function refreshLogin(refreshToken) {
-		const result = await refresh(this.spotifyAuthConfig, {
-				refreshToken: refreshToken,
-		});
-		return result;
-}*/
 
 const LoginScreen = () => {
 	const navigation = useNavigation();

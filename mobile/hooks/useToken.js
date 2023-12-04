@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { spotifyAuthConfig } from '../utils/constants';
+import { refresh } from 'react-native-app-auth';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 /**
@@ -10,8 +12,10 @@ export const useToken = () => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
+
     const checkToken = async () => {
       const accessToken = await AsyncStorage.getItem("spotifyToken");
+      const refreshToken = await AsyncStorage.getItem("refreshToken");
       const expirationDate = await AsyncStorage.getItem("tokenExpirationDate");
 
       if (accessToken) {
@@ -20,9 +24,16 @@ export const useToken = () => {
         if (currentTime < parseInt(expirationDate)) {
           setToken(accessToken);
         } else {
-          AsyncStorage.removeItem("spotifyToken");
-          AsyncStorage.removeItem("tokenExpirationDate");
-          setToken(null);
+          try {
+            const result = await refresh(spotifyAuthConfig, { refreshToken: refreshToken });
+            const expirationDate = new Date(result.accessTokenExpirationDate).getTime();
+            await AsyncStorage.setItem('spotifyToken', result.accessToken);
+            await AsyncStorage.setItem('refreshToken', result.refreshToken);
+            await AsyncStorage.setItem('tokenExpirationDate', expirationDate.toString());
+            setToken(result.accessToken);
+          } catch (error) {
+            setToken(null);
+          }
         }
       } else {
         setToken(null);
