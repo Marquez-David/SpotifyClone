@@ -10,6 +10,7 @@ import DownloadButton from '../../CustomButtons/DownloadButton';
 import AddUserButton from '../../CustomButtons/AddUserButton';
 import OptionsButton from '../../CustomButtons/OptionsButton';
 import PlayQueueButton from '../../CustomButtons/PlayQueueButton';
+import ShareButton from '../../CustomButtons/ShareButton';
 import ConditionalImage from '../../ConditionalImage';
 
 import styles from './styles';
@@ -30,6 +31,7 @@ const Playlistplaylist = ({ playlist }) => {
         <View style={styles.leftButtons}>
           <DownloadButton />
           <AddUserButton />
+          <ShareButton item={playlist} />
           <OptionsButton />
         </View>
         <PlayQueueButton item={playlist} />
