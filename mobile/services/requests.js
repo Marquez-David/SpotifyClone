@@ -43,7 +43,7 @@ export const getRecentlyPlayed = async () => {
 	const accessToken = await AsyncStorage.getItem("spotifyToken");
 	const response = await axios({
 		method: "GET",
-		url: `https://api.spotify.com/v1/me/player/recently-played?limit=8`,
+		url: `https://api.spotify.com/v1/me/player/recently-played?limit=6`,
 		headers: { Authorization: `Bearer ${accessToken}` }
 	});
 	return response.data.items;
