@@ -479,6 +479,51 @@ export const getSongQueue = async (type, itemId) => {
 	return response.data.tracks.items;
 };
 
+/**
+ * Checks if a track is saved in the user's Spotify library.
+ * @param {string} trackId - The ID of the track to check if it is saved.
+ * @returns {boolean} - True if the track is saved in the user's library, false otherwise.
+ */
+export const isTrackSaved = async (trackId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "GET",
+		url: `https://api.spotify.com/v1/me/tracks/contains?ids=${trackId}`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data[0];
+};
+
+/**
+ * Saves a track to the user's Spotify library.
+ * @param {string} trackId - The ID of the track to be saved.
+ * @returns {object} - The response data from the Spotify API.
+ */
+export const saveTrack = async (trackId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "PUT",
+		url: `https://api.spotify.com/v1/me/tracks?ids=${trackId}`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data;
+};
+
+/**
+ * Unsave a track from the user's saved tracks.
+ * @param {string} trackId - The ID of the track to be unsaved.
+ * @returns {Promise<Object>} - The response data from the Spotify API.
+ */
+export const unsaveTrack = async (trackId) => {
+	const accessToken = await AsyncStorage.getItem("spotifyToken");
+	const response = await axios({
+		method: "DELETE",
+		url: `https://api.spotify.com/v1/me/tracks?ids=${trackId}`,
+		headers: { Authorization: `Bearer ${accessToken}` }
+	});
+	return response.data;
+};
+
 /*
 |================================================================================================================|
 |========================================== USER CONTENT ========================================================|

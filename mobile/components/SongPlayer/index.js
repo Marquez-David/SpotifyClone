@@ -3,18 +3,25 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 
 import { ModalContext } from '../../context/modal';
+import { useTrack } from '../../hooks/useTrack';
 
 import DeviceButton from '../CustomButtons/DeviceButton';
 import HeartButton from '../CustomButtons/HeartButton';
 import ReproduceButton from '../CustomButtons/ReproduceButton';
 
+import { saveTrack, unsaveTrack } from '../../services/requests';
 import { extractArtistNames, shortenText } from '../../utils/helpers';
 import colors from '../../utils/colors';
 import styles from './styles';
 
+const handleSongSave = async (isSaved, id, refetch) => {
+  isSaved ? await unsaveTrack(id) : await saveTrack(id);
+  refetch();
+};
 
 const SongPlayer = ({ progress, state, item }) => {
   const { openModal } = useContext(ModalContext);
+  const { isSaved, refetch } = useTrack().isSaved(item.id);
   const { position, duration } = progress;
   return (
     <>
@@ -27,7 +34,7 @@ const SongPlayer = ({ progress, state, item }) => {
           </View>
           <View style={styles.buttonsView}>
             <DeviceButton />
-            <HeartButton />
+            <HeartButton isSaved={isSaved} onPress={() => handleSongSave(isSaved, item.id, refetch)} />
             <ReproduceButton state={state} />
           </View>
           <View style={styles.progressBarView}>

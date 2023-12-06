@@ -40,14 +40,14 @@ export const useSongPlayer = () => {
 
   //Plays a single song.
   const song = async (item) => {
-    const song = [{ title: item.name, artwork: item.image, url: item.preview_url, artist: item.artists }];
+    const song = [{ id: item.id, title: item.name, artwork: item.image, url: item.preview_url, artist: item.artists }];
     await TrackPlayer.setQueue(song);
     await TrackPlayer.play();
   };
 
   //Plays a single episode.
   const episode = async (item) => {
-    const song = [{ title: item.name, artwork: item.image, url: item.audio_preview_url, artist: item.publisher }];
+    const song = [{ id: item.id, title: item.name, artwork: item.image, url: item.audio_preview_url, artist: item.publisher }];
     await TrackPlayer.setQueue(song);
     await TrackPlayer.play();
   };

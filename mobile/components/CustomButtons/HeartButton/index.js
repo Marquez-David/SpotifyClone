@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native';
 
-import { ModalContext } from '../../../context/modal';
+import { useButton } from '../../../hooks/useButton';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import colors from '../../../utils/colors';
 
-const HeartButton = () => {
-  const { openModal } = useContext(ModalContext);
+const HeartButton = ({ isSaved, onPress }) => {
+  const { type } = useButton().type(isSaved, 'heart', 'heart-o');
   return (
-    <TouchableOpacity onPress={() => openModal()}>
-      <FontAwesome name={'heart-o'} size={21} color={colors.spotifyWhite} />
+    <TouchableOpacity onPress={onPress}>
+      <FontAwesome name={type} size={21} color={colors.spotifyWhite} />
     </TouchableOpacity>
   )
 };
