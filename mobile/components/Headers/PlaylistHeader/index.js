@@ -15,7 +15,7 @@ import ConditionalImage from '../../ConditionalImage';
 
 import styles from './styles';
 
-const Playlistplaylist = ({ playlist }) => {
+const PlaylistHeader = ({ playlist }) => {
   const { data } = useRequest(playlist.owner.href);
   const { openModal } = useContext(ModalContext);
   return (
@@ -40,4 +40,4 @@ const Playlistplaylist = ({ playlist }) => {
   )
 };
 
-export default Playlistplaylist;
+export default PlaylistHeader;
