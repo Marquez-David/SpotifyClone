@@ -7,10 +7,8 @@ const styles = StyleSheet.create({
    * Provides the following properties:
    * - position: 'absolute' (absolute positioning)
    * - flexDirection: 'row' (elements arranged in a row)
-   * - borderRadius: 7 (border radius of 7 units)
    * - height: 53 (height of 53 units)
    * - width: '95%' (width taking up 95% of the available space)
-   * - paddingHorizontal: 11 (horizontal padding of 11 units)
    * - justifyContent: 'space-between' (space between elements)
    * - bottom: 45 (positioned 45 units from the bottom)
    * - alignSelf: 'center' (centered alignment within the parent container)
@@ -18,23 +16,31 @@ const styles = StyleSheet.create({
   playerView: {
     position: 'absolute',
     flexDirection: 'row',
-    borderRadius: 7,
     height: 56,
     width: '95%',
-    paddingHorizontal: 11,
     justifyContent: 'space-between',
     bottom: 45,
     alignSelf: 'center',
   },
+  imageCover: {
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 0,
+    height: '100%',
+    width: '100%',
+    borderRadius: 7,
+  },
   /**
    * Style for the player image.
    * Provides the following properties:
+   * - marginLeft: 10 (left margin of 10 units)
    * - alignSelf: 'center' (center alignment within the parent container)
    * - width: 40 (width of 40 units)
    * - height: 40 (height of 40 units)
    * - borderRadius: 5 (border radius of 5 units)
   */
   image: {
+    marginLeft: 10,
     alignSelf: 'center',
     width: 40,
     height: 40,
@@ -87,12 +93,14 @@ const styles = StyleSheet.create({
    * - justifyContent: 'space-between' (space between elements)
    * - flexDirection: 'row' (elements arranged in a row)
    * - alignItems: 'center' (center alignment of elements horizontally)
+   * - marginHorizontal: 10 (horizontal margin of 10 units)
   */
   buttonsView: {
     width: '30%',
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
+    marginHorizontal: 10,
   },
   /**
    * Style for the progress bar view.
@@ -100,13 +108,11 @@ const styles = StyleSheet.create({
    * - position: 'absolute' (absolute positioning)
    * - bottom: 0 (positioned at the bottom)
    * - width: '100%' (width taking up 100% of the available space)
-   * - marginHorizontal: 11 (horizontal margin of 11 units)
   */
   progressBarView: {
     position: 'absolute',
-    bottom: 0,
+    bottom: 1,
     width: '100%',
-    marginHorizontal: 11,
   },
   /**
    * Style for the progress bar.
@@ -114,12 +120,14 @@ const styles = StyleSheet.create({
    * - height: 2.5 (height of 2.5 units)
    * - opacity: 0.7 (opacity of 0.7)
    * - borderRadius: 7 (border radius of 7 units)
+   * - marginHorizontal: 10 (horizontal margin of 10 units)
    * - backgroundColor: 'transparent' (transparent background color)
   */
   progressBar: {
     height: 2.5,
     opacity: 0.7,
     borderRadius: 5,
+    marginHorizontal: 10,
     backgroundColor: 'transparent',
   }
 });

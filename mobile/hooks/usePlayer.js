@@ -7,7 +7,7 @@ import { createQueue } from '../utils/helpers';
  * Custom hook that manages the audio playback functionality for the music player.
  * @returns {Object} - An object containing player state and control functions (play, pause, song, shuffle).
  */
-export const useSongPlayer = () => {
+export const usePlayer = () => {
   const { playing } = useIsPlaying();
   const { duration, position } = useProgress();
   const [player, setPlayer] = useState({ progress: { position: 1, duration: 1 }, state: '', currentSong: {} });
