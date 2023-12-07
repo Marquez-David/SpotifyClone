@@ -48,10 +48,12 @@ const styles = StyleSheet.create({
   /**
    * Style for description text.
    * Represents the text style for the song description with the following properties:
+   * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
    * - marginLeft: 5 (left margin spacing)
    * - fontSize: 12.5 (font size in points)
   */
   descriptionText: {
+    color: colors.spotifyGray,
     marginLeft: 5,
     fontSize: 12.5,
   },

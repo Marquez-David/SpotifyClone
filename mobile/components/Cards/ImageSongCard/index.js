@@ -20,7 +20,7 @@ const ImageSongCard = ({ item }) => {
         <Text style={[styles.titleText, { color: textColor }]}>{shortenText(item.name, 37)}</Text>
         <View style={styles.descriptionView}>
           {item.explicit && <MaterialIcons name='explicit' size={15} color={colors.spotifyGray} />}
-          <Text style={[styles.descriptionText, { color: textColor }]}>{extractArtistNames(item.artists)}</Text>
+          <Text style={styles.descriptionText}>{extractArtistNames(item.artists)}</Text>
         </View>
       </View>
       <View style={styles.dotsButton}>
