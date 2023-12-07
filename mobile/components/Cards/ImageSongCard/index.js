@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
-import styles from './styles';
-import colors from '../../../utils/colors';
-import { extractArtistNames, shortenText } from '../../../utils/helpers';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
 import OptionsButton from '../../CustomButtons/OptionsButton';
 import { PlayerContext } from '../../../context/player';
 
+import { extractArtistNames, shortenText } from '../../../utils/helpers';
+import { contentType } from '../../../utils/strings';
+import colors from '../../../utils/colors';
+import styles from './styles';
+
 const ImageSongCard = ({ item }) => {
   const { player, song } = useContext(PlayerContext);
-  //Determines the color of the text based on whether the current song's ID matches the ID of the item being rendered.
-  const textColor = player.currentSong.id === item.id ? colors.spotifyGreen : colors.spotifyWhite;
+  //Determines the color of the text based on whether the current song's ID matches the ID of the item being rendered and the song position.
+  const textColor = player.currentSong.id === item.id && item.pos === player.currentSong.pos ? colors.spotifyGreen : colors.spotifyWhite;
   return (
     <TouchableOpacity style={styles.songTouchableOpacity} onPress={() => song(item)}>
       <Image style={styles.image} source={{ uri: item.image }} />

@@ -145,8 +145,9 @@ export const handleScroll = (fetchNextPage) => {
  * @returns {Array} - An array of track objects with properties like title, artwork, url, and artist.
  */
 export const createQueue = (response, item, isShuffle) => {
-  const mappedSongs = response.map((song) => (
+  const mappedSongs = response.map((song, index) => (
     {
+      pos: index,
       id: song.id ?? song.track.id,
       title: song.name ?? song.track.name,
       artwork: song.track?.album.images[0].url ?? item.images[0].url,

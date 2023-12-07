@@ -31,7 +31,7 @@ const PlaylistScreen = () => {
         </View> :
         <View style={styles.songsView}>
           {playlist.map((item, index) => {
-            const playlist = { ...item.track, image: item.track.album.images[0].url };
+            const playlist = { ...item.track, pos: index, image: item.track.album.images[0].url };
             return <ImageSongCard key={index} item={playlist} />
           })}
         </View>
