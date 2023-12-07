@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
    * - borderRadius: 5 (border radius of 5 units)
    * - height: 50 (height of 50 units)
    * - alignItems: 'center' (center alignment of elements horizontally)
-   * - width: Dimensions.get('window').width / 2.1 (width based on window width)
+   * - width: Dimensions.get('window').width / 2.15 (width based on window width)
    * - flexDirection: 'row' (elements arranged in a row)
    * - backgroundColor: colors.spotifySuperDarkGray (background color using the Spotify super dark gray color)
   */
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 50,
     alignItems: 'center',
-    width: Dimensions.get('window').width / 2.1,
+    width: Dimensions.get('window').width / 2.15,
     flexDirection: 'row',
     backgroundColor: colors.spotifySuperDarkGray
   },

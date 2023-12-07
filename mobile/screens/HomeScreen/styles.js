@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
    * App background style.
    * Represents the background style for the entire app with the following properties:
    * - flex: 1 (flexible size to fit available space)
-   * - paddingLeft: 10 (left padding spacing)
+   * - paddingHorizontal: 10 (horizontal padding spacing)
    * - backgroundColor: colors.appBackground (background color using the 'appBackground' color from the 'colors' object)
   */
   background: {
     flex: 1,
-    paddingLeft: 10,
+    paddingHorizontal: 10,
     backgroundColor: colors.appBackground,
   },
   /**
