@@ -27,12 +27,10 @@ const styles = StyleSheet.create({
   /**
    * Style for title text.
    * Represents the text style for the title of a song with the following properties:
-   * - color: colors.spotifyWhite (text color using the 'spotifyWhite' color from the 'colors' object)
    * - marginLeft: 10 (left margin spacing)
    * - fontSize: 14 (font size in points)
   */
   titleText: {
-    color: colors.spotifyWhite,
     marginLeft: 10,
     fontSize: 14,
   },
@@ -50,11 +48,11 @@ const styles = StyleSheet.create({
   /**
    * Style for description text.
    * Represents the text style for the song description with the following properties:
-   * - color: colors.spotifyGray (text color using the 'spotifyGray' color from the 'colors' object)
+   * - marginLeft: 5 (left margin spacing)
    * - fontSize: 12.5 (font size in points)
   */
   descriptionText: {
-    color: colors.spotifyGray,
+    marginLeft: 5,
     fontSize: 12.5,
   },
   /**
