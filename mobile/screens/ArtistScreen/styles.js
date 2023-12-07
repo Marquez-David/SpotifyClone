@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
    * - textAlign: 'left' (text alignment to the left)
    * - fontFamily: 'GothamBold' (font family 'GothamBold')
    * - fontSize: 16 (font size of 16 units)
-   * - marginTop: 10 (top margin of 10 units)
+   * - marginVertical: 10 (vertical margin of 10 units)
   */
   popularSongsTitle: {
     color: colors.spotifyWhite,
     textAlign: 'left',
     fontFamily: 'GothamBold',
     fontSize: 16,
-    marginTop: 10,
+    marginVertical: 10,
   },
   /**
    * Style for the related artist view.

@@ -5,13 +5,13 @@ const styles = StyleSheet.create({
   /**
    * Touchable Item style.
    * Represents the style for a touchable item with the following properties:
-   * - marginBottom: 15 (bottom margin of 15 units)
+   * - marginVertical: 5 (vertical margin of 5 units)
    * - borderRadius: 10 (border radius of 10 units)
    * - alignItems: 'center' (centered horizontal alignment)
    * - flexDirection: 'row' (horizontal layout with children)
   */
   touchableItem: {
-    marginBottom: 15,
+    marginVertical: 5,
     borderRadius: 10,
     alignItems: 'center',
     flexDirection: 'row',

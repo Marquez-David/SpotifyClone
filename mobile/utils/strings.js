@@ -37,7 +37,7 @@ export const podcastStrings = {
 export const artistStrings = {
   followers: " followers",
   randomMode: "SHUFFLE PLAY",
-  popularSongs: "Popular songs",
+  popularSongs: "Latest albums",
   relatedArtists: "Related artists",
 };
 

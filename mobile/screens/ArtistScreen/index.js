@@ -2,39 +2,39 @@ import React from 'react';
 import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
-import { artistStrings } from '../../utils/strings';
-import styles from './styles';
-import colors from '../../utils/colors';
-
 import { useArtist } from '../../hooks/useArtist';
 
 import ArtistsCarousel from '../../components/HorizontalCarousels/ArtistsCarousel';
-
 import BottomPadding from '../../components/BottomPadding';
-import ImageSongCard from '../../components/Cards/ImageSongCard';
+import ContentCard from '../../components/Cards/ContentCard';
 import FallbackDataCard from '../../components/Cards/ErrorCard';
 import ArtistHeader from '../../components/Headers/ArtistHeader';
+
+import { artistStrings } from '../../utils/strings';
+import { getYear } from '../../utils/helpers';
+import styles from './styles';
+import colors from '../../utils/colors';
 
 const ArtistScreen = () => {
   const param = useRoute().params.data;
   const { isLoadingRelated, isErrorRelated, related, refetchRelated } = useArtist().related(param.id);
-  const { isLoadingTopTracks, isErrorTopTracks, topTracks, refetchTopTracks } = useArtist().topTracks(param.id);
+  const { isLoadingAlbum, isErrorAlbum, albums } = useArtist().albums(param.id);
   return (
     <ScrollView style={styles.background}>
       <ArtistHeader artist={param} />
       <View style={styles.contentView}>
-        {isLoadingTopTracks || isLoadingRelated || isErrorTopTracks || isErrorRelated ?
+        {isLoadingAlbum || isLoadingRelated || isErrorAlbum || isErrorRelated ?
           <View style={styles.fallbackView}>
-            {(isLoadingTopTracks || isLoadingRelated) && <ActivityIndicator color={colors.spotifyGreen} />}
-            {(isErrorTopTracks || isErrorRelated) && (
+            {(isLoadingAlbum || isLoadingRelated) && <ActivityIndicator color={colors.spotifyGreen} />}
+            {(isErrorAlbum || isErrorRelated) && (
               <FallbackDataCard onPressAction={refetchTopTracks && refetchRelated} />
             )}
           </View> :
           <View style={styles.popularSongsView}>
             <Text style={styles.popularSongsTitle}>{artistStrings.popularSongs}</Text>
-            {topTracks.slice(0, 5).map((item, index) => {
-              const topTrack = { ...item.album, pos: index, image: item.album.images[0].url, preview_url: item.preview_url }
-              return <ImageSongCard key={item.id} item={topTrack} />
+            {albums.slice(0, 3).map((item) => {
+              const album = { ...item, label: getYear(item.release_date) }
+              return <ContentCard key={item.id} item={album} />
             })}
             <Text style={styles.relatedArtistTitle}>{artistStrings.relatedArtists}</Text>
             <ArtistsCarousel artists={related.slice(0, 5)} />

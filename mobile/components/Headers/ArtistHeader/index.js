@@ -21,7 +21,7 @@ const handleFollowArtist = async (isSaved, artistsId, refetch) => {
 
 const ArtistHeader = ({ artist }) => {
   const { isSaved, refetch } = useArtist().isSaved(artist.id);
-  const { isLoading, isError, data } = useArtist().albums(artist.id)
+  const { isLoadingAlbum, isErrorAlbum, albums } = useArtist().albums(artist.id)
   const navigation = useNavigation();
   return (
     <>
@@ -38,7 +38,7 @@ const ArtistHeader = ({ artist }) => {
           <FollowButton isSaved={isSaved} onPress={() => handleFollowArtist(isSaved, artist.id, refetch)} />
           <OptionsButton />
         </View>
-        {!(isLoading || isError) && <PlayQueueButton item={getRandomItem(data)} />}
+        {!(isLoadingAlbum || isErrorAlbum) && <PlayQueueButton item={getRandomItem(albums)} />}
       </View>
     </>
   )
