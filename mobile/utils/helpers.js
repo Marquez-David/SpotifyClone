@@ -147,6 +147,7 @@ export const handleScroll = (fetchNextPage) => {
 export const createQueue = (response, item, isShuffle) => {
   const mappedSongs = response.map((song) => (
     {
+      id: song.id ?? song.track.id,
       title: song.name ?? song.track.name,
       artwork: song.track?.album.images[0].url ?? item.images[0].url,
       url: song.preview_url ?? song.track.preview_url,
