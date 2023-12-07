@@ -7,6 +7,7 @@ import { useTrack } from '../../hooks/useTrack';
 
 import DeviceButton from '../CustomButtons/DeviceButton';
 import HeartButton from '../CustomButtons/HeartButton';
+import MicrophoneButton from '../CustomButtons/MicrophoneButton';
 import ReproduceButton from '../CustomButtons/ReproduceButton';
 
 import { saveTrack, unsaveTrack } from '../../services/requests';
@@ -21,7 +22,7 @@ const handleSongSave = async (isSaved, id, refetch) => {
 
 const Player = ({ progress, state, item }) => {
   const { openModal } = useContext(ModalContext);
-  const { isSaved, refetch } = useTrack().isSaved(item.id);
+  //const { isSaved, refetch } = useTrack().isSaved(item.id);
   const { position, duration } = progress;
   return (
     Object.values(item).length !== 0 &&
@@ -34,7 +35,8 @@ const Player = ({ progress, state, item }) => {
       </View>
       <View style={styles.buttonsView}>
         <DeviceButton />
-        <HeartButton isSaved={isSaved} onPress={() => handleSongSave(isSaved, item.id, refetch)} />
+        <MicrophoneButton />
+        {/*<HeartButton isSaved={isSaved} onPress={() => handleSongSave(isSaved, item.id, refetch)} />*/}
         <ReproduceButton state={state} />
       </View>
       <View style={styles.progressBarView}>

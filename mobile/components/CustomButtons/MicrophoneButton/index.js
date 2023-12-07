@@ -3,16 +3,16 @@ import { TouchableOpacity } from 'react-native';
 
 import { ModalContext } from '../../../context/modal';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import colors from '../../../utils/colors';
 
-const DeviceButton = () => {
+const MicrophoneButton = () => {
   const { openModal } = useContext(ModalContext);
   return (
     <TouchableOpacity onPress={() => openModal()}>
-      <Ionicons name={'headset-sharp'} size={24} color={colors.spotifyWhite} />
+      <Fontisto name={'mic'} size={22} color={colors.spotifyWhite} />
     </TouchableOpacity>
   )
 };
 
-export default DeviceButton; 
+export default MicrophoneButton; 

@@ -9,7 +9,7 @@ const ReproduceButton = ({ state }) => {
   const { play, pause } = useContext(PlayerContext);
   return (
     <TouchableOpacity onPress={() => state === 'pause' ? pause() : play()}>
-      <Ionicons name={state} size={22} color={colors.spotifyWhite} />
+      <Ionicons name={state} size={24} color={colors.spotifyWhite} />
     </TouchableOpacity>
   )
 };
