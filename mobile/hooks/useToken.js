@@ -32,11 +32,11 @@ export const useToken = () => {
             await AsyncStorage.setItem('tokenExpirationDate', expirationDate.toString());
             setToken(result.accessToken);
           } catch (error) {
-            setToken(null);
+            setToken('');
           }
         }
       } else {
-        setToken(null);
+        setToken('');
       }
     };
     checkToken();
