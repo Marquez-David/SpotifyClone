@@ -18,8 +18,6 @@ export default function App() {
   !state && TrackPlayer.setupPlayer();
   const queryClient = new QueryClient();
 
-  console.log(token)
-
   return (
     <ModalProvider>
       <QueryClientProvider client={queryClient}>
