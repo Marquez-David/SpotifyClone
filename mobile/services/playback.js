@@ -1,6 +1,10 @@
 import TrackPlayer from 'react-native-track-player';
 
-module.exports = async function () {
+/**
+ * Sets up event listeners for remote control commands in a music playback application.
+ * @returns {Promise<void>} - A promise that resolves when the event listeners are set up.
+ */
+export const PlaybackService = async () => {
   try {
     // Play when the remote play button is pressed
     TrackPlayer.addEventListener('remote-play', () => {
