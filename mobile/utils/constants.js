@@ -1,9 +1,11 @@
+import { CLIENT_SECRET } from '@env'
+
 /**
  * Configuration object for Spotify authentication.
  */
 export const spotifyAuthConfig = {
   clientId: '7daaab95ed8a4075b87484c630c8d509',
-  clientSecret: '06b3901cbe974827af18f980fccc52f2',
+  clientSecret: CLIENT_SECRET,
   redirectUrl: 'com.mobile:/oauthredirect',
   scopes: [
     'playlist-read-private',
