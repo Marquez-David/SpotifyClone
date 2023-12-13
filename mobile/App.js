@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import TrackPlayer, { usePlaybackState } from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
+import { usePlayer } from './hooks/usePlayer';
 import { useToken } from './hooks/useToken';
 import { ModalProvider } from './context/modal';
 import { PlayerProvider } from './context/player';
@@ -12,18 +12,18 @@ import { BottomTabNavigation } from './navigation/BottomTabNavigation';
 import SplashScreen from './screens/SplashScreen';
 
 export default function App() {
-  const { state } = usePlaybackState();
+  const { setupPlayer } = usePlayer();
   const { token } = useToken();
-
-  !state && TrackPlayer.setupPlayer();
   const queryClient = new QueryClient();
+
+  useEffect(() => { setupPlayer(); }, []);
 
   return (
     <ModalProvider>
       <QueryClientProvider client={queryClient}>
         <NavigationContainer>
           <PlayerProvider>
-            {token ? token.length > 0 ? <BottomTabNavigation /> : <LoginStackNavigation /> : <SplashScreen />}
+            {token === null ? <SplashScreen /> : token.length > 0 ? <BottomTabNavigation /> : <LoginStackNavigation />}
           </PlayerProvider>
         </NavigationContainer>
       </QueryClientProvider>

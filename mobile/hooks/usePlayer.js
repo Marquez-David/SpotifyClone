@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import TrackPlayer, { useIsPlaying, useProgress } from 'react-native-track-player';
+import TrackPlayer, { useIsPlaying, useProgress, usePlaybackState } from 'react-native-track-player';
+
 import { getSongQueue } from '../services/requests';
 import { createQueue } from '../utils/helpers';
 
@@ -10,6 +11,7 @@ import { createQueue } from '../utils/helpers';
 export const usePlayer = () => {
   const { playing } = useIsPlaying();
   const { duration, position } = useProgress();
+  const { state } = usePlaybackState();
   const [player, setPlayer] = useState({ progress: { position: 1, duration: 1 }, state: '', currentSong: {} });
 
   useEffect(() => {
@@ -28,7 +30,14 @@ export const usePlayer = () => {
 
   useEffect(() => {
     setPlayer((prevState) => ({ ...prevState, state: playing ? 'pause' : 'play' }));
-  }, [playing]);
+  }, [state]);
+
+  //Setup the player when its not initialized
+  const setupPlayer = () => {
+    if (!state) {
+      TrackPlayer.setupPlayer();
+    }
+  };
 
   //Plays a album/playlist
   const playQueue = async (shuffle, item) => {
@@ -62,5 +71,5 @@ export const usePlayer = () => {
     await TrackPlayer.pause();
   };
 
-  return { player, play, pause, song, episode, playQueue };
+  return { player, play, pause, song, episode, playQueue, setupPlayer };
 };
