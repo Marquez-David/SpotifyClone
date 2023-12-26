@@ -56,8 +56,8 @@ export const usePlayer = () => {
 
   //Plays a single episode.
   const episode = async (item) => {
-    const song = [{ id: item.id, title: item.name, artwork: item.image, url: item.audio_preview_url, artist: item.publisher }];
-    await TrackPlayer.setQueue(song);
+    const episode = [{ id: item.id, title: item.name, artwork: item.image, url: item.audio_preview_url, artist: item.publisher }];
+    await TrackPlayer.setQueue(episode);
     await TrackPlayer.play();
   };
 
