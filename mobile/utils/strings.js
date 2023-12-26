@@ -41,6 +41,12 @@ export const artistStrings = {
   relatedArtists: "Related artists",
 };
 
+export const playlistStrings = {
+  recommendedSongs: "Recommended songs",
+  playlistInfluence: "Suggested from your list",
+  nameInfluence: "Based in the name of this list"
+}
+
 /************************************
 ********* COMPONENT STRINGS *********
 *************************************/
@@ -69,14 +75,12 @@ export const categorySelectorStrings = {
   artist: ["Artists", 'artist'],
 };
 
-export const errorCardStrings = {
-  errorTitle: "Something went wrong.",
-  errorDescription: "An error occurred while loading the data. \n Please try again later.",
+export const fallbackStrings = {
+  error: "An error occurred while loading the data.",
+  emptyPlaylist: "Let's get started creating your playlist",
 
-  emptyPlaylistTitle: "This playlist is empty.",
-  emptyPlaylistDescription: "You can add your favorite songs to this playlist and start enjoying your music.",
-
-  tryAgain: "TRY AGAIN",
+  tryAgain: "Try again",
+  add: "Add to your playlist"
 };
 
 export const followButtonStrings = {
