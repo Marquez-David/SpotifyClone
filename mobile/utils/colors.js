@@ -7,6 +7,7 @@ const colors = {
   spotifyWhite: '#FFFFFF',
   spotifyBlack: '#191414',
   spotifyGreen: '#1DB954',
+  spotifyDarkGreen: '#1A823D',
   spotifyGray: '#b3b3b3',
   spotifyDarkGray: '#535353',
   spotifySuperDarkGray: '#333333'

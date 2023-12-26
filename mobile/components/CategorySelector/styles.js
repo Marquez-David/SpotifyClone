@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
 		borderRadius: 50,
 		paddingHorizontal: 17,
 		paddingVertical: 7,
+		borderWidth: 1,
 	},
 	/**
 	 * Category Text style.
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
 	*/
 	categoryText: {
 		fontSize: 12,
+		color: colors.spotifyWhite,
 		fontFamily: 'GothamMedium',
 	}
 });

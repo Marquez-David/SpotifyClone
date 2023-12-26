@@ -17,13 +17,13 @@ const CategorySelector = ({ categories, selected, setSelected }) => {
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item: [categoryName, categoryId] }) => {
-          const backgroundColor = selected === categoryId ? colors.spotifyGreen : colors.spotifySuperDarkGray;
-          const textColor = selected === categoryId ? colors.spotifySuperDarkGray : colors.spotifyWhite;
+          const backgroundColor = selected === categoryId ? colors.spotifyDarkGreen : colors.appBackground;
+          const borderColor = selected === categoryId ? colors.spotifyGreen : colors.spotifyWhite;
           return (
             <TouchableOpacity
-              style={[styles.categoryView, { backgroundColor: backgroundColor }]}
+              style={[styles.categoryView, { backgroundColor: backgroundColor, borderColor: borderColor }]}
               onPress={() => handleSelect(categoryId)}>
-              <Text style={[styles.categoryText, { color: textColor }]}>{categoryName}</Text>
+              <Text style={styles.categoryText}>{categoryName}</Text>
             </TouchableOpacity>
           )
         }}
