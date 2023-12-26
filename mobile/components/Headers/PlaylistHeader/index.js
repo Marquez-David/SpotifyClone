@@ -34,7 +34,7 @@ const PlaylistHeader = ({ playlist }) => {
           <ShareButton item={playlist} />
           <OptionsButton />
         </View>
-        <PlayQueueButton item={playlist} />
+        {playlist.tracks.total > 0 && <PlayQueueButton item={playlist} />}
       </View>
     </View>
   )
