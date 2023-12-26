@@ -3,9 +3,10 @@ import { View, Text, Image, ActivityIndicator, TouchableOpacity } from 'react-na
 
 import colors from '../../../utils/colors';
 import styles from './styles';
+import { fallbackStrings } from '../../../utils/strings';
 
 import { useCategories } from '../../../hooks/useCategories';
-import FallbackDataCard from '../../Cards/ErrorCard';
+import FallbackCard from '../../Cards/FallbackCard';
 import { ModalContext } from '../../../context/modal';
 
 const ExploreGrid = () => {
@@ -16,7 +17,7 @@ const ExploreGrid = () => {
       {isLoading || isError ?
         <View style={styles.fallbackView}>
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && <FallbackDataCard onPressAction={refetch} />}
+          {isError && <FallbackCard text={fallbackStrings.error} buttonText={fallbackStrings.tryAgain} onPress={refetch} />}
         </View> :
         <View style={styles.cardContainer}>
           {categories?.map((item) => (

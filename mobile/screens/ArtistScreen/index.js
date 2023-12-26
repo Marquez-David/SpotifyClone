@@ -7,10 +7,10 @@ import { useArtist } from '../../hooks/useArtist';
 import ArtistsCarousel from '../../components/HorizontalCarousels/ArtistsCarousel';
 import BottomPadding from '../../components/BottomPadding';
 import ContentCard from '../../components/Cards/ContentCard';
-import FallbackDataCard from '../../components/Cards/ErrorCard';
+import FallbackCard from '../../components/Cards/FallbackCard';
 import ArtistHeader from '../../components/Headers/ArtistHeader';
 
-import { artistStrings } from '../../utils/strings';
+import { artistStrings, fallbackStrings } from '../../utils/strings';
 import { getYear } from '../../utils/helpers';
 import styles from './styles';
 import colors from '../../utils/colors';
@@ -18,7 +18,7 @@ import colors from '../../utils/colors';
 const ArtistScreen = () => {
   const param = useRoute().params.data;
   const { isLoadingRelated, isErrorRelated, related, refetchRelated } = useArtist().related(param.id);
-  const { isLoadingAlbum, isErrorAlbum, albums } = useArtist().albums(param.id);
+  const { isLoadingAlbum, isErrorAlbum, albums, refetchAlbums } = useArtist().albums(param.id);
   return (
     <ScrollView style={styles.background}>
       <ArtistHeader artist={param} />
@@ -27,7 +27,7 @@ const ArtistScreen = () => {
           <View style={styles.fallbackView}>
             {(isLoadingAlbum || isLoadingRelated) && <ActivityIndicator color={colors.spotifyGreen} />}
             {(isErrorAlbum || isErrorRelated) && (
-              <FallbackDataCard onPressAction={refetchTopTracks && refetchRelated} />
+              <FallbackCard text={fallbackStrings.error} buttonText={fallbackStrings.tryAgain} onPress={refetchRelated && refetchAlbums} />
             )}
           </View> :
           <View style={styles.popularSongsView}>

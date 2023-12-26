@@ -3,13 +3,14 @@ import { ScrollView, View, ActivityIndicator } from 'react-native';
 import { useRoute } from "@react-navigation/native";
 
 import AlbumHeader from '../../components/Headers/AlbumHeader';
-import FallbackDataCard from '../../components/Cards/ErrorCard';
+import FallbackCard from '../../components/Cards/FallbackCard';
 import StandardSongCard from '../../components/Cards/StandardSongCard';
 import BottomPadding from '../../components/BottomPadding';
 import { useRequest } from '../../hooks/useRequest';
 
 import styles from './styles';
 import colors from '../../utils/colors';
+import { fallbackStrings } from '../../utils/strings';
 
 const AlbumScreen = () => {
   const param = useRoute().params.data;
@@ -21,7 +22,7 @@ const AlbumScreen = () => {
       {isLoading || isError ?
         <View style={styles.fallbackView}>
           {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-          {isError && !isLoading && <FallbackDataCard onPressAction={refetch} />}
+          {isError && !isLoading && <FallbackCard text={fallbackStrings.error} buttonText={fallbackStrings.tryAgain} onPress={refetch} />}
         </View> :
         <View style={styles.songsView}>
           {data.tracks.items.map((item) => {

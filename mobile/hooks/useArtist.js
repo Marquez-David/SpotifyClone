@@ -15,8 +15,8 @@ export const useArtist = () => {
 
   //Fetches albums by a specific artist.
   const albums = (id) => {
-    const { isLoading, isError, data } = useQuery({ queryKey: ['artistAlbums', id], queryFn: () => getArtistAlbums(id) });
-    return { isLoadingAlbum: isLoading, isErrorAlbum: isError, albums: data }
+    const { isLoading, isError, data, refetch } = useQuery({ queryKey: ['artistAlbums', id], queryFn: () => getArtistAlbums(id) });
+    return { isLoadingAlbum: isLoading, isErrorAlbum: isError, albums: data, refetchAlbums: refetch }
   };
 
   //Fetches related artists for a specific artist.

@@ -6,10 +6,10 @@ import { usePodcast } from '../../hooks/usePodcast';
 import PodcastHeader from '../../components/Headers/PodcastHeader';
 import BottomPadding from '../../components/BottomPadding';
 import FilterButton from '../../components/CustomButtons/FilterButton';
-import FallbackDataCard from '../../components/Cards/ErrorCard';
+import FallbackCard from '../../components/Cards/FallbackCard';
 import EpisodeCard from '../../components/Cards/EpisodeCard';
 
-import { podcastStrings } from '../../utils/strings';
+import { podcastStrings, fallbackStrings } from '../../utils/strings';
 import { handleScroll } from '../../utils/helpers';
 import colors from '../../utils/colors';
 import styles from './styles';
@@ -30,7 +30,7 @@ const PodcastScreen = () => {
         {isLoading || isError ?
           <View style={styles.fallbackView}>
             {isLoading && <ActivityIndicator color={colors.spotifyGreen} />}
-            {isError && <FallbackDataCard onPressAction={refetch} />}
+            {isError && <FallbackCard text={fallbackStrings.error} buttonText={fallbackStrings.tryAgain} onPress={refetch} />}
           </View> :
           <>
             {episodes.map((item) => {
