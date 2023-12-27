@@ -9,7 +9,7 @@ This project is a clone of the popular music streaming web, Spotify. It has been
 
 ## Structure
 
-Inside the directory we can find the different functionalities developed for the correct functioning of the project. The structure of the project can be summarized as follows:
+Inside the directory we can find the different functionalities developed for the correct functioning of the project. The structure of the project(located in /src) can be summarized as follows:
 
 1. `Components` #Contains all the source code and style files for the custom components.
 2. `Layout` #Responsible for organizing and managing the overall structure of the user interface (UI)
@@ -50,4 +50,4 @@ npm run dev
 bun run dev
 ```
 
-If everything is set up _correctly_, you should see your new web running locally in http://localhost:4321/.
+If everything is set up _correctly_, you should see your new web application running in http://localhost:4321/.
