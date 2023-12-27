@@ -31,7 +31,17 @@ cd web
 ```
 
 Now, you can install the project dependencies using your favourite package manager:
+```bash
+# using npm
+npm install
 
+# OR using Bun
+bun install
+```
+
+## Step 2: Start the Application
+
+After installing the dependencies, you can just start the application locally.
 ```bash
 # using npm
 npm run dev
