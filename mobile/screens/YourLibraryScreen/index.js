@@ -10,7 +10,7 @@ import { useLibraryContent } from '../../hooks/useLibraryContent';
 import ContentCard from '../../components/Cards/ContentCard';
 import ScreenHeader from '../../components/Headers/ScreenHeader';
 import SearchBar from '../../components/SearchBar';
-import ErrorCard from '../../components/Cards/ErrorCard';
+import ErrorCard from '../../components/Cards/FallbackCard';
 import CategorySelector from '../../components/CategorySelector';
 import colors from '../../utils/colors';
 import BottomPadding from '../../components/BottomPadding';
