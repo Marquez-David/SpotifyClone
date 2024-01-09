@@ -5,23 +5,22 @@
 - [Setup](#setup)
 
 ## Description
-This project is a clone of the popular music streaming web, Spotify. It has been developed using Astro, React and the [Spotify API](https://developer.spotify.com/documentation/web-api) for music data.
+This project is a clone of the popular music streaming web, Spotify. It is beeing developed using NextJS. Please note that this project is still in its initial phase.
 
 ## Structure
 
 Inside the directory we can find the different functionalities developed for the correct functioning of the project. The structure of the project(located in /src) can be summarized as follows:
 
 1. `Components` #Contains all the source code and style files for the custom components.
-2. `Layout` #Responsible for organizing and managing the overall structure of the user interface (UI)
-3. `Pages` #This directory consists of all the individual screens or views of the application. Each screen represents a specific user interface (UI) that the user can interact with. 
-4. `Lib` #Store static spotify data.
-5. `Utils` #Contains helper functions that are used across different parts of the application.
-6. `Assets` #The Assets directory is used to store static files, such as icons, fonts, or other resources required by the project.
-7. `Hooks` #This directory contain custom hooks that are used across the application.allowing data to be shared and accessed across different components and screens.
+2. `App` #This directory is the main entry point for the application.
+3. `Lib` #Store static spotify data.
+4. `Utils` #Contains helper functions that are used across different parts of the application.
+5. `Assets` #The Assets directory is used to store static files, such as icons, fonts, or other resources required by the project.
+6. `Hooks` #This directory contain custom hooks that are used across the application.allowing data to be shared and accessed across different components and screens.
 
 ## Setup
 
->**Note**: Make sure you have installed the 'Astro' extension till "Creating a new application" step, before proceeding.
+>**Note**: Make sure you have cloned the repo previously before proceeding.
 
 ## Step 1: Install dependencies
 
@@ -50,4 +49,4 @@ npm run dev
 bun run dev
 ```
 
-If everything is set up _correctly_, you should see your new web application running in http://localhost:4321/.
+If everything is set up _correctly_, you should see your new web application running in http://localhost:3000/.
