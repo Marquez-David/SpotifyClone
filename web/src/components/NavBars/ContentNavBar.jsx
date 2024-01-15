@@ -18,4 +18,4 @@ const ContentNavBar = () => (
   </nav>
 );
 
-export default ContentNavBar;
+export default ContentNavBar

@@ -11,4 +11,4 @@ const PlaylistCard = ({ playlist }) => (
   </a>
 );
 
-export default PlaylistCard;
+export default PlaylistCard

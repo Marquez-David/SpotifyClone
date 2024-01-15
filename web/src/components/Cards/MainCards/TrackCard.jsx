@@ -9,4 +9,4 @@ const TrackCard = ({ track }) => (
   </a>
 );
 
-export default TrackCard;
+export default TrackCard

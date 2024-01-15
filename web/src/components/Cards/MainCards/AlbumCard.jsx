@@ -11,4 +11,4 @@ const AlbumCard = ({ album }) => (
   </a>
 )
 
-export default AlbumCard;
+export default AlbumCard

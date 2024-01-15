@@ -12,8 +12,8 @@ import LibraryOutlineIcon from "@/assets/icons/LibraryOutlineIcon.svg"
 import { paths, navbarStrings } from "@/utils/strings"
 
 const LibraryButton = ({ }) => {
-  const pathname = usePathname();
-  const { type } = useButton().type(pathname === paths.library, LibraryIcon, LibraryOutlineIcon);
+  const pathname = usePathname()
+  const { type } = useButton().type(pathname === paths.library, LibraryIcon, LibraryOutlineIcon)
   return (
     <li className="sticky top-0 bg-background-base py-2 z-10">
       <Link href={paths.library} className="flex gap-5 text-zinc-400 hover:text-zinc-100 items-center py-3 px-4 font-medium transition duration-300">
@@ -24,4 +24,4 @@ const LibraryButton = ({ }) => {
   )
 };
 
-export default LibraryButton;
+export default LibraryButton

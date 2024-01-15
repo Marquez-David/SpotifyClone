@@ -11,8 +11,8 @@ import HomeIcon from "@/assets/icons/HomeIcon.svg"
 import { paths, navbarStrings } from "@/utils/strings"
 
 const HomeButton = ({ }) => {
-  const pathname = usePathname();
-  const { type } = useButton().type(pathname === paths.home, HomeIcon, HomeIcon);
+  const pathname = usePathname()
+  const { type } = useButton().type(pathname === paths.home, HomeIcon, HomeIcon)
   return (
     <li>
       <Link href={paths.home} className="flex gap-5 text-zinc-400 hover:text-zinc-100 items-center py-3 px-4 font-medium transition duration-300">
@@ -23,4 +23,4 @@ const HomeButton = ({ }) => {
   )
 };
 
-export default HomeButton;
+export default HomeButton

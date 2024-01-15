@@ -12,8 +12,8 @@ import SearchOutlineIcon from "@/assets/icons/SearchOutlineIcon.svg"
 import { paths, navbarStrings } from "@/utils/strings"
 
 const SearchButton = ({ }) => {
-  const pathname = usePathname();
-  const { type } = useButton().type(pathname === paths.search, SearchIcon, SearchOutlineIcon);
+  const pathname = usePathname()
+  const { type } = useButton().type(pathname === paths.search, SearchIcon, SearchOutlineIcon)
   return (
     <li>
       <Link href={paths.search} className="flex gap-5 text-zinc-400 hover:text-zinc-100 items-center py-3 px-4 font-medium transition duration-300">
@@ -24,4 +24,4 @@ const SearchButton = ({ }) => {
   )
 };
 
-export default SearchButton;
+export default SearchButton

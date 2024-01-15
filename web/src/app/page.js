@@ -1,6 +1,6 @@
 import { authorization } from "@/services/requests"
 
-export const Login = () => (
+const Login = () => (
   <meta httpEquiv="refresh" content={`0;url=${authorization()}`}></meta>
 )
 

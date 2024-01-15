@@ -9,7 +9,7 @@ import { recentlyPlayed } from "@/lib/recently-played"
 
 import { homeStrings } from "@/utils/strings"
 
-export default function Home() {
+const Home = () => {
   return (
     <div id="playlist-container" className="h-full transition-all duration-1000 relative z-10 px-6 pt-10 overflow-y-auto">
       <h1 className="font-bold text-lg">{homeStrings.featuredPlaylists}</h1>
@@ -33,3 +33,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home

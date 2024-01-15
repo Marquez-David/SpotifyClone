@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const SideCard = ({ item }) => (
   <a href={item.href} className="album-item flex relative px-4 py-2 overflow-hidden items-center gap-5 rounded-md hover:bg-background-highlight">
     <picture className="h-12 w-12 flex-none">
@@ -12,4 +10,4 @@ const SideCard = ({ item }) => (
   </a>
 );
 
-export default SideCard;
+export default SideCard
