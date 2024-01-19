@@ -17,7 +17,7 @@ const SearchButton = ({ }) => {
   return (
     <li>
       <Link href={paths.search} className="flex gap-5 text-zinc-400 hover:text-zinc-100 items-center py-3 px-4 font-medium transition duration-300">
-        <Image src={type} height={24} width={24} />
+        <Image src={type} height={24} width={24} alt="Search icon" />
         {navbarStrings.search}
       </Link>
     </li>

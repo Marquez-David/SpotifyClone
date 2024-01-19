@@ -17,7 +17,7 @@ const LibraryButton = ({ }) => {
   return (
     <li className="sticky top-0 bg-background-base py-2 z-10">
       <Link href={paths.library} className="flex gap-5 text-zinc-400 hover:text-zinc-100 items-center py-3 px-4 font-medium transition duration-300">
-        <Image src={type} height={24} width={24} />
+        <Image src={type} height={24} width={24} alt="Library icon" />
         {navbarStrings.library}
       </Link>
     </li>

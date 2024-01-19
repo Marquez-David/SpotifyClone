@@ -1,7 +1,21 @@
-import { authorization } from "@/services/requests"
+'use client'
 
-const Login = () => (
-  <meta httpEquiv="refresh" content={`0;url=${authorization()}`}></meta>
-)
+import { useEffect } from "react"
+
+import { AUTH_URL } from "@/utils/constants"
+
+
+const Login = () => {
+
+  useEffect(() => {
+    const access_token = localStorage.getItem('token')
+    if (!access_token) {
+      window.location.href = AUTH_URL;
+    } else {
+      window.location.href = '/home';
+    }
+
+  }, []);
+}
 
 export default Login
