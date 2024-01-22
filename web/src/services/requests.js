@@ -56,3 +56,17 @@ export const getRecentlyPlayed = async () => {
     console.error('Error while fetching recently played content: ' + error.message)
   }
 }
+
+export const getFeaturedPlaylists = async () => {
+  const access_token = localStorage.getItem('token')
+  try {
+    const response = await axios({
+      method: 'GET',
+      url: `https://api.spotify.com/v1/browse/featured-playlists?limit=7`,
+      headers: { Authorization: `Bearer ${access_token}` }
+    })
+    return response.data.playlists.items
+  } catch (error) {
+    console.error('Error while fetching featured playlists: ' + error.message)
+  }
+}
