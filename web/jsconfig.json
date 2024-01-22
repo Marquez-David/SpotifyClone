@@ -4,21 +4,24 @@
       "@/*": [
         "./src/*"
       ],
+      "@/assets": [
+        "./src/assets/*"
+      ],
       "@/components": [
         "./src/components/*"
       ],
-      "@/assets": [
-        "./src/assets/*"
+      "@/hooks": [
+        "./src/hooks/*"
       ],
       "@/lib": [
         "./src/lib/*"
       ],
+      "@/services": [
+        "./src/services/*"
+      ],
       "@/utils": [
         "./src/utils/*"
       ],
-      "@/hooks": [
-        "./src/hooks/*"
-      ]
     },
   }
 }
