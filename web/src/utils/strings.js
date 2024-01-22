@@ -79,6 +79,9 @@ export const metadataStrings = {
  * @property {string} featuredPlaylists - The string for the featured playlists section.
  */
 export const homeStrings = {
+  goodMorning: 'Good morning',
+  goodAfternoon: 'Good afternoon',
+  goodEvening: 'Good evening',
   featuredAlbums: 'New releases for you!',
   featuredPlaylists: 'Today\'s biggest hits',
 }
