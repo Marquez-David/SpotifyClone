@@ -16,7 +16,6 @@ export const SCOPES = [
   'user-follow-modify',
   'user-modify-playback-state'
 ]
-
 export const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
 export const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
 export const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join()}&response_type=token&show_dialog=true`
