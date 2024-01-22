@@ -15,7 +15,7 @@ import { homeStrings } from "@/utils/strings"
 const Home = () => {
 
   useEffect(() => {
-    const access_token = new URLSearchParams(window.location.hash.substring(1)).get('access_token');
+    const access_token = new URLSearchParams(window.location.hash.substring(1)).get('access_token')
     localStorage.setItem('token', access_token)
   }, [])
 

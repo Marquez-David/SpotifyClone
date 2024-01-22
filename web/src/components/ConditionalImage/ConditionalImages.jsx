@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/image"
 
 import QuaverIcon from "@/assets/icons/QuaverIcon.svg"
 
@@ -12,6 +12,6 @@ const ConditionalImage = ({ image, className }) => (
       </div>
     )}
   </>
-);
+)
 
 export default ConditionalImage

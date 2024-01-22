@@ -7,6 +7,6 @@ const TrackCard = ({ track }) => (
       <h1 className="text-white text-ms font-bold"> {track.title}</h1>
     </div>
   </a>
-);
+)
 
 export default TrackCard

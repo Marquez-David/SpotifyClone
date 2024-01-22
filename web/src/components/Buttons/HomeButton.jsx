@@ -21,6 +21,6 @@ const HomeButton = ({ }) => {
       </Link>
     </li>
   )
-};
+}
 
 export default HomeButton

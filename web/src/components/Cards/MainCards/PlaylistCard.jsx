@@ -9,6 +9,6 @@ const PlaylistCard = ({ playlist }) => (
       <span className="text-gray">{`By ${playlist.owner}`}</span>
     </div>
   </a>
-);
+)
 
 export default PlaylistCard

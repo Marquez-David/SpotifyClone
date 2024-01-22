@@ -130,4 +130,4 @@ export const featuredAlbums = [
     href: "/album/4kS7bSuU0Jm9LYMosFU2x5",
     type: "Album",
   },
-];
+]

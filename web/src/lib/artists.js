@@ -39,4 +39,4 @@ export const artists = [
     href: "/artist/78rUTD7y6Cy67W1RVzYs7t",
     type: "Artist",
   },
-];
+]

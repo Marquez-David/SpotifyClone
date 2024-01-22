@@ -118,7 +118,7 @@ export const recentlyPlayed = [
       owner: "KIRBY",
       items: [
         {
-          title: "Bl;ack Leaves",
+          title: "Black Leaves",
           duration: "1:44",
           artists: "KIRBY"
         },
@@ -185,4 +185,4 @@ export const recentlyPlayed = [
     },
     type: "Track",
   },
-];
+]

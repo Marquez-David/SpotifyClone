@@ -10,6 +10,6 @@ const SideNavBar = () => (
       </ul>
     </div>
   </nav>
-);
+)
 
 export default SideNavBar

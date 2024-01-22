@@ -22,6 +22,6 @@ const SearchButton = ({ }) => {
       </Link>
     </li>
   )
-};
+}
 
 export default SearchButton

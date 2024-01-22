@@ -18,4 +18,4 @@ export const useLibraryContent = () => {
   }, [])
 
   return { library }
-};
+}

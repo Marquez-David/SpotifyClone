@@ -1,6 +1,6 @@
-import ConditionalImage from "@/components/ConditionalImage/ConditionalImages";
+import ConditionalImage from "@/components/ConditionalImage/ConditionalImages"
 
-import { parseOwner } from "@/utils/helpers";
+import { parseOwner } from "@/utils/helpers"
 
 const SideCard = ({ item }) => (
   <a href={item.id} className="album-item flex relative px-4 py-2 overflow-hidden items-center gap-5 rounded-md hover:bg-background-highlight">
@@ -12,6 +12,6 @@ const SideCard = ({ item }) => (
       <span className="text-gray text-sm">{`${parseOwner(item)}`}</span>
     </div>
   </a>
-);
+)
 
 export default SideCard

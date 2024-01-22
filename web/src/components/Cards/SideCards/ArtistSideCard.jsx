@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from "next/image"
 
-import { sideCardStrings } from "@/utils/strings";
+import { sideCardStrings } from "@/utils/strings"
 
 const ArtistSideCard = ({ item }) => (
   <a href={item.id} className="album-item flex relative px-4 py-2 overflow-hidden items-center gap-5 rounded-md hover:bg-background-highlight">
@@ -12,6 +12,6 @@ const ArtistSideCard = ({ item }) => (
       <span className="text-gray text-sm">{sideCardStrings.artist}</span>
     </div>
   </a>
-);
+)
 
 export default ArtistSideCard

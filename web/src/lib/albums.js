@@ -92,4 +92,4 @@ export const albums = [
     href: "/album/2pOEFqvfxp5uUQ8vQEmVA0",
     type: "Album",
   },
-];
+]

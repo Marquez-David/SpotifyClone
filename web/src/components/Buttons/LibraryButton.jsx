@@ -22,6 +22,6 @@ const LibraryButton = ({ }) => {
       </Link>
     </li>
   )
-};
+}
 
 export default LibraryButton

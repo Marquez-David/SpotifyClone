@@ -147,4 +147,4 @@ export const featuredPlaylists = [
     href: "/playlist/37i9dQZF1DX3sCT1ItXgNd",
     type: "Playlist",
   },
-];
+]

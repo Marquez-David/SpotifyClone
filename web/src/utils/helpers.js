@@ -1,4 +1,4 @@
-import { contentType, sideCardStrings } from "./strings";
+import { contentType, sideCardStrings } from "./strings"
 
 /**
  * Generates a string indicating the owner of a content item.
@@ -13,4 +13,4 @@ export const parseOwner = (item) => {
   } else if (item.type === contentType.podcast) {
     return sideCardStrings.podcast + item.publisher
   }
-};
+}

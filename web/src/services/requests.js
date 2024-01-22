@@ -29,14 +29,14 @@ export const getLibraryContent = async () => {
       method: "GET",
       url: `https://api.spotify.com/v1/me/shows`,
       headers: { Authorization: `Bearer ${access_token}` }
-    });
+    })
 
-    const playlists = playlists_response.data.items;
-    const albums = albums_response.data.items.map(obj => obj.album);
-    const artists = artists_response.data.artists.items;
-    const podcasts = podcasts_response.data.items.map(obj => obj.show);
+    const playlists = playlists_response.data.items
+    const albums = albums_response.data.items.map(obj => obj.album)
+    const artists = artists_response.data.artists.items
+    const podcasts = podcasts_response.data.items.map(obj => obj.show)
 
-    return [...playlists, ...albums, ...artists, ...podcasts];
+    return [...playlists, ...albums, ...artists, ...podcasts]
 
   } catch (error) {
     console.error('Error while fetching user playlists: ' + error.message)
