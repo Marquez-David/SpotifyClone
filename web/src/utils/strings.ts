@@ -38,3 +38,18 @@ export const headerStrings = {
   date: "Date added",
   duration: "Duration",
 }
+
+export const contentType = {
+  playlist: 'playlist',
+  album: 'album',
+  podcast: 'show',
+  artist: 'artist',
+  track: 'track',
+}
+
+export const sideCardStrings = {
+  artist: 'Artist',
+  album: 'Album • ',
+  playlist: 'Playlist • ',
+  podcast: 'Podcast • '
+}

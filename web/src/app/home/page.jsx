@@ -1,6 +1,6 @@
 "use client"
 
-import { useToken } from '@/hooks/useToken.jsx'
+import { useEffect } from "react"
 
 import PlaylistCard from "@/components/Cards/MainCards/PlaylistCard.jsx"
 import AlbumCard from "@/components/Cards/MainCards/AlbumCard.jsx"
@@ -12,9 +12,15 @@ import { recentlyPlayed } from "@/lib/recently-played"
 
 import { homeStrings } from "@/utils/strings"
 
+import { usePlaylist } from '@/hooks/useLibraryContent'
+
 const Home = () => {
-  const { token } = useToken()
-  console.log(token)
+
+  useEffect(() => {
+    const access_token = new URLSearchParams(window.location.hash.substring(1)).get('access_token');
+    localStorage.setItem('token', access_token)
+  }, [])
+
   return (
     <div id="playlist-container" className="h-full transition-all duration-1000 relative z-10 px-6 pt-10 overflow-y-auto">
       <h1 className="font-bold text-lg">{homeStrings.featuredPlaylists}</h1>

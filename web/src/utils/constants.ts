@@ -19,4 +19,4 @@ export const SCOPES: string[] = [
 
 export const AUTH_ENDPOINT: string = 'https://accounts.spotify.com/authorize'
 export const TOKEN_ENDPOINT: string = 'https://accounts.spotify.com/api/token'
-export const AUTH_URL: string = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join(' ')}&response_type=code&show_dialog=true`
+export const AUTH_URL: string = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join()}&response_type=token&show_dialog=true`

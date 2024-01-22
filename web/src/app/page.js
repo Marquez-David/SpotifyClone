@@ -9,7 +9,7 @@ const Login = () => {
 
   useEffect(() => {
     const access_token = localStorage.getItem('token')
-    if (!access_token) {
+    if (access_token) {
       window.location.href = AUTH_URL;
     } else {
       window.location.href = '/home';
