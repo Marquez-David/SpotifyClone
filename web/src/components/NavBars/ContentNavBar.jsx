@@ -11,7 +11,9 @@ const ContentNavBar = () => {
   const { library } = useLibraryContent()
   return (
     <nav className="flex flex-col rounded-lg h-screen overflow-hidden">
-      <ul><LibraryButton /></ul>
+      <div className="bg-background-base p-2">
+        <ul><LibraryButton /></ul>
+      </div>
       <div className="bg-background-base px-2 overflow-y-auto">
         <ul>
           {library && library.map((item) => item.type === contentType.artist ? <ArtistSideCard key={item.id} item={item} /> : <SideCard key={item.id} item={item} />)}
