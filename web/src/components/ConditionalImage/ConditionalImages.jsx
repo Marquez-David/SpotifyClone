@@ -3,8 +3,8 @@ import Image from "next/image";
 import QuaverIcon from "@/assets/icons/QuaverIcon.svg"
 
 const ConditionalImage = () => (
-  <div className=" bg-background-elevated-highlight flex relative px-4 py-3.5 overflow-hidden items-center justify-center gap-5 rounded-md ">
-    <Image src={QuaverIcon} height={18} width={18} alt="Quaver icon" />
+  <div className="bg-background-elevated-highlight object-cover w-full h-full rounded-md flex items-center justify-center">
+    <Image src={QuaverIcon} height={22} width={22} alt="Quaver icon" />
   </div>
 );
 
