@@ -5,7 +5,7 @@ import { contentType, sideCardStrings } from "./strings";
  * @param {object} item - The content item for which the owner information is to be parsed.
  * @returns {string} - A formatted string indicating the type and owner of the content item.
  */
-export const parseOwner = (item): string => {
+export const parseOwner = (item) => {
   if (item.type === contentType.album) {
     return sideCardStrings.album + item.label
   } else if (item.type === contentType.playlist) {

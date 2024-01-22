@@ -2,17 +2,15 @@
 
 import { useEffect } from "react"
 
-import PlaylistCard from "@/components/Cards/MainCards/PlaylistCard.jsx"
-import AlbumCard from "@/components/Cards/MainCards/AlbumCard.jsx"
-import TrackCard from "@/components/Cards/MainCards/TrackCard.jsx"
+import PlaylistCard from "@/components/Cards/MainCards/PlaylistCard"
+import AlbumCard from "@/components/Cards/MainCards/AlbumCard"
+import TrackCard from "@/components/Cards/MainCards/TrackCard"
 
 import { featuredPlaylists } from "@/lib/featured-playlists"
 import { featuredAlbums } from "@/lib/featured-albums"
 import { recentlyPlayed } from "@/lib/recently-played"
 
 import { homeStrings } from "@/utils/strings"
-
-import { usePlaylist } from '@/hooks/useLibraryContent'
 
 const Home = () => {
 

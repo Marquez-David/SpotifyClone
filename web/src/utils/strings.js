@@ -5,7 +5,8 @@ export const navbarStrings = {
 }
 
 export const paths = {
-  home: '/',
+  index: '/',
+  home: '/home',
   search: '/search',
   library: '/library',
 }
