@@ -17,6 +17,7 @@ Inside the directory we can find the different functionalities developed for the
 4. `Utils` #Contains helper functions that are used across different parts of the application.
 5. `Assets` #The Assets directory is used to store static files, such as icons, fonts, or other resources required by the project.
 6. `Hooks` #This directory contain custom hooks that are used across the application.allowing data to be shared and accessed across different components and screens.
+7. `Services` #Contains code responsible for connecting with Spotify APIs.
 
 ## Setup
 
