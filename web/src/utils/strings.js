@@ -86,6 +86,10 @@ export const homeStrings = {
   featuredPlaylists: 'Today\'s biggest hits',
 }
 
+
+
+
+
 export const playlistStrings = {
   playlistDuration: "about 3 hours",
   songs: " songs,"

@@ -1,8 +1,17 @@
 import axios from "axios"
 
+/*
+|================================================================================================================|
+|========================================== SIDEBAR CONTENT =====================================================|
+|================================================================================================================|
+*/
+
 /**
- * Retrieves various types of content from the user's Spotify library.
- * @returns {Array} - An array containing user's library content including playlists, albums, artists, episodes, and podcasts.
+ * Retrieves the user's library content, including playlists, albums, followed artists, and podcasts, from the Spotify API.
+ * @async
+ * @function
+ * @returns {Promise<Array>} A promise that resolves to an array containing user library content.
+ * @throws {Error} If there is an error while fetching the user's library content.
  */
 export const getLibraryContent = async () => {
   const access_token = localStorage.getItem('token')
@@ -43,6 +52,19 @@ export const getLibraryContent = async () => {
   }
 }
 
+/*
+|================================================================================================================|
+|========================================= HOME CONTENT =========================================================|
+|================================================================================================================|
+*/
+
+/**
+ * Retrieves a list of recently played content from the Spotify API.
+ * @async
+ * @function
+ * @returns {Promise<Array>} A promise that resolves to an array of recently played items.
+ * @throws {Error} If there is an error while fetching the recently played content.
+ */
 export const getRecentlyPlayed = async () => {
   const access_token = localStorage.getItem('token')
   try {
@@ -57,6 +79,13 @@ export const getRecentlyPlayed = async () => {
   }
 }
 
+/**
+ * Retrieves a list of featured playlists from the Spotify API.
+ * @async
+ * @function
+ * @returns {Promise<Array>} A promise that resolves to an array of featured playlists.
+ * @throws {Error} If there is an error while fetching the featured playlists.
+ */
 export const getFeaturedPlaylists = async () => {
   const access_token = localStorage.getItem('token')
   try {
