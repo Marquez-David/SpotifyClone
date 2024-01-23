@@ -14,3 +14,15 @@ export const parseOwner = (item) => {
     return sideCardStrings.podcast + item.publisher
   }
 }
+
+/**
+ * Extracts artist names from an array of artist objects and returns them as a comma-separated string.
+ * @param {Array} artists
+ * @returns {string}
+ */
+export function extractArtistNames(artists) {
+  const artistNames = artists.map(artist => artist.name);
+  const joinedNames = artistNames.join(', ');
+
+  return joinedNames;
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { getRecentlyPlayed, getFeaturedPlaylists } from '@/services/requests'
+import { getRecentlyPlayed, getFeaturedPlaylists, getFeaturedAlbums } from '@/services/requests'
 
 /**
  * Custom hook for retrieving home page content.
@@ -38,5 +38,20 @@ export const useHomeContent = () => {
     return { featuredPlaylistsData }
   }
 
-  return { recentlyPlayed, featuredPlaylists }
+  //Function to fetch featured albums.
+  const featuredAlbums = () => {
+    const [featuredAlbumsData, setFeaturedAlbumsData] = useState(null)
+
+    useEffect(() => {
+      const fetchFeaturedAlbums = async () => {
+        const response = await getFeaturedAlbums()
+        setFeaturedAlbumsData(response)
+      }
+      fetchFeaturedAlbums()
+    }, [])
+
+    return { featuredAlbumsData }
+  }
+
+  return { recentlyPlayed, featuredPlaylists, featuredAlbums }
 }

@@ -18,6 +18,7 @@ const Home = () => {
   const { message } = useMessage()
   const { recentlyPlayedData } = useHomeContent().recentlyPlayed()
   const { featuredPlaylistsData } = useHomeContent().featuredPlaylists()
+  const { featuredAlbumsData } = useHomeContent().featuredAlbums()
 
   useEffect(() => {
     const access_token = new URLSearchParams(window.location.hash.substring(1)).get('access_token')
@@ -38,7 +39,7 @@ const Home = () => {
 
       <h1 className="font-bold text-lg">{homeStrings.featuredAlbums}</h1>
       <div className="flex flex-wrap gap-4 mb-4">
-        {featuredAlbums.map((album) => <AlbumCard key={album.id} album={album} />)}
+        {featuredAlbumsData && featuredAlbumsData.map((album) => <AlbumCard key={album.id} album={album} />)}
       </div>
     </div>
   )
