@@ -12,7 +12,7 @@ This project aims to replicate the popular music streaming service, Spotify, wit
 
 ## Structure
 
-This project includes a mobile app and a website, both Spotify clones, built with React Native and Astro, respectively, in addition to other technologies. The structure of the project can be summarized as follows:
+This project includes a mobile app and a website, both Spotify clones, built with React Native and NextJS, respectively, in addition to other technologies. The structure of the project can be summarized as follows:
 
 1. `mobile` #Spotify mobile application.
 2. `web` #Spotify web application.
