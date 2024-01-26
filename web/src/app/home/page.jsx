@@ -2,11 +2,10 @@
 
 import { useEffect } from "react"
 
+import HomeHeader from "@/components/Headers/HomeHeader"
 import PlaylistCard from "@/components/Cards/MainCards/PlaylistCard"
 import AlbumCard from "@/components/Cards/MainCards/AlbumCard"
 import TrackCard from "@/components/Cards/MainCards/TrackCard"
-
-import { featuredAlbums } from "@/lib/featured-albums"
 
 import { useMessage } from "@/hooks/useMessage"
 import { useHomeContent } from "@/hooks/useHomeContent"
@@ -26,7 +25,9 @@ const Home = () => {
   }, [])
 
   return (
-    <div id="playlist-container" className="h-full transition-all duration-1000 relative z-10 px-6 pt-10 overflow-y-auto">
+    <div id="playlist-container" className="h-full transition-all duration-1000 relative z-10 px-6 overflow-y-auto">
+      <HomeHeader />
+
       <h1 className="font-bold text-3xl">{message}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 my-4">
         {recentlyPlayedData && recentlyPlayedData.map((track) => <TrackCard key={track.track.id} track={track.track} />)}

@@ -1,5 +1,6 @@
 import SideNavBar from '@/components/NavBars/SideNavBar'
 import ContentNavBar from '@/components/NavBars/ContentNavBar'
+
 import { fontStyle } from '@/assets/fonts/LocalFonts'
 import { metadataStrings } from '@/utils/strings'
 import './globals.css'
@@ -19,6 +20,8 @@ const RootLayout = ({ children }) => (
           <SideNavBar />
           <ContentNavBar />
         </aside>
+
+
 
         <main className="[grid-area:main] overflow-y-hidden rounded-lg bg-background-base">
           {children}
