@@ -1,5 +1,6 @@
 import SideNavBar from '@/components/NavBars/SideNavBar'
 import ContentNavBar from '@/components/NavBars/ContentNavBar'
+import HomeHeader from "@/components/Headers/HomeHeader"
 
 import { fontStyle } from '@/assets/fonts/LocalFonts'
 import { metadataStrings } from '@/utils/strings'
@@ -21,9 +22,8 @@ const RootLayout = ({ children }) => (
           <ContentNavBar />
         </aside>
 
-
-
-        <main className="[grid-area:main] overflow-y-hidden rounded-lg bg-background-base">
+        <main className="[grid-area:main] flex-col flex overflow-y-auto rounded-lg">
+          <HomeHeader />
           {children}
         </main>
 

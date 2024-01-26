@@ -9,8 +9,8 @@ import ArrowRightIcon from "@/assets/icons/ArrowRightIcon.svg"
 const HomeHeader = () => {
   const router = useRouter()
   return (
-    <div className="py-6 flex flex-row sticky top-0 bg-background-base">
-      <button className="bg-background-highlight p-2 rounded-full mr-2" onClick={() => router.back()}>
+    <div className="bg-background-base p-6 flex flex-row space-x-2">
+      <button className="bg-background-highlight p-2 rounded-full" onClick={() => router.back()}>
         <Image src={ArrowLeftIcon} height={16} width={16} />
       </button>
       <button className="bg-background-highlight p-2 rounded-full" onClick={() => router.forward()}>
