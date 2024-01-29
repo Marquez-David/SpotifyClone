@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
-import { homeStrings } from "@/utils/strings";
+import { homeStrings } from "@/utils/strings"
 
 /**
  * This custom hook determines the appropriate greeting message based on the current time and returns it as part of the state. 
@@ -8,22 +8,22 @@ import { homeStrings } from "@/utils/strings";
  * @returns 
  */
 export const useMessage = () => {
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState(null)
 
   useEffect(() => {
     const timerMessage = () => {
       const currentTime = new Date().getHours();
-      var message = homeStrings.goodEvening;
+      var message = homeStrings.goodEvening
       if (currentTime > 6 && currentTime < 12) {
-        message = homeStrings.goodMorning;
+        message = homeStrings.goodMorning
       } else if (currentTime >= 12 && currentTime < 19) {
-        message = homeStrings.goodAfternoon;
+        message = homeStrings.goodAfternoon
       }
       setMessage(message);
     };
 
-    timerMessage();
-  }, [message]);
+    timerMessage()
+  }, [message])
 
-  return { message };
-};
+  return { message }
+}

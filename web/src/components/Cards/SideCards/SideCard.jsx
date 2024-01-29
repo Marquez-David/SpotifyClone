@@ -1,11 +1,11 @@
-import ConditionalImage from "@/components/ConditionalImage/ConditionalImages"
+import QuaverConditionalImage from "@/components/ConditionalImages/QuaverConditionalImage"
 
 import { parseOwner } from "@/utils/helpers"
 
 const SideCard = ({ item }) => (
-  <a href={item.id} className="album-item flex relative px-4 py-2 overflow-hidden items-center gap-5 rounded-md hover:bg-background-highlight">
+  <a href={`/${item.type}/${item.id}`} className="album-item flex relative px-4 py-2 overflow-hidden items-center gap-5 rounded-md hover:bg-background-highlight">
     <picture className="h-12 w-12 flex-none">
-      <ConditionalImage image={item.images[0]} className={'object-cover w-full h-full rounded-md'} />
+      <QuaverConditionalImage image={item.images[0]} className={'object-cover w-full h-full rounded-md'} />
     </picture>
     <div className="flex flex-auto flex-col truncate">
       <h4 className="text-white text-sm font-light">{item.name}</h4>
