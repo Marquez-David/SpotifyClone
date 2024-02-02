@@ -9,18 +9,18 @@ const AlbumHeader = ({ album }) => (
 
     <div className="flex flex-col justify-between">
       <h2 className="flex flex-1 items-end">{capitalizeFirstLetter(album.album_type)}</h2>
-      <div> <h1 className="text-8xl font-bold block text-white"> {album.name}</h1> </div>
+      <div> <h1 className="text-8xl font-bold text-white"> {album.name}</h1> </div>
 
       <div className="flex-1 flex items-end">
-        <div className="text-sm text-white font-bold">
-          <span>{extractArtistNames(album.artists)}</span>
-        </div>
-        <p className="mt-1 ml-1">
-          <span className="text-sm text-white font-light"> {`• ${getYear(album.release_date)} • ${album.total_tracks} song/s, ${calculateDuration(album.tracks.items)}`} </span>
+        <p className="text-white text-sm space-x-2">
+          <span className="font-bold">{extractArtistNames(album.artists)}</span>
+          <span className="font-light"> {getYear(album.release_date)} </span>
+          <span className="font-light"> {`${album.total_tracks} song/s`} </span>
+          <span className="font-light"> {calculateDuration(album.tracks.items)} </span>
         </p>
       </div>
     </div>
-  </header >
+  </header>
 )
 
 export default AlbumHeader

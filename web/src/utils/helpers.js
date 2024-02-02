@@ -61,3 +61,17 @@ export const calculateDuration = (songs) => {
 
   return hours > 0 ? `${hours} h ${mins} min` : `${mins} min`
 }
+
+/**
+ * Converts milliseconds to minutes and seconds.
+ * @param {number} milliseconds - The input milliseconds to be converted.
+ * @returns {Object} An string builder containing minutes and seconds.
+ */
+export const milisecondsToMinutes = (milliseconds) => {
+  const totalSeconds = Math.floor(milliseconds / 1000)
+  const minutes = Math.floor(totalSeconds / 60)
+  const seconds = totalSeconds % 60
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds
+
+  return `${minutes}:${formattedSeconds}`
+}

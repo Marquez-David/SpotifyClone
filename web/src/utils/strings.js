@@ -86,6 +86,11 @@ export const homeStrings = {
   featuredPlaylists: 'Today\'s biggest hits',
 }
 
+export const contentTableStrings = {
+  index: '#',
+  title: 'Title'
+}
+
 
 
 
