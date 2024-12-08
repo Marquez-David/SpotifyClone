@@ -19,7 +19,7 @@
     "@tanstack/react-query": "^5.0.0",
     "axios": "^1.7.4",
     "react": "18.2.0",
-    "react-native": "0.72.1",
+    "react-native": "0.72.17",
     "react-native-app-auth": "^6.4.3",
     "react-native-dotenv": "^3.4.9",
     "react-native-gesture-handler": "^2.13.4",
